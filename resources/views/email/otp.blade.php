@@ -1,0 +1,1 @@
+<h1> OTP :- {{$otp}} Regarding Email :- {{$email}}  and User ID :- {{$user_id}} </h1>
