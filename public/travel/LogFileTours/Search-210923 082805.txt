@@ -1,0 +1,15 @@
+===========Credentials(Search)=========
+hotelbeds_key=88013eb226283db1bd72df7fb137e9cf
+ hotelbeds_secret=e9c8421e54
+ endpoint=https://api.test.hotelbeds.com/activity-api/3.0
+===========Request(Search)=========
+{"filters":[{"searchFilterItems":[{"type":"destination","value":"DEL"}]}],"from":"2023-09-24","to":"2023-09-24"}
+===========Response(Search)=========
+{
+  "timestamp" : 1695284885370,
+  "status" : 404,
+  "error" : "Not Found",
+  "message" : "No message available",
+  "path" : "/actdis-api/public/activity-api/3.0/activities/search"
+}
+

@@ -1,0 +1,24 @@
+===========Credentials(Search)=========
+hotelbeds_key=88013eb226283db1bd72df7fb137e9cf
+ hotelbeds_secret=e9c8421e54
+ endpoint=https://api.test.hotelbeds.com/activity-api/3.0
+===========Request(Search)=========
+{"filters":[{"searchFilterItems":[{"type":"destination","value":"AAZ"}]}],"from":"2024-02-22","to":"2024-02-22"}
+===========Response(Search)=========
+{
+  "operationId" : "a067571c2ecd654d",
+  "pagination" : {
+    "itemsPerPage" : 100,
+    "page" : 1,
+    "totalItems" : 0
+  },
+  "auditData" : {
+    "processTime" : 0.0,
+    "time" : "2024-02-19T06:24:40.519Z",
+    "serverId" : "blank",
+    "environment" : "blank"
+  },
+  "activities" : [ ],
+  "summaryLog" : "activities=0"
+}
+

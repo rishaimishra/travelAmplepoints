@@ -1,0 +1,7 @@
+===========Credentials(Book_581305190)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(Book_581305190)=========
+{"data":{"selected_offers":["off_0000AYW2mCFaWPiti8DfwA"],"payments":[{"type":"balance","currency":"USD","amount":"146.98"}],"passengers":[{"phone_number":"+9109430866085","email":"techieakm@gmail.com","born_on":"2004-08-08","title":"mr","gender":"m","family_name":"Amit Kumar","given_name":"Amit Kumar","id":"pas_0000AYW2lsfnJGnmzcKK0J"}]}}
+===========Response(Book_581305190)=========
+{"meta":{"status":503,"request_id":"F3lcobbb0zlSQcQA3NqG"},"errors":[{"type":"api_error","title":"The server is not ready to handle the request","message":"There is a temporary issue with the server. If the error persists please contact our support team and attach the `request_id` to your message. Please retry later.","documentation_url":"https://duffel.com/docs/api/overview/errors","code":"service_unavailable"}]}
+

@@ -1,0 +1,11 @@
+===========Credentials(GetHotelList)=========
+hotelbeds_key=273483fe031816b44f248428a028d28c
+ hotelbeds_secret=bee7c61cbf
+ endpoint=https://api.test.hotelbeds.com/hotel-api/1.0
+===========Request(GetHotelList)=========
+{"language":"ENG","currency":"USD","stay":{"checkIn":"2024-02-23","checkOut":"2024-02-25"},"occupancies":[{"rooms":1,"adults":"1","children":"0","paxes":[{"type":"AD","age":40}]}],"hotels":[893849,893839],"filter":{"packaging":true},"boards":{"included":true,"board":["RO","BB","AI","HB","FB","RR","AB","DB","GB","IB","LB"]}}
+===========Response(GetHotelList)=========
+{
+    "error": "Quota exceeded"
+}
+

@@ -1,0 +1,7 @@
+===========Credentials(form_submit_data160835981)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(form_submit_data160835981)=========
+{"_token":"HAJNypXmpdQUBe9rdYXZKhnhaP5gzD4MjdT4aXtd","OfferId":"off_0000AZz0yed5p3cNAKIewh","id":"11372","passenger":{"adult":{"title":["mr"],"first_name":["Amit"],"last_name":["Kumar"],"dob":["2004-09-21"],"gender":["m"],"id":["12345"]},"email":"bhai.kumaramit@gmail.com","phone":"6201357410","address":"Samastipur","city":"Samastipur","country":"INDIA"},"payment_type":"flutterwave"}
+===========Response(form_submit_data160835981)=========
+
+

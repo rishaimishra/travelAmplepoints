@@ -1,0 +1,7 @@
+===========Credentials(form_submit_data1073392143)=========
+duffel_live_6YGY02b60GEIImviWyIMEghuXpW1rachnhB6f1bfaBD
+===========Request(form_submit_data1073392143)=========
+{"_token":"J1RKZyPaxV8JgTEpgyxzX71Wu60xmyR8sqyFkL6P","OfferId":"off_0000AYVzXqPk3FNzfvAgIV","id":"7465","passenger":{"adult":{"title":["mr"],"first_name":["Amit"],"last_name":["Kumar"],"dob":["2004-08-08"],"gender":["m"],"id":[""]},"email":"techieakm@gmail.com","phone":"9430866085","address":"Samastipur Bihar India","city":"Samastipur","country":"INDIA"},"payment_type":"flutterwave"}
+===========Response(form_submit_data1073392143)=========
+
+

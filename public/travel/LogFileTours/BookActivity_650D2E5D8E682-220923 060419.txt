@@ -1,0 +1,441 @@
+===========Credentials(BookActivity_650D2E5D8E682)=========
+hotelbeds_key=88013eb226283db1bd72df7fb137e9cf
+ hotelbeds_secret=e9c8421e54
+ endpoint=https://api.test.hotelbeds.com/activity-api/3.0
+===========Request(BookActivity_650D2E5D8E682)=========
+{"language":"en","clientReference":"650D2E5D8E682","holder":{"title":"mr","name":"sanni","surname":"Kumar","email":"bhai.kumaramit@gmail.com","address":"Samastipur","zipCode":"848101","country":"IN","mailing":true,"mailUpdDate":"2023-09-25","telephones":["+916201357410"]},"activities":[{"answers":[{"question":{"code":"HOTEL_NAME","text":"Pleaseadvisethenameofyourhotel","required":true},"answer":"oyohotel"}],"preferedLanguage":"en","serviceLanguage":"en","rateKey":"8ev1j6olvt6scme6mtd7sfn621","from":"2023-09-25","to":"2023-09-25","paxes":[{"age":"19","type":"ADULT","name":"sanni","surname":"Kumar"}]}]}
+===========Response(BookActivity_650D2E5D8E682)=========
+{
+  "operationId" : "30cb9b94be1c6bf7",
+  "auditData" : {
+    "processTime" : 0.0,
+    "time" : "2023-09-22T08:04:19.231Z",
+    "serverId" : "blank",
+    "environment" : "blank"
+  },
+  "booking" : {
+    "reference" : "270-515564",
+    "status" : "CONFIRMED",
+    "currency" : "EUR",
+    "pendingAmount" : 78.54,
+    "agency" : {
+      "code" : 99994,
+      "branch" : 1,
+      "comments" : "",
+      "sucursal" : {
+        "name" : "HOTELBEDS SPAIN - PRUEBAS",
+        "street" : "PEREZ GALDOS 32",
+        "zip" : "07006",
+        "city" : "PALMA DE MALLORCA",
+        "phone" : "971771700",
+        "region" : "BALEARES"
+      }
+    },
+    "creationDate" : "2023-09-22T10:04:18.000Z",
+    "paymentData" : {
+      "paymentType" : {
+        "code" : "C"
+      },
+      "invoicingCompany" : {
+        "code" : "E14",
+        "name" : "HOTELBEDS S.L.U.",
+        "registrationNumber" : "ESB57218372"
+      },
+      "description" : "Name Hotelbeds, S.L.U, Bank: BBVA(PL. DE L'OLIVAR, 6. PALMA 07002) Account:ES73 0182 4899 14 0200712789,  SWIFT:BBVAESMMXXX,  7 days prior to clients arrival (except group bookings with fixed days in advance at the time of the confirmation) . Please indicate our reference number when making payment. Thank you for your cooperation."
+    },
+    "extraData" : [ {
+      "id" : "WEBIP",
+      "value" : "162.240.224.93, 10.214.142.213,18.159.42.193"
+    }, {
+      "id" : "ATLAS_USER",
+      "value" : "ATLAS+"
+    } ],
+    "clientReference" : "650D2E5D8E682",
+    "holder" : {
+      "name" : "SANNI",
+      "title" : "",
+      "email" : "bhai.kumaramit@gmail.com",
+      "mailing" : false,
+      "surname" : "KUMAR",
+      "telephones" : [ "+916201357410" ]
+    },
+    "total" : 78.54,
+    "totalNet" : 78.54,
+    "activities" : [ {
+      "status" : "CONFIRMED",
+      "supplier" : {
+        "name" : "HOTELBEDS SPAIN, S.L.U",
+        "vatNumber" : "ESB28916765"
+      },
+      "comments" : [ {
+        "type" : "CONTRACT_REMARKS",
+        "text" : "Meeting point: Hotel // End point: Same as PickUp // Duration: 4 hours // Inclusions: Transport. Guide. Monuments //Exclusions:Tipping or any other meal which is not mentioned\n// Mandatory instructions: Hotel Name // Supplier name: Distinct Destinations Private // Supplier emergency phone: 00 91 9818419730 // Voucher type: Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity. // Voucher validity:Service date // Recommendations: Museums are closed on Mondays. Children require an adult aged 16 or above to purchase tickets on their behalf, and must be accompanied by this adult when entering the park. All guests under the same reservation must enter the park together. Tickets must be used on the specific day selected. Tickets can only be used once. Re-entry not allowed. Passport is required on the travel date."
+      } ],
+      "type" : "TICKET",
+      "vouchers" : [ ],
+      "activityReference" : "270-515564",
+      "code" : "E-E10-IN-DENEW",
+      "name" : "Half Day New Delhi Tour",
+      "modality" : {
+        "code" : "TOUR2@STANDARD||",
+        "name" : "Pick up from NCR hotels",
+        "amountUnitType" : "PAX"
+      },
+      "dateFrom" : "2023-09-25",
+      "dateTo" : "2023-09-25",
+      "cancellationPolicies" : [ {
+        "dateFrom" : "2023-09-24T00:00:00.000Z",
+        "amount" : 78.54
+      } ],
+      "paxes" : [ {
+        "name" : "sanni",
+        "mailing" : false,
+        "surname" : "Kumar",
+        "customerId" : "1",
+        "age" : 19,
+        "paxType" : "AD",
+        "passport" : ""
+      } ],
+      "questions" : [ {
+        "question" : {
+          "code" : "EMAILCONTACTO",
+          "required" : true
+        },
+        "answer" : "bhai.kumaramit@gmail.com"
+      }, {
+        "question" : {
+          "code" : "TLFCONTACTO",
+          "required" : true
+        },
+        "answer" : "+916201357410"
+      } ],
+      "id" : "270#O#1",
+      "agencyCommission" : {
+        "percentage" : 0.00,
+        "amount" : 0.000,
+        "vatAmount" : 0.000
+      },
+      "contactInfo" : {
+        "country" : {
+          "destinations" : [ {
+            "code" : "DEL",
+            "name" : "Delhi and NCR"
+          } ]
+        }
+      },
+      "amountDetail" : {
+        "paxAmounts" : [ {
+          "paxType" : "ADULT",
+          "amount" : 78.54
+        } ],
+        "totalAmount" : {
+          "amount" : 78.54
+        }
+      },
+      "extraData" : [ {
+        "id" : "INFO_TTOO_BEARING_AMOUNT",
+        "value" : "78.540"
+      }, {
+        "id" : "INFO_TTOO_BEARING_AMOUNT_CURRENCY",
+        "value" : "EUR"
+      }, {
+        "id" : "INFO_TTOO_SERVICE_AMOUNT",
+        "value" : "0.00"
+      } ],
+      "providerInformation" : {
+        "name" : "DISTINCT DESTINATIONS PVT LTD "
+      },
+      "content" : {
+        "name" : "New Delhi Tour - Half Day Private Tour",
+        "detailedInfo" : [ ],
+        "featureGroups" : [ {
+          "groupCode" : "MEAL",
+          "excluded" : [ {
+            "featureType" : "FOODNOT",
+            "description" : "Meal"
+          } ]
+        }, {
+          "groupCode" : "TICKET",
+          "included" : [ {
+            "featureType" : "ADMISSIONSINCL",
+            "description" : "Tickets"
+          } ]
+        }, {
+          "groupCode" : "DRINKS",
+          "excluded" : [ {
+            "featureType" : "DRINKSNOT",
+            "description" : "Drinks"
+          } ]
+        }, {
+          "groupCode" : "UNKNOWN",
+          "excluded" : [ {
+            "featureType" : "OTHERNOT",
+            "description" : "Any additional expenses which are not included or detailed in the programme."
+          } ],
+          "included" : [ {
+            "featureType" : "OTHERINCL",
+            "description" : "Guide"
+          } ]
+        }, {
+          "groupCode" : "TRANSPORT",
+          "included" : [ {
+            "featureType" : "TRANSPORTINCL",
+            "description" : "Transport"
+          } ]
+        } ],
+        "guidingOptions" : {
+          "groupType" : "PRIVATE",
+          "guideType" : "TOURGUIDE",
+          "included" : true
+        },
+        "importantInfo" : [ "Please make sure you answer all the mandatory questions during the booking process.</br> Passport or ID are required </br> Children must be accompanied by an adult. " ],
+        "location" : {
+          "endPoints" : [ {
+            "type" : "Same",
+            "description" : "Same as Starting Point"
+          } ],
+          "startingPoints" : [ {
+            "type" : "HOTEL_PICKUP",
+            "meetingPoint" : {
+              "type" : "ADDRESS",
+              "country" : {
+                "code" : "IN",
+                "name" : "India",
+                "destinations" : [ {
+                  "code" : "DEL",
+                  "name" : "Delhi and NCR"
+                } ]
+              },
+              "description" : "New Delhi Tour - Half Day Private Tour"
+            },
+            "pickupInstructions" : [ { } ]
+          } ]
+        },
+        "media" : {
+          "images" : [ {
+            "visualizationOrder" : 1,
+            "mimeType" : "image/jpeg",
+            "language" : "ENG",
+            "urls" : [ {
+              "dpi" : 72,
+              "height" : 75,
+              "width" : 100,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/S/16476_1.jpg",
+              "sizeType" : "SMALL"
+            }, {
+              "dpi" : 72,
+              "height" : 768,
+              "width" : 1024,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/XL/16476_1.jpg",
+              "sizeType" : "XLARGE"
+            }, {
+              "dpi" : 72,
+              "height" : 480,
+              "width" : 640,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/B/16476_1.jpg",
+              "sizeType" : "LARGE2"
+            }, {
+              "dpi" : 72,
+              "height" : 768,
+              "width" : 1024,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/LPP/16476_1.jpg",
+              "sizeType" : "RAW"
+            }, {
+              "dpi" : 72,
+              "height" : 200,
+              "width" : 267,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/L/16476_1.jpg",
+              "sizeType" : "LARGE"
+            }, {
+              "dpi" : 72,
+              "height" : 130,
+              "width" : 173,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/M/16476_1.jpg",
+              "sizeType" : "MEDIUM"
+            } ]
+          }, {
+            "visualizationOrder" : 2,
+            "mimeType" : "image/jpeg",
+            "language" : "ENG",
+            "urls" : [ {
+              "dpi" : 72,
+              "height" : 75,
+              "width" : 100,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/S/16476_2.jpg",
+              "sizeType" : "SMALL"
+            }, {
+              "dpi" : 72,
+              "height" : 768,
+              "width" : 1024,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/XL/16476_2.jpg",
+              "sizeType" : "XLARGE"
+            }, {
+              "dpi" : 72,
+              "height" : 480,
+              "width" : 640,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/B/16476_2.jpg",
+              "sizeType" : "LARGE2"
+            }, {
+              "dpi" : 72,
+              "height" : 768,
+              "width" : 1024,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/LPP/16476_2.jpg",
+              "sizeType" : "RAW"
+            }, {
+              "dpi" : 72,
+              "height" : 200,
+              "width" : 267,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/L/16476_2.jpg",
+              "sizeType" : "LARGE"
+            }, {
+              "dpi" : 72,
+              "height" : 130,
+              "width" : 173,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/M/16476_2.jpg",
+              "sizeType" : "MEDIUM"
+            } ]
+          }, {
+            "visualizationOrder" : 3,
+            "mimeType" : "image/jpeg",
+            "language" : "ENG",
+            "urls" : [ {
+              "dpi" : 72,
+              "height" : 75,
+              "width" : 100,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/S/16476_3.jpg",
+              "sizeType" : "SMALL"
+            }, {
+              "dpi" : 72,
+              "height" : 768,
+              "width" : 1024,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/XL/16476_3.jpg",
+              "sizeType" : "XLARGE"
+            }, {
+              "dpi" : 72,
+              "height" : 480,
+              "width" : 640,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/B/16476_3.jpg",
+              "sizeType" : "LARGE2"
+            }, {
+              "dpi" : 72,
+              "height" : 768,
+              "width" : 1024,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/LPP/16476_3.jpg",
+              "sizeType" : "RAW"
+            }, {
+              "dpi" : 72,
+              "height" : 200,
+              "width" : 267,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/L/16476_3.jpg",
+              "sizeType" : "LARGE"
+            }, {
+              "dpi" : 72,
+              "height" : 130,
+              "width" : 173,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/M/16476_3.jpg",
+              "sizeType" : "MEDIUM"
+            } ]
+          }, {
+            "visualizationOrder" : 4,
+            "mimeType" : "image/jpeg",
+            "language" : "ENG",
+            "urls" : [ {
+              "dpi" : 72,
+              "height" : 75,
+              "width" : 100,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/S/16476_5.jpg",
+              "sizeType" : "SMALL"
+            }, {
+              "dpi" : 72,
+              "height" : 768,
+              "width" : 1024,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/XL/16476_5.jpg",
+              "sizeType" : "XLARGE"
+            }, {
+              "dpi" : 72,
+              "height" : 480,
+              "width" : 640,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/B/16476_5.jpg",
+              "sizeType" : "LARGE2"
+            }, {
+              "dpi" : 72,
+              "height" : 768,
+              "width" : 1024,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/LPP/16476_5.jpg",
+              "sizeType" : "RAW"
+            }, {
+              "dpi" : 72,
+              "height" : 200,
+              "width" : 267,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/L/16476_5.jpg",
+              "sizeType" : "LARGE"
+            }, {
+              "dpi" : 72,
+              "height" : 130,
+              "width" : 173,
+              "resource" : "https://media.activitiesbank.com/16476/ENG/M/16476_5.jpg",
+              "sizeType" : "MEDIUM"
+            } ]
+          } ]
+        },
+        "redeemInfo" : {
+          "type" : "VOCUHERLESS",
+          "directEntrance" : false,
+          "comments" : [ {
+            "description" : "Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity. "
+          } ]
+        },
+        "routes" : [ ],
+        "scheduling" : {
+          "duration" : {
+            "value" : 4.0,
+            "metric" : "HOURS",
+            "type" : "AFTER"
+          }
+        },
+        "segmentationGroups" : [ {
+          "code" : 2,
+          "name" : "Duration",
+          "segments" : [ {
+            "code" : 773,
+            "name" : "Half-day morning"
+          } ]
+        }, {
+          "code" : 16,
+          "name" : "Services",
+          "segments" : [ {
+            "code" : 956,
+            "name" : "Safe2Stay"
+          }, {
+            "code" : 946,
+            "name" : "Private"
+          } ]
+        }, {
+          "code" : 1,
+          "name" : "Categories",
+          "segments" : [ {
+            "code" : 1,
+            "name" : "City tours"
+          } ]
+        } ],
+        "activityFactsheetType" : "ACTIVITIES",
+        "activityCode" : "E-E10-IN-DENEW",
+        "contentId" : "16476",
+        "description" : "See the top sight and attractions in New Delhi with this fascinating half-day tour of the Indian capital. View the imposing India Gate, the vast parliament building and the presidential palace. Admire the Qutab Minar tower and the Quwwat-ul-Islam Mosque and visit the awe-inspiring Humayun mausoleum, the forerunner of the Taj Mahal.<br />\n<br />\nBegin your Delhi delight with a drive along the area known as ‘Lutyens's Delhi’ after Edwin Lutyens, the architect who designed the city’s new monumental government district a century ago. See the grandiose Rashtrapati Bhawan, the 340-room palace built for the viceroys of India, which is now the residence of the president of India. Lutyens’s blend of classical and Mughal elements has resulted in a style known as the Delhi order. Continue along the Rajpath and see the India Gate, a triumphal arch designed by Lutyens to commemorate fallen soldiers. See also the vast, circular Indian parliament, which also bears the hallmark of Lutyens.<br />\n<br />\nLeave Lutyens's Delhi and explore the old parts of New Delhi with a visit to the site of the 73 metre-high Qutab Minar, the tallest stone tower in India. Qutub-ud-din Aibak, the first sultan of Delhi, had it built in 1193 and razed 27 Hindu temples to use their columns. <br />\n<br />\n<strong>Languages</strong><br />\nEnglish",
+        "lastUpdate" : "2022-11-10",
+        "advancedTips" : [ ],
+        "countries" : [ {
+          "code" : "IN",
+          "name" : "India",
+          "destinations" : [ {
+            "code" : "DEL",
+            "name" : "Delhi and NCR"
+          } ]
+        } ],
+        "highligths" : [ ],
+        "language" : "en"
+      }
+    } ]
+  }
+}
+

@@ -1,0 +1,12 @@
+===========Credentials(Search)=========
+hotelbeds_key=88013eb226283db1bd72df7fb137e9cf
+ hotelbeds_secret=e9c8421e54
+ endpoint=https://api.test.hotelbeds.com/activity-api/3.0
+===========Request(Search)=========
+{"filters":[{"searchFilterItems":[{"type":"destination","value":"BOM"}]}],"from":"2023-10-19","to":"2023-10-19"}
+===========Response(Search)=========
+{
+  "code" : "NO_CODE",
+  "message" : "10.222.62.37 Hazelcast instance is not active!"
+}
+

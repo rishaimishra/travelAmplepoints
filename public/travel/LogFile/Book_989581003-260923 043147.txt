@@ -1,0 +1,7 @@
+===========Credentials(Book_989581003)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(Book_989581003)=========
+{"data":{"selected_offers":["off_0000Aa9E8H5mfP9feYtXky"],"payments":[{"type":"balance","currency":"USD","amount":"73.92"}],"passengers":[{"phone_number":"+919825548602","email":"hirenbuhecha@gmail.com","born_on":"1993-08-14","title":"mr","gender":"m","family_name":"Hiren Buhecha","given_name":"Hiren Buhecha","id":"pas_0000Aa9E86wCQBXw9wKkQU"}]}}
+===========Response(Book_989581003)=========
+{"meta":{"status":500,"request_id":"F4hYmyu07HSW-ZwAVxMm"},"errors":[{"type":"airline_error","title":"Unexpected Airline Error","source":"united","message":"The airline responded with an unexpected error. Please try again.","documentation_url":"https://duffel.com/docs/api/overview/errors","code":"airline_unknown"}]}
+

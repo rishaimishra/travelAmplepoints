@@ -1,0 +1,595 @@
+===========Credentials(Description)=========
+hotelbeds_key=88013eb226283db1bd72df7fb137e9cf
+ hotelbeds_secret=e9c8421e54
+ endpoint=https://api.test.hotelbeds.com/activity-api/3.0
+===========Request(Description)=========
+{"code":"E-E10-IN-DEAGAWF","from":"2023-09-25","to":"2023-09-25","language":"en","paxes":[{"age":30}]}
+===========Response(Description)=========
+{
+  "operationId" : "c0e3670e59e13fe7",
+  "auditData" : {
+    "processTime" : 0.0,
+    "time" : "2023-09-22T08:08:15.665Z",
+    "serverId" : "blank",
+    "environment" : "blank"
+  },
+  "activity" : {
+    "activityCode" : "IN-DEAGAWF",
+    "country" : {
+      "code" : "IN",
+      "name" : "India",
+      "destinations" : [ {
+        "code" : "AGR",
+        "name" : "Agra"
+      } ]
+    },
+    "operationDays" : [ {
+      "code" : "MON",
+      "name" : "Monday"
+    }, {
+      "code" : "TUE",
+      "name" : "Tuesday"
+    }, {
+      "code" : "WED",
+      "name" : "Wednesday"
+    }, {
+      "code" : "THU",
+      "name" : "Thursday"
+    }, {
+      "code" : "SAT",
+      "name" : "Saturday"
+    }, {
+      "code" : "SUN",
+      "name" : "Sunday"
+    } ],
+    "modalities" : [ {
+      "code" : "1641803931#TOUR1",
+      "name" : "Pick-up from Delhi City Hotels",
+      "duration" : {
+        "value" : 1.0,
+        "metric" : "DAYS"
+      },
+      "questions" : [ ],
+      "comments" : [ {
+        "type" : "CONTRACT_REMARKS",
+        "text" : "Meeting point: Hotel // End point: Same as PickUp // Duration:8 hours // Inclusions: Transport, Guide, Monuments. //Exclusions:Tipping or any other meal which is not mentioned\n// Mandatory instructions: Hotel Name // Supplier name: Distinct Destinations Private // Supplier emergency phone: 00 91 9818419730 // Voucher type: Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity. // Voucher validity:Service date // Recommendations: Museums are closed on Mondays. Children require an adult aged 16 or above to purchase tickets on their behalf, and must be accompanied by this adult when entering the park. All guests under the same reservation must enter the park together. Tickets must be used on the specific day selected. Tickets can only be used once. Re-entry not allowed. Passport is required on the travel date."
+      } ],
+      "supplierInformation" : {
+        "name" : "HOTELBEDS SPAIN, S.L.U",
+        "vatNumber" : "ESB28916765"
+      },
+      "providerInformation" : {
+        "name" : "DISTINCT DESTINATIONS PVT LTD "
+      },
+      "destinationCode" : "DEL",
+      "contract" : {
+        "incomingOffice" : 270,
+        "code" : 1923,
+        "name" : "IN-DEAGAWF"
+      },
+      "languages" : [ ],
+      "amountsFrom" : [ {
+        "paxType" : "ADULT",
+        "ageFrom" : 0,
+        "ageTo" : 999,
+        "amount" : 187.91,
+        "boxOfficeAmount" : 233.01,
+        "mandatoryApplyAmount" : false
+      } ],
+      "rates" : [ {
+        "rateCode" : "STANDARD",
+        "rateClass" : "NOR",
+        "name" : ".",
+        "freeCancellation" : false,
+        "rateDetails" : [ {
+          "rateKey" : "e9sfjrdmhhs6j4nq1e4kraikb3",
+          "operationDates" : [ {
+            "from" : "2023-09-25",
+            "to" : "2023-09-25",
+            "cancellationPolicies" : [ {
+              "dateFrom" : "2023-09-24T00:00:00.000Z",
+              "amount" : 187.9100
+            } ]
+          } ],
+          "languages" : [ {
+            "code" : "ENG",
+            "description" : "English"
+          } ],
+          "sessions" : [ {
+            "code" : "08:00",
+            "name" : "08:00"
+          } ],
+          "minimumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "maximumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "totalAmount" : {
+            "amount" : 187.91,
+            "boxOfficeAmount" : 233.01,
+            "mandatoryApplyAmount" : false
+          },
+          "paxAmounts" : [ {
+            "paxType" : "ADULT",
+            "ageFrom" : 0,
+            "ageTo" : 999,
+            "amount" : 187.91,
+            "boxOfficeAmount" : 233.01,
+            "mandatoryApplyAmount" : false
+          } ],
+          "agencyCommission" : {
+            "percentage" : 0.00,
+            "amount" : 0.00,
+            "vatPercentage" : 0,
+            "vatAmount" : 0.00
+          }
+        } ]
+      } ],
+      "amountUnitType" : "PAX",
+      "uniqueIdentifier" : "1641803931"
+    }, {
+      "code" : "47211590#TOUR2",
+      "name" : "Pick-up from NCR  Hotels",
+      "duration" : {
+        "value" : 1.0,
+        "metric" : "DAYS"
+      },
+      "questions" : [ ],
+      "comments" : [ {
+        "type" : "CONTRACT_REMARKS",
+        "text" : "Meeting point: Hotel // End point: Same as PickUp // Duration:8 hours // Inclusions: Transport, Guide, Monuments. //Exclusions:Tipping or any other meal which is not mentioned\n// Mandatory instructions: Hotel Name // Supplier name: Distinct Destinations Private // Supplier emergency phone: 00 91 9818419730 // Voucher type: Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity. // Voucher validity:Service date // Recommendations: Museums are closed on Mondays. Children require an adult aged 16 or above to purchase tickets on their behalf, and must be accompanied by this adult when entering the park. All guests under the same reservation must enter the park together. Tickets must be used on the specific day selected. Tickets can only be used once. Re-entry not allowed. Passport is required on the travel date.\n"
+      } ],
+      "supplierInformation" : {
+        "name" : "HOTELBEDS SPAIN, S.L.U",
+        "vatNumber" : "ESB28916765"
+      },
+      "providerInformation" : {
+        "name" : "DISTINCT DESTINATIONS PVT LTD "
+      },
+      "destinationCode" : "DEL",
+      "contract" : {
+        "incomingOffice" : 270,
+        "code" : 1924,
+        "name" : "IN-DEAGAWF 1"
+      },
+      "languages" : [ ],
+      "amountsFrom" : [ {
+        "paxType" : "ADULT",
+        "ageFrom" : 0,
+        "ageTo" : 999,
+        "amount" : 187.91,
+        "boxOfficeAmount" : 233.01,
+        "mandatoryApplyAmount" : false
+      } ],
+      "rates" : [ {
+        "rateCode" : "STANDARD",
+        "rateClass" : "NOR",
+        "name" : ".",
+        "freeCancellation" : false,
+        "rateDetails" : [ {
+          "rateKey" : "uc6glu5fpp7sfvh5i3eerb14lm",
+          "operationDates" : [ {
+            "from" : "2023-09-25",
+            "to" : "2023-09-25",
+            "cancellationPolicies" : [ {
+              "dateFrom" : "2023-09-24T00:00:00.000Z",
+              "amount" : 187.9100
+            } ]
+          } ],
+          "languages" : [ {
+            "code" : "ENG",
+            "description" : "English"
+          } ],
+          "sessions" : [ {
+            "code" : "08:00",
+            "name" : "08:00"
+          } ],
+          "minimumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "maximumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "totalAmount" : {
+            "amount" : 187.91,
+            "boxOfficeAmount" : 233.01,
+            "mandatoryApplyAmount" : false
+          },
+          "paxAmounts" : [ {
+            "paxType" : "ADULT",
+            "ageFrom" : 0,
+            "ageTo" : 999,
+            "amount" : 187.91,
+            "boxOfficeAmount" : 233.01,
+            "mandatoryApplyAmount" : false
+          } ],
+          "agencyCommission" : {
+            "percentage" : 0.00,
+            "amount" : 0.00,
+            "vatPercentage" : 0,
+            "vatAmount" : 0.00
+          }
+        } ]
+      } ],
+      "amountUnitType" : "PAX",
+      "uniqueIdentifier" : "47211590"
+    } ],
+    "currencyName" : "Euro",
+    "amountsFrom" : [ {
+      "paxType" : "ADULT",
+      "ageFrom" : 0,
+      "ageTo" : 999,
+      "amount" : 187.91,
+      "boxOfficeAmount" : 233.01,
+      "mandatoryApplyAmount" : false
+    } ],
+    "content" : {
+      "name" : "Full Day Agra Tour With Fatehpur Sikri - Private",
+      "detailedInfo" : [ ],
+      "featureGroups" : [ {
+        "groupCode" : "TICKET",
+        "included" : [ {
+          "featureType" : "ADMISSIONSINCL",
+          "description" : "Tickets"
+        } ]
+      }, {
+        "groupCode" : "UNKNOWN",
+        "excluded" : [ {
+          "featureType" : "OTHERNOT",
+          "description" : "Any additional expenses which are not included or detailed in the programme."
+        }, {
+          "featureType" : "OTHERNOT",
+          "description" : "Gratuities"
+        } ],
+        "included" : [ {
+          "featureType" : "OTHERINCL",
+          "description" : "Guide"
+        } ]
+      }, {
+        "groupCode" : "TRANSPORT",
+        "included" : [ {
+          "featureType" : "TRANSPORTINCL",
+          "description" : "Transport"
+        } ]
+      } ],
+      "guidingOptions" : {
+        "guideType" : "TOURGUIDE",
+        "included" : true
+      },
+      "importantInfo" : [ "Please make sure you answer all the mandatory questions during the booking process. Passport or ID are required <br/>Children must be accompanied by an adult.  " ],
+      "location" : {
+        "endPoints" : [ {
+          "type" : "Same",
+          "description" : "Same as Starting Point"
+        } ],
+        "startingPoints" : [ {
+          "type" : "HOTEL_PICKUP",
+          "meetingPoint" : {
+            "type" : "ADDRESS",
+            "country" : {
+              "code" : "IN",
+              "name" : "India",
+              "destinations" : [ {
+                "code" : "AGR",
+                "name" : "Agra"
+              } ]
+            },
+            "description" : "Full Day Agra Tour With Fatehpur Sikri - Private"
+          },
+          "pickupInstructions" : [ { } ]
+        } ]
+      },
+      "media" : {
+        "images" : [ {
+          "visualizationOrder" : 1,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/S/16477_4.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/XL/16477_4.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/B/16477_4.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/LPP/16477_4.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/L/16477_4.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/M/16477_4.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 2,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/S/16477_2.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/XL/16477_2.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/B/16477_2.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/LPP/16477_2.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/L/16477_2.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/M/16477_2.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 3,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/S/16477_1.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/XL/16477_1.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/B/16477_1.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/LPP/16477_1.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/L/16477_1.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/M/16477_1.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 4,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/S/16477_3.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/XL/16477_3.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/B/16477_3.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/LPP/16477_3.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/L/16477_3.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/16477/ENG/M/16477_3.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        } ]
+      },
+      "notes" : [ {
+        "dateFrom" : "2020-03-01",
+        "dateTo" : "2021-12-31",
+        "visibleFrom" : "2020-03-01",
+        "visibleTo" : "2021-12-31",
+        "descriptions" : [ {
+          "description" : "As a result of local government measures and guidelines put in place by services providers – including hotels and ancillaries – guests may find that some facilities or services are not available. Please visit https://corporate.hotelbeds.com/hotelbeds-update-covid-19 for further information."
+        } ]
+      } ],
+      "redeemInfo" : {
+        "type" : "VOCUHERLESS",
+        "directEntrance" : false,
+        "comments" : [ {
+          "description" : "Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity. "
+        } ]
+      },
+      "routes" : [ {
+        "duration" : {
+          "value" : 4.0,
+          "metric" : "HOURS"
+        },
+        "description" : "Point of Interest",
+        "timeFrom" : "08:30:00",
+        "timeTo" : "12:30:00",
+        "points" : [ {
+          "type" : "POI",
+          "order" : 1,
+          "stop" : false,
+          "pointOfInterest" : {
+            "type" : "LANDMARK",
+            "geolocation" : {
+              "latitude" : 27.1750151,
+              "longitude" : 78.04215520000002
+            },
+            "address" : "Taj Mahal",
+            "country" : {
+              "code" : "IN"
+            },
+            "city" : "Agra",
+            "zip" : "282001",
+            "description" : "Taj Mahal"
+          }
+        }, {
+          "type" : "POI",
+          "order" : 2,
+          "stop" : false,
+          "pointOfInterest" : {
+            "type" : "LANDMARK",
+            "geolocation" : {
+              "latitude" : 27.1795328,
+              "longitude" : 78.02111200000002
+            },
+            "address" : "Agra Fort",
+            "country" : {
+              "code" : "IN"
+            },
+            "city" : "Agra",
+            "zip" : "282003",
+            "description" : "Agra Fort"
+          }
+        }, {
+          "type" : "POI",
+          "order" : 3,
+          "stop" : false,
+          "pointOfInterest" : {
+            "type" : "LANDMARK",
+            "geolocation" : {
+              "latitude" : 27.0945291,
+              "longitude" : 77.6679292
+            },
+            "address" : "Fatehpur Sikri",
+            "country" : {
+              "code" : "IN"
+            },
+            "city" : "Fatehpur Sikri",
+            "zip" : "283110",
+            "description" : "Fatehpur Sikri"
+          }
+        } ]
+      } ],
+      "scheduling" : {
+        "duration" : {
+          "value" : 8.0,
+          "metric" : "HOURS",
+          "type" : "AFTER"
+        }
+      },
+      "segmentationGroups" : [ {
+        "code" : 2,
+        "name" : "Duration",
+        "segments" : [ {
+          "code" : 772,
+          "name" : "Full day"
+        } ]
+      }, {
+        "code" : 16,
+        "name" : "Services",
+        "segments" : [ {
+          "code" : 956,
+          "name" : "Safe2Stay"
+        }, {
+          "code" : 946,
+          "name" : "Private"
+        } ]
+      }, {
+        "code" : 1,
+        "name" : "Categories",
+        "segments" : [ {
+          "code" : 4,
+          "name" : "Art & culture"
+        } ]
+      } ],
+      "activityFactsheetType" : "TOURS",
+      "activityCode" : "E-E10-IN-DEAGAWF",
+      "modalityCode" : "HB-FPEN1",
+      "modalityName" : "Pick up from NCR hotels",
+      "contentId" : "16477",
+      "description" : "Get ready for a one of a kind experience with this tour of the cities of Agra and Fatehpur Sikri. First of all, you'll be picked-up from your respective hotel and driven to Agra (4 hrs drive approx.) to visit the world famous Taj Mahal. Perhaps no other monument epitomizes India as Taj Mahal. Situated on the banks of the river Yamuna, the Taj Mahal is a symbol of love, a poem in marble by the Mughal Emperor Shahjehan for his beloved queen Mumtaz Mahal, made entirely of white marble with its walls decorated with exquisite pietradura (stone inlay) work. It is said that different types of rare, precious and semi-precious stones were used in the intricate inlay work done on the interiors.<br />\n<br />\nLater you'll visit the Agra Fort, the seat and the stronghold of the Mughal Empire under successive generations. This was the seat of Mughal rule and administration and the present structure owes its origins to Akbar who erected the walls and gates and the first buildings on the eastern banks of Yamuna River. Here you'll have the chance of visiting its Hall of Public Audience and its Royal Pavilions. The tour will then take you to Fatehpur Sikri, the old capital city of Akbar, abandoned later due to scarcity of water. This complex in red sandstone is considered to be more beautiful than the Taj Mahal by many visitors.<br />\n<br />\n<strong>Languages</strong><br />\nEnglish<br />\n<br />\n<strong>Others</strong><br />\nThe Taj Mahal is closed on Fridays",
+      "lastUpdate" : "2021-04-20",
+      "advancedTips" : [ ],
+      "countries" : [ {
+        "code" : "IN",
+        "name" : "India",
+        "destinations" : [ {
+          "code" : "AGR",
+          "name" : "Agra"
+        }, {
+          "code" : "DEL",
+          "name" : "Delhi and NCR"
+        } ]
+      } ],
+      "highligths" : [ ],
+      "language" : "en"
+    },
+    "order" : 3,
+    "name" : "Full Day Agra Tour With Fatehpur Sikri - Private",
+    "currency" : "EUR",
+    "code" : "E-E10-IN-DEAGAWF",
+    "type" : "TICKET"
+  }
+}
+

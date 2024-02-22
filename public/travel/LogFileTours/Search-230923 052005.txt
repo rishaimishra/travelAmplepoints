@@ -1,0 +1,23 @@
+===========Credentials(Search)=========
+hotelbeds_key=88013eb226283db1bd72df7fb137e9cf
+ hotelbeds_secret=e9c8421e54
+ endpoint=https://api.test.hotelbeds.com/activity-api/3.0
+===========Request(Search)=========
+{"filters":[{"searchFilterItems":[{"type":"destination","value":"LVS"}]}],"from":"2023-09-29","to":"2023-09-29"}
+===========Response(Search)=========
+{
+  "operationId" : "db7d8def641f66bd",
+  "errors" : [ {
+    "code" : "E_UNKNOWN",
+    "text" : "There was an error while processing your request. Please review the information provided is correct and re-send your request."
+  } ],
+  "auditData" : {
+    "processTime" : 0.0,
+    "time" : "2023-09-23T07:20:05.319Z",
+    "serverId" : "blank",
+    "environment" : "blank"
+  },
+  "activities" : [ ],
+  "summaryLog" : "activities=0|errors=[{\"code\":\"E_UNKNOWN\",\"text\":\"There was an error while processing your request. Please review the information provided is correct and re-send your request.\",\"internalDescription\":null,\"codeWeb\":\"ERR_419\"}]"
+}
+

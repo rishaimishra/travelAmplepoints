@@ -1,0 +1,7 @@
+===========Credentials(Book_754709473)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(Book_754709473)=========
+{"data":{"selected_offers":["off_0000AZzBsvqI0meUJBwkDm"],"payments":[{"type":"balance","currency":"USD","amount":"142.48"}],"passengers":[{"phone_number":"+91+916201357410","email":"bhai.kumaramit@gmail.com","born_on":"2004-09-21","title":"mr","gender":"m","family_name":"Amit Kumar","given_name":"Amit Kumar","id":"pas_0000AZzBsbEgcsgoOmCQpZ"}]}}
+===========Response(Book_754709473)=========
+{"errors":[{"documentation_url":"https://duffel.com/docs/api/overview/errors","source":{"field":"phone_number","pointer":"/passengers/0/phone_number"},"title":"Invalid phone number","type":"validation_error","message":"Field 'phone_number' is invalid","code":"invalid_phone_number"}],"meta":{"request_id":"F4bcCTTm_Gn2nvQBIEli","status":422}}
+

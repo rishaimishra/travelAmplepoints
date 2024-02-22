@@ -1,0 +1,15 @@
+===========Credentials(Search-c55c8d967d5e397eade586aa4b06c8e4)=========
+hotelbeds_key=c55c8d967d5e397eade586aa4b06c8e4
+ hotelbeds_secret=85e16b438a
+ endpoint=https://api.test.hotelbeds.com/transfer-api/1.0
+===========Request(Search-c55c8d967d5e397eade586aa4b06c8e4)=========
+https://api.test.hotelbeds.com/transfer-api/1.0/availability/en/from/IATA//to/ATLAS//2023-10-04T10:00:00/2023-10-07T11:00:00/1/0/0
+===========Response(Search-c55c8d967d5e397eade586aa4b06c8e4)=========
+{
+  "timestamp" : "2023-09-20T10:36:11.914+0000",
+  "status" : 404,
+  "error" : "Not Found",
+  "message" : "No message available",
+  "path" : "/transfer-api/1.0/availability/en/from/IATA/to/ATLAS/2023-10-04T10:00:00/2023-10-07T11:00:00/1/0/0"
+}
+

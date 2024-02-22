@@ -1,0 +1,525 @@
+===========Credentials(Description)=========
+hotelbeds_key=88013eb226283db1bd72df7fb137e9cf
+ hotelbeds_secret=e9c8421e54
+ endpoint=https://api.test.hotelbeds.com/activity-api/3.0
+===========Request(Description)=========
+{"code":"E-E10-IN-DEL5","from":"2023-09-28","to":"2023-09-28","language":"en","paxes":[{"age":30}]}
+===========Response(Description)=========
+{
+  "operationId" : "f01bca4ae3ee1d00",
+  "auditData" : {
+    "processTime" : 0.0,
+    "time" : "2023-09-25T13:15:57.508Z",
+    "serverId" : "blank",
+    "environment" : "blank"
+  },
+  "activity" : {
+    "activityCode" : "IN-DEL5",
+    "country" : {
+      "code" : "IN",
+      "name" : "India",
+      "destinations" : [ {
+        "code" : "DEL",
+        "name" : "Delhi and NCR"
+      } ]
+    },
+    "operationDays" : [ {
+      "code" : "TUE",
+      "name" : "Tuesday"
+    }, {
+      "code" : "WED",
+      "name" : "Wednesday"
+    }, {
+      "code" : "THU",
+      "name" : "Thursday"
+    }, {
+      "code" : "FRI",
+      "name" : "Friday"
+    } ],
+    "modalities" : [ {
+      "code" : "765512754#TOUR1",
+      "name" : "Pick-up from Delhi City Hotels",
+      "duration" : {
+        "value" : 1.0,
+        "metric" : "DAYS"
+      },
+      "questions" : [ ],
+      "comments" : [ {
+        "type" : "CONTRACT_REMARKS",
+        "text" : "Meeting point: Hotel // End point: Same as PickUp // Duration: 4 hours // Inclusions: Transport.Guide. Monuments   //Exclusions:Tipping or any other meal which is not mentioned\n// Mandatory instructions: Hotel Name // Supplier name: Distinct Destinations Private // Supplier emergency phone: 00 91 9818419730 // Voucher type: Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity. // Voucher validity:Service date // Recommendations: Museums are closed on Mondays. Children require an adult aged 16 or above to purchase tickets on their behalf, and must be accompanied by this adult when entering the park. All guests under the same reservation must enter the park together. Tickets must be used on the specific day selected. Tickets can only be used once. Re-entry not allowed. Passport is required on the travel date."
+      } ],
+      "supplierInformation" : {
+        "name" : "HOTELBEDS SPAIN, S.L.U",
+        "vatNumber" : "ESB28916765"
+      },
+      "providerInformation" : {
+        "name" : "DISTINCT DESTINATIONS PVT LTD "
+      },
+      "destinationCode" : "DEL",
+      "contract" : {
+        "incomingOffice" : 270,
+        "code" : 1792,
+        "name" : "IN-DEL5"
+      },
+      "languages" : [ ],
+      "amountsFrom" : [ {
+        "paxType" : "ADULT",
+        "ageFrom" : 0,
+        "ageTo" : 999,
+        "amount" : 82.76,
+        "boxOfficeAmount" : 102.62,
+        "mandatoryApplyAmount" : false
+      } ],
+      "rates" : [ {
+        "rateCode" : "STANDARD",
+        "rateClass" : "NOR",
+        "name" : ".",
+        "freeCancellation" : false,
+        "rateDetails" : [ {
+          "rateKey" : "1n4us7tuh02gu1sub8sfidh49v",
+          "operationDates" : [ {
+            "from" : "2023-09-28",
+            "to" : "2023-09-28",
+            "cancellationPolicies" : [ {
+              "dateFrom" : "2023-09-27T00:00:00.000Z",
+              "amount" : 82.7600
+            } ]
+          } ],
+          "languages" : [ {
+            "code" : "ENG",
+            "description" : "English"
+          } ],
+          "sessions" : [ {
+            "code" : "09:00",
+            "name" : "09:00"
+          } ],
+          "minimumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "maximumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "totalAmount" : {
+            "amount" : 82.76,
+            "boxOfficeAmount" : 102.62,
+            "mandatoryApplyAmount" : false
+          },
+          "paxAmounts" : [ {
+            "paxType" : "ADULT",
+            "ageFrom" : 0,
+            "ageTo" : 999,
+            "amount" : 82.76,
+            "boxOfficeAmount" : 102.62,
+            "mandatoryApplyAmount" : false
+          } ],
+          "agencyCommission" : {
+            "percentage" : 0.00,
+            "amount" : 0.00,
+            "vatPercentage" : 0,
+            "vatAmount" : 0.00
+          }
+        } ]
+      } ],
+      "amountUnitType" : "PAX",
+      "uniqueIdentifier" : "765512754"
+    }, {
+      "code" : "1883674956#TOUR2",
+      "name" : "Pick-up from NCR  Hotels",
+      "duration" : {
+        "value" : 1.0,
+        "metric" : "DAYS"
+      },
+      "questions" : [ ],
+      "comments" : [ {
+        "type" : "CONTRACT_REMARKS",
+        "text" : "Meeting point: Hotel // End point: Same as PickUp // Duration: 4 hours // Inclusions: Transport.Guide. Monuments   //Exclusions:Tipping or any other meal which is not mentioned\n// Mandatory instructions: Hotel Name // Supplier name: Distinct Destinations Private // Supplier emergency phone: 00 91 9818419730 // Voucher type: Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity. // Voucher validity:Service date // Recommendations: Museums are closed on Mondays. Children require an adult aged 16 or above to purchase tickets on their behalf, and must be accompanied by this adult when entering the park. All guests under the same reservation must enter the park together. Tickets must be used on the specific day selected. Tickets can only be used once. Re-entry not allowed. Passport is required on the travel date."
+      } ],
+      "supplierInformation" : {
+        "name" : "HOTELBEDS SPAIN, S.L.U",
+        "vatNumber" : "ESB28916765"
+      },
+      "providerInformation" : {
+        "name" : "DISTINCT DESTINATIONS PVT LTD "
+      },
+      "destinationCode" : "DEL",
+      "contract" : {
+        "incomingOffice" : 270,
+        "code" : 1793,
+        "name" : "IN-DEL5   NCR"
+      },
+      "languages" : [ ],
+      "amountsFrom" : [ {
+        "paxType" : "ADULT",
+        "ageFrom" : 0,
+        "ageTo" : 999,
+        "amount" : 82.76,
+        "boxOfficeAmount" : 102.62,
+        "mandatoryApplyAmount" : false
+      } ],
+      "rates" : [ {
+        "rateCode" : "STANDARD",
+        "rateClass" : "NOR",
+        "name" : ".",
+        "freeCancellation" : false,
+        "rateDetails" : [ {
+          "rateKey" : "49th276cr1tku8tfmnclnpip0i",
+          "operationDates" : [ {
+            "from" : "2023-09-28",
+            "to" : "2023-09-28",
+            "cancellationPolicies" : [ {
+              "dateFrom" : "2023-09-27T00:00:00.000Z",
+              "amount" : 82.7600
+            } ]
+          } ],
+          "languages" : [ {
+            "code" : "ENG",
+            "description" : "English"
+          } ],
+          "sessions" : [ {
+            "code" : "09:00",
+            "name" : "09:00"
+          } ],
+          "minimumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "maximumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "totalAmount" : {
+            "amount" : 82.76,
+            "boxOfficeAmount" : 102.62,
+            "mandatoryApplyAmount" : false
+          },
+          "paxAmounts" : [ {
+            "paxType" : "ADULT",
+            "ageFrom" : 0,
+            "ageTo" : 999,
+            "amount" : 82.76,
+            "boxOfficeAmount" : 102.62,
+            "mandatoryApplyAmount" : false
+          } ],
+          "agencyCommission" : {
+            "percentage" : 0.00,
+            "amount" : 0.00,
+            "vatPercentage" : 0,
+            "vatAmount" : 0.00
+          }
+        } ]
+      } ],
+      "amountUnitType" : "PAX",
+      "uniqueIdentifier" : "1883674956"
+    } ],
+    "currencyName" : "Euro",
+    "amountsFrom" : [ {
+      "paxType" : "ADULT",
+      "ageFrom" : 0,
+      "ageTo" : 999,
+      "amount" : 82.76,
+      "boxOfficeAmount" : 102.62,
+      "mandatoryApplyAmount" : false
+    } ],
+    "content" : {
+      "name" : "Visit to National Philatelic Museum, Science Museum and Shankar's International Dolls Museum",
+      "detailedInfo" : [ ],
+      "featureGroups" : [ {
+        "groupCode" : "TICKET",
+        "included" : [ {
+          "featureType" : "ADMISSIONSINCL",
+          "description" : "Tickets"
+        } ]
+      }, {
+        "groupCode" : "UNKNOWN",
+        "excluded" : [ {
+          "featureType" : "OTHERNOT",
+          "description" : "Any additional expenses which are not included or detailed in the programme."
+        }, {
+          "featureType" : "OTHERNOT",
+          "description" : "Gratuities"
+        } ],
+        "included" : [ {
+          "featureType" : "OTHERINCL",
+          "description" : "Guide"
+        } ]
+      }, {
+        "groupCode" : "TRANSPORT",
+        "included" : [ {
+          "featureType" : "TRANSPORTINCL",
+          "description" : "Transport"
+        } ]
+      } ],
+      "guidingOptions" : {
+        "groupType" : "PRIVATE",
+        "guideType" : "TOURGUIDE",
+        "included" : true
+      },
+      "importantInfo" : [ "Please make sure you answer all the mandatory questions during the booking process. Passport or ID are required <br/>Children must be accompanied by an adult.  " ],
+      "location" : {
+        "endPoints" : [ {
+          "type" : "Same",
+          "description" : "Same as Starting Point"
+        } ],
+        "startingPoints" : [ {
+          "type" : "HOTEL_PICKUP",
+          "meetingPoint" : {
+            "type" : "ADDRESS",
+            "country" : {
+              "code" : "IN",
+              "name" : "India",
+              "destinations" : [ {
+                "code" : "DEL",
+                "name" : "Delhi and NCR"
+              } ]
+            },
+            "description" : "Visit to National Philatelic Museum, Science Museum and Shankar's International Dolls Museum"
+          },
+          "pickupInstructions" : [ { } ]
+        } ]
+      },
+      "media" : {
+        "images" : [ {
+          "visualizationOrder" : 1,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/S/32731_1.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/XL/32731_1.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/B/32731_1.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/LPP/32731_1.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/L/32731_1.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/M/32731_1.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 2,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/S/32731_2.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/XL/32731_2.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/B/32731_2.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/LPP/32731_2.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/L/32731_2.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/M/32731_2.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 3,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/S/32731_3.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/XL/32731_3.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/B/32731_3.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/LPP/32731_3.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/L/32731_3.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/M/32731_3.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 4,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/S/32731_4.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/XL/32731_4.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/B/32731_4.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/LPP/32731_4.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/L/32731_4.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/32731/ENG/M/32731_4.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        } ]
+      },
+      "notes" : [ {
+        "dateFrom" : "2020-03-01",
+        "dateTo" : "2021-12-31",
+        "visibleFrom" : "2020-03-01",
+        "visibleTo" : "2021-12-31",
+        "descriptions" : [ {
+          "description" : "As a result of local government measures and guidelines put in place by services providers – including hotels and ancillaries – guests may find that some facilities or services are not available. Please visit https://corporate.hotelbeds.com/hotelbeds-update-covid-19 for further information."
+        } ]
+      } ],
+      "redeemInfo" : {
+        "type" : "VOCUHERLESS",
+        "directEntrance" : false,
+        "comments" : [ {
+          "description" : "Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity. "
+        } ]
+      },
+      "routes" : [ ],
+      "scheduling" : {
+        "duration" : {
+          "value" : 4.0,
+          "metric" : "HOURS",
+          "type" : "AFTER",
+          "description" : "Approximately"
+        }
+      },
+      "segmentationGroups" : [ {
+        "code" : 2,
+        "name" : "Duration",
+        "segments" : [ {
+          "code" : 773,
+          "name" : "Half-day morning"
+        } ]
+      }, {
+        "code" : 1,
+        "name" : "Categories",
+        "segments" : [ {
+          "code" : 4,
+          "name" : "Art & culture"
+        } ]
+      }, {
+        "code" : 16,
+        "name" : "Services",
+        "segments" : [ {
+          "code" : 956,
+          "name" : "Safe2Stay"
+        }, {
+          "code" : 946,
+          "name" : "Private"
+        } ]
+      } ],
+      "activityFactsheetType" : "ACTIVITIES",
+      "activityCode" : "E-E10-IN-DEL5",
+      "modalityCode" : "NRF-MPEN1",
+      "modalityName" : "non-refundable offer, pick up from Delhi city hotels",
+      "contentId" : "32731",
+      "description" : "Start your tour visiting National Philatelic Museum to enjoy rare collection of stamps, and also buy stamps from all over the world. Once here, also find special cancellations and firs-day covers to feel enriched. If scientific instruments of variety catch your fancy, head to the Science Museum, kids would like it. At the Shankar's International Dolls Museum, relish a staggering range of dolls from over 85 countries. A whopping 6,000 dolls are available here, richly dressed and carrying the traces of the region they belong.<br />\n<br />\n-    National Philatelic Museum (Sunday &amp; Monday Closed) - This is a relatively an outlet for philatelists interested in Indian stamps, situated near Connaught Place.<br />\n-    Science Museum (Monday Closed) - It was inaugurated on the 9th of January 1992 by the then Prime Minister of India. The National Science Centre, Delhi is a unit of the National Council of Science Museums (NCSM).<br />\n-    Shankar's Doll Museum (Holi &amp; Diwali Closed) -  Doll's Museum was set up by K. Shankar Pillai, a political cartoonist. The International Dolls Museum is a large collection of dolls in Delhi, India.<br />\n<br />\n<strong>Languages</strong><br />\nEnglish<br />\n<br />\n<strong>Others</strong><br />\nNational Philatelic Museum is closed on Saturdays, Sundays and national Holidays.<br />\nNational Science Centre and Dolls Museum is closed on Mondays and national Holidays",
+      "lastUpdate" : "2020-10-06",
+      "advancedTips" : [ ],
+      "countries" : [ {
+        "code" : "IN",
+        "name" : "India",
+        "destinations" : [ {
+          "code" : "DEL",
+          "name" : "Delhi and NCR"
+        } ]
+      } ],
+      "highligths" : [ ],
+      "language" : "en"
+    },
+    "order" : 7,
+    "name" : "Visit to National Philatelic Museum, Science Museum and Shankar's International Dolls Museum",
+    "currency" : "EUR",
+    "code" : "E-E10-IN-DEL5",
+    "type" : "TICKET"
+  }
+}
+

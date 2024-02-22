@@ -1,0 +1,7 @@
+===========Credentials(Book_1599012582)=========
+duffel_live_6YGY02b60GEIImviWyIMEghuXpW1rachnhB6f1bfaBD
+===========Request(Book_1599012582)=========
+"{\"data\":{\"selected_offers\":[\"off_0000AYVzXqPk3FNzfvAgIV\"],\"payments\":[{\"type\":\"balance\",\"currency\":\"USD\",\"amount\":\"2639.20\"}],\"passengers\":[{\"phone_number\":\"09430866085\",\"email\":\"techieakm@gmail.com\",\"born_on\":\"2004\\\/08\\\/08\",\"title\":\"mr\",\"gender\":\"m\",\"family_name\":\"Amit Kumar\",\"given_name\":\"Amit Kumar\",\"id\":\"pas_0000AYVzXasDpaf1TcNCT5\"}]}}"
+===========Response(Book_1599012582)=========
+{"meta":{"status":422,"request_id":"F3lbPitDgcmhuYQBRXqB"},"errors":[{"type":"validation_error","title":"Invalid type","source":{"pointer":"/passengers/0/born_on","field":"born_on"},"message":"Field 'born_on' is invalid. Expected a date in ISO 8601 format (YYYY-MM-DD)","documentation_url":"https://duffel.com/docs/api/overview/errors","code":"validation_type"}]}
+

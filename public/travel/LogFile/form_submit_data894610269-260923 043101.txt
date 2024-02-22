@@ -1,0 +1,7 @@
+===========Credentials(form_submit_data894610269)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(form_submit_data894610269)=========
+{"_token":"4YmFo2FRV4LtOXKvBWq1rGpiM2BITuBDPr5WIo5c","OfferId":"off_0000Aa9E8H5mfP9feYtXky","id":"20570","passenger":{"adult":{"title":["mr"],"first_name":["Hiren"],"last_name":["Buhecha"],"dob":["1993-08-14"],"gender":["m"],"id":["ABCDEFGHIJKLM01"]},"email":"hirenbuhecha@gmail.com","phone":"9825548602","address":"Las Vegas","city":"Las Vegas","country":"UNITED STATES"},"payment_type":"flutterwave"}
+===========Response(form_submit_data894610269)=========
+
+

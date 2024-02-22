@@ -620,7 +620,7 @@ jQuery("#hotel").show();
 								},
 								dataType: "json",
 								success: function (data) {
-								console.log(data);
+								console.log(1111,data);
 								loop++;
 									var pageCount=data.pageCount;
 									var total_records = data.total_records;	
@@ -700,6 +700,23 @@ jQuery("#hotel").show();
 
     });	 
 	  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 								
 	 						function Show_Hotels(type)
 							{   //var search_session='62f0011bf1e94';
@@ -764,6 +781,8 @@ jQuery("#hotel").show();
 								},
 								dataType: "json",
 								success: function (data) {
+                                    alert(1)
+                                    console.log(222,data)
 								jQuery('.sidebsr').show();
 									jQuery('.searching').show(); 
 									jQuery('.load_more').show();
@@ -815,6 +834,16 @@ jQuery("#hotel").show();
 							}
 
 							
+
+
+
+
+
+
+
+
+
+
 
 							function getControls() { // var search_session='62f0011bf1e94';
 								 $.ajax({

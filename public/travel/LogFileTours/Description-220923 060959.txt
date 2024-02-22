@@ -1,0 +1,533 @@
+===========Credentials(Description)=========
+hotelbeds_key=88013eb226283db1bd72df7fb137e9cf
+ hotelbeds_secret=e9c8421e54
+ endpoint=https://api.test.hotelbeds.com/activity-api/3.0
+===========Request(Description)=========
+{"code":"E-E10-IN-DEL6","from":"2023-09-25","to":"2023-09-25","language":"en","paxes":[{"age":30}]}
+===========Response(Description)=========
+{
+  "operationId" : "3e763819d9fd9547",
+  "auditData" : {
+    "processTime" : 0.0,
+    "time" : "2023-09-22T08:09:58.997Z",
+    "serverId" : "blank",
+    "environment" : "blank"
+  },
+  "activity" : {
+    "activityCode" : "IN-DEL6",
+    "country" : {
+      "code" : "IN",
+      "name" : "India",
+      "destinations" : [ {
+        "code" : "DEL",
+        "name" : "Delhi and NCR"
+      } ]
+    },
+    "operationDays" : [ {
+      "code" : "MON",
+      "name" : "Monday"
+    }, {
+      "code" : "TUE",
+      "name" : "Tuesday"
+    }, {
+      "code" : "WED",
+      "name" : "Wednesday"
+    }, {
+      "code" : "THU",
+      "name" : "Thursday"
+    }, {
+      "code" : "SAT",
+      "name" : "Saturday"
+    }, {
+      "code" : "SUN",
+      "name" : "Sunday"
+    } ],
+    "modalities" : [ {
+      "code" : "7294419#TOUR1",
+      "name" : "Pick-up from Delhi City Hotels",
+      "duration" : {
+        "value" : 1.0,
+        "metric" : "DAYS"
+      },
+      "questions" : [ ],
+      "comments" : [ {
+        "type" : "CONTRACT_REMARKS",
+        "text" : "Meeting point: Hotel // End point: Same as PickUp // Duration: 8 hours // Inclusions: Transport. Guide. Monuments //Exclusions:Tipping or any other meal which is not mentioned\n// Mandatory instructions: Hotel Name // Supplier name: Distinct Destinations Private // Supplier emergency phone: 00 91 9818419730 // Voucher type: Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity. // Voucher validity:Service date // Recommendations: Museums are closed on Mondays. Children require an adult aged 16 or above to purchase tickets on their behalf, and must be accompanied by this adult when entering the park. All guests under the same reservation must enter the park together. Tickets must be used on the specific day selected. Tickets can only be used once. Re-entry not allowed. Passport is required on the travel date."
+      } ],
+      "supplierInformation" : {
+        "name" : "HOTELBEDS SPAIN, S.L.U",
+        "vatNumber" : "ESB28916765"
+      },
+      "providerInformation" : {
+        "name" : "DISTINCT DESTINATIONS PVT LTD "
+      },
+      "destinationCode" : "DEL",
+      "contract" : {
+        "incomingOffice" : 270,
+        "code" : 1759,
+        "name" : "IN-DEL6"
+      },
+      "languages" : [ ],
+      "amountsFrom" : [ {
+        "paxType" : "ADULT",
+        "ageFrom" : 0,
+        "ageTo" : 999,
+        "amount" : 70.1,
+        "boxOfficeAmount" : 86.93,
+        "mandatoryApplyAmount" : false
+      } ],
+      "rates" : [ {
+        "rateCode" : "STANDARD",
+        "rateClass" : "NOR",
+        "name" : ".",
+        "freeCancellation" : false,
+        "rateDetails" : [ {
+          "rateKey" : "d7d61odiirc5jcmd95acb2212s",
+          "operationDates" : [ {
+            "from" : "2023-09-25",
+            "to" : "2023-09-25",
+            "cancellationPolicies" : [ {
+              "dateFrom" : "2023-09-24T00:00:00.000Z",
+              "amount" : 70.1
+            } ]
+          } ],
+          "languages" : [ {
+            "code" : "ENG",
+            "description" : "English"
+          } ],
+          "sessions" : [ {
+            "code" : "08:30",
+            "name" : "08:30"
+          } ],
+          "minimumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "maximumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "totalAmount" : {
+            "amount" : 70.1,
+            "boxOfficeAmount" : 86.93,
+            "mandatoryApplyAmount" : false
+          },
+          "paxAmounts" : [ {
+            "paxType" : "ADULT",
+            "ageFrom" : 0,
+            "ageTo" : 999,
+            "amount" : 70.1,
+            "boxOfficeAmount" : 86.93,
+            "mandatoryApplyAmount" : false
+          } ],
+          "agencyCommission" : {
+            "percentage" : 0,
+            "amount" : 0,
+            "vatPercentage" : 0,
+            "vatAmount" : 0
+          }
+        } ]
+      } ],
+      "amountUnitType" : "PAX",
+      "uniqueIdentifier" : "7294419"
+    }, {
+      "code" : "566140045#TOUR2",
+      "name" : "Pick-up from NCR  Hotels",
+      "duration" : {
+        "value" : 1.0,
+        "metric" : "DAYS"
+      },
+      "questions" : [ ],
+      "comments" : [ {
+        "type" : "CONTRACT_REMARKS",
+        "text" : "Meeting point: Hotel // End point: Same as PickUp // Duration: 8 hours // Inclusions: Transport. Guide. Monuments //Exclusions:Tipping or any other meal which is not mentioned\n// Mandatory instructions: Hotel Name // Supplier name: Distinct Destinations Private // Supplier emergency phone: 00 91 9818419730 // Voucher type: Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity. // Voucher validity:Service date // Recommendations: Museums are closed on Mondays. Children require an adult aged 16 or above to purchase tickets on their behalf, and must be accompanied by this adult when entering the park. All guests under the same reservation must enter the park together. Tickets must be used on the specific day selected. Tickets can only be used once. Re-entry not allowed. Passport is required on the travel date."
+      } ],
+      "supplierInformation" : {
+        "name" : "HOTELBEDS SPAIN, S.L.U",
+        "vatNumber" : "ESB28916765"
+      },
+      "providerInformation" : {
+        "name" : "DISTINCT DESTINATIONS PVT LTD "
+      },
+      "destinationCode" : "DEL",
+      "contract" : {
+        "incomingOffice" : 270,
+        "code" : 1760,
+        "name" : "IN-DEL6  NCR"
+      },
+      "languages" : [ ],
+      "amountsFrom" : [ {
+        "paxType" : "ADULT",
+        "ageFrom" : 0,
+        "ageTo" : 999,
+        "amount" : 70.1,
+        "boxOfficeAmount" : 86.93,
+        "mandatoryApplyAmount" : false
+      } ],
+      "rates" : [ {
+        "rateCode" : "STANDARD",
+        "rateClass" : "NOR",
+        "name" : ".",
+        "freeCancellation" : false,
+        "rateDetails" : [ {
+          "rateKey" : "bbsqpeaann13p0vaevkkfjj244",
+          "operationDates" : [ {
+            "from" : "2023-09-25",
+            "to" : "2023-09-25",
+            "cancellationPolicies" : [ {
+              "dateFrom" : "2023-09-24T00:00:00.000Z",
+              "amount" : 70.1
+            } ]
+          } ],
+          "languages" : [ {
+            "code" : "ENG",
+            "description" : "English"
+          } ],
+          "sessions" : [ {
+            "code" : "08:30",
+            "name" : "08:30"
+          } ],
+          "minimumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "maximumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "totalAmount" : {
+            "amount" : 70.1,
+            "boxOfficeAmount" : 86.93,
+            "mandatoryApplyAmount" : false
+          },
+          "paxAmounts" : [ {
+            "paxType" : "ADULT",
+            "ageFrom" : 0,
+            "ageTo" : 999,
+            "amount" : 70.1,
+            "boxOfficeAmount" : 86.93,
+            "mandatoryApplyAmount" : false
+          } ],
+          "agencyCommission" : {
+            "percentage" : 0,
+            "amount" : 0,
+            "vatPercentage" : 0,
+            "vatAmount" : 0
+          }
+        } ]
+      } ],
+      "amountUnitType" : "PAX",
+      "uniqueIdentifier" : "566140045"
+    } ],
+    "currencyName" : "Euro",
+    "amountsFrom" : [ {
+      "paxType" : "ADULT",
+      "ageFrom" : 0,
+      "ageTo" : 999,
+      "amount" : 70.1,
+      "boxOfficeAmount" : 86.93,
+      "mandatoryApplyAmount" : false
+    } ],
+    "content" : {
+      "name" : "Visit to Delhi Zoo",
+      "detailedInfo" : [ ],
+      "featureGroups" : [ {
+        "groupCode" : "TICKET",
+        "included" : [ {
+          "featureType" : "ADMISSIONSINCL",
+          "description" : "Tickets"
+        } ]
+      }, {
+        "groupCode" : "UNKNOWN",
+        "excluded" : [ {
+          "featureType" : "OTHERNOT",
+          "description" : "Any additional expenses which are not included or detailed in the programme."
+        }, {
+          "featureType" : "OTHERNOT",
+          "description" : "Gratuities"
+        } ],
+        "included" : [ {
+          "featureType" : "OTHERINCL",
+          "description" : "Guide"
+        } ]
+      }, {
+        "groupCode" : "TRANSPORT",
+        "included" : [ {
+          "featureType" : "TRANSPORTINCL",
+          "description" : "Transport"
+        } ]
+      } ],
+      "guidingOptions" : {
+        "guideType" : "TOURGUIDE",
+        "included" : true
+      },
+      "importantInfo" : [ "Please make sure you answer all the mandatory questions during the booking process. Passport or ID are required <br/>Children must be accompanied by an adult.  " ],
+      "location" : {
+        "endPoints" : [ {
+          "type" : "Same",
+          "description" : "Same as Starting Point"
+        } ],
+        "startingPoints" : [ {
+          "type" : "HOTEL_PICKUP",
+          "meetingPoint" : {
+            "type" : "ADDRESS",
+            "country" : {
+              "code" : "IN",
+              "name" : "India",
+              "destinations" : [ {
+                "code" : "DEL",
+                "name" : "Delhi and NCR"
+              } ]
+            },
+            "description" : "Visit to Delhi Zoo"
+          },
+          "pickupInstructions" : [ { } ]
+        } ]
+      },
+      "media" : {
+        "images" : [ {
+          "visualizationOrder" : 1,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/S/32732_2.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/XL/32732_2.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/B/32732_2.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/LPP/32732_2.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/L/32732_2.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/M/32732_2.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 2,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/S/32732_1.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/XL/32732_1.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/B/32732_1.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/LPP/32732_1.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/L/32732_1.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/M/32732_1.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 3,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/S/32732_3.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/XL/32732_3.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/B/32732_3.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/LPP/32732_3.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/L/32732_3.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/M/32732_3.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 4,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/S/32732_4.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/XL/32732_4.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/B/32732_4.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/LPP/32732_4.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/L/32732_4.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/32732/ENG/M/32732_4.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        } ]
+      },
+      "notes" : [ {
+        "dateFrom" : "2020-03-01",
+        "dateTo" : "2021-12-31",
+        "visibleFrom" : "2020-03-01",
+        "visibleTo" : "2021-12-31",
+        "descriptions" : [ {
+          "description" : "As a result of local government measures and guidelines put in place by services providers – including hotels and ancillaries – guests may find that some facilities or services are not available. Please visit https://corporate.hotelbeds.com/hotelbeds-update-covid-19 for further information."
+        } ]
+      } ],
+      "redeemInfo" : {
+        "type" : "VOCUHERLESS",
+        "directEntrance" : false,
+        "comments" : [ {
+          "description" : "Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity. "
+        } ]
+      },
+      "routes" : [ ],
+      "scheduling" : {
+        "duration" : {
+          "value" : 12.0,
+          "metric" : "HOURS",
+          "type" : "AFTER",
+          "description" : "Approximately"
+        },
+        "closed" : [ {
+          "weekDays" : [ "FRIDAY" ]
+        } ]
+      },
+      "segmentationGroups" : [ {
+        "code" : 16,
+        "name" : "Services",
+        "segments" : [ {
+          "code" : 956,
+          "name" : "Safe2Stay"
+        }, {
+          "code" : 946,
+          "name" : "Private"
+        } ]
+      }, {
+        "code" : 2,
+        "name" : "Duration",
+        "segments" : [ {
+          "code" : 772,
+          "name" : "Full day"
+        } ]
+      }, {
+        "code" : 1,
+        "name" : "Categories",
+        "segments" : [ {
+          "code" : 9,
+          "name" : "Zoo, Aquarium & Nature"
+        } ]
+      } ],
+      "activityFactsheetType" : "ACTIVITIES",
+      "activityCode" : "E-E10-IN-DEL6",
+      "modalityCode" : "HB-FPEN1",
+      "modalityName" : "Pick up from Delhi city hotels",
+      "contentId" : "32732",
+      "description" : "Delhi Zoo, also known as the National Zoological Park is one of the popular Tourist Destinations in New Delhi. Built in 1957, covering around 240 acres of area, it is the one such place where you can spot a variety of animals and birds.<br />\n<br />\nRhinoceros, Black Buck, Lion, Leopard, Elephant, White Tiger of Rewa, Indian Gazelle, Zebra, Chimpanzee, Grey Kangaroos, Spider Monkey, Jaguars and African Antelopes are to name a few animals that you can watch out at the Delhi Zoo. Delhi Zoo is also a home to various migratory creatures like Fallow Deer, Peafowl, Emu, Macaque, Banteng, Hog Deer and so on. In the zoo you will see more than 200 varieties of trees.<br />\n<br />\n<strong>Languages</strong><br />\nEnglish",
+      "lastUpdate" : "2020-10-06",
+      "advancedTips" : [ ],
+      "countries" : [ {
+        "code" : "IN",
+        "name" : "India",
+        "destinations" : [ {
+          "code" : "DEL",
+          "name" : "Delhi and NCR"
+        } ]
+      } ],
+      "highligths" : [ ],
+      "language" : "en"
+    },
+    "order" : 3,
+    "name" : "Visit to Delhi Zoo",
+    "currency" : "EUR",
+    "code" : "E-E10-IN-DEL6",
+    "type" : "TICKET"
+  }
+}
+

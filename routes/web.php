@@ -143,7 +143,8 @@ Route::get('/flight-confirmation/{order_id}', function ($order_id)
 
 Route::get('/getLocations', [Hotel::class, 'GetLocations']);
 Route::get('/GetHotelList', [Hotel::class, 'GetHotelList']);  
-Route::get('/GetHotelListCustom', [CustomHotel::class, 'GetHotelListCustom']); 
+Route::get('/GetHotelListCustom', [Hotel::class, 'GetHotelList']); 
+// Route::get('/GetHotelListCustom', [CustomHotel::class, 'GetHotelListCustom']); 
 Route::get('/Show_Hotels', [Hotel::class, 'Show_Hotels']);
 Route::get('/getControls', [Hotel::class, 'getControls']); 
 Route::get('/RoomAvailability', [Hotel::class, 'RoomAvailability']);

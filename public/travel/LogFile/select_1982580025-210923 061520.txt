@@ -1,0 +1,7 @@
+===========Credentials(select_1982580025)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(select_1982580025)=========
+https://api.duffel.com/air/offers/off_0000AZz0yeaxwxut3jIxdS
+===========Response(select_1982580025)=========
+{"errors":[{"documentation_url":"https://duffel.com/docs/api/overview/errors","title":"The server is not ready to handle the request","type":"api_error","message":"There is a temporary issue with the server. If the error persists please contact our support team and attach the `request_id` to your message. Please retry later.","code":"service_unavailable"}],"meta":{"request_id":"F4bVWeZsPw1wLBUAj3kD","status":503}}
+

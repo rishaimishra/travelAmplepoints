@@ -1,0 +1,593 @@
+===========Credentials(Search-c55c8d967d5e397eade586aa4b06c8e4)=========
+hotelbeds_key=c55c8d967d5e397eade586aa4b06c8e4
+ hotelbeds_secret=85e16b438a
+ endpoint=https://api.test.hotelbeds.com/transfer-api/1.0
+===========Request(Search-c55c8d967d5e397eade586aa4b06c8e4)=========
+https://api.test.hotelbeds.com/transfer-api/1.0/availability/en/from/IATA/DEL/to/ATLAS/59410/2023-09-23T10:00:00/2023-09-26T11:00:00/1/0/0
+===========Response(Search-c55c8d967d5e397eade586aa4b06c8e4)=========
+{
+  "search" : {
+    "language" : "en",
+    "departure" : {
+      "date" : "2023-09-23",
+      "time" : "10:00:00"
+    },
+    "comeBack" : {
+      "date" : "2023-09-26",
+      "time" : "11:00:00"
+    },
+    "occupancy" : {
+      "adults" : 1,
+      "children" : 0,
+      "infants" : 0
+    },
+    "from" : {
+      "code" : "DEL",
+      "description" : "Delhi, Indira Gandhi Int.",
+      "type" : "IATA"
+    },
+    "to" : {
+      "code" : "59410",
+      "description" : "The Suryaa New Delhi",
+      "type" : "ATLAS"
+    }
+  },
+  "services" : [ {
+    "id" : 0,
+    "direction" : "DEPARTURE",
+    "transferType" : "PRIVATE",
+    "vehicle" : {
+      "code" : "MNBS",
+      "name" : "Minibus"
+    },
+    "category" : {
+      "code" : "PRM",
+      "name" : "Premium product type"
+    },
+    "pickupInformation" : {
+      "from" : {
+        "code" : "DEL",
+        "description" : "Delhi, Indira Gandhi Int.",
+        "type" : "IATA"
+      },
+      "to" : {
+        "code" : "59410",
+        "description" : "The Suryaa New Delhi",
+        "type" : "ATLAS"
+      },
+      "date" : "2023-09-23",
+      "time" : "10:00:00",
+      "pickup" : {
+        "address" : null,
+        "number" : null,
+        "town" : null,
+        "zip" : null,
+        "description" : "Once you have collected your luggage, a staff member will be waiting for you at the Arrivals Hall, Gate 5, with a sign with HOTELBEDS - Beyond the Bed and your name on it. If you are unable to locate the driver/agent, please call Taxi Bazaar on +91 9876661275 / +91 8054871457 / Whatsapp +91 9876661275.  Please do not leave the pick-up area without having contacted the agent/driver first. If the supplier doesn't answer the phone, please call our emergency telephone number listed at the bottom of the voucher before leaving the pick-up area.",
+        "altitude" : null,
+        "latitude" : 28.556555,
+        "longitude" : 77.100789,
+        "checkPickup" : {
+          "mustCheckPickupTime" : false,
+          "url" : null,
+          "hoursBeforeConsulting" : null
+        },
+        "pickupId" : 21631,
+        "stopName" : "Gate 5 Arrivals Hall",
+        "image" : null
+      }
+    },
+    "minPaxCapacity" : 1,
+    "maxPaxCapacity" : 8,
+    "content" : {
+      "vehicle" : {
+        "code" : "MNBS",
+        "name" : "Minibus"
+      },
+      "category" : {
+        "code" : "PRM",
+        "name" : "Premium"
+      },
+      "images" : [ {
+        "url" : "http://media.stage.activitiesbank.com/giata/transfers/TRD/small/prvt-prm-mnbs.png",
+        "type" : "SMALL"
+      }, {
+        "url" : "http://media.stage.activitiesbank.com/giata/transfers/TRD/medium/prvt-prm-mnbs.png",
+        "type" : "MEDIUM"
+      }, {
+        "url" : "http://media.stage.activitiesbank.com/giata/transfers/TRD/large/prvt-prm-mnbs.png",
+        "type" : "LARGE"
+      }, {
+        "url" : "http://media.stage.activitiesbank.com/giata/transfers/TRD/extralarge/prvt-prm-mnbs.png",
+        "type" : "EXTRALARGE"
+      } ],
+      "transferDetailInfo" : [ {
+        "id" : "ER",
+        "name" : "Exclusive ride for you",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "DTDS",
+        "name" : "Door to door service",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "M&GS",
+        "name" : "Meet & Greet service",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "BAHB",
+        "name" : "1 item of hand baggage allowed per person",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "BA",
+        "name" : "1 piece of baggage allowed per person ( max.dimensions 158cm) length+width+height=158cm",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "VOUC",
+        "name" : "VOUCHER ",
+        "description" : "Remember to bring a printed copy of this voucher and a valid photo ID with you.",
+        "type" : "GENERIC_GUIDELINES"
+      }, {
+        "id" : "CBBS",
+        "name" : "CHILDBOOSTER / BABY SEAT",
+        "description" : "Child car seats and boosters are not included unless specified in your booking and can carry an extra cost. Should you need to book them, please contact your point of sale prior to travelling.",
+        "type" : "GENERIC_GUIDELINES"
+      } ],
+      "customerTransferTimeInfo" : [ {
+        "value" : 0,
+        "type" : "CUSTOMER_MAX_WAITING_TIME",
+        "metric" : "minutes"
+      } ],
+      "supplierTransferTimeInfo" : [ {
+        "value" : 75,
+        "type" : "SUPPLIER_MAX_WAITING_TIME_DOMESTIC",
+        "metric" : "minutes"
+      }, {
+        "value" : 75,
+        "type" : "SUPPLIER_MAX_WAITING_TIME_INTERNATIONAL",
+        "metric" : "minutes"
+      } ],
+      "transferRemarks" : [ {
+        "type" : "CONTRACT",
+        "description" : "Pick-up point\nOnce you have collected your luggage, a staff member will be waiting for you at the Arrivals Hall, Gate 5, with a sign with HOTELBEDS - Beyond the Bed and your name on it. If you are unable to locate the driver/agent, please call Taxi Bazaar on +91 9876661275 / +91 8054871457 / Whatsapp +91 9876661275.  Please do not leave the pick-up area without having contacted the agent/driver first. If the supplier doesn't answer the phone, please call our emergency telephone number listed at the bottom of the voucher before leaving the pick-up area.\n\nTransfer information:\n\n* Maximum client waiting time 0 minutes\n* Maximum waiting time for drivers in domestic arrivals 75 minutes\n* Maximum waiting time for drivers in international arrivals 75 minutes\n\n\n* Remember to bring a printed copy of this voucher and a valid photo ID with you.* Child car seats and boosters are not included unless specified in your booking and can carry an extra cost. Should you need to book them, please contact your point of sale prior to travelling.\n\n* Exclusive ride for you* Door to door service* Meet & Greet service* 1 item of hand baggage allowed per person* 1 piece of baggage allowed per person ( max.dimensions 158cm) length+width+height=158cm\n\n",
+        "mandatory" : true
+      } ]
+    },
+    "price" : {
+      "totalAmount" : 89.56,
+      "netAmount" : null,
+      "currencyId" : "EUR"
+    },
+    "rateKey" : "ARRIVAL|IATA|DEL|ATLAS|59410|2023-09-23|10:00|2023-09-23|10:00|1~0~0||8|113989|DEL PRV PRM|113989|DEL PRV PRM|270|PRVT|O|MNBS|PRM|89.56|DEL AIR|DELHI CITY|21631|162|DEL|SIMPLE|a8fbc08257b9e3b6b7f62a3a60ca4b32",
+    "cancellationPolicies" : [ ],
+    "links" : [ {
+      "rel" : "self",
+      "href" : "/availability",
+      "method" : "GET"
+    }, {
+      "rel" : "confirm",
+      "href" : "/booking",
+      "method" : "POST"
+    } ],
+    "factsheetId" : 162
+  }, {
+    "id" : 1,
+    "direction" : "DEPARTURE",
+    "transferType" : "PRIVATE",
+    "vehicle" : {
+      "code" : "CR",
+      "name" : "Car"
+    },
+    "category" : {
+      "code" : "LXR",
+      "name" : "Luxury product type"
+    },
+    "pickupInformation" : {
+      "from" : {
+        "code" : "DEL",
+        "description" : "Delhi, Indira Gandhi Int.",
+        "type" : "IATA"
+      },
+      "to" : {
+        "code" : "59410",
+        "description" : "The Suryaa New Delhi",
+        "type" : "ATLAS"
+      },
+      "date" : "2023-09-23",
+      "time" : "10:00:00",
+      "pickup" : {
+        "address" : null,
+        "number" : null,
+        "town" : null,
+        "zip" : null,
+        "description" : "Once you have collected your luggage, a staff member will be waiting for you at the Arrivals Hall, Gate 5, with a sign with HOTELBEDS - Beyond the Bed and your name on it. If you are unable to locate the driver/agent, please call Taxi Bazaar on +91 9876661275 / +91 8054871457 / Whatsapp +91 9876661275.  Please do not leave the pick-up area without having contacted the agent/driver first. If the supplier doesn't answer the phone, please call our emergency telephone number listed at the bottom of the voucher before leaving the pick-up area.",
+        "altitude" : null,
+        "latitude" : 28.556555,
+        "longitude" : 77.100789,
+        "checkPickup" : {
+          "mustCheckPickupTime" : false,
+          "url" : null,
+          "hoursBeforeConsulting" : null
+        },
+        "pickupId" : 21631,
+        "stopName" : "Gate 5 Arrivals Hall",
+        "image" : null
+      }
+    },
+    "minPaxCapacity" : 1,
+    "maxPaxCapacity" : 3,
+    "content" : {
+      "vehicle" : {
+        "code" : "CR",
+        "name" : "Car"
+      },
+      "category" : {
+        "code" : "LXR",
+        "name" : "Luxury"
+      },
+      "images" : [ {
+        "url" : "http://media.stage.activitiesbank.com/giata/transfers/TRD/small/prvt-lxr-cr.png",
+        "type" : "SMALL"
+      }, {
+        "url" : "http://media.stage.activitiesbank.com/giata/transfers/TRD/medium/prvt-lxr-cr.png",
+        "type" : "MEDIUM"
+      }, {
+        "url" : "http://media.stage.activitiesbank.com/giata/transfers/TRD/large/prvt-lxr-cr.png",
+        "type" : "LARGE"
+      }, {
+        "url" : "http://media.stage.activitiesbank.com/giata/transfers/TRD/extralarge/prvt-lxr-cr.png",
+        "type" : "EXTRALARGE"
+      } ],
+      "transferDetailInfo" : [ {
+        "id" : "ER",
+        "name" : "Exclusive ride for you",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "DTDS",
+        "name" : "Door to door service",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "M&GS",
+        "name" : "Meet & Greet service",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "BAHB",
+        "name" : "1 item of hand baggage allowed per person",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "BA",
+        "name" : "1 piece of baggage allowed per person ( max.dimensions 158cm) length+width+height=158cm",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "VOUC",
+        "name" : "VOUCHER ",
+        "description" : "Remember to bring a printed copy of this voucher and a valid photo ID with you.",
+        "type" : "GENERIC_GUIDELINES"
+      }, {
+        "id" : "CBBS",
+        "name" : "CHILDBOOSTER / BABY SEAT",
+        "description" : "Child car seats and boosters are not included unless specified in your booking and can carry an extra cost. Should you need to book them, please contact your point of sale prior to travelling.",
+        "type" : "GENERIC_GUIDELINES"
+      } ],
+      "customerTransferTimeInfo" : [ {
+        "value" : 0,
+        "type" : "CUSTOMER_MAX_WAITING_TIME",
+        "metric" : "minutes"
+      } ],
+      "supplierTransferTimeInfo" : [ {
+        "value" : 75,
+        "type" : "SUPPLIER_MAX_WAITING_TIME_DOMESTIC",
+        "metric" : "minutes"
+      }, {
+        "value" : 75,
+        "type" : "SUPPLIER_MAX_WAITING_TIME_INTERNATIONAL",
+        "metric" : "minutes"
+      } ],
+      "transferRemarks" : [ {
+        "type" : "CONTRACT",
+        "description" : "Pick-up point\nOnce you have collected your luggage, a staff member will be waiting for you at the Arrivals Hall, Gate 5, with a sign with HOTELBEDS - Beyond the Bed and your name on it. If you are unable to locate the driver/agent, please call Taxi Bazaar on +91 9876661275 / +91 8054871457 / Whatsapp +91 9876661275.  Please do not leave the pick-up area without having contacted the agent/driver first. If the supplier doesn't answer the phone, please call our emergency telephone number listed at the bottom of the voucher before leaving the pick-up area.\n\nTransfer information:\n\n* Maximum client waiting time 0 minutes\n* Maximum waiting time for drivers in domestic arrivals 75 minutes\n* Maximum waiting time for drivers in international arrivals 75 minutes\n\n\n* Remember to bring a printed copy of this voucher and a valid photo ID with you.* Child car seats and boosters are not included unless specified in your booking and can carry an extra cost. Should you need to book them, please contact your point of sale prior to travelling.\n\n* Exclusive ride for you* Door to door service* Meet & Greet service* 1 item of hand baggage allowed per person* 1 piece of baggage allowed per person ( max.dimensions 158cm) length+width+height=158cm\n\n",
+        "mandatory" : true
+      } ]
+    },
+    "price" : {
+      "totalAmount" : 23.51,
+      "netAmount" : null,
+      "currencyId" : "EUR"
+    },
+    "rateKey" : "ARRIVAL|IATA|DEL|ATLAS|59410|2023-09-23|10:00|2023-09-23|10:00|1~0~0||3|51629|TB PRLUX DEL 23|51629|TB PRLUX DEL 23|270|PRVT|K|CR|LXR|23.51|DEL AIR|DELHI CITY|21631|162|DEL|SIMPLE|6038866bb780a8864850b2eb70896727",
+    "cancellationPolicies" : [ ],
+    "links" : [ {
+      "rel" : "self",
+      "href" : "/availability",
+      "method" : "GET"
+    }, {
+      "rel" : "confirm",
+      "href" : "/booking",
+      "method" : "POST"
+    } ],
+    "factsheetId" : 162
+  }, {
+    "id" : 2,
+    "direction" : "RETURN",
+    "transferType" : "PRIVATE",
+    "vehicle" : {
+      "code" : "MNBS",
+      "name" : "Minibus"
+    },
+    "category" : {
+      "code" : "PRM",
+      "name" : "Premium product type"
+    },
+    "pickupInformation" : {
+      "from" : {
+        "code" : "59410",
+        "description" : "The Suryaa New Delhi",
+        "type" : "ATLAS"
+      },
+      "to" : {
+        "code" : "DEL",
+        "description" : "Delhi, Indira Gandhi Int.",
+        "type" : "IATA"
+      },
+      "date" : "2023-09-26",
+      "time" : "07:30:00",
+      "pickup" : {
+        "address" : "New Friends Colony,  ",
+        "number" : null,
+        "town" : "DELHI",
+        "zip" : "110025",
+        "description" : "You will be picked up at the hotel reception. If you are unable to locate the driver/agent, please call Taxi Bazaar on +91 9876661275 / +91 8054871457 / Whatsapp +91 9876661275.  Please do not leave the pick-up area without having contacted the agent/driver first. If the supplier doesn't answer the phone, please call our emergency telephone number listed at the bottom of the voucher before leaving the pick-up area.",
+        "altitude" : null,
+        "latitude" : 28.567057,
+        "longitude" : 77.273544,
+        "checkPickup" : {
+          "mustCheckPickupTime" : false,
+          "url" : null,
+          "hoursBeforeConsulting" : null
+        },
+        "pickupId" : 21622,
+        "stopName" : "Hotel Reception",
+        "image" : null
+      }
+    },
+    "minPaxCapacity" : 1,
+    "maxPaxCapacity" : 8,
+    "content" : {
+      "vehicle" : {
+        "code" : "MNBS",
+        "name" : "Minibus"
+      },
+      "category" : {
+        "code" : "PRM",
+        "name" : "Premium"
+      },
+      "images" : [ {
+        "url" : "http://media.stage.activitiesbank.com/giata/transfers/TRD/small/prvt-prm-mnbs.png",
+        "type" : "SMALL"
+      }, {
+        "url" : "http://media.stage.activitiesbank.com/giata/transfers/TRD/medium/prvt-prm-mnbs.png",
+        "type" : "MEDIUM"
+      }, {
+        "url" : "http://media.stage.activitiesbank.com/giata/transfers/TRD/large/prvt-prm-mnbs.png",
+        "type" : "LARGE"
+      }, {
+        "url" : "http://media.stage.activitiesbank.com/giata/transfers/TRD/extralarge/prvt-prm-mnbs.png",
+        "type" : "EXTRALARGE"
+      } ],
+      "transferDetailInfo" : [ {
+        "id" : "ER",
+        "name" : "Exclusive ride for you",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "DTDS",
+        "name" : "Door to door service",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "M&GS",
+        "name" : "Meet & Greet service",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "BAHB",
+        "name" : "1 item of hand baggage allowed per person",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "BA",
+        "name" : "1 piece of baggage allowed per person ( max.dimensions 158cm) length+width+height=158cm",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "VOUC",
+        "name" : "VOUCHER ",
+        "description" : "Remember to bring a printed copy of this voucher and a valid photo ID with you.",
+        "type" : "GENERIC_GUIDELINES"
+      }, {
+        "id" : "CBBS",
+        "name" : "CHILDBOOSTER / BABY SEAT",
+        "description" : "Child car seats and boosters are not included unless specified in your booking and can carry an extra cost. Should you need to book them, please contact your point of sale prior to travelling.",
+        "type" : "GENERIC_GUIDELINES"
+      } ],
+      "customerTransferTimeInfo" : [ {
+        "value" : 0,
+        "type" : "CUSTOMER_MAX_WAITING_TIME",
+        "metric" : "minutes"
+      } ],
+      "supplierTransferTimeInfo" : [ {
+        "value" : 15,
+        "type" : "SUPPLIER_MAX_WAITING_TIME_DOMESTIC",
+        "metric" : "minutes"
+      } ],
+      "transferRemarks" : [ {
+        "type" : "CONTRACT",
+        "description" : "Pick-up point\nYou will be picked up at the hotel reception. If you are unable to locate the driver/agent, please call Taxi Bazaar on +91 9876661275 / +91 8054871457 / Whatsapp +91 9876661275.  Please do not leave the pick-up area without having contacted the agent/driver first. If the supplier doesn't answer the phone, please call our emergency telephone number listed at the bottom of the voucher before leaving the pick-up area.\n\nTransfer information:\n\n* Maximum client waiting time 0 minutes\n* Maximum waiting time for drivers in domestic arrivals 15 minutes\n\n\n* Remember to bring a printed copy of this voucher and a valid photo ID with you.* Child car seats and boosters are not included unless specified in your booking and can carry an extra cost. Should you need to book them, please contact your point of sale prior to travelling.\n\n* Exclusive ride for you* Door to door service* Meet & Greet service* 1 item of hand baggage allowed per person* 1 piece of baggage allowed per person ( max.dimensions 158cm) length+width+height=158cm\n\n",
+        "mandatory" : true
+      } ]
+    },
+    "price" : {
+      "totalAmount" : 87.54,
+      "netAmount" : null,
+      "currencyId" : "EUR"
+    },
+    "rateKey" : "DEPARTURE|ATLAS|59410|IATA|DEL|2023-09-26|07:30|2023-09-26|11:00|1~0~0||8|113989|DEL PRV PRM|113989|DEL PRV PRM|270|PRVT|O|MNBS|PRM|87.54|DELHI CITY|DEL AIR|21622|162|DEL|SIMPLE|072114f47bc1e953ed3eb1d1c6efdb88",
+    "cancellationPolicies" : [ ],
+    "links" : [ {
+      "rel" : "self",
+      "href" : "/availability",
+      "method" : "GET"
+    }, {
+      "rel" : "confirm",
+      "href" : "/booking",
+      "method" : "POST"
+    } ],
+    "factsheetId" : 162
+  }, {
+    "id" : 3,
+    "direction" : "RETURN",
+    "transferType" : "PRIVATE",
+    "vehicle" : {
+      "code" : "CR",
+      "name" : "Car"
+    },
+    "category" : {
+      "code" : "LXR",
+      "name" : "Luxury product type"
+    },
+    "pickupInformation" : {
+      "from" : {
+        "code" : "59410",
+        "description" : "The Suryaa New Delhi",
+        "type" : "ATLAS"
+      },
+      "to" : {
+        "code" : "DEL",
+        "description" : "Delhi, Indira Gandhi Int.",
+        "type" : "IATA"
+      },
+      "date" : "2023-09-26",
+      "time" : "07:30:00",
+      "pickup" : {
+        "address" : "New Friends Colony,  ",
+        "number" : null,
+        "town" : "DELHI",
+        "zip" : "110025",
+        "description" : "You will be picked up at the hotel reception. If you are unable to locate the driver/agent, please call Taxi Bazaar on +91 9876661275 / +91 8054871457 / Whatsapp +91 9876661275.  Please do not leave the pick-up area without having contacted the agent/driver first. If the supplier doesn't answer the phone, please call our emergency telephone number listed at the bottom of the voucher before leaving the pick-up area.",
+        "altitude" : null,
+        "latitude" : 28.567057,
+        "longitude" : 77.273544,
+        "checkPickup" : {
+          "mustCheckPickupTime" : false,
+          "url" : null,
+          "hoursBeforeConsulting" : null
+        },
+        "pickupId" : 21622,
+        "stopName" : "Hotel Reception",
+        "image" : null
+      }
+    },
+    "minPaxCapacity" : 1,
+    "maxPaxCapacity" : 3,
+    "content" : {
+      "vehicle" : {
+        "code" : "CR",
+        "name" : "Car"
+      },
+      "category" : {
+        "code" : "LXR",
+        "name" : "Luxury"
+      },
+      "images" : [ {
+        "url" : "http://media.stage.activitiesbank.com/giata/transfers/TRD/small/prvt-lxr-cr.png",
+        "type" : "SMALL"
+      }, {
+        "url" : "http://media.stage.activitiesbank.com/giata/transfers/TRD/medium/prvt-lxr-cr.png",
+        "type" : "MEDIUM"
+      }, {
+        "url" : "http://media.stage.activitiesbank.com/giata/transfers/TRD/large/prvt-lxr-cr.png",
+        "type" : "LARGE"
+      }, {
+        "url" : "http://media.stage.activitiesbank.com/giata/transfers/TRD/extralarge/prvt-lxr-cr.png",
+        "type" : "EXTRALARGE"
+      } ],
+      "transferDetailInfo" : [ {
+        "id" : "ER",
+        "name" : "Exclusive ride for you",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "DTDS",
+        "name" : "Door to door service",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "M&GS",
+        "name" : "Meet & Greet service",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "BAHB",
+        "name" : "1 item of hand baggage allowed per person",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "BA",
+        "name" : "1 piece of baggage allowed per person ( max.dimensions 158cm) length+width+height=158cm",
+        "description" : null,
+        "type" : "GENERAL_INFO"
+      }, {
+        "id" : "VOUC",
+        "name" : "VOUCHER ",
+        "description" : "Remember to bring a printed copy of this voucher and a valid photo ID with you.",
+        "type" : "GENERIC_GUIDELINES"
+      }, {
+        "id" : "CBBS",
+        "name" : "CHILDBOOSTER / BABY SEAT",
+        "description" : "Child car seats and boosters are not included unless specified in your booking and can carry an extra cost. Should you need to book them, please contact your point of sale prior to travelling.",
+        "type" : "GENERIC_GUIDELINES"
+      } ],
+      "customerTransferTimeInfo" : [ {
+        "value" : 0,
+        "type" : "CUSTOMER_MAX_WAITING_TIME",
+        "metric" : "minutes"
+      } ],
+      "supplierTransferTimeInfo" : [ {
+        "value" : 15,
+        "type" : "SUPPLIER_MAX_WAITING_TIME_DOMESTIC",
+        "metric" : "minutes"
+      } ],
+      "transferRemarks" : [ {
+        "type" : "CONTRACT",
+        "description" : "Pick-up point\nYou will be picked up at the hotel reception. If you are unable to locate the driver/agent, please call Taxi Bazaar on +91 9876661275 / +91 8054871457 / Whatsapp +91 9876661275.  Please do not leave the pick-up area without having contacted the agent/driver first. If the supplier doesn't answer the phone, please call our emergency telephone number listed at the bottom of the voucher before leaving the pick-up area.\n\nTransfer information:\n\n* Maximum client waiting time 0 minutes\n* Maximum waiting time for drivers in domestic arrivals 15 minutes\n\n\n* Remember to bring a printed copy of this voucher and a valid photo ID with you.* Child car seats and boosters are not included unless specified in your booking and can carry an extra cost. Should you need to book them, please contact your point of sale prior to travelling.\n\n* Exclusive ride for you* Door to door service* Meet & Greet service* 1 item of hand baggage allowed per person* 1 piece of baggage allowed per person ( max.dimensions 158cm) length+width+height=158cm\n\n",
+        "mandatory" : true
+      } ]
+    },
+    "price" : {
+      "totalAmount" : 22.98,
+      "netAmount" : null,
+      "currencyId" : "EUR"
+    },
+    "rateKey" : "DEPARTURE|ATLAS|59410|IATA|DEL|2023-09-26|07:30|2023-09-26|11:00|1~0~0||3|51629|TB PRLUX DEL 23|51629|TB PRLUX DEL 23|270|PRVT|K|CR|LXR|22.98|DELHI CITY|DEL AIR|21622|162|DEL|SIMPLE|7f118325a8dfc56650acdf7c24e316cb",
+    "cancellationPolicies" : [ ],
+    "links" : [ {
+      "rel" : "self",
+      "href" : "/availability",
+      "method" : "GET"
+    }, {
+      "rel" : "confirm",
+      "href" : "/booking",
+      "method" : "POST"
+    } ],
+    "factsheetId" : 162
+  } ]
+}
+

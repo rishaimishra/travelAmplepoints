@@ -1,0 +1,2528 @@
+===========Credentials(Search)=========
+hotelbeds_key=88013eb226283db1bd72df7fb137e9cf
+ hotelbeds_secret=e9c8421e54
+ endpoint=https://api.test.hotelbeds.com/activity-api/3.0
+===========Request(Search)=========
+{"filters":[{"searchFilterItems":[{"type":"destination","value":"CCU"}]}],"from":"2024-02-22","to":"2024-02-22"}
+===========Response(Search)=========
+{
+  "operationId" : "9ffa57910f3d4411",
+  "pagination" : {
+    "itemsPerPage" : 100,
+    "page" : 1,
+    "totalItems" : 7
+  },
+  "auditData" : {
+    "processTime" : 0.0,
+    "time" : "2024-02-19T06:26:47.848Z",
+    "serverId" : "blank",
+    "environment" : "blank"
+  },
+  "activities" : [ {
+    "code" : "E-E10-IN-CCHCITY",
+    "type" : "TICKET",
+    "countryCode" : "IN",
+    "source" : "ATLAS",
+    "name" : "City Tour Calcutta",
+    "currency" : "EUR",
+    "modalities" : [ {
+      "code" : "944352856#PRIVATE",
+      "name" : "Tour english 08:30",
+      "rateCode" : "STANDARD",
+      "freeCancellation" : false,
+      "language" : "ENG",
+      "session" : "08:30",
+      "duration" : {
+        "value" : 1.0,
+        "metric" : "DAYS"
+      },
+      "amountsFrom" : [ {
+        "paxType" : "ADULT",
+        "ageFrom" : 0,
+        "ageTo" : 999,
+        "amount" : 90.78,
+        "boxOfficeAmount" : 105.9,
+        "mandatoryApplyAmount" : false
+      } ],
+      "cancellationPolicies" : [ {
+        "dateFrom" : "2024-02-21T00:00:00.000Z",
+        "amount" : 90.78
+      } ],
+      "uniqueIdentifier" : "944352856"
+    } ],
+    "content" : {
+      "name" : "City Tour Calcutta",
+      "detailedInfo" : [ ],
+      "featureGroups" : [ {
+        "groupCode" : "MEAL",
+        "excluded" : [ {
+          "featureType" : "FOODNOT",
+          "description" : "Meal"
+        } ]
+      }, {
+        "groupCode" : "TICKET",
+        "included" : [ {
+          "featureType" : "ADMISSIONSINCL",
+          "description" : "Tickets"
+        } ]
+      }, {
+        "groupCode" : "DRINKS",
+        "excluded" : [ {
+          "featureType" : "DRINKSNOT",
+          "description" : "Drinks"
+        } ]
+      } ],
+      "guidingOptions" : {
+        "guideType" : "TOURGUIDE",
+        "included" : true
+      },
+      "location" : {
+        "endPoints" : [ {
+          "type" : "Same",
+          "description" : "Same as Starting Point"
+        } ],
+        "startingPoints" : [ {
+          "type" : "HOTEL_PICKUP",
+          "meetingPoint" : {
+            "type" : "ADDRESS",
+            "country" : {
+              "code" : "IN",
+              "name" : "India",
+              "destinations" : [ {
+                "code" : "CCU",
+                "name" : "Kolkata-Calcutta"
+              } ]
+            },
+            "description" : "City Tour Calcutta"
+          },
+          "pickupInstructions" : [ { } ]
+        } ]
+      },
+      "media" : {
+        "images" : [ {
+          "visualizationOrder" : 1,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/S/16451_2.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/XL/16451_2.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/B/16451_2.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/LPP/16451_2.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/L/16451_2.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/M/16451_2.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 2,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/S/16451_3.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/XL/16451_3.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/B/16451_3.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/LPP/16451_3.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/L/16451_3.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/M/16451_3.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 4,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/S/16451_1.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/XL/16451_1.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/B/16451_1.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/LPP/16451_1.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/L/16451_1.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/M/16451_1.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 5,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/S/16451_4.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/XL/16451_4.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/B/16451_4.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/LPP/16451_4.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/L/16451_4.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/16451/ENG/M/16451_4.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        } ]
+      },
+      "notes" : [ {
+        "dateFrom" : "2020-03-01",
+        "dateTo" : "2021-12-31",
+        "visibleFrom" : "2020-03-01",
+        "visibleTo" : "2021-12-31",
+        "descriptions" : [ {
+          "description" : "As a result of local government measures and guidelines put in place by services providers – including hotels and ancillaries – guests may find that some facilities or services are not available. Please visit https://corporate.hotelbeds.com/hotelbeds-update-covid-19 for further information."
+        } ]
+      } ],
+      "redeemInfo" : {
+        "type" : "PRINTED",
+        "directEntrance" : false,
+        "comments" : [ {
+          "description" : "Printed Voucher. Print and bring the voucher to enjoy the activity. "
+        } ]
+      },
+      "routes" : [ ],
+      "scheduling" : { },
+      "segmentationGroups" : [ {
+        "code" : 3,
+        "name" : "Recommended activity for",
+        "segments" : [ {
+          "code" : 778,
+          "name" : "Families"
+        }, {
+          "code" : 779,
+          "name" : "Senior"
+        }, {
+          "code" : 777,
+          "name" : "Couples"
+        }, {
+          "code" : 780,
+          "name" : "Youth"
+        } ]
+      }, {
+        "code" : 2,
+        "name" : "Duration",
+        "segments" : [ {
+          "code" : 773,
+          "name" : "Half-day morning"
+        } ]
+      }, {
+        "code" : 16,
+        "name" : "Services",
+        "segments" : [ {
+          "code" : 956,
+          "name" : "Safe2Stay"
+        } ]
+      }, {
+        "code" : 1,
+        "name" : "Categories",
+        "segments" : [ {
+          "code" : 1,
+          "name" : "City tours"
+        } ]
+      } ],
+      "activityFactsheetType" : "ACTIVITIES",
+      "activityCode" : "E-E10-IN-CCHCITY",
+      "modalityCode" : "HB-HPEN",
+      "modalityName" : "Private Tour English, With Transfer, No Lunch - Morning",
+      "contentId" : "16451",
+      "description" : "Discover the culture and heritage of Kolkata with this fascinating half-day tour of the Bengali capital. Visit symbols of the British Raj such as the Victoria Memorial and Belvedere House, and then experience the contrast at two outstanding Hindu temples, symbols themselves of the pervasiveness of Bengali culture in the face of foreign control. <br /><br /> The wonderful white marble Victoria Memorial was built by the British in 1921 and was modelled on the Taj Mahal, though it can justly be considered a masterpiece in its own right. Built in the Mughal-Gothic style so beloved of the late Raj, it offers tree-lined walks in splendid parks with plenty of statues dedicated to important British figures and graceful reflections on ponds. Just a few hundred metres to the east is St Paul’s Cathedral, which is a glistening example of Gothic revival architecture. It is famed for its immaculately landscaped gardens and stunning stained glass windows. <br /><br /> Take a cultural detour at the National Library of India, which is located in the beautiful Belvedere House, a palace that used to be the residence of the lieutenant governor of Bengal. It houses the largest collection of books in the country, with tomes in dozens of languages, both Indian and foreign. Afterwards visit the riverside Dakshineswar Kali Temple – which has Byzantine characteristic – and then the architecturally significant Belur Math, which combines the features of a church, a temple and a mosque, and embodies the spirit of religious fraternity.  \r\r<br /><br />> <strong>Meeting/pick-up point:</strong> Collection from hotel. <br /> <strong>Start/opening time:</strong> From 8.30am to 9pm. <br /> <strong>End/closing time:</strong> 1pm. <br /> <strong>Languages:</strong> English.  ",
+      "lastUpdate" : "2021-11-04",
+      "advancedTips" : [ ],
+      "countries" : [ {
+        "code" : "IN",
+        "name" : "India",
+        "destinations" : [ {
+          "code" : "CCU",
+          "name" : "Kolkata-Calcutta"
+        } ]
+      } ],
+      "highligths" : [ ],
+      "language" : "en"
+    },
+    "order" : 1,
+    "amountsFrom" : [ {
+      "paxType" : "ADULT",
+      "ageFrom" : 0,
+      "ageTo" : 999,
+      "amount" : 90.78,
+      "boxOfficeAmount" : 105.9,
+      "mandatoryApplyAmount" : false
+    } ],
+    "currencyName" : "Euro",
+    "country" : {
+      "code" : "IN",
+      "name" : "India",
+      "destinations" : [ {
+        "code" : "CCU",
+        "name" : "Kolkata-Calcutta"
+      } ]
+    }
+  }, {
+    "code" : "E-E10-IN-CCUL1",
+    "type" : "TICKET",
+    "countryCode" : "IN",
+    "source" : "ATLAS",
+    "name" : "Excursion to Bandel Church and Hangseswari Temple",
+    "currency" : "EUR",
+    "modalities" : [ {
+      "code" : "1259903521#TOUR",
+      "name" : "Tour english 08:00",
+      "rateCode" : "STANDARD",
+      "freeCancellation" : false,
+      "language" : "ENG",
+      "session" : "08:00",
+      "duration" : {
+        "value" : 1.0,
+        "metric" : "DAYS"
+      },
+      "amountsFrom" : [ {
+        "paxType" : "ADULT",
+        "ageFrom" : 0,
+        "ageTo" : 999,
+        "amount" : 212.51,
+        "boxOfficeAmount" : 247.93,
+        "mandatoryApplyAmount" : false
+      } ],
+      "cancellationPolicies" : [ {
+        "dateFrom" : "2024-02-21T00:00:00.000Z",
+        "amount" : 212.51
+      } ],
+      "uniqueIdentifier" : "1259903521"
+    } ],
+    "content" : {
+      "name" : "Excursion to Bandel Church and Hangseswari Temple",
+      "detailedInfo" : [ ],
+      "featureGroups" : [ {
+        "groupCode" : "TRANSPORT",
+        "included" : [ {
+          "featureType" : "TRANSPORTINCL",
+          "description" : "Transport"
+        } ]
+      }, {
+        "groupCode" : "TICKET",
+        "included" : [ {
+          "featureType" : "ADMISSIONSINCL",
+          "description" : "Tickets"
+        } ]
+      } ],
+      "guidingOptions" : {
+        "guideType" : "TOURGUIDE",
+        "included" : true
+      },
+      "location" : {
+        "endPoints" : [ {
+          "type" : "Same",
+          "description" : "Same as Starting Point"
+        } ],
+        "startingPoints" : [ {
+          "type" : "HOTEL_PICKUP",
+          "meetingPoint" : {
+            "type" : "ADDRESS",
+            "country" : {
+              "code" : "IN",
+              "name" : "India",
+              "destinations" : [ {
+                "code" : "CCU",
+                "name" : "Kolkata-Calcutta"
+              } ]
+            },
+            "description" : "Excursion to Bandel Church and Hangseswari Temple"
+          },
+          "pickupInstructions" : [ { } ]
+        } ]
+      },
+      "media" : {
+        "images" : [ {
+          "visualizationOrder" : 1,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/S/34612_4.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/XL/34612_4.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/B/34612_4.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/LPP/34612_4.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/L/34612_4.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/M/34612_4.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 2,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/S/34612_1.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/XL/34612_1.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/B/34612_1.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/LPP/34612_1.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/L/34612_1.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/M/34612_1.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 3,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/S/34612_2.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/XL/34612_2.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/B/34612_2.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/LPP/34612_2.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/L/34612_2.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/M/34612_2.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 4,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/S/34612_3.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/XL/34612_3.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/B/34612_3.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/LPP/34612_3.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/L/34612_3.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34612/ENG/M/34612_3.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        } ]
+      },
+      "notes" : [ {
+        "dateFrom" : "2020-03-01",
+        "dateTo" : "2021-12-31",
+        "visibleFrom" : "2020-03-01",
+        "visibleTo" : "2021-12-31",
+        "descriptions" : [ {
+          "description" : "As a result of local government measures and guidelines put in place by services providers – including hotels and ancillaries – guests may find that some facilities or services are not available. Please visit https://corporate.hotelbeds.com/hotelbeds-update-covid-19 for further information."
+        } ]
+      } ],
+      "redeemInfo" : {
+        "type" : "PRINTED",
+        "directEntrance" : false,
+        "comments" : [ {
+          "description" : "Printed Voucher. Print and bring the voucher to enjoy the activity. "
+        } ]
+      },
+      "routes" : [ ],
+      "scheduling" : {
+        "duration" : {
+          "value" : 9.5,
+          "metric" : "HOURS",
+          "type" : "AFTER"
+        }
+      },
+      "segmentationGroups" : [ {
+        "code" : 3,
+        "name" : "Recommended activity for",
+        "segments" : [ {
+          "code" : 777,
+          "name" : "Couples"
+        }, {
+          "code" : 780,
+          "name" : "Youth"
+        }, {
+          "code" : 778,
+          "name" : "Families"
+        }, {
+          "code" : 779,
+          "name" : "Senior"
+        } ]
+      }, {
+        "code" : 16,
+        "name" : "Services",
+        "segments" : [ {
+          "code" : 956,
+          "name" : "Safe2Stay"
+        } ]
+      }, {
+        "code" : 1,
+        "name" : "Categories",
+        "segments" : [ {
+          "code" : 8,
+          "name" : "Day Trips & Excursions"
+        } ]
+      }, {
+        "code" : 2,
+        "name" : "Duration",
+        "segments" : [ {
+          "code" : 772,
+          "name" : "Full day"
+        } ]
+      } ],
+      "activityFactsheetType" : "ACTIVITIES",
+      "activityCode" : "E-E10-IN-CCUL1",
+      "modalityCode" : "HB-FPEN",
+      "modalityName" : "General tour",
+      "contentId" : "34612",
+      "description" : "This morning you shall be driven to Bansberia - one of main villages of ancient Saptagram to visit the temples of Ananta Vasudev (Lord Vishnu) and Hangseswari Temple which is known for its unique architectural style. Afterwards proceed to Hoogly-Chinsurah and visit the Bandel Church which is among the oldest churches in West Bengal followed by Hoogly Imambara better known or intricate designs and text from the holy book \"Quraan\".<br />\n<br />\nLater you shall be visiting Chandan Strand - a very beautiful tourist spot along the banks of river \"Ganges\", Chandannagar Museum &amp; Institute housing beautiful collection of French antiques. The tour culminates with a visit to The Sacred Heart Church which marks the beauty of the French period<br />\n<br />\n<strong>Others</strong><br />\nThe tour involves long drive. It is very important for the visitors to wear clothes which are appropriate and do not cause distraction/inconvenience to fellow devotees/travelers.",
+      "lastUpdate" : "2021-11-03",
+      "advancedTips" : [ ],
+      "countries" : [ {
+        "code" : "IN",
+        "name" : "India",
+        "destinations" : [ {
+          "code" : "CCU",
+          "name" : "Kolkata-Calcutta"
+        } ]
+      } ],
+      "highligths" : [ ],
+      "language" : "en"
+    },
+    "order" : 2,
+    "amountsFrom" : [ {
+      "paxType" : "ADULT",
+      "ageFrom" : 0,
+      "ageTo" : 999,
+      "amount" : 212.51,
+      "boxOfficeAmount" : 247.93,
+      "mandatoryApplyAmount" : false
+    } ],
+    "currencyName" : "Euro",
+    "country" : {
+      "code" : "IN",
+      "name" : "India",
+      "destinations" : [ {
+        "code" : "CCU",
+        "name" : "Kolkata-Calcutta"
+      } ]
+    }
+  }, {
+    "code" : "E-E10-IN-CCUL11",
+    "type" : "TICKET",
+    "countryCode" : "IN",
+    "source" : "ATLAS",
+    "name" : "Hoogly River Cruise",
+    "currency" : "EUR",
+    "modalities" : [ {
+      "code" : "1268291312#TOUR",
+      "name" : "Tour english 14:30",
+      "rateCode" : "STANDARD",
+      "freeCancellation" : false,
+      "language" : "ENG",
+      "session" : "14:30",
+      "duration" : {
+        "value" : 1.0,
+        "metric" : "DAYS"
+      },
+      "amountsFrom" : [ {
+        "paxType" : "ADULT",
+        "ageFrom" : 0,
+        "ageTo" : 999,
+        "amount" : 390.86,
+        "boxOfficeAmount" : 456,
+        "mandatoryApplyAmount" : false
+      } ],
+      "cancellationPolicies" : [ {
+        "dateFrom" : "2024-02-21T00:00:00.000Z",
+        "amount" : 390.86
+      } ],
+      "uniqueIdentifier" : "1268291312"
+    } ],
+    "content" : {
+      "name" : "Hoogly River Cruise",
+      "detailedInfo" : [ ],
+      "featureGroups" : [ {
+        "groupCode" : "TRANSPORT",
+        "included" : [ {
+          "featureType" : "TRANSPORTINCL",
+          "description" : "Transport"
+        } ]
+      }, {
+        "groupCode" : "TICKET",
+        "included" : [ {
+          "featureType" : "ADMISSIONSINCL",
+          "description" : "Tickets"
+        } ]
+      } ],
+      "guidingOptions" : {
+        "guideType" : "TOURGUIDE",
+        "included" : true
+      },
+      "location" : {
+        "endPoints" : [ {
+          "type" : "Same",
+          "description" : "Same as Starting Point"
+        } ],
+        "startingPoints" : [ {
+          "type" : "HOTEL_PICKUP",
+          "meetingPoint" : {
+            "type" : "ADDRESS",
+            "country" : {
+              "code" : "IN",
+              "name" : "India",
+              "destinations" : [ {
+                "code" : "CCU",
+                "name" : "Kolkata-Calcutta"
+              } ]
+            },
+            "description" : "Hoogly River Cruise"
+          },
+          "pickupInstructions" : [ { } ]
+        } ]
+      },
+      "media" : {
+        "images" : [ {
+          "visualizationOrder" : 1,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/S/34624_1.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/XL/34624_1.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/B/34624_1.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/LPP/34624_1.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/L/34624_1.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/M/34624_1.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 2,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/S/34624_2.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/XL/34624_2.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/B/34624_2.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/LPP/34624_2.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/L/34624_2.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/M/34624_2.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 3,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/S/34624_3.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/XL/34624_3.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/B/34624_3.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/LPP/34624_3.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/L/34624_3.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/M/34624_3.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 4,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/S/34624_4.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/XL/34624_4.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/B/34624_4.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/LPP/34624_4.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/L/34624_4.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34624/ENG/M/34624_4.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        } ]
+      },
+      "notes" : [ {
+        "dateFrom" : "2020-03-01",
+        "dateTo" : "2021-12-31",
+        "visibleFrom" : "2020-03-01",
+        "visibleTo" : "2021-12-31",
+        "descriptions" : [ {
+          "description" : "As a result of local government measures and guidelines put in place by services providers – including hotels and ancillaries – guests may find that some facilities or services are not available. Please visit https://corporate.hotelbeds.com/hotelbeds-update-covid-19 for further information."
+        } ]
+      } ],
+      "redeemInfo" : {
+        "type" : "PRINTED",
+        "directEntrance" : false,
+        "comments" : [ {
+          "description" : "Printed Voucher. Print and bring the voucher to enjoy the activity. "
+        } ]
+      },
+      "routes" : [ ],
+      "scheduling" : {
+        "duration" : {
+          "value" : 3.5,
+          "metric" : "HOURS",
+          "type" : "AFTER"
+        }
+      },
+      "segmentationGroups" : [ {
+        "code" : 2,
+        "name" : "Duration",
+        "segments" : [ {
+          "code" : 774,
+          "name" : "Half-day afternoon"
+        } ]
+      }, {
+        "code" : 1,
+        "name" : "Categories",
+        "segments" : [ {
+          "code" : 14,
+          "name" : "Cruise & Water Tours"
+        } ]
+      }, {
+        "code" : 3,
+        "name" : "Recommended activity for",
+        "segments" : [ {
+          "code" : 779,
+          "name" : "Senior"
+        }, {
+          "code" : 777,
+          "name" : "Couples"
+        }, {
+          "code" : 780,
+          "name" : "Youth"
+        }, {
+          "code" : 778,
+          "name" : "Families"
+        } ]
+      }, {
+        "code" : 16,
+        "name" : "Services",
+        "segments" : [ {
+          "code" : 956,
+          "name" : "Safe2Stay"
+        } ]
+      } ],
+      "activityFactsheetType" : "ACTIVITIES",
+      "activityCode" : "E-E10-IN-CCUL11",
+      "modalityCode" : "HB-HPEN",
+      "modalityName" : "Ticket",
+      "contentId" : "34624",
+      "description" : "Kolkata by the river is a cruise known to have been born on the bank of Great River Ganges. It will be a sail down the memory lane, from the time when Job Charnock dropped his first anchor at Cossim Bazar. Framed between the two steel structures of Vidyasagar Setu and the magnificent Howrah Bridge, very old landmarks from the days of the British Raj, there are numerous ghats that relate to us of Kolkata's past and present life. The vessel casts off from Babughat Jetty. It sails down the Howrah Bridge, the unique cantilever Bridge across the river Ganga joining the two metropolises of Kolkata and Howrah. It also sails past the Howrah Railway Station, one of the busiest in the world, and various heritage sites on the banks of the great river, including numerous temples and bathing ghats, the historical point of arrival of Job Charnock, the House of Dolls, the Nimtolla Ghat, the oldest Gun and Shell Factory in India at Casipore.<br />\n<br />\n<strong>Others</strong><br />\nOnly life-Saving tubes are available on board. Life saving jackets can be made available on request on extra supplement. Please check for exact timings of operation.",
+      "lastUpdate" : "2021-11-03",
+      "advancedTips" : [ ],
+      "countries" : [ {
+        "code" : "IN",
+        "name" : "India",
+        "destinations" : [ {
+          "code" : "CCU",
+          "name" : "Kolkata-Calcutta"
+        } ]
+      } ],
+      "highligths" : [ ],
+      "language" : "en"
+    },
+    "order" : 3,
+    "amountsFrom" : [ {
+      "paxType" : "ADULT",
+      "ageFrom" : 0,
+      "ageTo" : 999,
+      "amount" : 390.86,
+      "boxOfficeAmount" : 456,
+      "mandatoryApplyAmount" : false
+    } ],
+    "currencyName" : "Euro",
+    "country" : {
+      "code" : "IN",
+      "name" : "India",
+      "destinations" : [ {
+        "code" : "CCU",
+        "name" : "Kolkata-Calcutta"
+      } ]
+    }
+  }, {
+    "code" : "E-E10-IN-CCFCITY",
+    "type" : "TICKET",
+    "countryCode" : "IN",
+    "source" : "ATLAS",
+    "name" : "Calcutta City - Private Tour",
+    "currency" : "EUR",
+    "modalities" : [ {
+      "code" : "820534563#PRIVATE",
+      "name" : "Tour english 08:30",
+      "rateCode" : "STANDARD",
+      "freeCancellation" : false,
+      "language" : "ENG",
+      "session" : "08:30",
+      "duration" : {
+        "value" : 1.0,
+        "metric" : "DAYS"
+      },
+      "amountsFrom" : [ {
+        "paxType" : "ADULT",
+        "ageFrom" : 0,
+        "ageTo" : 999,
+        "amount" : 126.01,
+        "boxOfficeAmount" : 147.01,
+        "mandatoryApplyAmount" : false
+      } ],
+      "cancellationPolicies" : [ {
+        "dateFrom" : "2024-02-21T00:00:00.000Z",
+        "amount" : 126.01
+      } ],
+      "uniqueIdentifier" : "820534563"
+    } ],
+    "content" : {
+      "name" : "Calcutta City - Private Tour",
+      "detailedInfo" : [ ],
+      "featureGroups" : [ {
+        "groupCode" : "UNKNOWN",
+        "included" : [ {
+          "featureType" : "OTHERINCL",
+          "description" : "Guide"
+        } ]
+      }, {
+        "groupCode" : "MEAL",
+        "excluded" : [ {
+          "featureType" : "FOODNOT",
+          "description" : "Lunch"
+        } ]
+      }, {
+        "groupCode" : "TRANSPORT",
+        "included" : [ {
+          "featureType" : "TRANSPORTINCL",
+          "description" : "Drop off at the hotel."
+        }, {
+          "featureType" : "TRANSPORTINCL",
+          "description" : "Pick-up available from the hotel. "
+        } ]
+      }, {
+        "groupCode" : "TICKET",
+        "included" : [ {
+          "featureType" : "ADMISSIONSINCL",
+          "description" : "Tickets"
+        } ]
+      } ],
+      "guidingOptions" : {
+        "groupType" : "PRIVATE",
+        "guideType" : "TOURGUIDE",
+        "included" : true
+      },
+      "location" : {
+        "endPoints" : [ {
+          "type" : "Same",
+          "description" : "Same as Starting Point"
+        } ],
+        "startingPoints" : [ {
+          "type" : "HOTEL_PICKUP",
+          "meetingPoint" : {
+            "type" : "ADDRESS",
+            "country" : {
+              "code" : "IN",
+              "name" : "India",
+              "destinations" : [ {
+                "code" : "CCU",
+                "name" : "Kolkata-Calcutta"
+              } ]
+            },
+            "description" : "Calcutta City - Private Tour"
+          },
+          "pickupInstructions" : [ {
+            "description" : "Pick-up time: At 8:30am. "
+          } ]
+        } ]
+      },
+      "media" : {
+        "images" : [ {
+          "visualizationOrder" : 1,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/16450/ENG/S/16450_5.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16450/ENG/XL/16450_5.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/16450/ENG/B/16450_5.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16450/ENG/LPP/16450_5.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/16450/ENG/L/16450_5.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/16450/ENG/M/16450_5.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 2,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/16450/ENG/S/16450_4.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16450/ENG/XL/16450_4.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/16450/ENG/B/16450_4.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16450/ENG/LPP/16450_4.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/16450/ENG/L/16450_4.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/16450/ENG/M/16450_4.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 3,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/16450/ENG/S/16450_3.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16450/ENG/XL/16450_3.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/16450/ENG/B/16450_3.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16450/ENG/LPP/16450_3.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/16450/ENG/L/16450_3.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/16450/ENG/M/16450_3.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        } ]
+      },
+      "notes" : [ {
+        "dateFrom" : "2020-03-01",
+        "dateTo" : "2021-12-31",
+        "visibleFrom" : "2020-03-01",
+        "visibleTo" : "2021-12-31",
+        "descriptions" : [ {
+          "description" : "As a result of local government measures and guidelines put in place by services providers – including hotels and ancillaries – guests may find that some facilities or services are not available. Please visit https://corporate.hotelbeds.com/hotelbeds-update-covid-19 for further information."
+        } ]
+      } ],
+      "redeemInfo" : {
+        "type" : "PRINTED",
+        "directEntrance" : false,
+        "comments" : [ {
+          "description" : "Printed Voucher. Print and bring the voucher to enjoy the activity. "
+        } ]
+      },
+      "routes" : [ {
+        "duration" : {
+          "value" : 7.0,
+          "metric" : "HOURS"
+        },
+        "description" : "Point of interest",
+        "timeFrom" : "10:00:00",
+        "timeTo" : "17:00:00",
+        "points" : [ {
+          "type" : "POI",
+          "order" : 1,
+          "stop" : false,
+          "pointOfInterest" : {
+            "type" : "ADDRESS",
+            "geolocation" : {
+              "latitude" : 22.546883,
+              "longitude" : 88.34080399999993
+            },
+            "address" : "Victoria Memorial Hall, 1, Queens Way",
+            "country" : {
+              "code" : "IN"
+            },
+            "city" : "Calcuta",
+            "zip" : "700071",
+            "description" : "Victoria Memorial"
+          }
+        }, {
+          "type" : "POI",
+          "order" : 2,
+          "stop" : false,
+          "pointOfInterest" : {
+            "type" : "ADDRESS",
+            "geolocation" : {
+              "latitude" : 22.5442428,
+              "longitude" : 88.34668179999994
+            },
+            "address" : "Calcuta, Bengala Occidental",
+            "country" : {
+              "code" : "IN"
+            },
+            "city" : "Calcuta",
+            "zip" : "700071",
+            "description" : "St. Paul's Cathedral"
+          }
+        }, {
+          "type" : "POI",
+          "order" : 3,
+          "stop" : false,
+          "pointOfInterest" : {
+            "type" : "ADDRESS",
+            "geolocation" : {
+              "latitude" : 22.5331553,
+              "longitude" : 88.33341999999993
+            },
+            "address" : "Belvedere Road, Block A, Alipore",
+            "country" : {
+              "code" : "IN"
+            },
+            "city" : "Kolkata",
+            "zip" : "700027",
+            "description" : "National Library of India"
+          }
+        }, {
+          "type" : "POI",
+          "order" : 4,
+          "stop" : false,
+          "pointOfInterest" : {
+            "type" : "ADDRESS",
+            "geolocation" : {
+              "latitude" : 22.5312743,
+              "longitude" : 88.33028630000001
+            },
+            "address" : "Woodland Rd",
+            "country" : {
+              "code" : "IN"
+            },
+            "city" : "Kolkata",
+            "zip" : "700027",
+            "description" : "Belvedere Estate"
+          }
+        }, {
+          "type" : "POI",
+          "order" : 5,
+          "stop" : false,
+          "pointOfInterest" : {
+            "type" : "ADDRESS",
+            "geolocation" : {
+              "latitude" : 22.6549087,
+              "longitude" : 88.35753069999998
+            },
+            "address" : "Anami Sangha, Kalighat",
+            "country" : {
+              "code" : "IN"
+            },
+            "city" : "Kolkata",
+            "zip" : "700076",
+            "description" : "Kali Temple"
+          }
+        }, {
+          "type" : "POI",
+          "order" : 6,
+          "stop" : false,
+          "pointOfInterest" : {
+            "type" : "ADDRESS",
+            "geolocation" : {
+              "latitude" : 22.6328429,
+              "longitude" : 88.35714299999995
+            },
+            "address" : "Belur, Howrah, Bengala Occidental",
+            "country" : {
+              "code" : "IN"
+            },
+            "city" : "Howrah",
+            "zip" : "711202",
+            "description" : "Belur Math Ganga Par"
+          }
+        }, {
+          "type" : "POI",
+          "order" : 7,
+          "stop" : false,
+          "pointOfInterest" : {
+            "type" : "ADDRESS",
+            "geolocation" : {
+              "latitude" : 22.5851477,
+              "longitude" : 88.34680530000003
+            },
+            "address" : "Howrah Bridge",
+            "country" : {
+              "code" : "IN"
+            },
+            "city" : "Howrah",
+            "zip" : "700001",
+            "description" : "Howrah Bridge"
+          }
+        } ]
+      } ],
+      "scheduling" : {
+        "duration" : {
+          "value" : 7.0,
+          "metric" : "HOURS",
+          "type" : "AFTER"
+        },
+        "opened" : [ {
+          "openingTime" : "09:00",
+          "closeTime" : "16:00",
+          "weekDays" : [ ]
+        } ]
+      },
+      "segmentationGroups" : [ {
+        "code" : 3,
+        "name" : "Recommended activity for",
+        "segments" : [ {
+          "code" : 780,
+          "name" : "Youth"
+        }, {
+          "code" : 777,
+          "name" : "Couples"
+        }, {
+          "code" : 779,
+          "name" : "Senior"
+        }, {
+          "code" : 778,
+          "name" : "Families"
+        } ]
+      }, {
+        "code" : 16,
+        "name" : "Services",
+        "segments" : [ {
+          "code" : 956,
+          "name" : "Safe2Stay"
+        } ]
+      }, {
+        "code" : 1,
+        "name" : "Categories",
+        "segments" : [ {
+          "code" : 1,
+          "name" : "City tours"
+        } ]
+      }, {
+        "code" : 2,
+        "name" : "Duration",
+        "segments" : [ {
+          "code" : 772,
+          "name" : "Full day"
+        } ]
+      } ],
+      "activityFactsheetType" : "TOURS",
+      "activityCode" : "E-E10-IN-CCFCITY",
+      "modalityCode" : "HB-FPEN",
+      "modalityName" : "In English",
+      "contentId" : "16450",
+      "description" : "The imposing white marble Victoria Memorial was built by the British in 1921 and was modelled on the Taj Mahal, though it is a masterpiece in its own right. Built in the Mughal-Gothic style so beloved of the late Raj, it offers tree-lined walks in splendid parks with plenty of statues and graceful reflections on ponds. Just a few hundred metres to the east is St Paul’s Cathedral, which is a glistening example of Gothic revival architecture.<br />\n<br />\nContinue to the National Library of India, which is located in the beautiful Belvedere House, the onetime residence of the lieutenant governor of Bengal. It houses the largest collection of books in the country, across six sections. Afterwards visit the riverside Dakshineswar Kali Temple and the architecturally significant Belur Math, which combines the features of a church, a temple and a mosque, and embodies the spirit of religious fraternity.<br />\n<br />\nFinish your tour with a dramatic photo-stop at the Howrah Bridge, also known as the gateway of Kolkata. This stunning steel structure spans the Hooghly River and has been one of the symbols of Kolkata since it was built.",
+      "lastUpdate" : "2021-11-04",
+      "summary" : "<strong>Explore two worlds, two eras and two continents in one day with this awe-inspiring tour of Kolkata. Visit symbols of the British Raj such as the Victoria Memorial and Belvedere House, and then visit two outstanding Hindu temples, symbols themselves of the pervasiveness of Bengali culture in the face of foreign control, before enjoying stunning views of the city from the emblematic Howrah Bridge.</strong>",
+      "advancedTips" : [ ],
+      "countries" : [ {
+        "code" : "IN",
+        "name" : "India",
+        "destinations" : [ {
+          "code" : "CCU",
+          "name" : "Kolkata-Calcutta"
+        } ]
+      } ],
+      "highligths" : [ ],
+      "language" : "en"
+    },
+    "order" : 4,
+    "amountsFrom" : [ {
+      "paxType" : "ADULT",
+      "ageFrom" : 0,
+      "ageTo" : 999,
+      "amount" : 126.01,
+      "boxOfficeAmount" : 147.01,
+      "mandatoryApplyAmount" : false
+    } ],
+    "currencyName" : "Euro",
+    "country" : {
+      "code" : "IN",
+      "name" : "India",
+      "destinations" : [ {
+        "code" : "CCU",
+        "name" : "Kolkata-Calcutta"
+      } ]
+    }
+  }, {
+    "code" : "E-E10-IN-CCUL2",
+    "type" : "TICKET",
+    "countryCode" : "IN",
+    "source" : "ATLAS",
+    "name" : "Terracotta Paradise Tour",
+    "currency" : "EUR",
+    "modalities" : [ {
+      "code" : "1401035607#TOUR",
+      "name" : "Tour english 07:30",
+      "rateCode" : "STANDARD",
+      "freeCancellation" : false,
+      "language" : "ENG",
+      "session" : "07:30",
+      "duration" : {
+        "value" : 1.0,
+        "metric" : "DAYS"
+      },
+      "amountsFrom" : [ {
+        "paxType" : "ADULT",
+        "ageFrom" : 0,
+        "ageTo" : 999,
+        "amount" : 302.22,
+        "boxOfficeAmount" : 352.59,
+        "mandatoryApplyAmount" : false
+      } ],
+      "cancellationPolicies" : [ {
+        "dateFrom" : "2024-02-21T00:00:00.000Z",
+        "amount" : 302.22
+      } ],
+      "uniqueIdentifier" : "1401035607"
+    } ],
+    "content" : {
+      "name" : "Terracotta Paradise Tour",
+      "detailedInfo" : [ ],
+      "featureGroups" : [ {
+        "groupCode" : "TRANSPORT",
+        "included" : [ {
+          "featureType" : "TRANSPORTINCL",
+          "description" : "Transport"
+        } ]
+      }, {
+        "groupCode" : "TICKET",
+        "included" : [ {
+          "featureType" : "ADMISSIONSINCL",
+          "description" : "Tickets"
+        } ]
+      } ],
+      "guidingOptions" : {
+        "guideType" : "TOURGUIDE",
+        "included" : true
+      },
+      "location" : {
+        "endPoints" : [ {
+          "type" : "Same",
+          "description" : "Same as Starting Point"
+        } ],
+        "startingPoints" : [ {
+          "type" : "HOTEL_PICKUP",
+          "meetingPoint" : {
+            "type" : "ADDRESS",
+            "country" : {
+              "code" : "IN",
+              "name" : "India",
+              "destinations" : [ {
+                "code" : "CCU",
+                "name" : "Kolkata-Calcutta"
+              } ]
+            },
+            "description" : "Terracotta Paradise Tour"
+          },
+          "pickupInstructions" : [ { } ]
+        } ]
+      },
+      "media" : {
+        "images" : [ {
+          "visualizationOrder" : 1,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/S/34613_1.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/XL/34613_1.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/B/34613_1.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/LPP/34613_1.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/L/34613_1.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/M/34613_1.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 2,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/S/34613_2.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/XL/34613_2.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/B/34613_2.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/LPP/34613_2.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/L/34613_2.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/M/34613_2.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 3,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/S/34613_3.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/XL/34613_3.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/B/34613_3.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/LPP/34613_3.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/L/34613_3.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/M/34613_3.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 4,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/S/34613_4.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/XL/34613_4.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/B/34613_4.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/LPP/34613_4.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/L/34613_4.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34613/ENG/M/34613_4.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        } ]
+      },
+      "notes" : [ {
+        "dateFrom" : "2020-03-01",
+        "dateTo" : "2021-12-31",
+        "visibleFrom" : "2020-03-01",
+        "visibleTo" : "2021-12-31",
+        "descriptions" : [ {
+          "description" : "As a result of local government measures and guidelines put in place by services providers – including hotels and ancillaries – guests may find that some facilities or services are not available. Please visit https://corporate.hotelbeds.com/hotelbeds-update-covid-19 for further information."
+        } ]
+      } ],
+      "redeemInfo" : {
+        "type" : "PRINTED",
+        "directEntrance" : false,
+        "comments" : [ {
+          "description" : "Printed Voucher. Print and bring the voucher to enjoy the activity. "
+        } ]
+      },
+      "routes" : [ ],
+      "scheduling" : {
+        "duration" : {
+          "value" : 11.5,
+          "metric" : "HOURS",
+          "type" : "AFTER"
+        }
+      },
+      "segmentationGroups" : [ {
+        "code" : 1,
+        "name" : "Categories",
+        "segments" : [ {
+          "code" : 8,
+          "name" : "Day Trips & Excursions"
+        } ]
+      }, {
+        "code" : 3,
+        "name" : "Recommended activity for",
+        "segments" : [ {
+          "code" : 780,
+          "name" : "Youth"
+        }, {
+          "code" : 778,
+          "name" : "Families"
+        }, {
+          "code" : 777,
+          "name" : "Couples"
+        }, {
+          "code" : 779,
+          "name" : "Senior"
+        } ]
+      }, {
+        "code" : 2,
+        "name" : "Duration",
+        "segments" : [ {
+          "code" : 772,
+          "name" : "Full day"
+        } ]
+      }, {
+        "code" : 16,
+        "name" : "Services",
+        "segments" : [ {
+          "code" : 956,
+          "name" : "Safe2Stay"
+        } ]
+      } ],
+      "activityFactsheetType" : "ACTIVITIES",
+      "activityCode" : "E-E10-IN-CCUL2",
+      "modalityCode" : "HB-FPEN",
+      "modalityName" : "General tour",
+      "contentId" : "34613",
+      "description" : "Once known as Mallabhum or the Land of Wrestlers, Bishnupur abounds in legends of heroic kings, who are remembered as much for their exploits as for their patronage of art and architecture. This town of terracotta temples and man-made lakes is proof of the Malla rulers of 16th century who became powerful during this period.<br />\n<br />\nSince Bishnupur had no stone for construction, the Malla kings built terracotta temples to celebrate their love for Krishna. Terracotta tiles carve out stories from the Ramayana and Mahabharata and these temples of Bishnupur are the pride of Bengal. Conclude the visit with Jogesh Chandra Museum established by a group of enthusiastic youth.<br />\n<br />\n<strong>Others</strong><br />\nJogesh Chandra Museum remains closed on Mondays. The tour involves long drive.",
+      "lastUpdate" : "2021-11-03",
+      "advancedTips" : [ ],
+      "countries" : [ {
+        "code" : "IN",
+        "name" : "India",
+        "destinations" : [ {
+          "code" : "CCU",
+          "name" : "Kolkata-Calcutta"
+        } ]
+      } ],
+      "highligths" : [ ],
+      "language" : "en"
+    },
+    "order" : 5,
+    "amountsFrom" : [ {
+      "paxType" : "ADULT",
+      "ageFrom" : 0,
+      "ageTo" : 999,
+      "amount" : 302.22,
+      "boxOfficeAmount" : 352.59,
+      "mandatoryApplyAmount" : false
+    } ],
+    "currencyName" : "Euro",
+    "country" : {
+      "code" : "IN",
+      "name" : "India",
+      "destinations" : [ {
+        "code" : "CCU",
+        "name" : "Kolkata-Calcutta"
+      } ]
+    }
+  }, {
+    "code" : "E-E10-IN-CCUL4",
+    "type" : "TICKET",
+    "countryCode" : "IN",
+    "source" : "ATLAS",
+    "name" : "Sundarbans Tiger Reserve Tour",
+    "currency" : "EUR",
+    "modalities" : [ {
+      "code" : "1116223760#TOUR",
+      "name" : "Tour english 07:00",
+      "rateCode" : "STANDARD",
+      "freeCancellation" : false,
+      "language" : "ENG",
+      "session" : "07:00",
+      "duration" : {
+        "value" : 1.0,
+        "metric" : "DAYS"
+      },
+      "amountsFrom" : [ {
+        "paxType" : "ADULT",
+        "ageFrom" : 0,
+        "ageTo" : 999,
+        "amount" : 495.51,
+        "boxOfficeAmount" : 578.1,
+        "mandatoryApplyAmount" : false
+      } ],
+      "cancellationPolicies" : [ {
+        "dateFrom" : "2024-02-21T00:00:00.000Z",
+        "amount" : 495.51
+      } ],
+      "uniqueIdentifier" : "1116223760"
+    } ],
+    "content" : {
+      "name" : "Sundarbans Tiger Reserve Tour",
+      "detailedInfo" : [ ],
+      "featureGroups" : [ {
+        "groupCode" : "TRANSPORT",
+        "included" : [ {
+          "featureType" : "TRANSPORTINCL",
+          "description" : "Transport"
+        } ]
+      }, {
+        "groupCode" : "MEAL",
+        "included" : [ {
+          "featureType" : "FOODINCL",
+          "description" : "Meal"
+        } ]
+      }, {
+        "groupCode" : "TICKET",
+        "included" : [ {
+          "featureType" : "ADMISSIONSINCL",
+          "description" : "Tickets"
+        } ]
+      } ],
+      "guidingOptions" : {
+        "guideType" : "TOURGUIDE",
+        "included" : true
+      },
+      "location" : {
+        "endPoints" : [ {
+          "type" : "Same",
+          "description" : "Same as Starting Point"
+        } ],
+        "startingPoints" : [ {
+          "type" : "HOTEL_PICKUP",
+          "meetingPoint" : {
+            "type" : "ADDRESS",
+            "country" : {
+              "code" : "IN",
+              "name" : "India",
+              "destinations" : [ {
+                "code" : "CCU",
+                "name" : "Kolkata-Calcutta"
+              } ]
+            },
+            "description" : "Sundarbans Tiger Reserve Tour"
+          },
+          "pickupInstructions" : [ { } ]
+        } ]
+      },
+      "media" : {
+        "images" : [ {
+          "visualizationOrder" : 1,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/S/34615_1.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/XL/34615_1.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/B/34615_1.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/LPP/34615_1.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/L/34615_1.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/M/34615_1.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 2,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/S/34615_2.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/XL/34615_2.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/B/34615_2.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/LPP/34615_2.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/L/34615_2.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/M/34615_2.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 3,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/S/34615_3.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/XL/34615_3.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/B/34615_3.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/LPP/34615_3.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/L/34615_3.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/M/34615_3.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 4,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/S/34615_4.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/XL/34615_4.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/B/34615_4.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/LPP/34615_4.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/L/34615_4.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34615/ENG/M/34615_4.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        } ]
+      },
+      "notes" : [ {
+        "dateFrom" : "2020-03-01",
+        "dateTo" : "2021-12-31",
+        "visibleFrom" : "2020-03-01",
+        "visibleTo" : "2021-12-31",
+        "descriptions" : [ {
+          "description" : "As a result of local government measures and guidelines put in place by services providers – including hotels and ancillaries – guests may find that some facilities or services are not available. Please visit https://corporate.hotelbeds.com/hotelbeds-update-covid-19 for further information."
+        } ]
+      } ],
+      "redeemInfo" : {
+        "type" : "PRINTED",
+        "directEntrance" : false,
+        "comments" : [ {
+          "description" : "Printed Voucher. Print and bring the voucher to enjoy the activity. "
+        } ]
+      },
+      "routes" : [ ],
+      "scheduling" : {
+        "duration" : {
+          "value" : 12.5,
+          "metric" : "HOURS",
+          "type" : "AFTER"
+        }
+      },
+      "segmentationGroups" : [ {
+        "code" : 1,
+        "name" : "Categories",
+        "segments" : [ {
+          "code" : 9,
+          "name" : "Zoo, Aquarium & Nature"
+        } ]
+      }, {
+        "code" : 3,
+        "name" : "Recommended activity for",
+        "segments" : [ {
+          "code" : 778,
+          "name" : "Families"
+        }, {
+          "code" : 779,
+          "name" : "Senior"
+        }, {
+          "code" : 780,
+          "name" : "Youth"
+        }, {
+          "code" : 777,
+          "name" : "Couples"
+        } ]
+      }, {
+        "code" : 2,
+        "name" : "Duration",
+        "segments" : [ {
+          "code" : 772,
+          "name" : "Full day"
+        } ]
+      }, {
+        "code" : 16,
+        "name" : "Services",
+        "segments" : [ {
+          "code" : 956,
+          "name" : "Safe2Stay"
+        } ]
+      } ],
+      "activityFactsheetType" : "ACTIVITIES",
+      "activityCode" : "E-E10-IN-CCUL4",
+      "modalityCode" : "HB-FPEN",
+      "modalityName" : "General tour",
+      "contentId" : "34615",
+      "description" : "Sunderbans, the world's largest estuarine forest and delta covered by mangrove forests and vast saline mud flats is situated on the lower end of Gangetic West Bengal. With a little luck one may experience a salt water Crocodile sunbathing in the mud; a flash in the corner of your eye could be Deer running into the forests.<br />\n<br />\nMost famously, however, this protected area is home to the Royal Bengal Tiger. You can also explore the wildlife of Sunderban that harbours Jungle Cats, Fishing Cats, Axis Deer, Wild Boar, Rhesus Monkeys, Mongooses and the largest Estuarine Crocodiles in the world.<br />\n<br />\nSunderban is the breeding ground of immense variety of birds like Heron, Egret, Cormorant, Fishing Engle, White Bellied Sea Eagle, Seagul, Tern, Kingfisher as well as migratory birds like Whimprel, Black-tailed Godwit, Little Stint, Eastern Knot, Curlew, Sandpiper, Golden Plover, Pintail, White-eyed Pochard and also Whistling teal. A wide variety of aquatic and reptile life forms that include Olive Ridley sea turtle, hardshelled Batgur Terrapin, Pythons, King Cobra, Chequered Killback, Monitor and Lizards including the Salvator Lizards are also there.<br />\n<br />\n<strong>Others</strong><br />\nIt is mandatory for a client to carry passport in original with a photocopy of the same along-with 2 passport size photographs (front facing with light (preferably white) background). The tour is not recommended during Monsoon season. The tour involves long drive &amp; sailing on the vessel.",
+      "lastUpdate" : "2021-11-03",
+      "advancedTips" : [ ],
+      "countries" : [ {
+        "code" : "IN",
+        "name" : "India",
+        "destinations" : [ {
+          "code" : "CCU",
+          "name" : "Kolkata-Calcutta"
+        } ]
+      } ],
+      "highligths" : [ ],
+      "language" : "en"
+    },
+    "order" : 6,
+    "amountsFrom" : [ {
+      "paxType" : "ADULT",
+      "ageFrom" : 0,
+      "ageTo" : 999,
+      "amount" : 495.51,
+      "boxOfficeAmount" : 578.1,
+      "mandatoryApplyAmount" : false
+    } ],
+    "currencyName" : "Euro",
+    "country" : {
+      "code" : "IN",
+      "name" : "India",
+      "destinations" : [ {
+        "code" : "CCU",
+        "name" : "Kolkata-Calcutta"
+      } ]
+    }
+  }, {
+    "code" : "E-E10-IN-CCUL5",
+    "type" : "TICKET",
+    "countryCode" : "IN",
+    "source" : "ATLAS",
+    "name" : "College Street Tour",
+    "currency" : "EUR",
+    "modalities" : [ {
+      "code" : "1436412851#TOUR",
+      "name" : "Tour english 07:30",
+      "rateCode" : "STANDARD",
+      "freeCancellation" : false,
+      "language" : "ENG",
+      "session" : "07:30",
+      "duration" : {
+        "value" : 1.0,
+        "metric" : "DAYS"
+      },
+      "amountsFrom" : [ {
+        "paxType" : "ADULT",
+        "ageFrom" : 0,
+        "ageTo" : 999,
+        "amount" : 111.12,
+        "boxOfficeAmount" : 137.05,
+        "mandatoryApplyAmount" : false
+      } ],
+      "cancellationPolicies" : [ {
+        "dateFrom" : "2024-02-21T00:00:00.000Z",
+        "amount" : 111.12
+      } ],
+      "uniqueIdentifier" : "1436412851"
+    } ],
+    "content" : {
+      "name" : "College Street Tour",
+      "detailedInfo" : [ ],
+      "featureGroups" : [ {
+        "groupCode" : "TRANSPORT",
+        "included" : [ {
+          "featureType" : "TRANSPORTINCL",
+          "description" : "Transport"
+        } ]
+      }, {
+        "groupCode" : "TICKET",
+        "included" : [ {
+          "featureType" : "ADMISSIONSINCL",
+          "description" : "Tickets"
+        } ]
+      } ],
+      "guidingOptions" : {
+        "guideType" : "TOURGUIDE",
+        "included" : true
+      },
+      "location" : {
+        "endPoints" : [ {
+          "type" : "Same",
+          "description" : "Same as Starting Point"
+        } ],
+        "startingPoints" : [ {
+          "type" : "HOTEL_PICKUP",
+          "meetingPoint" : {
+            "type" : "ADDRESS",
+            "country" : {
+              "code" : "IN",
+              "name" : "India",
+              "destinations" : [ {
+                "code" : "CCU",
+                "name" : "Kolkata-Calcutta"
+              } ]
+            },
+            "description" : "College Street Tour"
+          },
+          "pickupInstructions" : [ { } ]
+        } ]
+      },
+      "media" : {
+        "images" : [ {
+          "visualizationOrder" : 1,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/S/34616_1.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/XL/34616_1.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/B/34616_1.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/LPP/34616_1.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/L/34616_1.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/M/34616_1.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 2,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/S/34616_2.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/XL/34616_2.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/B/34616_2.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/LPP/34616_2.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/L/34616_2.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/M/34616_2.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 3,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/S/34616_3.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/XL/34616_3.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/B/34616_3.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/LPP/34616_3.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/L/34616_3.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/M/34616_3.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 4,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/S/34616_4.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/XL/34616_4.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/B/34616_4.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/LPP/34616_4.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/L/34616_4.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/34616/ENG/M/34616_4.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        } ]
+      },
+      "notes" : [ {
+        "dateFrom" : "2020-03-01",
+        "dateTo" : "2021-12-31",
+        "visibleFrom" : "2020-03-01",
+        "visibleTo" : "2021-12-31",
+        "descriptions" : [ {
+          "description" : "As a result of local government measures and guidelines put in place by services providers – including hotels and ancillaries – guests may find that some facilities or services are not available. Please visit https://corporate.hotelbeds.com/hotelbeds-update-covid-19 for further information."
+        } ]
+      } ],
+      "redeemInfo" : {
+        "type" : "PRINTED",
+        "directEntrance" : false,
+        "comments" : [ {
+          "description" : "Printed Voucher. Print and bring the voucher to enjoy the activity. "
+        } ]
+      },
+      "routes" : [ ],
+      "scheduling" : {
+        "duration" : {
+          "value" : 2.5,
+          "metric" : "HOURS",
+          "type" : "AFTER"
+        }
+      },
+      "segmentationGroups" : [ {
+        "code" : 16,
+        "name" : "Services",
+        "segments" : [ {
+          "code" : 956,
+          "name" : "Safe2Stay"
+        } ]
+      }, {
+        "code" : 1,
+        "name" : "Categories",
+        "segments" : [ {
+          "code" : 9,
+          "name" : "Zoo, Aquarium & Nature"
+        } ]
+      }, {
+        "code" : 3,
+        "name" : "Recommended activity for",
+        "segments" : [ {
+          "code" : 777,
+          "name" : "Couples"
+        }, {
+          "code" : 780,
+          "name" : "Youth"
+        }, {
+          "code" : 779,
+          "name" : "Senior"
+        }, {
+          "code" : 778,
+          "name" : "Families"
+        } ]
+      }, {
+        "code" : 2,
+        "name" : "Duration",
+        "segments" : [ {
+          "code" : 773,
+          "name" : "Half-day morning"
+        } ]
+      } ],
+      "activityFactsheetType" : "ACTIVITIES",
+      "activityCode" : "E-E10-IN-CCUL5",
+      "modalityCode" : "HB-HPEN",
+      "modalityName" : "General tour",
+      "contentId" : "34616",
+      "description" : "In this tour one walks through the medical college, Kolkata University, Mirzapur street eateries, Sanskrit college, Old bookshops and eating houses and college street market to understand the life of the youth.<br />\n<br />\nThis visit to College Street provides an interesting insight into the social and intellectual concerns that shaped India, culminating in the struggle for independence from British rule.<br />\n<br />\n<strong>Others</strong><br />\nTour times subject to change.",
+      "lastUpdate" : "2021-11-03",
+      "advancedTips" : [ ],
+      "countries" : [ {
+        "code" : "IN",
+        "name" : "India",
+        "destinations" : [ {
+          "code" : "CCU",
+          "name" : "Kolkata-Calcutta"
+        } ]
+      } ],
+      "highligths" : [ ],
+      "language" : "en"
+    },
+    "order" : 7,
+    "amountsFrom" : [ {
+      "paxType" : "ADULT",
+      "ageFrom" : 0,
+      "ageTo" : 999,
+      "amount" : 111.12,
+      "boxOfficeAmount" : 137.05,
+      "mandatoryApplyAmount" : false
+    } ],
+    "currencyName" : "Euro",
+    "country" : {
+      "code" : "IN",
+      "name" : "India",
+      "destinations" : [ {
+        "code" : "CCU",
+        "name" : "Kolkata-Calcutta"
+      } ]
+    }
+  } ],
+  "summaryLog" : "activities=7"
+}
+

@@ -1,0 +1,7 @@
+===========Credentials(Book_62399782)=========
+duffel_live_6YGY02b60GEIImviWyIMEghuXpW1rachnhB6f1bfaBD
+===========Request(Book_62399782)=========
+{"data":{"selected_offers":["off_0000AYVzXqPk3FNzfvAgIV"],"payments":[{"type":"balance","currency":"USD","amount":"2639.20"}],"passengers":[{"phone_number":"9430866085","email":"techieakm@gmail.com","born_on":"2004-08-08","title":"mr","gender":"m","family_name":"Amit Kumar","given_name":"Amit Kumar","id":"pas_0000AYVzXasDpaf1TcNCT5"}]}}
+===========Response(Book_62399782)=========
+{"meta":{"status":422,"request_id":"F3lb8qVuOB991p0BQbsh"},"errors":[{"type":"validation_error","title":"Invalid phone number","source":{"pointer":"/passengers/0/phone_number","field":"phone_number"},"message":"Field 'phone_number' is invalid","documentation_url":"https://duffel.com/docs/api/overview/errors","code":"invalid_phone_number"}]}
+

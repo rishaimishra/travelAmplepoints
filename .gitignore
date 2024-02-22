@@ -1,12 +1,8 @@
 /node_modules
 /public/hot
 /public/storage
-/public/admin
-/public/site
-/public/travel
 /storage/*.key
 /vendor
-app.zip
 .env
 .env.backup
 .phpunit.result.cache

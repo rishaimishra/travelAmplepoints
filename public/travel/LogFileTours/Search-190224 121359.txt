@@ -1,0 +1,24 @@
+===========Credentials(Search)=========
+hotelbeds_key=88013eb226283db1bd72df7fb137e9cf
+ hotelbeds_secret=e9c8421e54
+ endpoint=https://api.test.hotelbeds.com/activity-api/3.0
+===========Request(Search)=========
+{"filters":[{"searchFilterItems":[{"type":"destination","value":"DEL"}]}],"from":"2024-02-22","to":"2024-02-22"}
+===========Response(Search)=========
+{
+  "operationId" : "b851dd09f43eeabf",
+  "pagination" : {
+    "itemsPerPage" : 100,
+    "page" : 1,
+    "totalItems" : 0
+  },
+  "auditData" : {
+    "processTime" : 0.0,
+    "time" : "2024-02-19T13:14:07.675Z",
+    "serverId" : "blank",
+    "environment" : "blank"
+  },
+  "activities" : [ ],
+  "summaryLog" : "activities=0"
+}
+

@@ -1,0 +1,11 @@
+===========Credentials(GetHotelList)=========
+hotelbeds_key=273483fe031816b44f248428a028d28c
+ hotelbeds_secret=bee7c61cbf
+ endpoint=https://api.test.hotelbeds.com/hotel-api/1.0
+===========Request(GetHotelList)=========
+{"language":"ENG","currency":"USD","stay":{"checkIn":"2023-08-15","checkOut":"2023-08-17"},"occupancies":[{"rooms":1,"adults":"2","children":"1","paxes":[{"type":"AD","age":40},{"type":"AD","age":41},{"type":"CH","age":"4"}]}],"hotels":{"hotel":["87321","84681","84679","84678","83865","83333","80328","72285","69159","54321","54320","54319","51236","50404","50403","49890","49889","49888","49674","48278","46977","43509","38205","16961","16917","16914","16402","16386","16192","16165","16148","13717","13716","13715","13610","13609","13605","13602","13251","13250","12992","12984","12983","12982","12796","12795","12792","12791","12788","12744","12743"]},"filter":{"packaging":true},"boards":{"included":true,"board":["RO","BB","AI","HB","FB","RR","AB","DB","GB","IB","LB"]}}
+===========Response(GetHotelList)=========
+{
+    "error": "Quota exceeded"
+}
+

@@ -1,0 +1,11 @@
+===========Credentials(BookActivity)=========
+hotelbeds_key=88013eb226283db1bd72df7fb137e9cf
+ hotelbeds_secret=e9c8421e54
+ endpoint=https://api.test.hotelbeds.com/activity-api/3.0
+===========Request(BookActivity)=========
+{"language":"en","clientReference":"650C937EC33D6","holder":{"title":"mr","name":"Amit","surname":"Kumar","email":"bhai.kumaramit@gmail.com","address":"Samastipur","zipCode":"848101","country":"IN","mailing":true,"mailUpdDate":"2023-09-30","telephones":["+916201357410"]},"activities":[{"answers":[{"question":{"code":"HOTEL_NAME","text":"Pleaseadvisethenameofyourhotel","required":true},"answer":"oyohotel"}],"preferedLanguage":"en","serviceLanguage":"en","rateKey":"sk1e6ckq0bprn6r2doa6rhi5np","from":"2023-09-30","to":"2023-09-30","paxes":[{"age":"19","type":"ADULT","name":"Amit","surname":"Kumar"}]}]}
+===========Response(BookActivity)=========
+{
+    "error": "Request signature verification failed"
+}
+

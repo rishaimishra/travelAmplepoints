@@ -1,0 +1,21 @@
+===========Credentials(BookActivity_650D3555E5334)=========
+hotelbeds_key=88013eb226283db1bd72df7fb137e9cf
+ hotelbeds_secret=e9c8421e54
+ endpoint=https://api.test.hotelbeds.com/activity-api/3.0
+===========Request(BookActivity_650D3555E5334)=========
+{"language":"en","clientReference":"650D3555E5334","holder":{"title":"mr","name":"Amit","surname":"Kumar","email":"techieakm@gmail.com","address":"Samastipur Bihar India","zipCode":"848101","country":"IN","mailing":true,"mailUpdDate":"2023-09-25","telephones":["09430866085"]},"activities":[{"answers":[{"question":{"code":"HOTEL_NAME","text":"Pleaseadvisethenameofyourhotel","required":true},"answer":"oyohotel"}],"preferedLanguage":"en","serviceLanguage":"en","rateKey":"d7d61odiirc5jcmd95acb2212s","from":"2023-09-25","to":"2023-09-25","paxes":[{"age":"19","type":"ADULT","name":"Amit","surname":"Kumar"}]}]}
+===========Response(BookActivity_650D3555E5334)=========
+{
+  "operationId" : "83ec977f5b9a6d26",
+  "errors" : [ {
+    "code" : "E_REQUEST_INVALID",
+    "text" : "There was an error while processing your confirm request. The rateKey [ d7d61odiirc5jcmd95acb2212s ] id you have provided is either incorrect or it does not exist. Please review the information provided and re-send your request."
+  } ],
+  "auditData" : {
+    "processTime" : 0.0,
+    "time" : "2023-09-22T08:33:59.142Z",
+    "serverId" : "blank",
+    "environment" : "blank"
+  }
+}
+

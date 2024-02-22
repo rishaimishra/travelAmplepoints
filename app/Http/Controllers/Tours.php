@@ -45,6 +45,7 @@ class Tours extends Controller
 		public function SearchRequest(Request $request) 
 		{
 			$request= $request->input();
+			// dd($request['city_code']);
 			
 			  $checkIn = str_replace('/', '-', $request['travel_date']);
 			  $checkIn=date('Y-m-d',strtotime($checkIn));
@@ -56,6 +57,8 @@ class Tours extends Controller
 			$dest[] =array('type'=>'destination','value'=>$request['city_code']); 
 			$desti[] =array('searchFilterItems'=>$dest);
 			$postdata =array('filters'=>$desti,'from'=>$checkIn,'to'=>$checkIn);
+
+			// dd($actionUrl,$postdata,$this->headerData);
 						
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, $actionUrl);
@@ -77,6 +80,7 @@ class Tours extends Controller
 			$totalItems = $pagination['totalItems'];
 		
 			$activity_results = $Response_Arr['activities'];
+			// dd($activity_results);
 		
 			$Total_LowestRate = 0;
 		
@@ -225,8 +229,8 @@ class Tours extends Controller
 			$status = Crud_Model::insertData('search_results_hotelbeds_activity',$data);
 		
 			}
-			
-			$this->createLanding($destinationCode,$data['currency'],$data['price'],$search_id,$data['thumbNailUrl']);
+			// dd($destinationCode,$data['currency'],$data['price']);
+			$this->createLanding(@$destinationCode,$data['currency'],$data['price'],$search_id,$data['thumbNailUrl']);
 		
 			$data = array('totalItems' => $totalItems);
 			echo json_encode($data);

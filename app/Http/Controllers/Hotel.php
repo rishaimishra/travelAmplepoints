@@ -50,6 +50,7 @@ class Hotel extends Controller
 // GetLocations Start   
 	public function GetLocations(Request $request){
 		$term = trim($request['term']);
+		// dd($term);
 
 		if($term!=''){
 			/*$header = array("Content-Type: application/json;charset=utf-8","accept-encoding: gzip,deflate,br","Cache-Control: no-cache","Pragma: no-cache"); 
@@ -71,6 +72,7 @@ class Hotel extends Controller
 			$data =json_decode($contents,true);*/
 			
 			$res =DB::select("select * from hotelbeds_destinations WHERE LCASE(city_name) LIKE '".strtolower($term)."%' OR LCASE(city_code) LIKE '".strtolower($term)."'  limit 5");
+			// dd($res);
 			
 			//$data_arr =  array('zonegroup' => $data['destinationResultList'],'zone' => '','hotels' => '');
 		 }else{ $data_arr =  array('zonegroup' => '','zone' => '','hotels' => '');  }
@@ -79,6 +81,18 @@ class Hotel extends Controller
 		
 	}
 // GetLocations End
+
+
+
+
+
+
+
+
+
+
+
+
 
 // GetHotelList Start
 	public function GetHotelList(Request $request){		
@@ -104,7 +118,6 @@ class Hotel extends Controller
 		$checkOut=date('Y-m-d',strtotime($checkOut));
 
    		$actionUrl=$this->endpoint.'/hotels';
-		dd($actionUrl);
 		$adultArr =json_decode($adults,true);  
 		$childArr = json_decode($childs,true); 	
 		$childAgeArr =json_decode($childAge,true); 
@@ -161,6 +174,7 @@ class Hotel extends Controller
 		$res=json_decode($response,true);
 		$PropertyCount=$res['PropertyCount'];
 		$hotel=$res['hotel'];
+		// dd($res);
 		
 		
 		
@@ -178,7 +192,7 @@ class Hotel extends Controller
                      'currency'=>'USD', 
 	                 'stay'=>array('checkIn'=>$checkIn,'checkOut'=>$checkOut),  //,'shiftDays'=>0
 	                 'occupancies'=>$occupancies,
-                     'hotels'=>$hotel,
+                     'hotels'=>$hotel,//['893849','893839']
 					 'filter'=>array('packaging'=>true),
 					 'boards'=>$boardarr,
 					 //'filter'=>array('accommodations'=>$accommodationsArr)
@@ -200,11 +214,13 @@ class Hotel extends Controller
 	curl_close($ch);	
 		$this->createLogFile('GetHotelList',json_encode($postdata),$response);		
     $results =json_decode($response,true);	
+    dd($results,$actionUrl,$postdata,$this->headerData);
 	
 	// $this->createLogFile('Search',json_encode($postdata).$endpoint.'('.$size.'--sendHotels-'.$totalsendhotel.')'.'---'.'(getHotels-'.count($hotelData).')',$response);
-	
+
 	$data=array();
 	if(isset($results['hotels']['hotels'])){
+		// dd(1270);
 		$hotelData =$results['hotels']['hotels']; 
 		$dd=count($hotelData);
 		$status =200; 
@@ -297,7 +313,9 @@ class Hotel extends Controller
 		  $api_currency=$hotelData[$i]['currency'];
 
 		 $imgage_path=$this->checkThumbNail('http://photos.hotelbeds.com/giata/'.$obj->img_path);
+		 dd(12);
 		 if($lowRate<100000){
+		 	dd(1);
 			 $data=array(
 					'EANHotelID'=>$hotel_id,
 					'Name'=>$this->clean($hotelData[$i]['name']),
@@ -371,8 +389,10 @@ class Hotel extends Controller
 		 $this->createLanding($regionid,$data['currency'],$data['lowRate'],$search_Session_Id,$data['thumbNailUrl']);
 		 
 		
-	}
-	else{ $isFind='No';
+	} //end if of  isset($results['hotels']['hotels'])
+	else{
+		// dd("no 2nd api work");
+	 $isFind='No';
 		$status =400; 
 	  }	
 
@@ -387,11 +407,23 @@ class Hotel extends Controller
 		 $pageCount =ceil($PropertyCount/$dd);
 		}
 	  
-	  $data =array('isFind'=>$isFind,'pageCount'=>$pageCount,'total_records'=>$PropertyCount,'search_Session_Id'=>$search_Session_Id);
+	  $data =array('isFind'=>$isFind,'pageCount'=>$pageCount,'total_records'=>$PropertyCount,'search_Session_Id'=>$search_Session_Id,'teststatus'=>$status);
 	  echo json_encode($data);	 
 	} 
 // GetHotelList List End
 	
+
+
+
+
+
+
+
+
+
+
+
+
 // Show_Hotels Start
 	public function Show_Hotels(Request $request){
 		$limit =10;
@@ -496,6 +528,23 @@ class Hotel extends Controller
 	}  
 // Show_hotel() End
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // getControls Start	
 	public function getControls(Request $request){
 		
@@ -1212,24 +1261,24 @@ class Hotel extends Controller
 // clean Start	
 	private function clean($str){
 		  $utf8 = array(
-    '/[ï¿½ï¿½ï¿½ï¿½ï¿½]/u'   =>   'a',
-    '/[ï¿½ï¿½ï¿½ï¿½ï¿½]/u'    =>   'A',
-    '/[ï¿½ï¿½ï¿½ï¿½]/u'     =>   'I',
-    '/[ï¿½ï¿½ï¿½ï¿½]/u'     =>   'i',
-    '/[ï¿½ï¿½ï¿½ï¿½]/u'     =>   'e',
-    '/[ï¿½ï¿½ï¿½ï¿½]/u'     =>   'E',
-    '/[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]/u'   =>   'o',
-    '/[ï¿½ï¿½ï¿½ï¿½ï¿½]/u'    =>   'O',
-    '/[ï¿½ï¿½ï¿½ï¿½]/u'     =>   'u',
-    '/[ï¿½ï¿½ï¿½ï¿½]/u'     =>   'U',
-    '/ï¿½/u'           =>   'c',
-    '/ï¿½/u'           =>   'C',
-    '/ï¿½/u'           =>   'n',
-    '/ï¿½/u'           =>   'N',
-    '/[\ï¿½&~#"\'{(\[|`_\^\)ï¿½+=}*;:!ï¿½?%ï¿½,;]/u'    =>   '', //J'enleve les caracteres speciaux
-    '/ï¿½/u'           =>   '-', // UTF-8 hyphen to "normal" hyphen
-    '/[ï¿½ï¿½ï¿½ï¿½ï¿½]/u'    =>   ' ', // Literally a single quote
-    '/[ï¿½ï¿½ï¿½ï¿½ï¿½]/u'    =>   ' ', // Double quote
+    '/[áàâãªä]/u'   =>   'a',
+    '/[ÁÀÂÃÄ]/u'    =>   'A',
+    '/[ÍÌÎÏ]/u'     =>   'I',
+    '/[íìîï]/u'     =>   'i',
+    '/[éèêë]/u'     =>   'e',
+    '/[ÉÈÊË]/u'     =>   'E',
+    '/[óòôõºö]/u'   =>   'o',
+    '/[ÓÒÔÕÖ]/u'    =>   'O',
+    '/[úùûü]/u'     =>   'u',
+    '/[ÚÙÛÜ]/u'     =>   'U',
+    '/ç/u'           =>   'c',
+    '/Ç/u'           =>   'C',
+    '/ñ/u'           =>   'n',
+    '/Ñ/u'           =>   'N',
+    '/[\²&~#"\'{(\[|`_\^\)°+=}*;:!§?%’,;]/u'    =>   '', //J'enleve les caracteres speciaux
+    '/–/u'           =>   '-', // UTF-8 hyphen to "normal" hyphen
+    '/[’‘‹›‚]/u'    =>   ' ', // Literally a single quote
+    '/[“”«»„]/u'    =>   ' ', // Double quote
     '/ /u'           =>   ' ', // nonbreaking space (equiv. to 0x160)
     );
   // $str = preg_replace(array_keys($utf8), array_values($utf8), $str);

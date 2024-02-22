@@ -1,0 +1,7 @@
+===========Credentials(form_submit_data563971640)=========
+duffel_live_6YGY02b60GEIImviWyIMEghuXpW1rachnhB6f1bfaBD
+===========Request(form_submit_data563971640)=========
+{"_token":"2x9psFv1zgiySY3MlsPdjXIw0CCOyt5L5W9LkJ6h","OfferId":"off_0000AYW1BpKekeRREHpvoY","id":"7468","passenger":{"adult":{"title":["mr","mr","mr"],"first_name":["Hiren","Alpesh","Jaymeen"],"last_name":["Buhecha","Prajapati","Darji"],"dob":[" 1993\/14\/07","2004\/08\/08 ","2004\/08\/08 "],"gender":["m","m","m"],"id":["ABCDEFGHIJKLM01","ABCDEFGHIJKLM03","ABCDEFGHIJKLM03"]},"email":"hirenbuhecha@gmail.com","phone":"9898088759","address":"Las Vegas","city":"Las Vegas","country":"UNITED STATES"},"payment_type":"flutterwave"}
+===========Response(form_submit_data563971640)=========
+
+

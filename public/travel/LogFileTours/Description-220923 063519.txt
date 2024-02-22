@@ -1,0 +1,534 @@
+===========Credentials(Description)=========
+hotelbeds_key=88013eb226283db1bd72df7fb137e9cf
+ hotelbeds_secret=e9c8421e54
+ endpoint=https://api.test.hotelbeds.com/activity-api/3.0
+===========Request(Description)=========
+{"code":"E-E10-IN-DEL3","from":"2023-09-25","to":"2023-09-25","language":"en","paxes":[{"age":30}]}
+===========Response(Description)=========
+{
+  "operationId" : "146530d04f9affcb",
+  "auditData" : {
+    "processTime" : 0.0,
+    "time" : "2023-09-22T08:35:19.411Z",
+    "serverId" : "blank",
+    "environment" : "blank"
+  },
+  "activity" : {
+    "activityCode" : "IN-DEL3",
+    "country" : {
+      "code" : "IN",
+      "name" : "India",
+      "destinations" : [ {
+        "code" : "DEL",
+        "name" : "Delhi and NCR"
+      } ]
+    },
+    "operationDays" : [ {
+      "code" : "MON",
+      "name" : "Monday"
+    }, {
+      "code" : "TUE",
+      "name" : "Tuesday"
+    }, {
+      "code" : "WED",
+      "name" : "Wednesday"
+    }, {
+      "code" : "THU",
+      "name" : "Thursday"
+    }, {
+      "code" : "FRI",
+      "name" : "Friday"
+    }, {
+      "code" : "SAT",
+      "name" : "Saturday"
+    }, {
+      "code" : "SUN",
+      "name" : "Sunday"
+    } ],
+    "modalities" : [ {
+      "code" : "1474869708#TOUR1",
+      "name" : "Pick-up from Delhi City Hotels",
+      "duration" : {
+        "value" : 1.0,
+        "metric" : "DAYS"
+      },
+      "questions" : [ ],
+      "comments" : [ {
+        "type" : "CONTRACT_REMARKS",
+        "text" : "Meeting point: Hotel  // End point: Same as PickUp // Duration: 4 hours // Inclusions: Transport.Guide. Cycling and refreshments //Exclusions:Tipping or any other meal which is not mentioned\n// Mandatory instructions: Hotel Name // Supplier name: Distinct Destinations Private // Supplier emergency phone: 00 91 9818419730 // Voucher type: Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity. // Voucher validity:Service date // Recommendations: Museums are closed on Mondays. Children require an adult aged 16 or above to purchase tickets on their behalf, and must be accompanied by this adult when entering the park. All guests under the same reservation must enter the park together. Tickets must be used on the specific day selected. Tickets can only be used once. Re-entry not allowed. Passport is required on the travel date."
+      } ],
+      "supplierInformation" : {
+        "name" : "HOTELBEDS SPAIN, S.L.U",
+        "vatNumber" : "ESB28916765"
+      },
+      "providerInformation" : {
+        "name" : "DISTINCT DESTINATIONS PVT LTD "
+      },
+      "destinationCode" : "DEL",
+      "contract" : {
+        "incomingOffice" : 270,
+        "code" : 1785,
+        "name" : "IN-DEL3"
+      },
+      "languages" : [ ],
+      "amountsFrom" : [ {
+        "paxType" : "ADULT",
+        "ageFrom" : 0,
+        "ageTo" : 999,
+        "amount" : 63.29,
+        "boxOfficeAmount" : 78.48,
+        "mandatoryApplyAmount" : false
+      } ],
+      "rates" : [ {
+        "rateCode" : "STANDARD",
+        "rateClass" : "NOR",
+        "name" : ".",
+        "freeCancellation" : false,
+        "rateDetails" : [ {
+          "rateKey" : "urnraj8i5mvdjpln4rlk12b92",
+          "operationDates" : [ {
+            "from" : "2023-09-25",
+            "to" : "2023-09-25",
+            "cancellationPolicies" : [ {
+              "dateFrom" : "2023-09-24T00:00:00.000Z",
+              "amount" : 63.2900
+            } ]
+          } ],
+          "languages" : [ {
+            "code" : "ENG",
+            "description" : "English"
+          } ],
+          "sessions" : [ {
+            "code" : "06:00",
+            "name" : "06:00"
+          } ],
+          "minimumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "maximumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "totalAmount" : {
+            "amount" : 63.29,
+            "boxOfficeAmount" : 78.48,
+            "mandatoryApplyAmount" : false
+          },
+          "paxAmounts" : [ {
+            "paxType" : "ADULT",
+            "ageFrom" : 0,
+            "ageTo" : 999,
+            "amount" : 63.29,
+            "boxOfficeAmount" : 78.48,
+            "mandatoryApplyAmount" : false
+          } ],
+          "agencyCommission" : {
+            "percentage" : 0.00,
+            "amount" : 0.00,
+            "vatPercentage" : 0,
+            "vatAmount" : 0.00
+          }
+        } ]
+      } ],
+      "amountUnitType" : "PAX",
+      "uniqueIdentifier" : "1474869708"
+    }, {
+      "code" : "1853395889#TOUR2",
+      "name" : "Pick-up from NCR  Hotels",
+      "duration" : {
+        "value" : 1.0,
+        "metric" : "DAYS"
+      },
+      "questions" : [ ],
+      "comments" : [ {
+        "type" : "CONTRACT_REMARKS",
+        "text" : "Meeting point: Hotel // End point: Same as PickUp // Duration: 4 hours // Inclusions: Transport.Guide. Cycling and refreshments //Exclusions:Tipping or any other meal which is not mentioned\n// Mandatory instructions: Hotel Name // Supplier name: Distinct Destinations Private // Supplier emergency phone: 00 91 9818419730 // Voucher type: Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity. // Voucher validity:Service date // Recommendations: Museums are closed on Mondays. Children require an adult aged 16 or above to purchase tickets on their behalf, and must be accompanied by this adult when entering the park. All guests under the same reservation must enter the park together. Tickets must be used on the specific day selected. Tickets can only be used once. Re-entry not allowed. Passport is required on the travel date."
+      } ],
+      "supplierInformation" : {
+        "name" : "HOTELBEDS SPAIN, S.L.U",
+        "vatNumber" : "ESB28916765"
+      },
+      "providerInformation" : {
+        "name" : "DISTINCT DESTINATIONS PVT LTD "
+      },
+      "destinationCode" : "DEL",
+      "contract" : {
+        "incomingOffice" : 270,
+        "code" : 1786,
+        "name" : "IN-DEL3    NCR"
+      },
+      "languages" : [ ],
+      "amountsFrom" : [ {
+        "paxType" : "ADULT",
+        "ageFrom" : 0,
+        "ageTo" : 999,
+        "amount" : 63.29,
+        "boxOfficeAmount" : 78.48,
+        "mandatoryApplyAmount" : false
+      } ],
+      "rates" : [ {
+        "rateCode" : "STANDARD",
+        "rateClass" : "NOR",
+        "name" : ".",
+        "freeCancellation" : false,
+        "rateDetails" : [ {
+          "rateKey" : "ku3vhfdmkiq5nnhfqbnvms9c6r",
+          "operationDates" : [ {
+            "from" : "2023-09-25",
+            "to" : "2023-09-25",
+            "cancellationPolicies" : [ {
+              "dateFrom" : "2023-09-24T00:00:00.000Z",
+              "amount" : 63.2900
+            } ]
+          } ],
+          "languages" : [ {
+            "code" : "ENG",
+            "description" : "English"
+          } ],
+          "sessions" : [ {
+            "code" : "06:00",
+            "name" : "06:00"
+          } ],
+          "minimumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "maximumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "totalAmount" : {
+            "amount" : 63.29,
+            "boxOfficeAmount" : 78.48,
+            "mandatoryApplyAmount" : false
+          },
+          "paxAmounts" : [ {
+            "paxType" : "ADULT",
+            "ageFrom" : 0,
+            "ageTo" : 999,
+            "amount" : 63.29,
+            "boxOfficeAmount" : 78.48,
+            "mandatoryApplyAmount" : false
+          } ],
+          "agencyCommission" : {
+            "percentage" : 0.00,
+            "amount" : 0.00,
+            "vatPercentage" : 0,
+            "vatAmount" : 0.00
+          }
+        } ]
+      } ],
+      "amountUnitType" : "PAX",
+      "uniqueIdentifier" : "1853395889"
+    } ],
+    "currencyName" : "Euro",
+    "amountsFrom" : [ {
+      "paxType" : "ADULT",
+      "ageFrom" : 0,
+      "ageTo" : 999,
+      "amount" : 63.29,
+      "boxOfficeAmount" : 78.48,
+      "mandatoryApplyAmount" : false
+    } ],
+    "content" : {
+      "name" : "Cycle Tour of Old or New Delhi",
+      "detailedInfo" : [ ],
+      "featureGroups" : [ {
+        "groupCode" : "MATERIAL",
+        "included" : [ {
+          "featureType" : "EQUIPINCL",
+          "description" : "Equipment"
+        } ]
+      }, {
+        "groupCode" : "UNKNOWN",
+        "excluded" : [ {
+          "featureType" : "OTHERNOT",
+          "description" : "Any additional expenses which are not included or detailed in the programme."
+        }, {
+          "featureType" : "OTHERNOT",
+          "description" : "Gratuities"
+        } ],
+        "included" : [ {
+          "featureType" : "OTHERINCL",
+          "description" : "Guide"
+        } ]
+      }, {
+        "groupCode" : "TRANSPORT",
+        "included" : [ {
+          "featureType" : "TRANSPORTINCL",
+          "description" : "Transport"
+        } ]
+      } ],
+      "guidingOptions" : {
+        "groupType" : "PRIVATE",
+        "guideType" : "TOURGUIDE",
+        "included" : true
+      },
+      "importantInfo" : [ "Please make sure you answer all the mandatory questions during the booking process. Passport or ID are required <br/>Children must be accompanied by an adult.  " ],
+      "location" : {
+        "endPoints" : [ {
+          "type" : "Same",
+          "description" : "Same as Starting Point"
+        } ],
+        "startingPoints" : [ {
+          "type" : "HOTEL_PICKUP",
+          "meetingPoint" : {
+            "type" : "ADDRESS",
+            "country" : {
+              "code" : "IN",
+              "name" : "India",
+              "destinations" : [ {
+                "code" : "DEL",
+                "name" : "Delhi and NCR"
+              } ]
+            },
+            "description" : "Cycle Tour of Old or New Delhi"
+          },
+          "pickupInstructions" : [ { } ]
+        } ]
+      },
+      "media" : {
+        "images" : [ {
+          "visualizationOrder" : 1,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/S/32729_4.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/XL/32729_4.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/B/32729_4.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/LPP/32729_4.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/L/32729_4.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/M/32729_4.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 2,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/S/32729_3.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/XL/32729_3.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/B/32729_3.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/LPP/32729_3.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/L/32729_3.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/M/32729_3.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 3,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/S/32729_2.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/XL/32729_2.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/B/32729_2.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/LPP/32729_2.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/L/32729_2.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/M/32729_2.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 4,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/S/32729_1.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/XL/32729_1.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/B/32729_1.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/LPP/32729_1.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/L/32729_1.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/32729/ENG/M/32729_1.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        } ]
+      },
+      "notes" : [ {
+        "dateFrom" : "2020-03-01",
+        "dateTo" : "2021-12-31",
+        "visibleFrom" : "2020-03-01",
+        "visibleTo" : "2021-12-31",
+        "descriptions" : [ {
+          "description" : "As a result of local government measures and guidelines put in place by services providers – including hotels and ancillaries – guests may find that some facilities or services are not available. Please visit https://corporate.hotelbeds.com/hotelbeds-update-covid-19 for further information."
+        } ]
+      } ],
+      "redeemInfo" : {
+        "type" : "VOCUHERLESS",
+        "directEntrance" : false,
+        "comments" : [ {
+          "description" : "Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity. "
+        } ]
+      },
+      "routes" : [ ],
+      "scheduling" : {
+        "duration" : {
+          "value" : 4.0,
+          "metric" : "HOURS",
+          "type" : "AFTER",
+          "description" : "Approximately"
+        }
+      },
+      "segmentationGroups" : [ {
+        "code" : 16,
+        "name" : "Services",
+        "segments" : [ {
+          "code" : 946,
+          "name" : "Private"
+        }, {
+          "code" : 956,
+          "name" : "Safe2Stay"
+        } ]
+      }, {
+        "code" : 2,
+        "name" : "Duration",
+        "segments" : [ {
+          "code" : 773,
+          "name" : "Half-day morning"
+        } ]
+      }, {
+        "code" : 1,
+        "name" : "Categories",
+        "segments" : [ {
+          "code" : 4,
+          "name" : "Art & culture"
+        } ]
+      } ],
+      "activityFactsheetType" : "ACTIVITIES",
+      "activityCode" : "E-E10-IN-DEL3",
+      "modalityCode" : "NRF-MPEN1",
+      "modalityName" : "Non-refundable Offer – Pick up from Delhi city hotels",
+      "contentId" : "32729",
+      "description" : "You are invited to become a part of the unique mix of colours, smells, sounds, tastes and unforgettable images. Take the tour and experience the city of Delhi with all your senses. The Delhi By Cycle is one of the wonderful experience to explore the streets of Delhi. With five fascinating routes - three in Old Delhi and two in New Delhi, covering the most interesting, intense, historical and beautiful areas of Old and New Delhi. Each of the tours is beautiful and interesting in its own way, with a unique focus, taking you to the hidden wonders of the city.<br />\n<br />\n<br />\n<strong>Delhi by Cycle (Shah Jahan Tour – Old Delhi)</strong><br />\nAt the time of its construction in the 17th century, Shahjanabad or Old Delhi was arguably the most prosperous and beautiful city in the world. Cycle round its narrow alleys held together with great big meshes of electric cables and infused with the smell of brewing tea and simmering breakfast curry. It is a mind boggling mélange of the past and the present. Cycle past the Red Fort, Jama Masjid, visit the Spice Market and enjoy the tranquil Civil Lines, the former residential area of British Delhi which is a sharp contrast to the hectic Shahjanabad. Breakfast is at Karims, an Old Delhi institution. Be aware, Vegetarian choices are very limited at Karim’s.<br />\n<br />\nOR<br />\n<br />\n<strong>Delhi by Cycle (Raj Tour - New Delhi)</strong><br />\nThis tour is a ride down through Delhi’s more recent history. Starting from the narrow lanes of Old Delhi, passing through quaint old quarters of government employees; guests almost magically land in Lutyen’s Delhi with its iconic Colonial Buildings such as the Presidential Palace and India Gate encircled by spotlessly clean, tree-lined roads. Breakfast is at Bengali Sweet House famous for its North Indian street food.<br />\n<br />\nOR<br />\n<br />\n<strong>New Delhi Cycling Tour</strong><br />\nBicycle on the lanes of Connaught Place, cross the  India Gate and the President House- Rashtrapati Bhawan. You will be surely amazed to see the expanse of the Bhawan and its grand surroundings. After the tour, enjoy a scrumptious breakfast with delicious regional delicacies from one of the many State Bhawans. <br />\n<br />\nOR<br />\n<br />\n<strong>Nizamuddin tour (New Delhi)</strong><br />\nIt's a high spiritual area named Nizamuddin, named after the famous Sufi saint. An urban village right in the heart of Delhi. On this tour we visit another urban village, Kotla Mubarak. Together with the magnificent Humayun's Tomb and beautiful Lodhi Garden the Nizamuddin tour reflects the periods when Delhi was ruled by the Sultans, Mughals and British and finally independency after the Partition in 1947.The tour is 15 km long. We are proud to have partnered with the Nizamuddin settlement based NGO - Hope Project, for this tour. Hope supports the local community of Nizamuddin in health care and education.<br />\n<br />\nOR<br />\n<br />\n<strong>Yamuna tour (Old Delhi)</strong><br />\nThe route is an ode to this river that has been a silent witness to Delhi’s history and is now a recurrent victim of its excesses. Starting from the little lanes of Shahjahanabad, while the city is still sleepy in its proverbial socks-passing along the magnificently formidable walls of the Red Fort we find ourselves on the meditative quiet banks of the Yamuna at Nigambodh Ghat. A boat-ride along its shores – migratory birds circling above the calm waters - unravels the ritualistic devotion with which the Hindus treat the historic river.<br />\n<br />\n<strong>Languages</strong><br />\nEnglish<br />\n<br />\n<strong>Others</strong><br />\nPlease note: During the summer season (April-September), the Yamuna tour does not include the boat ride due to the water condition. The Yamuna tour will still include a stop at the riverbank and a visit to the nearby cow shelter.",
+      "lastUpdate" : "2020-10-06",
+      "advancedTips" : [ ],
+      "countries" : [ {
+        "code" : "IN",
+        "name" : "India",
+        "destinations" : [ {
+          "code" : "DEL",
+          "name" : "Delhi and NCR"
+        } ]
+      } ],
+      "highligths" : [ ],
+      "language" : "en"
+    },
+    "order" : 6,
+    "name" : "Cycle Tour of Old or New Delhi",
+    "currency" : "EUR",
+    "code" : "E-E10-IN-DEL3",
+    "type" : "TICKET"
+  }
+}
+

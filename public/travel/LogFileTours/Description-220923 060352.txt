@@ -1,0 +1,572 @@
+===========Credentials(Description)=========
+hotelbeds_key=88013eb226283db1bd72df7fb137e9cf
+ hotelbeds_secret=e9c8421e54
+ endpoint=https://api.test.hotelbeds.com/activity-api/3.0
+===========Request(Description)=========
+{"code":"E-E10-IN-DENEW","from":"2023-09-25","to":"2023-09-25","language":"en","paxes":[{"age":30}]}
+===========Response(Description)=========
+{
+  "operationId" : "2ff43353eefd9bb6",
+  "auditData" : {
+    "processTime" : 0.0,
+    "time" : "2023-09-22T08:03:52.699Z",
+    "serverId" : "blank",
+    "environment" : "blank"
+  },
+  "activity" : {
+    "activityCode" : "IN-DENEW",
+    "country" : {
+      "code" : "IN",
+      "name" : "India",
+      "destinations" : [ {
+        "code" : "DEL",
+        "name" : "Delhi and NCR"
+      } ]
+    },
+    "operationDays" : [ {
+      "code" : "MON",
+      "name" : "Monday"
+    }, {
+      "code" : "TUE",
+      "name" : "Tuesday"
+    }, {
+      "code" : "WED",
+      "name" : "Wednesday"
+    }, {
+      "code" : "THU",
+      "name" : "Thursday"
+    }, {
+      "code" : "FRI",
+      "name" : "Friday"
+    }, {
+      "code" : "SAT",
+      "name" : "Saturday"
+    }, {
+      "code" : "SUN",
+      "name" : "Sunday"
+    } ],
+    "modalities" : [ {
+      "code" : "1197218499#TOUR2",
+      "name" : "Pick-up from hotels in the NCR Area",
+      "duration" : {
+        "value" : 1.0,
+        "metric" : "DAYS"
+      },
+      "questions" : [ ],
+      "comments" : [ {
+        "type" : "CONTRACT_REMARKS",
+        "text" : "Meeting point: Hotel // End point: Same as PickUp // Duration: 4 hours // Inclusions: Transport. Guide. Monuments //Exclusions:Tipping or any other meal which is not mentioned\n// Mandatory instructions: Hotel Name // Supplier name: Distinct Destinations Private // Supplier emergency phone: 00 91 9818419730 // Voucher type: Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity. // Voucher validity:Service date // Recommendations: Museums are closed on Mondays. Children require an adult aged 16 or above to purchase tickets on their behalf, and must be accompanied by this adult when entering the park. All guests under the same reservation must enter the park together. Tickets must be used on the specific day selected. Tickets can only be used once. Re-entry not allowed. Passport is required on the travel date."
+      } ],
+      "supplierInformation" : {
+        "name" : "HOTELBEDS SPAIN, S.L.U",
+        "vatNumber" : "ESB28916765"
+      },
+      "providerInformation" : {
+        "name" : "DISTINCT DESTINATIONS PVT LTD "
+      },
+      "destinationCode" : "DEL",
+      "contract" : {
+        "incomingOffice" : 270,
+        "code" : 1762,
+        "name" : "IN-DENEW   NCR"
+      },
+      "languages" : [ ],
+      "amountsFrom" : [ {
+        "paxType" : "ADULT",
+        "ageFrom" : 0,
+        "ageTo" : 999,
+        "amount" : 82.76,
+        "boxOfficeAmount" : 102.62,
+        "mandatoryApplyAmount" : false
+      } ],
+      "rates" : [ {
+        "rateCode" : "STANDARD",
+        "rateClass" : "NOR",
+        "name" : ".",
+        "freeCancellation" : false,
+        "rateDetails" : [ {
+          "rateKey" : "8ev1j6olvt6scme6mtd7sfn621",
+          "operationDates" : [ {
+            "from" : "2023-09-25",
+            "to" : "2023-09-25",
+            "cancellationPolicies" : [ {
+              "dateFrom" : "2023-09-24T00:00:00.000Z",
+              "amount" : 82.7600
+            } ]
+          } ],
+          "languages" : [ ],
+          "sessions" : [ ],
+          "minimumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "maximumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "totalAmount" : {
+            "amount" : 82.76,
+            "boxOfficeAmount" : 102.62,
+            "mandatoryApplyAmount" : false
+          },
+          "paxAmounts" : [ {
+            "paxType" : "ADULT",
+            "ageFrom" : 0,
+            "ageTo" : 999,
+            "amount" : 82.76,
+            "boxOfficeAmount" : 102.62,
+            "mandatoryApplyAmount" : false
+          } ],
+          "agencyCommission" : {
+            "percentage" : 0.00,
+            "amount" : 0.00,
+            "vatPercentage" : 0,
+            "vatAmount" : 0.00
+          }
+        } ]
+      } ],
+      "amountUnitType" : "PAX",
+      "uniqueIdentifier" : "1197218499"
+    }, {
+      "code" : "644495222#TOUR3",
+      "name" : "Pick-up from hotels in Delhi",
+      "duration" : {
+        "value" : 1.0,
+        "metric" : "DAYS"
+      },
+      "questions" : [ ],
+      "comments" : [ {
+        "type" : "CONTRACT_REMARKS",
+        "text" : "Meeting point: Hotel // End point: Same as PickUp // Duration: 4 hours // Inclusions: Transport. Guide. Monuments //Exclusions:Tipping or any other meal which is not mentioned\n// Mandatory instructions: Hotel Name // Supplier name: Distinct Destinations Private // Supplier emergency phone: 00 91 9818419730 // Voucher type: Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity. // Voucher validity:Service date // Recommendations: Museums are closed on Mondays. Children require an adult aged 16 or above to purchase tickets on their behalf, and must be accompanied by this adult when entering the park. All guests under the same reservation must enter the park together. Tickets must be used on the specific day selected. Tickets can only be used once. Re-entry not allowed. Passport is required on the travel date."
+      } ],
+      "supplierInformation" : {
+        "name" : "HOTELBEDS SPAIN, S.L.U",
+        "vatNumber" : "ESB28916765"
+      },
+      "providerInformation" : {
+        "name" : "DISTINCT DESTINATIONS PVT LTD "
+      },
+      "destinationCode" : "DEL",
+      "contract" : {
+        "incomingOffice" : 270,
+        "code" : 1950,
+        "name" : "IN-DENEW"
+      },
+      "languages" : [ ],
+      "amountsFrom" : [ {
+        "paxType" : "ADULT",
+        "ageFrom" : 0,
+        "ageTo" : 999,
+        "amount" : 82.76,
+        "boxOfficeAmount" : 102.62,
+        "mandatoryApplyAmount" : false
+      } ],
+      "rates" : [ {
+        "rateCode" : "STANDARD",
+        "rateClass" : "NOR",
+        "name" : ".",
+        "freeCancellation" : false,
+        "rateDetails" : [ {
+          "rateKey" : "ev15gavfc17llveeoq76kq8jcm",
+          "operationDates" : [ {
+            "from" : "2023-09-25",
+            "to" : "2023-09-25",
+            "cancellationPolicies" : [ {
+              "dateFrom" : "2023-09-24T00:00:00.000Z",
+              "amount" : 82.7600
+            } ]
+          } ],
+          "languages" : [ {
+            "code" : "ENG",
+            "description" : "English"
+          } ],
+          "sessions" : [ {
+            "code" : "09:00",
+            "name" : "09:00"
+          } ],
+          "minimumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "maximumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "totalAmount" : {
+            "amount" : 82.76,
+            "boxOfficeAmount" : 102.62,
+            "mandatoryApplyAmount" : false
+          },
+          "paxAmounts" : [ {
+            "paxType" : "ADULT",
+            "ageFrom" : 0,
+            "ageTo" : 999,
+            "amount" : 82.76,
+            "boxOfficeAmount" : 102.62,
+            "mandatoryApplyAmount" : false
+          } ],
+          "agencyCommission" : {
+            "percentage" : 0.00,
+            "amount" : 0.00,
+            "vatPercentage" : 0,
+            "vatAmount" : 0.00
+          }
+        }, {
+          "rateKey" : "knfo8ms4l82sala8fd2qi8r251",
+          "operationDates" : [ {
+            "from" : "2023-09-25",
+            "to" : "2023-09-25",
+            "cancellationPolicies" : [ {
+              "dateFrom" : "2023-09-24T00:00:00.000Z",
+              "amount" : 82.7600
+            } ]
+          } ],
+          "languages" : [ {
+            "code" : "ENG",
+            "description" : "English"
+          } ],
+          "sessions" : [ {
+            "code" : "13:30",
+            "name" : "13:30"
+          } ],
+          "minimumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "maximumDuration" : {
+            "value" : 1.0,
+            "metric" : "DAYS"
+          },
+          "totalAmount" : {
+            "amount" : 82.76,
+            "boxOfficeAmount" : 102.62,
+            "mandatoryApplyAmount" : false
+          },
+          "paxAmounts" : [ {
+            "paxType" : "ADULT",
+            "ageFrom" : 0,
+            "ageTo" : 999,
+            "amount" : 82.76,
+            "boxOfficeAmount" : 102.62,
+            "mandatoryApplyAmount" : false
+          } ],
+          "agencyCommission" : {
+            "percentage" : 0.00,
+            "amount" : 0.00,
+            "vatPercentage" : 0,
+            "vatAmount" : 0.00
+          }
+        } ]
+      } ],
+      "amountUnitType" : "PAX",
+      "uniqueIdentifier" : "644495222"
+    } ],
+    "currencyName" : "Euro",
+    "amountsFrom" : [ {
+      "paxType" : "ADULT",
+      "ageFrom" : 0,
+      "ageTo" : 999,
+      "amount" : 82.76,
+      "boxOfficeAmount" : 102.62,
+      "mandatoryApplyAmount" : false
+    } ],
+    "content" : {
+      "name" : "New Delhi Tour - Half Day Private Tour",
+      "detailedInfo" : [ ],
+      "featureGroups" : [ {
+        "groupCode" : "MEAL",
+        "excluded" : [ {
+          "featureType" : "FOODNOT",
+          "description" : "Meal"
+        } ]
+      }, {
+        "groupCode" : "TICKET",
+        "included" : [ {
+          "featureType" : "ADMISSIONSINCL",
+          "description" : "Tickets"
+        } ]
+      }, {
+        "groupCode" : "DRINKS",
+        "excluded" : [ {
+          "featureType" : "DRINKSNOT",
+          "description" : "Drinks"
+        } ]
+      }, {
+        "groupCode" : "UNKNOWN",
+        "excluded" : [ {
+          "featureType" : "OTHERNOT",
+          "description" : "Any additional expenses which are not included or detailed in the programme."
+        } ],
+        "included" : [ {
+          "featureType" : "OTHERINCL",
+          "description" : "Guide"
+        } ]
+      }, {
+        "groupCode" : "TRANSPORT",
+        "included" : [ {
+          "featureType" : "TRANSPORTINCL",
+          "description" : "Transport"
+        } ]
+      } ],
+      "guidingOptions" : {
+        "groupType" : "PRIVATE",
+        "guideType" : "TOURGUIDE",
+        "included" : true
+      },
+      "importantInfo" : [ "Please make sure you answer all the mandatory questions during the booking process.</br> Passport or ID are required </br> Children must be accompanied by an adult. " ],
+      "location" : {
+        "endPoints" : [ {
+          "type" : "Same",
+          "description" : "Same as Starting Point"
+        } ],
+        "startingPoints" : [ {
+          "type" : "HOTEL_PICKUP",
+          "meetingPoint" : {
+            "type" : "ADDRESS",
+            "country" : {
+              "code" : "IN",
+              "name" : "India",
+              "destinations" : [ {
+                "code" : "DEL",
+                "name" : "Delhi and NCR"
+              } ]
+            },
+            "description" : "New Delhi Tour - Half Day Private Tour"
+          },
+          "pickupInstructions" : [ { } ]
+        } ]
+      },
+      "media" : {
+        "images" : [ {
+          "visualizationOrder" : 1,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/S/16476_1.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/XL/16476_1.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/B/16476_1.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/LPP/16476_1.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/L/16476_1.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/M/16476_1.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 2,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/S/16476_2.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/XL/16476_2.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/B/16476_2.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/LPP/16476_2.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/L/16476_2.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/M/16476_2.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 3,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/S/16476_3.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/XL/16476_3.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/B/16476_3.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/LPP/16476_3.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/L/16476_3.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/M/16476_3.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        }, {
+          "visualizationOrder" : 4,
+          "mimeType" : "image/jpeg",
+          "language" : "ENG",
+          "urls" : [ {
+            "dpi" : 72,
+            "height" : 75,
+            "width" : 100,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/S/16476_5.jpg",
+            "sizeType" : "SMALL"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/XL/16476_5.jpg",
+            "sizeType" : "XLARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 480,
+            "width" : 640,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/B/16476_5.jpg",
+            "sizeType" : "LARGE2"
+          }, {
+            "dpi" : 72,
+            "height" : 768,
+            "width" : 1024,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/LPP/16476_5.jpg",
+            "sizeType" : "RAW"
+          }, {
+            "dpi" : 72,
+            "height" : 200,
+            "width" : 267,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/L/16476_5.jpg",
+            "sizeType" : "LARGE"
+          }, {
+            "dpi" : 72,
+            "height" : 130,
+            "width" : 173,
+            "resource" : "https://media.activitiesbank.com/16476/ENG/M/16476_5.jpg",
+            "sizeType" : "MEDIUM"
+          } ]
+        } ]
+      },
+      "redeemInfo" : {
+        "type" : "VOCUHERLESS",
+        "directEntrance" : false,
+        "comments" : [ {
+          "description" : "Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity. "
+        } ]
+      },
+      "routes" : [ ],
+      "scheduling" : {
+        "duration" : {
+          "value" : 4.0,
+          "metric" : "HOURS",
+          "type" : "AFTER"
+        }
+      },
+      "segmentationGroups" : [ {
+        "code" : 2,
+        "name" : "Duration",
+        "segments" : [ {
+          "code" : 773,
+          "name" : "Half-day morning"
+        } ]
+      }, {
+        "code" : 16,
+        "name" : "Services",
+        "segments" : [ {
+          "code" : 956,
+          "name" : "Safe2Stay"
+        }, {
+          "code" : 946,
+          "name" : "Private"
+        } ]
+      }, {
+        "code" : 1,
+        "name" : "Categories",
+        "segments" : [ {
+          "code" : 1,
+          "name" : "City tours"
+        } ]
+      } ],
+      "activityFactsheetType" : "ACTIVITIES",
+      "activityCode" : "E-E10-IN-DENEW",
+      "modalityCode" : "NRF-HPEN1",
+      "modalityName" : "Non-refundable offer, pick up from NCR hotels",
+      "contentId" : "16476",
+      "description" : "See the top sight and attractions in New Delhi with this fascinating half-day tour of the Indian capital. View the imposing India Gate, the vast parliament building and the presidential palace. Admire the Qutab Minar tower and the Quwwat-ul-Islam Mosque and visit the awe-inspiring Humayun mausoleum, the forerunner of the Taj Mahal.<br />\n<br />\nBegin your Delhi delight with a drive along the area known as ‘Lutyens's Delhi’ after Edwin Lutyens, the architect who designed the city’s new monumental government district a century ago. See the grandiose Rashtrapati Bhawan, the 340-room palace built for the viceroys of India, which is now the residence of the president of India. Lutyens’s blend of classical and Mughal elements has resulted in a style known as the Delhi order. Continue along the Rajpath and see the India Gate, a triumphal arch designed by Lutyens to commemorate fallen soldiers. See also the vast, circular Indian parliament, which also bears the hallmark of Lutyens.<br />\n<br />\nLeave Lutyens's Delhi and explore the old parts of New Delhi with a visit to the site of the 73 metre-high Qutab Minar, the tallest stone tower in India. Qutub-ud-din Aibak, the first sultan of Delhi, had it built in 1193 and razed 27 Hindu temples to use their columns. <br />\n<br />\n<strong>Languages</strong><br />\nEnglish",
+      "lastUpdate" : "2022-11-10",
+      "advancedTips" : [ ],
+      "countries" : [ {
+        "code" : "IN",
+        "name" : "India",
+        "destinations" : [ {
+          "code" : "DEL",
+          "name" : "Delhi and NCR"
+        } ]
+      } ],
+      "highligths" : [ ],
+      "language" : "en"
+    },
+    "order" : 4,
+    "name" : "New Delhi Tour - Half Day Private Tour",
+    "currency" : "EUR",
+    "code" : "E-E10-IN-DENEW",
+    "type" : "TICKET"
+  }
+}
+

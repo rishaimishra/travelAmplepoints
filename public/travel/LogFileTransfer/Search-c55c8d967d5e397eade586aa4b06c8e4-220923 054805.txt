@@ -1,0 +1,23 @@
+===========Credentials(Search-c55c8d967d5e397eade586aa4b06c8e4)=========
+hotelbeds_key=c55c8d967d5e397eade586aa4b06c8e4
+ hotelbeds_secret=85e16b438a
+ endpoint=https://api.test.hotelbeds.com/transfer-api/1.0
+===========Request(Search-c55c8d967d5e397eade586aa4b06c8e4)=========
+https://api.test.hotelbeds.com/transfer-api/1.0/availability/en/from/IATA/DEL/to/ATLAS/59410/2023-09-30T10:00:00/2023-09-30T11:00:00/1/0/0
+===========Response(Search-c55c8d967d5e397eade586aa4b06c8e4)=========
+{
+  "dateTime" : "2023-09-22T07:48:05.826",
+  "code" : "BAD_REQUEST_ERROR",
+  "message" : null,
+  "description" : null,
+  "serviceName" : "transfer-api",
+  "isBadRequest" : true,
+  "traceId" : "c9f93c0b041bebd7",
+  "fieldErrors" : [ {
+    "code" : "",
+    "field" : "getAvailability.arg1.return",
+    "message" : "Departure and return dates must have a difference of 1 day at least."
+  } ],
+  "nestedError" : null
+}
+

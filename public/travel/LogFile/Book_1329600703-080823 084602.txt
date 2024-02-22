@@ -1,0 +1,7 @@
+===========Credentials(Book_1329600703)=========
+duffel_live_6YGY02b60GEIImviWyIMEghuXpW1rachnhB6f1bfaBD
+===========Request(Book_1329600703)=========
+{"data":{"selected_offers":["off_0000AYVzXqPk3FNzfvAgIV"],"payments":[{"type":"balance","currency":"USD","amount":"2639.20"}],"passengers":[{"phone_number":"+91 9430866085","email":"techieakm@gmail.com","born_on":"2004-08-08","title":"mr","gender":"m","family_name":"Amit Kumar","given_name":"Amit Kumar","id":"pas_0000AYVzXasDpaf1TcNCT5"}]}}
+===========Response(Book_1329600703)=========
+{"meta":{"status":422,"request_id":"F3lcEMG7K1i7GW8BKini"},"errors":[{"type":"invalid_state_error","title":"Insufficient balance","message":"The wallet has insufficient balance for this operation.","documentation_url":"https://duffel.com/docs/api/overview/errors","code":"insufficient_balance"}]}
+

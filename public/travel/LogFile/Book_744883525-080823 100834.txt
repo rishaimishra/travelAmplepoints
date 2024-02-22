@@ -1,0 +1,7 @@
+===========Credentials(Book_744883525)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(Book_744883525)=========
+{"data":{"selected_offers":["off_0000AYW9BadkabOBjPMF7R"],"payments":[{"type":"balance","currency":"USD","amount":"146.98"}],"passengers":[{"phone_number":"+9109430866085","email":"techieakm@gmail.com","born_on":"2004-08-08","title":"mr","gender":"m","family_name":"Amit Kumar","given_name":"Amit Kumar","id":"pas_0000AYW9BF6MfXCovmZmfC"}]}}
+===========Response(Book_744883525)=========
+{"meta":{"status":500,"request_id":"F3lgjyx8oy3dsE8AGldh"},"errors":[{"type":"api_error","title":"Internal server error","message":"Something went wrong. Please contact our support team and attach the `request_id` to your message if the error persists. You should not retry this request.","documentation_url":"https://duffel.com/docs/api/overview/errors","code":"internal_server_error"}]}
+

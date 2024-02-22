@@ -28,8 +28,6 @@ class EmailController extends Controller
 	
 	public $website_name='';
 	  public function __construct(){
-		// dd($_SERVER['SERVER_NAME']);
-
 		    $data= crud_model::readOne('user',array('website'=>str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
 			$this->website_name = $data->website_name;
 		   	$common_data= $data->common_data;
