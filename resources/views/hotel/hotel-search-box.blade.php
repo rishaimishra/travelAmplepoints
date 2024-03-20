@@ -33,6 +33,51 @@
     color:#fff;
 }
 
+
+
+
+
+
+
+ /* CSS for the loading modal */
+  #loadingModal {
+    display: none; /* Hide the modal by default */
+    position: fixed; /* Position it fixed so it stays in place */
+    top: 0; /* Position it at the top of the page */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    z-index: 9999; /* Set a high z-index to ensure it appears on top of other elements */
+    color: white; /* Text color */
+    text-align: center; /* Center-align the content */
+    padding-top: 20%; /* Adjust vertical spacing as needed */
+  }
+
+  .modal-content {
+    background-color: #333; /* Background color for the modal content */
+    padding: 20px;
+    border-radius: 10px; /* Add some border radius for rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a subtle shadow effect */
+  }
+
+  .loader {
+    border: 1px solid green; /* Light grey */
+    border-top: 1px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    margin: 0 auto; /* Center the loader */
+  }
+
+  /* Loader animation */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
 </style>
 
 
@@ -49,7 +94,7 @@
 ?>
 <div class="tab-pane fade show active" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
                             <div class="contact-form-action">
-                                <form method="get" action="{{ asset('hotel-search-results') }}" class="row align-items-center">
+                                <form method="get" action="{{ asset('hotel-search-results') }}" class="row align-items-center" onsubmit="formSubmit()" id="frm">
                                 @csrf
                                     <div class="col-lg-3 pr-0">
                                         <div class="input-box">
@@ -123,6 +168,28 @@
                                 </form>
                             </div>
                         </div>
+
+
+
+
+                       <!-- HTML for the loading modal -->
+<div id="loadingModal" class="modal">
+  <div class="modal-content">
+    <div class="loader"></div>
+    Searching Hotel in..
+    <p>Please Wait...</p>
+    <br>
+    <h2 id="place"></h2>
+    <br>
+    <p id="timeline"></p>
+    <br>
+    <p id="rm"></p>
+    <br>
+    <p id="gst"></p>
+  </div>
+</div>
+
+
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
@@ -238,6 +305,39 @@ jQuery(".common_beard_comb").hide();
 			for(var i=0;i<ch;i++){ innerHtml+='<p>Child '+(parseInt(i)+1)+' Age - <select name="child_age['+room+'][]"><option value="0">0</option><option selected="selected" value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select></p>' }
 			jQuery('#age_'+id).html(innerHtml);
 	  }
+
+
+    
+ function formSubmit() {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+    // Show the loading modal
+    document.getElementById("loadingModal").style.display = "block";
+    var city_name=$("#city_name").val();
+    var date_range=$("#date_range").val();
+    var rm=$("#rooms").val();
+    var gst=$(".guests").html()
+
+    $("#place").html(city_name);
+    $("#timeline").html("time span: "+ date_range);
+     $("#rm").html("rooms: "+ rm);
+     $("#gst").html("guest: "+ gst)
+    console.log(city_name,date_range,rm,gst);
+    // return false;
+
+    // Set a timeout to submit the form after 5 seconds
+    setTimeout(function() {
+        document.getElementById("loadingModal").style.display = "none"; // Hide the loading modal
+        document.getElementById("frm").submit(); // Submit the form with ID "frm"
+    }, 5000);
+
+    // // Display alert after 1 second (optional)
+    // setTimeout(function() {
+    //     alert('Form will be submitted in 5 seconds');
+    // }, 1000);
+}
+
 
 	    
 	   

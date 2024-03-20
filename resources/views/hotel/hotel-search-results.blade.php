@@ -781,7 +781,7 @@ jQuery("#hotel").show();
 								},
 								dataType: "json",
 								success: function (data) {
-                                    alert(1)
+                                    // alert(1)
                                     console.log(222,data)
 								jQuery('.sidebsr').show();
 									jQuery('.searching').show(); 
@@ -795,6 +795,7 @@ jQuery("#hotel").show();
 									if(data.result.length>0){ 
 										
 									for(var i=0;i<data.result.length;i++){
+                                        console.log(data.result[i])
 										 var book_link='hotel-details/'+btoa(data.result[i].tid)+'/'+data.result[i].Name; 
 									
 										 innerHtml +='<div class="card-item card-item-list"><div class="card-img"><a href="'+book_link+'"  class="d-block"><img src="'+data.result[i].thumbnail+'" onerror="this.onerror=null; this.src=\'<?php echo url('');?>/images/nohotel.jpg\'" alt="hotel-img"></a><span class="badge">'+data.result[i].boardName+'</span> <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Bookmark"><i class="la la-heart-o"></i></div></div><div class="card-body"><h3 class="card-title"><a href="'+book_link+'" >'+data.result[i].Name+' ('+data.result[i].accommodationType+')</a></h3><p class="card-meta">'+data.result[i].Address1+', '+data.result[i].City+'</p>';
@@ -819,7 +820,13 @@ jQuery("#hotel").show();
 												innerHtml +='<i class="la la-star-o"></i>';
 											}
 											innerHtml +='</span></div>';
+                                            
 										 innerHtml +='<p><span class="price__from">From </span><span class="price__num">'+data.result[i].currency_symbol+' '+data.result[i].LowRate+'</span><!--<span class="price__text">Per night</span>--></p><a href="'+book_link+'" class="btn-text"><span class="theme-btn w-100 text-center margin-top-20px Search_Now">See details<i class="la la-angle-right"></i></span></a></div></div></div>';
+
+
+                                         
+
+
 									}}else{
 										jQuery('.not_found').show();
 											jQuery('.loader').hide();
