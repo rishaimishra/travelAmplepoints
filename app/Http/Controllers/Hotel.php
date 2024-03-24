@@ -531,17 +531,7 @@ public function getdetails($id){
 
 			// return $data;
 			
-			//  // $string = implode(", ", $amenetyData);
-			// $string = '';
-
-			// foreach ($amenetyData as $item) {
-			//     $string .= $item[0] . ', ';
-			// }
-
-			// $string = rtrim($string, ', ');
-			// // dd($string,$amenetyData,$id);
-			// return $string;
-}
+    }
 }
 
 
