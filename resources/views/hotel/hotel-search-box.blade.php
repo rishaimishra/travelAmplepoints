@@ -32,40 +32,48 @@ padding: 2px 40px;
 background: #287dfa;
 color:#fff;
 }
+
+
 /* CSS for the loading modal */
 #loadingModal {
-display: none; /* Hide the modal by default */
-position: fixed; /* Position it fixed so it stays in place */
-top: 0; /* Position it at the top of the page */
-left: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-z-index: 9999; /* Set a high z-index to ensure it appears on top of other elements */
-color: white; /* Text color */
-text-align: center; /* Center-align the content */
-padding-top: 20%; /* Adjust vertical spacing as needed */
+  display: none; 
+  position: fixed; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  width: 347px;
+  height: 378px;
+  background-color: rgb(247 91 16);
+  z-index: 9999; 
+  color: white; 
+  text-align: center; /* Center-align the content */
+  border-radius: 10px; /* Add some border radius for rounded corners */
+  padding-top: 20px; /* Adjust vertical spacing as needed */
 }
-.modal-content {
-background-color: #333; /* Background color for the modal content */
-padding: 20px;
-border-radius: 10px; /* Add some border radius for rounded corners */
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a subtle shadow effect */
+
+.modal-content2 {
+  background-color: #f75b10;
+  padding: 20px;
+  border-radius: 10px; /* Add some border radius for rounded corners */
+  /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a subtle shadow effect */*/
 }
+
 .loader {
-border: 1px solid green; /* Light grey */
-border-top: 1px solid #3498db; /* Blue */
-border-radius: 50%;
-width: 50px;
-height: 50px;
-animation: spin 2s linear infinite;
-margin: 0 auto; /* Center the loader */
+  border: 1px solid green; /* Light grey */
+  border-top: 1px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+  margin: 0 auto; /* Center the loader */
 }
+
 /* Loader animation */
 @keyframes spin {
-0% { transform: rotate(0deg); }
-100% { transform: rotate(360deg); }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
+
 </style>
 <?php
 if(isset($_REQUEST['city_code'])) { $city_code=$_REQUEST['city_code']; }else{ $city_code='DEL'; }
@@ -156,7 +164,7 @@ if(isset($_REQUEST['child'])) { $child=$_REQUEST['child']; }else{ $child=0; }
 				</div>
 				<!-- HTML for the loading modal -->
 				<div id="loadingModal" class="modal">
-					<div class="modal-content">
+					<div class="modal-content2">
 						<div class="loader"></div>
 						Searching Hotel in..
 						<p>Please Wait...</p>
