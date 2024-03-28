@@ -523,13 +523,16 @@ public function getdetails($id){
 			$html = '<ul>';
 	        foreach ($amenetyData as $item) {
 	        	//dd($item[0]);
-	            $html .= '<li> *' . $item[0] . '</li>';
+	            $html .= '<li>' . $item[0] . '</li>';
 	        }
 	        $html .= '</ul>';
 
             return $html;
 
 			// return $data;
+			//<div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+            //<i class="la la-check"></i>
+            //</div>
 			
     }
 }

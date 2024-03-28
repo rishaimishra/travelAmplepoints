@@ -34,7 +34,7 @@ if($user_type=='agent'){ $status='inactive'; }else{ $status='inactive'; }
     </div>
     <div class="modal-body">
         <div class="contact-form-action">
-            <form method="post" class="frm-signup" action="{{ asset('signup') }}">
+            <form method="post" class="frm-signup" action="{{ route('signup') }}">
 			@csrf 
                 <input type="hidden" name="user_type" id="user_type" value="<?php if(isset($user_type)){ echo $user_type; }?>">
                 <input type="hidden" name="status" id="status" value="<?php if(isset($status)){ echo $status; }?>">
@@ -110,8 +110,8 @@ if($user_type=='agent'){ $status='inactive'; }else{ $status='inactive'; }
 
                 <div class="btn-box pt-3 pb-4 col-lg-12">
                     <!--<button type="submit" class="theme-btn w-100">Register Account</button>-->
-                   <button type="button" onclick="alert('Email Invalid or Already Exist Please Try Other Email.')" class="theme-btn w-100 btn1">Email Not Correct</button>
-                   <button style="display:none" type="submit" class="theme-btn w-100 btn2">Register Account</button>
+                   {{-- <button type="button" onclick="alert('Email Invalid or Already Exist Please Try Other Email.')" class="theme-btn w-100 btn1">Email Not Correct</button> --}}
+                   <button style="display:" type="submit" class="theme-btn w-100 btn2">Register Account</button>
                 </div>
                 <!-- <div class="action-box text-center">
                     <p class="font-size-14">Or Sign up Using</p>

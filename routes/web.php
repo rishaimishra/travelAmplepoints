@@ -647,7 +647,7 @@ Route::get('/forgot-password', function ()
 	return view('site/forgot-password', array('user_type' => 'customer','pageData' => $pageData)); 
 });
 
-Route::post('/signup', [Site::class, 'Signup']);
+Route::post('/signup', [Site::class, 'Signup'])->name('signup');
 Route::post('/post-login', [Site::class, 'Login']);
 Route::get('/logout', [Site::class, 'Logout']);
 
@@ -1153,4 +1153,9 @@ Route::post('/wallet-fund-by-pg-post', [Admin::class, 'WalletFundByPGPost']);
 
 
 // -------- Wallet end --------------
+
+
+
+Route::post('/userInserFromAmplepoint', [Site::class, 'userInserFromAmplepoint']);
+
 

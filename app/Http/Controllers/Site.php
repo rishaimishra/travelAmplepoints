@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Crud_Model;
+use App\Models\User;
 use Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use GuzzleHttp\Client;
+
 
 class Site extends Controller
 {
@@ -143,6 +146,17 @@ class Site extends Controller
        return redirect($redirectUrl); 
     }
 	
+
+
+
+
+
+
+
+
+
+
+
   public function Signup(Request $request){ 
 	$user_type=$request->input('user_type');
 	$images='{"logo":null,"icon":null,"profile_pic":"https:\/\/dev.plistbooking.travel\/images\/noimage.png"}';
@@ -164,7 +178,12 @@ class Site extends Controller
             // Insert
     $value = Crud_Model::insertData('user',$data); 
 	if($value>1){
-		$this->emailObj->AccountActivationMail($value);
+		// $this->emailObj->AccountActivationMail($value);
+		if($user_type=="customer"){
+			$res=$this->insertAmplepointDatabase($data);
+			dd($res);
+			die();
+		}
 		return redirect('/login?msg=Inserted Successfully');
     	//return view('site/login')->with("msg",'Inserted Successfully');
 	}else{
@@ -174,6 +193,85 @@ class Site extends Controller
     //return $value;
   }
   
+
+
+
+
+
+
+
+public function insertAmplepointDatabase($data){
+
+        //this code is for register user from travel project ==> to amplepoint project user tbale using php core code
+
+        // Specify API endpoint
+       $url = 'http://localhost:8080/tarunAmple/api/regFromTravel';
+
+        // Specify payload for POST request
+        $payload = json_encode($data);
+
+        // Initialize cURL session
+        $ch = curl_init();
+
+        // Set cURL options
+        curl_setopt_array($ch, [
+            CURLOPT_URL => $url,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => $payload,
+            CURLOPT_HTTPHEADER => [
+                'Content-Type: application/json',
+            ],
+            CURLOPT_RETURNTRANSFER => true,
+        ]);
+
+        // Execute cURL request
+        $response = curl_exec($ch);
+
+        // Check for cURL error
+        if ($error = curl_error($ch)) {
+            // Handle cURL error
+            return response()->json(['error' => $error], 500);
+        }
+
+        // Close cURL session
+        curl_close($ch);
+
+        // Handle the response as needed
+        return response()->json(['response' => $response]);
+
+}
+
+
+
+
+
+
+
+public function userInserFromAmplepoint(Request $request){
+	// return $request->all();
+	//user insert code with ample point
+	$ins=new User;
+	$ins->user_type="customer";
+	$ins->first_name=$request->first_name;
+	$ins->last_name=$request->last_name;
+	$ins->ample=$request->total_ample;
+	$ins->email=$request->email;
+	$ins->phone=$request->mobile;
+	$ins->password=$request->pass;
+	$ins->website="travel.amplepoints.com";
+	$ins->save();
+
+	return "Resgistraion to travel project is successfull";
+}
+
+
+
+
+
+
+
+
+
   public function Enquiry(Request $request){ 
       $redirectUrl=$request->input('redirectUrl');
 	 $data = array(
