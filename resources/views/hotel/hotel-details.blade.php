@@ -188,7 +188,8 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                             <div class="sidebar-widget-item">
                                 <div class="sidebar-book-title-wrap mb-3">
                                     <h3>Popular</h3>
-                                    <p><span class="text-form">From</span><span class="text-value ml-2 mr-1"><?php echo $currency_symbol." ".$hotelSearchData->lowRate; ?></span> </p>
+                                    <p><span class="text-form">From</span><span class="text-value ml-2 mr-1"><?php echo $currency_symbol." ".$hotelSearchData->lowRate; ?></span>  
+                                       ( <span style="text-decoration: line-through;" class="text-value ml-2 mr-1"> <?php echo $currency_symbol." ".($hotelSearchData->lowRate)*2; ?> </span> ) </p>
                                 </div>
                             </div><!-- end sidebar-widget-item -->
                             <div class="sidebar-widget-item">
@@ -440,7 +441,7 @@ var innerHtml=''; var page=0; var search_session='';
 					 BoardNameArr ={'RO':'Room only','BB':'Bed and breakfast','AI':'All inclusive','LB':'Lunch and breakfast','HB':'Half Board','FB':'Full Board'};
 					 var boardName = BoardNameArr[board];
 					 
-					htmlRoomlist+='<div class="row" style="margin:0; border-top: 1px solid rgba(128, 137, 150, 0.2); margin-bottom: 5px;"><div class="col-lg-3 responsive-column">'+boardName+'('+board+')</div><div class="col-lg-3 responsive-column">'+cancellationLebel+'</div><div class="col-lg-2 responsive-column"style="color:RED"> '+leastAllotment+' Room(s) Left</div><div class="col-lg-2 responsive-column"><p class="text-uppercase font-size-14">Per/night<strong class="mt-n1 text-black font-size-18 font-weight-black d-block"><?php echo $currency_symbol; ?> '+roomPrice+'</strong></p></div><div class="col-lg-2 responsive-column cabin-price"><div class="custom-checkbox mb-0"><input style="display:none" type="radio" name="akm" id="selectChb'+i+''+j+'"><!--<label for="selectChb'+i+''+j+'" class="theme-btn theme-btn-small">Select</label>--><a href="{{ asset("hotel-booking") }}/'+btoa(board)+'/'+btoa(rateClass)+'/'+btoa(roomCodeIds)+'/<?php echo base64_encode($hotelSearchData->id); ?>" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Book Now</a></div></div></div>';
+					htmlRoomlist+='<div class="row" style="margin:0; border-top: 1px solid rgba(128, 137, 150, 0.2); margin-bottom: 5px;"><div class="col-lg-3 responsive-column">'+boardName+'('+board+')</div><div class="col-lg-3 responsive-column">'+cancellationLebel+'</div><div class="col-lg-2 responsive-column"style="color:RED"> '+leastAllotment+' Room(s) Left</div><div class="col-lg-2 responsive-column"><p class="text-uppercase font-size-14">Per/night<strong class="mt-n1 text-black font-size-18 font-weight-black d-block"><?php echo $currency_symbol; ?> '+roomPrice+'</strong> <span style="text-decoration: line-through;"><?php echo $currency_symbol; ?>  '+2*roomPrice+'</span></p></div><div class="col-lg-2 responsive-column cabin-price"><div class="custom-checkbox mb-0"><input style="display:none" type="radio" name="akm" id="selectChb'+i+''+j+'"><!--<label for="selectChb'+i+''+j+'" class="theme-btn theme-btn-small">Select</label>--><a href="{{ asset("hotel-booking") }}/'+btoa(board)+'/'+btoa(rateClass)+'/'+btoa(roomCodeIds)+'/<?php echo base64_encode($hotelSearchData->id); ?>" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Book Now</a></div></div></div>';
 											} // Inner for End
 									}// outer for End	
 									htmlRoomlist+='</div></div></div>';

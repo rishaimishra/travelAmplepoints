@@ -1157,5 +1157,5 @@ Route::post('/wallet-fund-by-pg-post', [Admin::class, 'WalletFundByPGPost']);
 
 
 Route::post('/userInserFromAmplepoint', [Site::class, 'userInserFromAmplepoint']);
-
+Route::get('/cronJobForUpdateAmplePoint', [Site::class, 'cronJobForUpdateAmplePoint']);
 

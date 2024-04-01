@@ -178,11 +178,12 @@ class Site extends Controller
             // Insert
     $value = Crud_Model::insertData('user',$data); 
 	if($value>1){
-		// $this->emailObj->AccountActivationMail($value);
+		$this->emailObj->AccountActivationMail($value);
 		if($user_type=="customer"){
+			// dd(1);
 			$res=$this->insertAmplepointDatabase($data);
-			dd($res);
-			die();
+			// dd($res);
+			// die();
 		}
 		return redirect('/login?msg=Inserted Successfully');
     	//return view('site/login')->with("msg",'Inserted Successfully');
@@ -425,6 +426,52 @@ public function userInserFromAmplepoint(Request $request){
 	return json_encode(array('Africa'=>$Africa,'Asia'=>$Asia,'Europe'=>$Europe,'Asia'=>$Asia,'North_America'=>$North_America,'South_America'=>$South_America,'Oceania'=>$Oceania,'Antarctica'=>$Antarctica));
 		
   }
+
+
+
+
+
+
+
+
+public function cronJobForUpdateAmplePoint(){
+    // Specify API endpoint
+    $url = 'http://localhost:8080/tarunAmple/api/cronJobForUpdateAmplePoint';
+
+    // Initialize cURL session
+    $ch = curl_init();
+
+    // Set cURL options
+    curl_setopt_array($ch, [
+        CURLOPT_URL => $url,
+        CURLOPT_HTTPHEADER => [
+            'Content-Type: application/json',
+        ],
+        CURLOPT_RETURNTRANSFER => true,
+    ]);
+
+    // Execute cURL request
+    $response = curl_exec($ch);
+
+    // Check for cURL error
+    if ($error = curl_error($ch)) {
+        // Handle cURL error
+        return response()->json(['error' => $error], 500);
+    }
+
+    // Close cURL session
+    curl_close($ch);
+
+    // dd(json_decode($response, true));
+    foreach(json_decode($response, true) as $val){
+    	// dd($val);
+    	$up=User::where('email',$val->email)->update(['ample'=>$val->amplepoint]);
+    }
+
+    // Handle the response as needed
+    return response()->json(['response' => "Data updated"]);
+}
+
 
 	
 }
