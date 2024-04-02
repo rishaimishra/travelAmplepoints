@@ -190,7 +190,32 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                                     <h3>Popular</h3>
                                     <p><span class="text-form">From</span><span class="text-value ml-2 mr-1"><?php echo $currency_symbol." ".$hotelSearchData->lowRate; ?></span>  
                                        ( <span style="text-decoration: line-through;" class="text-value ml-2 mr-1"> <?php echo $currency_symbol." ".($hotelSearchData->lowRate)*2; ?> </span> ) </p>
+                                       
+                                       @php
+                                       $admin_model_obj = new \App\Models\commonFunctionModel;
+                                       $toCurrencyRate = $admin_model_obj->getFromToCurrencyRate(1.00,'INR', 'USD');
+                                        $original_single_price = $hotelSearchData->lowRate;
+                                        $OfferedPriceRoundedOff = $admin_model_obj->displayFinalRates($hotelSearchData->lowRate, $toCurrencyRate);
+
+                                        //dd($original_single_price,$OfferedPriceRoundedOff);
+                                        $single_price = (($OfferedPriceRoundedOff) * 2);
+                                        $wholesale_price = ($single_price / 2);
+                                        $free_with_amples = 0.00;
+                                        $no_of_amples = 0.00;
+                                        $discount_price = 0.00;
+                                        $discount = 0.00;
+                                        $FinalTextAmount = 0.00;
+                                        $calculateDiscount = ((($single_price - $wholesale_price) * 100) / $single_price);
+                                        $discount = round($calculateDiscount, 2);
+                                        $discount_price = (($single_price * $discount) / 100);
+                                        $discount_margin = $discount_price;
+                                        $buyandearnamples = ($discount_margin / .12);
+                                        $no_of_amples = $buyandearnamples;
+                                       @endphp
+                                       <br>
+                                      <h3>Book and earn amplepoints : {{round($no_of_amples)}}</h3>
                                 </div>
+                                {{-- <h1>{{$no_of_amples}}---{{$OfferedPriceRoundedOff}}</h1> --}}
                             </div><!-- end sidebar-widget-item -->
                             <div class="sidebar-widget-item">
                                 <div class="contact-form-action">
