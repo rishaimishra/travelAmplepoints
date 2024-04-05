@@ -469,13 +469,15 @@
                                                             <label>Apply Amples</label>
                                                         </div>
                                                         <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
-                                                            <input type='text'
+                                                            <input type='text' onchange="ampleEnterFun(this.value,'<?php echo $hotelSearchData->lowRate ?>')"
                                                             id='inputamples_<?php echo $hotelSearchData->lowRate ?>'
                                                             name='inputamples'
                                                             class='form-control'>
                                                             <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
                                                         </div>
                                                     </div>
+
+                                                
 
 
                                                     <div class='clearfix'></div>
@@ -658,7 +660,12 @@ var innerHtml=''; var page=0; var search_session='';
 									total_apiPrice=parseFloat(total_apiPrice)+parseFloat(SelectedRoom[i].rates.api_price);
 									
 								}
-								priceHtml +='<li><span>Total Price:</span><span class="total_amount">'+response.currency_symbol+' '+total_price+'</span></li>';
+                priceHtml +='<li id="dpli" style="display:none"><span>Discount Price:</span><span class="discount_amount" id="dp"></span></li>';
+
+								priceHtml +='<li id="tali1"><span>Total Price:</span><span class="total_amount" id="ta1">'+response.currency_symbol+' '+total_price+'</span></li>';
+
+                priceHtml +='<li id="tali2" style="display:none"><span>Total Price:</span><span class="total_amount2" id="ta2"></span></li>';
+
 								jQuery('.price_details').html(priceHtml);
 								jQuery('.total_amount').html(response.currency_symbol+' '+total_price.toFixed(2));
 								jQuery('.inpurroomdata').html(innerHtml);
@@ -810,9 +817,44 @@ var innerHtml=''; var page=0; var search_session='';
             }
 
         }
+       
+
+        //first price
+       var firstPrice= $("#itemprice_" + room_index).val().split("$")[1];
+       var newFinal_Price=newitempricebyuser.toFixed(2);
+       var discount_price=(parseInt(firstPrice) - newFinal_Price).toFixed(2);
+
+       var ampleEnterPoint=$("#inputamples_"+room_index).val()
+
+        console.log(firstPrice,newFinal_Price,discount_price)
+
+        $("#dpli").show();
+        $("#tali2").show();
+        $("#tali1").hide();
+        $("#dp").html(' ' + '$' + discount_price);
+        $("#ta2").html(' ' + '$' + newFinal_Price);
+
+        $("#chargeableRate").val(newFinal_Price)
+
 
     }
 
-    
+
+function ampleEnterFun(val,room_index){
+  // console.log(val,room_index)
+  if(val==0 || val=="" || val==null){
+    // var firstPrice= $("#itemprice_" + room_index).val().split("$")[1];
+
+    $("#dpli").show();
+    $("#tali2").hide();
+    $("#tali1").show();
+    $("#dp").html(' ' + '$' + 0);
+    $("#ta2").html(' ' + '$' + 0);
+    $('#newitemprice_' + room_index).text(' ' + '$' + room_index);
+    $("#chargeableRate").val(room_index)
+  }
+}
+
+
 </script>
 @include('site.footer')
