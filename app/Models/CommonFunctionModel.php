@@ -47,8 +47,59 @@ class commonFunctionModel extends Model
 
     public function displayFinalRates($inputAmount = 0.00, $toCurrencyRate = 0.012)
     {
-        $finalTotal = $inputAmount * $toCurrencyRate;
+        $finalTotal = $inputAmount * $toCurrencyRate/2;
         return number_format($finalTotal, 2, '.', '');
+    }
+
+
+
+
+
+
+     public function DisplayAmplePoints($userAmples)
+    {
+
+        $FinalAmplepoints = '';
+
+        $userAmples = floatval($userAmples);
+
+        $userAmples = number_format($userAmples, 2, '.', '');
+
+        $NewRewardsPoint = explode('.', $userAmples);
+
+        $MyNewLeftDigit = $NewRewardsPoint[0];
+        $MyNewRightDigit = $NewRewardsPoint[1];
+
+        if ($MyNewRightDigit == 60) {
+
+            $FinalAmplepoints = $MyNewLeftDigit + 1;
+
+            $FinalAmplepoints = number_format($FinalAmplepoints, 2, '.', '');
+
+        } else if ($MyNewRightDigit > 60) {
+
+            $secondsAmple = $MyNewRightDigit;
+            $iAmple = ($secondsAmple / 60) % 60;
+            $sAmple = $secondsAmple % 60;
+            $myMinuteAmple = $iAmple;
+            $mySecondAmple = sprintf("%02d", $sAmple);
+
+            $MyNewLeftDigit = $MyNewLeftDigit + $myMinuteAmple;
+
+            $calculateRightAmple = $mySecondAmple;
+
+            $calculateRightAmple = sprintf("%02d", $calculateRightAmple);
+
+            $FinalAmplepoints = $MyNewLeftDigit . '.' . $calculateRightAmple;
+
+
+        } else {
+
+            $FinalAmplepoints = $userAmples;
+        }
+
+        return $FinalAmplepoints;
+
     }
 
 

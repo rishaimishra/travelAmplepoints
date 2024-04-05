@@ -213,7 +213,7 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                                         $no_of_amples = $buyandearnamples;
                                        @endphp
                                        <br>
-                                      <h3>Book and earn amplepoints : {{round($no_of_amples)}}</h3>
+                                      <h3>Book and earn amplepoints from : {{round($no_of_amples)}}</h3>
                                 </div>
                                 {{-- <h1>{{$no_of_amples}}---{{$OfferedPriceRoundedOff}}</h1> --}}
                             </div><!-- end sidebar-widget-item -->

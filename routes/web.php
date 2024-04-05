@@ -57,6 +57,7 @@ $show_price=$_REQUEST['show_price'];
 //site start
 //Flight Start
 Route::get('/', function () {
+	// dd(Auth::user()->id);
 	$reviewData = crud_model::readByCondition('customer_review',array('published'=>'Yes'));
 
 	$hotel_data = DB::select("select *,COUNT(hotel_id) as total from twc_booking group by hotel_id order by total DESC LIMIT 10");
@@ -596,6 +597,7 @@ Route::get('/agent-dashboard', function ()
 
 Route::get('/customer-dashboard', function ()  
  {     
+ 	// dd(Auth::check(),Session::get('user_id'));
 	$flightCount = crud_model::readByCondition('bookings',array('user_id'=>session()->get('user_id')))->count();  
 	$hotelCount = crud_model::readByCondition('twc_booking',array('product'=>'hotel','user_id'=>session()->get('user_id')))->count(); 
 	$transferCount = crud_model::readByCondition('twc_booking',array('product'=>'transfer','user_id'=>session()->get('user_id')))->count(); 

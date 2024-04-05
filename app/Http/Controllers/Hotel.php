@@ -9,6 +9,7 @@ use Session;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\Markup;
+use App\Models\User;
 
 
 class Hotel extends Controller
@@ -760,6 +761,39 @@ public function getdetails($id){
 // HotelFinalCheckout Start	
 	public function HotelFinalCheckout(Request $request)  
     {
+    	// dd($request->all());
+    	
+        $admin_model_obj = new \App\Models\commonFunctionModel;
+        $toCurrencyRate = $admin_model_obj->getFromToCurrencyRate(1.00,'INR', 'USD');
+        $original_single_price = $request->chargeableRate;
+        $OfferedPriceRoundedOff = $admin_model_obj->displayFinalRates($request->chargeableRate, $toCurrencyRate);
+
+        //dd($original_single_price,$OfferedPriceRoundedOff);
+        $single_price = (($OfferedPriceRoundedOff) * 2);
+        $wholesale_price = ($single_price / 2);
+        $free_with_amples = 0.00;
+        $no_of_amples = 0.00;
+        $discount_price = 0.00;
+        $discount = 0.00;
+        $FinalTextAmount = 0.00;
+        $calculateDiscount = ((($single_price - $wholesale_price) * 100) / $single_price);
+        $discount = round($calculateDiscount, 2);
+        $discount_price = (($single_price * $discount) / 100);
+        $discount_margin = $discount_price;
+        $buyandearnamples = ($discount_margin / .12);
+        $no_of_amples = $buyandearnamples;
+        if(@Auth::user()->id || Session::get('user_id') ){
+        	// dd(1);
+        	//update ample
+        	$userDetail = User::where('id', @Auth::user()->id)
+		    ->orWhere('id', Session::get('user_id'))
+		    ->first();
+        	$newAmple=int($userDetail->ample) + round($no_of_amples);
+        	$up=User::where('id', @Auth::user()->id)->orWhere('id', Session::get('user_id'))->update(['ample'=>$newAmple]);
+        }
+
+        // dd($request->input(),round($no_of_amples),$request->chargeableRate,$request->user_id);
+
 		$request_data=array();
 		$request_data=$request->input();
 		

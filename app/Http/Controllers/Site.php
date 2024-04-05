@@ -314,6 +314,13 @@ public function userInserFromAmplepoint(Request $request){
 			if($result_user['status'] != "active" and $result_user['user_type']=='agent' ){
 					return redirect('/login?msg=Your Account is Not Activate.');
 			}
+			// dd($check);
+			$user = User::find($check->id);
+            // dd($user);
+			Auth::login($user);
+			// dd(Auth::user()->id);
+
+
 			
 			
 			Session::put('user_id', $result_user['id']);
@@ -324,6 +331,8 @@ public function userInserFromAmplepoint(Request $request){
 			Session::put('user_type', $result_user['user_type']);
 			Session::put('user_image', $result_user['profile_pic']);
 
+			// dd(Session::get('user_id'));;
+
 
 			if($user_type == "admin"){
 				return redirect('/admin-dashboard');
@@ -332,7 +341,9 @@ public function userInserFromAmplepoint(Request $request){
 				return redirect('/agent-dashboard');
 			}
 			else{
+				// dd(Session::get('user_id'));
 				return redirect('/customer-dashboard');
+				// return redirect('/');
 			} 
 
 		}
