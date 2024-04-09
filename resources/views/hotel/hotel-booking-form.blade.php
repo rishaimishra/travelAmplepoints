@@ -44,7 +44,7 @@
                 <input class="form-control" type="hidden" name="currency" id="currency_main">
                 <input class="form-control" type="hidden" name="api_currency" id="api_currency" value="<?php echo $hotelSearchData->api_currency; ?>">
                 <input class="form-control" type="hidden" name="apiPrice" id="apiPrice">
-                <input class="form-control" type="hidden" name="chargeableRate" id="chargeableRate">
+                <input class="form-control" type="text" name="chargeableRate" id="chargeableRate">
                 <input class="form-control" type="hidden" name="base_fare" id="base_fare">
                 <input class="form-control" type="hidden" name="tax" id="tax">
                 <span class="inpurroomdata"></span>
@@ -349,7 +349,7 @@
                 <ul class="list-items list-items-2 pt-3 price_details">
                   <!--<li><span>Base Fare:</span><span class="base_fare"><?php $hotelSearchData->currency." ".$hotelSearchData->lowRate;?></span></li>
                   <li><span>Taxes And Fees:</span><span class="tax"><?php echo $hotelSearchData->currency; ?> </span></li>-->
-                  <li><span>Total Price:</span><span class="total_amount"><?php echo $hotelSearchData->currency." ".$hotelSearchData->lowRate; ?></span></li>
+                  <li><span>Total Price:</span><span class="total_amount"><?php echo $hotelSearchData->currency." ".$hotelSearchData->lowRate*2; ?></span></li>
                 </ul>
               </div>
 
@@ -655,19 +655,19 @@ var innerHtml=''; var page=0; var search_session='';
 								innerHtml +='<textarea type="text" name="rateKey[]" style="white-space: pre-line">'+SelectedRoom[i].rates.rateKey+'</textarea>';
 									innerHtml +='</ul>';
 
-									priceHtml +='Room: '+parseInt(parseInt(i)+parseInt(1))+'<li><span>Base Fare:</span><span class="base_fare">'+response.currency_symbol+' '+SelectedRoom[i].rates.net.toFixed(2)+'</span></li>';
+									priceHtml +='Room: '+parseInt(parseInt(i)+parseInt(1))+'<li><span>Base Fare:</span><span class="base_fare">'+response.currency_symbol+' '+SelectedRoom[i].rates.net.toFixed(2)*2+'</span></li>';
 									total_price=parseFloat(total_price)+parseFloat(SelectedRoom[i].rates.net);
 									total_apiPrice=parseFloat(total_apiPrice)+parseFloat(SelectedRoom[i].rates.api_price);
 									
 								}
                 priceHtml +='<li id="dpli" style="display:none"><span>Discount Price:</span><span class="discount_amount" id="dp"></span></li>';
 
-								priceHtml +='<li id="tali1"><span>Total Price:</span><span class="total_amount" id="ta1">'+response.currency_symbol+' '+total_price+'</span></li>';
+								priceHtml +='<li id="tali1"><span>Total Price:</span><span class="total_amount" id="ta1">'+response.currency_symbol+' '+total_price*2+'</span></li>';
 
                 priceHtml +='<li id="tali2" style="display:none"><span>Total Price:</span><span class="total_amount2" id="ta2"></span></li>';
 
 								jQuery('.price_details').html(priceHtml);
-								jQuery('.total_amount').html(response.currency_symbol+' '+total_price.toFixed(2));
+								jQuery('.total_amount').html(response.currency_symbol+' '+total_price.toFixed(2)*2);
 								jQuery('.inpurroomdata').html(innerHtml);
 								document.getElementById('currency_main').value=response.currency;
 								document.getElementById('chargeableRate').value=total_price.toFixed(2);
@@ -834,7 +834,7 @@ var innerHtml=''; var page=0; var search_session='';
         $("#dp").html(' ' + '$' + discount_price);
         $("#ta2").html(' ' + '$' + newFinal_Price);
 
-        $("#chargeableRate").val(newFinal_Price)
+        $("#chargeableRate").val(newFinal_Price/2)
 
 
     }
@@ -850,7 +850,7 @@ function ampleEnterFun(val,room_index){
     $("#tali1").show();
     $("#dp").html(' ' + '$' + 0);
     $("#ta2").html(' ' + '$' + 0);
-    $('#newitemprice_' + room_index).text(' ' + '$' + room_index);
+    $('#newitemprice_' + room_index).text(' ' + '$' + room_index*2);
     $("#chargeableRate").val(room_index)
   }
 }

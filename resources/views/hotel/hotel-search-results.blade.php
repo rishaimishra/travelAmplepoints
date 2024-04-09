@@ -821,7 +821,7 @@ jQuery("#hotel").show();
 											}
 											innerHtml +='</span></div>';
                                              innerHtml += '<div><span>' +data.result[i].amenetyData + '</span></div>';
-										 innerHtml +='<p><span class="price__from">From </span><span class="price__num">'+data.result[i].currency_symbol+' '+data.result[i].LowRate+ '(  <span style="text-decoration: line-through;"> ' +data.result[i].currency_symbol+' ' +(data.result[i].LowRate)*2   +' </span> )' + '</span><!--<span class="price__text">Per night</span>--></p><a href="'+book_link+'" class="btn-text"><span class="theme-btn w-100 text-center margin-top-20px Search_Now">See details<i class="la la-angle-right"></i></span></a></div></div></div>';
+										 innerHtml +='<p><span class="price__from">From </span><span class="price__num">'+data.result[i].currency_symbol+' '+(data.result[i].LowRate)*2 +' </span> )' + '</span><!--<span class="price__text">Per night</span>--></p><a href="'+book_link+'" class="btn-text"><span class="theme-btn w-100 text-center margin-top-20px Search_Now">See details<i class="la la-angle-right"></i></span></a></div></div></div>';
 
 
                                          

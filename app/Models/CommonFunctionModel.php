@@ -47,7 +47,7 @@ class commonFunctionModel extends Model
 
     public function displayFinalRates($inputAmount = 0.00, $toCurrencyRate = 0.012)
     {
-        $finalTotal = $inputAmount * $toCurrencyRate/2;
+        $finalTotal = $inputAmount * $toCurrencyRate;
         return number_format($finalTotal, 2, '.', '');
     }
 
