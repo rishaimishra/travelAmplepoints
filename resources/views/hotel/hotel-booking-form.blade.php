@@ -22,6 +22,11 @@
 <!-- ================================
     START BOOKING AREA
 ================================= -->
+    <link rel="stylesheet" type="text/css" href="https://amplepoints.com/newcss/css/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="https://amplepoints.com/newcss/css/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://amplepoints.com/newcss/css/style-check.css" >
+  
+
 <section class="booking-area padding-top-100px padding-bottom-70px">
   <div class="container">
     <div class="row">
@@ -411,7 +416,7 @@
 
             <div>
                                         <div class='sidebar-booking-box'>
-                                            <h3 class='text-center'>USE AMPLE POINTS TO GET THIS
+                                            <h3 class='text-center' style="font-size: 15px !important;">USE AMPLE POINTS TO GET THIS
                                             ROOM</h3>
                                             <div class='booking-box-body'>
                                                 <form>
@@ -552,7 +557,7 @@
                                                         </div>
                                                     </div>
                                                     <div class='clearfix'></div>
-                                                    <div class='grand-total text-center'>
+                                                    {{-- <div class='grand-total text-center'>
                                                         <div class='col-md-12 col-sm-12 col-xs-12'>
                                                             <div class='button-group'
                                                                 id='atax_<?php echo $hotelSearchData->lowRate ?>'
@@ -570,7 +575,7 @@
                                                                         onclick="bookRoomWithoutAmple('<?php echo $hotelSearchData->lowRate ?>','<?php echo $single_price; ?>','<?php echo $original_single_price; ?>','<?php echo $incrementIndex; ?>','<?php echo $admin_model_obj->DisplayAmplePoints($no_of_amples); ?>')">BOOK
                                                                     NOW</a></div>
                                                                 </div>
-                                                            </div>
+                                                            </div> --}}
                                                         </form>
                                                     </div>
                                                 </div>
