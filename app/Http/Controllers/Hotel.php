@@ -521,12 +521,12 @@ public function getdetails($id){
 			$data['amenetyData']=$amenetyData;
 			// return $amenetyData;
 
-			$html = '<ul>';
+			$html = '';
 	        foreach ($amenetyData as $item) {
 	        	//dd($item[0]);
-	            $html .= '<li>' . $item[0] . '</li>';
+	            $html .= '<li class="mr-2"><i class="la la-star"></i>' . $item[0] . '</li>';
 	        }
-	        $html .= '</ul>';
+	        $html .= '';
 
             return $html;
 
