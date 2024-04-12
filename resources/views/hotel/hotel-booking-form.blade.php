@@ -421,6 +421,7 @@
                                             <div class='booking-box-body'>
                                                 <form>
                                                     <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+                                                      <div class="row">
                                                         <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
                                                             <label>Price</label>
                                                         </div>
@@ -434,9 +435,11 @@
                                                             <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
                                                         </div>
                                                     </div>
+                                                  </div>
 
 
                                                     <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+                                                      <div class="row">
                                                         <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
                                                             <label>Buy & Earn</label>
                                                         </div>
@@ -451,9 +454,12 @@
                                                             <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
                                                         </div>
                                                     </div>
+                                                  </div>
+
 
 
                                                     <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+                                                      <div class="row">
                                                         <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
                                                             <label>Amples Needed to Redeem</label>
                                                         </div>
@@ -467,9 +473,12 @@
                                                             <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
                                                         </div>
                                                     </div>
+                                                  </div>
+
 
 
                                                     <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+                                                      <div class="row">
                                                         <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
                                                             <label>Apply Amples</label>
                                                         </div>
@@ -481,12 +490,24 @@
                                                             <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
                                                         </div>
                                                     </div>
+                                                  </div>
+
+
+
+                                                   <div class='col-md-4 col-sm-4 col-xs-4 no-space add-cart-submit' style="margin-left: 210px;">
+                                                            <button class="btn btn-dark" style="width:100%" id='applyamples_<?php echo $hotelSearchData->lowRate ?>'
+                                                            type='button'
+                                                            onclick="applyAmplePoints('<?php echo $hotelSearchData->lowRate ?>','<?php echo $single_price; ?>','<?php echo $discount_price; ?>','<?php echo $discount; ?>')">
+                                                            APPLY
+                                                            </button>
+                                                        </div>
 
                                                 
 
 
                                                     <div class='clearfix'></div>
                                                     <div class='grand-total1 text-center'>
+                                                      <div class="row">
                                                         <div class='col-md-8 col-sm-8 col-xs-8 no-space'
                                                             id='newpricesection_<?php echo $hotelSearchData->lowRate ?>'
                                                             style='display:none;'><span
@@ -504,14 +525,13 @@
 
 
 
-                                                        <div class='col-md-4 col-sm-4 col-xs-4 no-space add-cart-submit'>
-                                                            <button id='applyamples_<?php echo $hotelSearchData->lowRate ?>'
-                                                            type='button'
-                                                            onclick="applyAmplePoints('<?php echo $hotelSearchData->lowRate ?>','<?php echo $single_price; ?>','<?php echo $discount_price; ?>','<?php echo $discount; ?>')">
-                                                            APPLY
-                                                            </button>
-                                                        </div>
+                                                       
                                                     </div>
+                                                  </div>
+
+
+
+
                                                     <div class='res-collection-sub1'
                                                         id="res_collection_sub_1_<?php echo $hotelSearchData->lowRate ?>">
                                                         <div class='col-md-12 col-sm-12 col-xs-12 no-space'
@@ -530,6 +550,7 @@
                                                             </div>
                                                         </div>
                                                         <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+                                                          <div class="row">
                                                             <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
                                                                 <label>Reward Value</label>
                                                             </div>
@@ -542,7 +563,12 @@
                                                                 disabled>
                                                             </div>
                                                         </div>
+                                                      </div>
+
+
+
                                                         <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+                                                          <div class="row">
                                                             <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
                                                                 <label>You Earn</label>
                                                             </div>
@@ -556,6 +582,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                  </div>
                                                     <div class='clearfix'></div>
                                                     {{-- <div class='grand-total text-center'>
                                                         <div class='col-md-12 col-sm-12 col-xs-12'>
