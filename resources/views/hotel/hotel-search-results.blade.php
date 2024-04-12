@@ -286,6 +286,8 @@ $childs =substr($childsStr,0,-1);
                                 <h3 class="title font-size-16"> <a href="javascript:void(0)" rel="0" onclick="Edit_search()" class="Edit_search theme-btn theme-btn-small ">Edit</a> </h3>
                             </div>
                         </div><!-- end filter-bar-filter -->
+
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Filter</button>
                         
                          <div class="select-contain" style="display:none">
                             <select class="select-contain-select" name="sort" id="sort" onchange="Show_Hotels('filter')">
@@ -372,122 +374,9 @@ $childs =substr($childsStr,0,-1);
                           <div class="animated-background rect5"></div>   
                     </div>
                 </div>
-                <div class="sidebar mt-0" style="display:none">
-                    <div class="sidebar-widget">
-                        <h3 class="title stroke-shape">Filter by Rating</h3>
-                        <div class="sidebar-review">
-                            <div class="custom-checkbox">
-                                <input type="checkbox" name="starrating" value="5" onclick="Show_Hotels('filter')" id="s5">
-                                <label for="s5">
-                                    <span class="ratings d-flex align-items-center">
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <span class="color-text-3 font-size-13 ml-1 star5">(...)</span>
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="custom-checkbox">
-                                <input type="checkbox" name="starrating" value="4" onclick="Show_Hotels('filter')" id="s4">
-                                <label for="s4">
-                                    <span class="ratings d-flex align-items-center">
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star-o"></i>
-                                        <span class="color-text-3 font-size-13 ml-1 star4">(...)</span>
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="custom-checkbox">
-                                <input type="checkbox" name="starrating" value="3" onclick="Show_Hotels('filter')" id="s3">
-                                <label for="s3">
-                                    <span class="ratings d-flex align-items-center">
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star-o"></i>
-                                        <i class="la la-star-o"></i>
-                                        <span class="color-text-3 font-size-13 ml-1 star3">(...)</span>
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="custom-checkbox">
-                                <input type="checkbox" name="starrating" value="2"  onclick="Show_Hotels('filter')" id="s2">
-                                <label for="s2">
-                                    <span class="ratings d-flex align-items-center">
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star-o"></i>
-                                        <i class="la la-star-o"></i>
-                                        <i class="la la-star-o"></i>
-                                        <span class="color-text-3 font-size-13 ml-1 star2">(...)</span>
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="custom-checkbox mb-0">
-                                <input type="checkbox" name="starrating" value="1" onclick="Show_Hotels('filter')" id="s1">
-                                <label for="s1">
-                                    <span class="ratings d-flex align-items-center">
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star-o"></i>
-                                        <i class="la la-star-o"></i>
-                                        <i class="la la-star-o"></i>
-                                        <i class="la la-star-o"></i>
-                                        <span class="color-text-3 font-size-13 ml-1 star1">(...)</span>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
 
-                    </div><!-- end filter by rating -->
-                    <div class="sidebar-widget">
-                        <h3 class="title stroke-shape">Filter by Price</h3>
-                        <div class="sidebar-price-range">
-                            <div class="main-search-input-item">
-                                <div class="price-slider-amount padding-bottom-20px">
-                                    <label for="amount2" class="filter__label">Price:</label>
-                                    <input type="text" id="amount2_1" class="amounts amount2_1">
-                                </div><!-- end price-slider-amount -->
-                                <div id="slider-range2" class="slider-range2" onclick="Show_Hotels('filter')"></div><!-- end slider-range -->
-                            </div><!-- end main-search-input-item -->
-                            <div class="btn-box pt-4">
-                                <button class="theme-btn theme-btn-small theme-btn-transparent" onclick="Show_Hotels('filter')" type="button">Apply</button>
-                            </div>
-                        </div>
-                    </div><!-- end filter by price -->
-                    <div class="sidebar-widget">
-                        <h3 class="title stroke-shape">Search By Hotel Name </h3>
-                        <div class="sidebar-category">
-                            <div class="custom-checkbox">
-          <input name="findbynamefilter" id="findbynamefilter" placeholder="Search By Hotel Name" type="text" id="ht1"><input id="findbynamebtn" onclick="Show_Hotels('filter')" type="button" value="search" id="ht1">
-                            </div>
-                        </div>
-                    </div><!-- end filter by name -->
-                    <div class="sidebar-widget">
-                        <h3 class="title stroke-shape">Filter by Board</h3>
-                        <div class="sidebar-category board">                            
-                        </div>
-                    </div><!-- end filter by board --> 
-                    <div class="sidebar-widget">
-                        <h3 class="title stroke-shape">Filter by Product</h3>
-                        <div class="sidebar-category product">                            
-                        </div>
-                    </div><!-- end filter by board --> 
-                    <div class="sidebar-widget">
-                        <h3 class="title stroke-shape">Filter by Accommodation Type</h3>
-                        <div class="sidebar-category accommodationType">                            
-                        </div>
-                    </div><!-- end filter by board -->
-                    <div class="sidebar-widget">
-                        <h3 class="title stroke-shape">Facilities</h3>
-                        <div class="sidebar-category amenity">
-                        </div>
-                    </div><!-- end filter by aminity -->
-                </div><!-- end sidebar -->
+
+               
             </div><!-- end col-lg-4 -->
            
             <div class="col-lg-12">
@@ -655,6 +544,145 @@ $childs =substr($childsStr,0,-1);
 <!-- ================================
     END CARD AREA
 ================================= -->
+
+ 
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Filter</h4>
+        </div>
+        <div class="modal-body">
+           <div class="sidebar mt-0" >
+                    <div class="sidebar-widget">
+                        <h3 class="title stroke-shape">Filter by Rating</h3>
+                        <div class="sidebar-review">
+                            <div class="custom-checkbox">
+                                <input type="checkbox" name="starrating" value="5" onclick="Show_Hotels('filter')" id="s5">
+                                <label for="s5">
+                                    <span class="ratings d-flex align-items-center">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <span class="color-text-3 font-size-13 ml-1 star5">(...)</span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="custom-checkbox">
+                                <input type="checkbox" name="starrating" value="4" onclick="Show_Hotels('filter')" id="s4">
+                                <label for="s4">
+                                    <span class="ratings d-flex align-items-center">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <span class="color-text-3 font-size-13 ml-1 star4">(...)</span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="custom-checkbox">
+                                <input type="checkbox" name="starrating" value="3" onclick="Show_Hotels('filter')" id="s3">
+                                <label for="s3">
+                                    <span class="ratings d-flex align-items-center">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <span class="color-text-3 font-size-13 ml-1 star3">(...)</span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="custom-checkbox">
+                                <input type="checkbox" name="starrating" value="2"  onclick="Show_Hotels('filter')" id="s2">
+                                <label for="s2">
+                                    <span class="ratings d-flex align-items-center">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <span class="color-text-3 font-size-13 ml-1 star2">(...)</span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="custom-checkbox mb-0">
+                                <input type="checkbox" name="starrating" value="1" onclick="Show_Hotels('filter')" id="s1">
+                                <label for="s1">
+                                    <span class="ratings d-flex align-items-center">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <span class="color-text-3 font-size-13 ml-1 star1">(...)</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div><!-- end filter by rating -->
+                    <div class="sidebar-widget">
+                        <h3 class="title stroke-shape">Filter by Price</h3>
+                        <div class="sidebar-price-range">
+                            <div class="main-search-input-item">
+                                <div class="price-slider-amount padding-bottom-20px">
+                                    <label for="amount2" class="filter__label">Price:</label>
+                                    <input type="text" id="amount2_1" class="amounts amount2_1">
+                                </div><!-- end price-slider-amount -->
+                                <div id="slider-range2" class="slider-range2" onclick="Show_Hotels('filter')"></div><!-- end slider-range -->
+                            </div><!-- end main-search-input-item -->
+                            <div class="btn-box pt-4">
+                                <button class="theme-btn theme-btn-small theme-btn-transparent" onclick="Show_Hotels('filter')" type="button">Apply</button>
+                            </div>
+                        </div>
+                    </div><!-- end filter by price -->
+                    <div class="sidebar-widget">
+                        <h3 class="title stroke-shape">Search By Hotel Name </h3>
+                        <div class="sidebar-category">
+                            <div class="custom-checkbox">
+                  <input name="findbynamefilter" id="findbynamefilter" placeholder="Search By Hotel Name" type="text" id="ht1"><input id="findbynamebtn" onclick="Show_Hotels('filter')" type="button" value="search" id="ht1">
+                            </div>
+                        </div>
+                    </div><!-- end filter by name -->
+                    <div class="sidebar-widget">
+                        <h3 class="title stroke-shape">Filter by Board</h3>
+                        <div class="sidebar-category board">                            
+                        </div>
+                    </div><!-- end filter by board --> 
+                    <div class="sidebar-widget">
+                        <h3 class="title stroke-shape">Filter by Product</h3>
+                        <div class="sidebar-category product">                            
+                        </div>
+                    </div><!-- end filter by board --> 
+                    <div class="sidebar-widget">
+                        <h3 class="title stroke-shape">Filter by Accommodation Type</h3>
+                        <div class="sidebar-category accommodationType">                            
+                        </div>
+                    </div><!-- end filter by board -->
+                    <div class="sidebar-widget">
+                        <h3 class="title stroke-shape">Facilities</h3>
+                        <div class="sidebar-category amenity">
+                        </div>
+                    </div><!-- end filter by aminity -->
+                </div><!-- end sidebar -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
 
 <div class="section-block"></div>
 
