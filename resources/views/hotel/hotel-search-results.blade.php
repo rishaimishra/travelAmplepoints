@@ -289,7 +289,7 @@ $childs =substr($childsStr,0,-1);
 
                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Filter</button>
                         
-                         <div class="select-contain" style="display:none">
+                         <div class="select-contain" >
                             <select class="select-contain-select" name="sort" id="sort" onchange="Show_Hotels('filter')">
                                 <option value="lowRate_ASC" selected="selected">Sort Your Hotel</option>
                                 <option value="lowRate_ASC">Price: low to high</option>
@@ -694,6 +694,7 @@ $childs =substr($childsStr,0,-1);
 jQuery(".common_beard_comb").hide(); jQuery(".preloader").hide();
 var innerHtml=''; var page=0; var search_session='';
 var tids=[];
+var opcty=0;
 function Edit_search(){
 jQuery("#hotel").show();
     var rel = jQuery('.Edit_search').attr('rel');
@@ -741,7 +742,9 @@ jQuery("#hotel").show();
                         var loop =0;
                         
                         function Upldate_Rates_All_custom(){
-                        jQuery('.hotellist').addClass('opacity_5');
+                        if(opcty==0){
+                                jQuery('.hotellist').addClass('opacity_5');
+                                }
                          $.ajax({
                                 url:<?php url('');?>'/GetHotelListCustom',
                                 type: "GET",
@@ -791,7 +794,9 @@ jQuery("#hotel").show();
                             }
                         
                         function Upldate_Rates_All(){
-                        jQuery('.hotellist').addClass('opacity_5');
+                        if(opcty==0){
+                                jQuery('.hotellist').addClass('opacity_5');
+                                }
                          $.ajax({
                                 url:<?php url('');?>'/GetHotelList',
                                 type: "GET",
@@ -829,7 +834,9 @@ jQuery("#hotel").show();
                                              page_number++;
                                              setTimeout(function(){Upldate_Rates_All();},100);
                                         }else{
-                                            jQuery('.hotellist').removeClass('opacity_5');
+                                            if(opcty==0){
+                                                jQuery('.hotellist').addClass('opacity_5');
+                                                }
                                         }
                                     }
                                 },
@@ -861,7 +868,11 @@ jQuery("#hotel").show();
                                 
                             function Show_Hotels(type)
                             {   //var search_session='62f0011bf1e94';
+                               
+                                if(opcty==0){
                                 jQuery('.hotellist').addClass('opacity_5');
+                                }
+                                opcty=1;
                                 var sortVal= document.getElementById("sort").value;
                                 var Cri_Rating = ''; var Cri_board = ''; var Cri_product = ''; var Cri_amenity = '';  var hotel_name='';; var price=''; 
                                 var accommodationType='';
@@ -1011,6 +1022,11 @@ jQuery("#hotel").show();
                                     }//
                                     else{
                                         console.log(34);
+                                        jQuery('.sidebsr').show();
+                                    jQuery('.searching').show(); 
+                                    jQuery('.load_more').show();
+                                    jQuery('.loader').hide();
+                                    jQuery('.whole_content').show();
                                         jQuery('.hotellist').html('No Data');
                                     }
                                 },
