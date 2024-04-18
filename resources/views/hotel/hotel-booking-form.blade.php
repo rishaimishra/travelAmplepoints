@@ -412,203 +412,181 @@
 
 
 
-
-
-            <div>
-                                        <div class='sidebar-booking-box'>
-                                            <h3 class='text-center' style="font-size: 15px !important;">USE AMPLE POINTS TO GET THIS
-                                            ROOM</h3>
-                                            <div class='booking-box-body'>
-                                                <form>
-                                                    <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
-                                                      <div class="row">
-                                                        <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
-                                                            <label>Price</label>
-                                                        </div>
-                                                        <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
-                                                            <input type='text'
-                                                            id='itemprice_<?php echo $hotelSearchData->lowRate ?>'
-                                                            name='itemprice'
-                                                            class='form-control'
-                                                            value='$<?php echo $single_price; ?>'
-                                                            disabled>
-                                                            <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
-                                                        </div>
-                                                    </div>
-                                                  </div>
-
-
-                                                    <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
-                                                      <div class="row">
-                                                        <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
-                                                            <label>Buy & Earn</label>
-                                                        </div>
-                                                        <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
-                                                            <input type='text'
-                                                            id='buyearnamples_<?php echo $hotelSearchData->lowRate ?>'
-                                                            name='buyearnamples'
-                                                            class='form-control'
-                                                            placeholder='D'
-                                                            value='<?php echo $admin_model_obj->DisplayAmplePoints($no_of_amples); ?>'
-                                                            disabled>
-                                                            <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
-                                                        </div>
-                                                    </div>
-                                                  </div>
-
-
-
-                                                    <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
-                                                      <div class="row">
-                                                        <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
-                                                            <label>Amples Needed to Redeem</label>
-                                                        </div>
-                                                        <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
-                                                            <input type='text'
-                                                            id='useamplestoshop_<?php echo $hotelSearchData->lowRate ?>'
-                                                            name='useamplestoshop'
-                                                            class='form-control'
-                                                            value='<?php echo $admin_model_obj->DisplayAmplePoints($free_with_amples); ?> Amples'
-                                                            disabled>
-                                                            <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
-                                                        </div>
-                                                    </div>
-                                                  </div>
-
-
-
-                                                    <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
-                                                      <div class="row">
-                                                        <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
-                                                            <label>Apply Amples</label>
-                                                        </div>
-                                                        <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
-                                                            <input type='text' onchange="ampleEnterFun(this.value,'<?php echo $hotelSearchData->lowRate ?>')"
-                                                            id='inputamples_<?php echo $hotelSearchData->lowRate ?>'
-                                                            name='inputamples'
-                                                            class='form-control'>
-                                                            <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
-                                                        </div>
-                                                    </div>
-                                                  </div>
-
-
-
-                                                   <div class='col-md-4 col-sm-4 col-xs-4 no-space add-cart-submit' style="margin-left: 210px;">
-                                                            <button class="btn btn-dark" style="width:100%" id='applyamples_<?php echo $hotelSearchData->lowRate ?>'
-                                                            type='button'
-                                                            onclick="applyAmplePoints('<?php echo $hotelSearchData->lowRate ?>','<?php echo $single_price; ?>','<?php echo $discount_price; ?>','<?php echo $discount; ?>')">
-                                                            APPLY
-                                                            </button>
-                                                        </div>
-
-                                                
-
-
-                                                    <div class='clearfix'></div>
-                                                    <div class='grand-total1 text-center'>
-                                                      <div class="row">
-                                                        <div class='col-md-8 col-sm-8 col-xs-8 no-space'
-                                                            id='newpricesection_<?php echo $hotelSearchData->lowRate ?>'
-                                                            style='display:none;'><span
-                                                            style="width: 42%;">New Price : </span>
-                                                            <h4 id='newitemprice_<?php echo $hotelSearchData->lowRate ?>'
-                                                            style="margin: 15px 10px;">&nbsp;
-                                                            $<?php echo $single_price; ?></h4>
-                                                            <span class='res-collection-sub'
-                                                                style='display:none;margin: 12px 0 0 -10px;'
-                                                            id="res_collection_sub_<?php echo $hotelSearchData->lowRate ?>">FREE</span>
-                                                            <input type="hidden"
-                                                            id="usernewitemprice_<?php echo $hotelSearchData->lowRate ?>"
-                                                            value="<?php echo $single_price; ?>"/>
-                                                        </div>
-
-
-
-                                                       
-                                                    </div>
-                                                  </div>
-
-
-
-
-                                                    <div class='res-collection-sub1'
-                                                        id="res_collection_sub_1_<?php echo $hotelSearchData->lowRate ?>">
-                                                        <div class='col-md-12 col-sm-12 col-xs-12 no-space'
-                                                            id='earnrewardsection_<?php echo $hotelSearchData->lowRate ?>'
-                                                            style='display:none;'>
-                                                            <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
-                                                                <label>Earn Reward</label>
-                                                            </div>
-                                                            <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
-                                                                <input type='text'
-                                                                id='earnrewardamples_<?php echo $hotelSearchData->lowRate ?>'
-                                                                name='earnrewardamples'
-                                                                class='form-control'
-                                                                disabled>
-                                                                <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
-                                                            </div>
-                                                        </div>
-                                                        <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
-                                                          <div class="row">
-                                                            <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
-                                                                <label>Reward Value</label>
-                                                            </div>
-                                                            <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
-                                                                <input type='text'
-                                                                id='earnrewardonitem_<?php echo $hotelSearchData->lowRate ?>'
-                                                                name='earnrewardonitem'
-                                                                value='<?php echo $discount_price; ?>'
-                                                                class='form-control'
-                                                                disabled>
-                                                            </div>
-                                                        </div>
-                                                      </div>
-
-
-
-                                                        <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
-                                                          <div class="row">
-                                                            <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
-                                                                <label>You Earn</label>
-                                                            </div>
-                                                            <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
-                                                                <input type='text'
-                                                                id='youearndiscount_<?php echo $hotelSearchData->lowRate ?>'
-                                                                name='youearndiscount'
-                                                                value='<?php echo (int)$discount; ?>%'
-                                                                class='form-control'
-                                                                disabled>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                  </div>
-                                                    <div class='clearfix'></div>
-                                                    {{-- <div class='grand-total text-center'>
-                                                        <div class='col-md-12 col-sm-12 col-xs-12'>
-                                                            <div class='button-group'
-                                                                id='atax_<?php echo $hotelSearchData->lowRate ?>'
-                                                                style="display:none"><a
-                                                                    class='btn-add-cart'
-                                                                    id="cartwithample_<?php echo $hotelSearchData->lowRate ?>"
-                                                                    href='javascript:void(0);'
-                                                                    onclick="bookRoomWithAmple('<?php echo $hotelSearchData->lowRate ?>','<?php echo $single_price; ?>','<?php echo $original_single_price; ?>','<?php echo $incrementIndex; ?>')">BOOK
-                                                                NOW ample</a></div>
-                                                                <div class='button-group'
-                                                                    id='btax_<?php echo $hotelSearchData->lowRate ?>'>
-                                                                    <a class='btn-add-cart'
-                                                                        id="cartwithoutample_<?php echo $hotelSearchData->lowRate ?>"
-                                                                        href="javascript:void(0);"
-                                                                        onclick="bookRoomWithoutAmple('<?php echo $hotelSearchData->lowRate ?>','<?php echo $single_price; ?>','<?php echo $original_single_price; ?>','<?php echo $incrementIndex; ?>','<?php echo $admin_model_obj->DisplayAmplePoints($no_of_amples); ?>')">BOOK
-                                                                    NOW</a></div>
-                                                                </div>
-                                                            </div> --}}
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
+<div>
+  <div class='sidebar-booking-box'>
+    <h3 class='text-center' style="font-size: 15px !important;">USE AMPLE POINTS TO GET THIS
+    ROOM</h3>
+    <div class='booking-box-body'>
+      <form>
+        <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+          <div class="row">
+            <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+              <label>Price</label>
+            </div>
+            <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+              <input type='text'
+              id='itemprice_<?php echo $hotelSearchData->lowRate ?>'
+              name='itemprice'
+              class='form-control'
+              value='$<?php echo $single_price; ?>'
+              disabled>
+              <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
+            </div>
           </div>
+        </div>
+        <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+          <div class="row">
+            <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+              <label>Buy & Earn</label>
+            </div>
+            <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+              <input type='text'
+              id='buyearnamples_<?php echo $hotelSearchData->lowRate ?>'
+              name='buyearnamples'
+              class='form-control'
+              placeholder='D'
+              value='<?php echo $admin_model_obj->DisplayAmplePoints($no_of_amples); ?>'
+              disabled>
+              <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
+            </div>
+          </div>
+        </div>
+        <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+          <div class="row">
+            <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+              <label>Amples Needed to Redeem</label>
+            </div>
+            <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+              <input type='text'
+              id='useamplestoshop_<?php echo $hotelSearchData->lowRate ?>'
+              name='useamplestoshop'
+              class='form-control'
+              value='<?php echo $admin_model_obj->DisplayAmplePoints($free_with_amples); ?> Amples'
+              disabled>
+              <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
+            </div>
+          </div>
+        </div>
+        <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+          <div class="row">
+            <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+              <label>Apply Amples</label>
+            </div>
+            <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+              <input type='text' onchange="ampleEnterFun(this.value,'<?php echo $hotelSearchData->lowRate ?>')"
+              id='inputamples_<?php echo $hotelSearchData->lowRate ?>'
+              name='inputamples'
+              class='form-control'>
+              <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
+            </div>
+          </div>
+        </div>
+        <div class='col-md-4 col-sm-4 col-xs-4 no-space add-cart-submit' style="margin-left: 210px;">
+          <button class="btn btn-dark" style="width:100%" id='applyamples_<?php echo $hotelSearchData->lowRate ?>'
+          type='button'
+          onclick="applyAmplePoints('<?php echo $hotelSearchData->lowRate ?>','<?php echo $single_price; ?>','<?php echo $discount_price; ?>','<?php echo $discount; ?>')">
+          APPLY
+          </button>
+        </div>
+        
+        <div class='clearfix'></div>
+        <div class='grand-total1 text-center'>
+          <div class="row">
+            <div class='col-md-8 col-sm-8 col-xs-8 no-space'
+              id='newpricesection_<?php echo $hotelSearchData->lowRate ?>'
+              style='display:none;'><span
+              style="width: 42%;">New Price : </span>
+              <h4 id='newitemprice_<?php echo $hotelSearchData->lowRate ?>'
+              style="margin: 15px 10px;">&nbsp;
+              $<?php echo $single_price; ?></h4>
+              <span class='res-collection-sub'
+                style='display:none;margin: 12px 0 0 -10px;'
+              id="res_collection_sub_<?php echo $hotelSearchData->lowRate ?>">FREE</span>
+              <input type="hidden"
+              id="usernewitemprice_<?php echo $hotelSearchData->lowRate ?>"
+              value="<?php echo $single_price; ?>"/>
+            </div>
+            
+          </div>
+        </div>
+        <div class='res-collection-sub1'
+          id="res_collection_sub_1_<?php echo $hotelSearchData->lowRate ?>">
+          <div class='col-md-12 col-sm-12 col-xs-12 no-space'
+            id='earnrewardsection_<?php echo $hotelSearchData->lowRate ?>'
+            style='display:none;'>
+            <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+              <label>Earn Reward</label>
+            </div>
+            <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+              <input type='text'
+              id='earnrewardamples_<?php echo $hotelSearchData->lowRate ?>'
+              name='earnrewardamples'
+              class='form-control'
+              disabled>
+              <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
+            </div>
+          </div>
+          <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+            <div class="row">
+              <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+                <label>Reward Value</label>
+              </div>
+              <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+                <input type='text'
+                id='earnrewardonitem_<?php echo $hotelSearchData->lowRate ?>'
+                name='earnrewardonitem'
+                value='<?php echo $discount_price; ?>'
+                class='form-control'
+                disabled>
+              </div>
+            </div>
+          </div>
+          <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+            <div class="row">
+              <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+                <label>You Earn</label>
+              </div>
+              <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+                <input type='text'
+                id='youearndiscount_<?php echo $hotelSearchData->lowRate ?>'
+                name='youearndiscount'
+                value='<?php echo (int)$discount; ?>%'
+                class='form-control'
+                disabled>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='clearfix'></div>
+        {{-- <div class='grand-total text-center'>
+          <div class='col-md-12 col-sm-12 col-xs-12'>
+            <div class='button-group'
+              id='atax_<?php echo $hotelSearchData->lowRate ?>'
+              style="display:none"><a
+                class='btn-add-cart'
+                id="cartwithample_<?php echo $hotelSearchData->lowRate ?>"
+                href='javascript:void(0);'
+                onclick="bookRoomWithAmple('<?php echo $hotelSearchData->lowRate ?>','<?php echo $single_price; ?>','<?php echo $original_single_price; ?>','<?php echo $incrementIndex; ?>')">BOOK
+              NOW ample</a></div>
+              <div class='button-group'
+                id='btax_<?php echo $hotelSearchData->lowRate ?>'>
+                <a class='btn-add-cart'
+                  id="cartwithoutample_<?php echo $hotelSearchData->lowRate ?>"
+                  href="javascript:void(0);"
+                  onclick="bookRoomWithoutAmple('<?php echo $hotelSearchData->lowRate ?>','<?php echo $single_price; ?>','<?php echo $original_single_price; ?>','<?php echo $incrementIndex; ?>','<?php echo $admin_model_obj->DisplayAmplePoints($no_of_amples); ?>')">BOOK
+                NOW</a></div>
+              </div>
+            </div> --}}
+          </form>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+
+
+  
           <!-- end form-content -->
         </div>
         <!-- end form-box -->

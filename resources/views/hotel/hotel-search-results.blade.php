@@ -34,33 +34,33 @@
     
          ?>
 
-    <style>
-    @media only screen and (max-width: 999px) {
-      .card-item .card-img a {
-        width: 100%;
-        max-height: 240px;
-      }
-      .c-item-1 {
-        padding: 0;
-      }
-      .c-item-2 {
-      }
-      .c-item-2,
-      .c-item-3 {
-        padding: 20px 20px 20px !important;
-      }
-      .c-item-3 {
-        border-left: none;
-        border-top: 1px solid #0000003b;
-      }
-      .card-item.card-item-list .row {
-        margin: 0;
-      }
-      .filter-bar-filter {
-        margin-bottom: 20px;
-      }
-    }
-  </style>
+<style>
+@media only screen and (max-width: 999px) {
+.card-item .card-img a {
+width: 100%;
+max-height: 240px;
+}
+.c-item-1 {
+padding: 0;
+}
+.c-item-2 {
+}
+.c-item-2,
+.c-item-3 {
+padding: 20px 20px 20px !important;
+}
+.c-item-3 {
+border-left: none;
+border-top: 1px solid #0000003b;
+}
+.card-item.card-item-list .row {
+margin: 0;
+}
+.filter-bar-filter {
+margin-bottom: 20px;
+}
+}
+</style>
          
         
 <style>
@@ -379,87 +379,77 @@ $childs =substr($childsStr,0,-1);
                
             </div><!-- end col-lg-4 -->
            
-            <div class="col-lg-12">
-
-
- {{--                <div class="" id="">
-
-  <div class="card-item card-item-list mb-4" style="border-radius: 10px">
-    <div class="row">
-      <div class="col-lg-3 col-12 c-item-1">
-        <div class="card-img" style="height: 100%">
-          <span class="badge">ROOM ONLY</span>
-          <a href="http://127.0.0.1:8000/hotel-details/NzYz/OYO%2010274%20Hotel%20Aamara" class="d-block" style="height: 100%">
-            <img src="./hotel-search-results_files/663786a_hb_a_001.jpg" alt="hotel-img" class="img-fluid" style="height: 100%; object-fit: cover" />
-          </a>
-          <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="" data-original-title="Bookmark"><i class="la la-heart-o"></i></div>
+<div class="col-lg-12">
+    {{--                <div class="" id="">
+        <div class="card-item card-item-list mb-4" style="border-radius: 10px">
+            <div class="row">
+                <div class="col-lg-3 col-12 c-item-1">
+                    <div class="card-img" style="height: 100%">
+                        <span class="badge">ROOM ONLY</span>
+                        <a href="http://127.0.0.1:8000/hotel-details/NzYz/OYO%2010274%20Hotel%20Aamara" class="d-block" style="height: 100%">
+                            <img src="./hotel-search-results_files/663786a_hb_a_001.jpg" alt="hotel-img" class="img-fluid" style="height: 100%; object-fit: cover" />
+                        </a>
+                        <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="" data-original-title="Bookmark"><i class="la la-heart-o"></i></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12 c-item-2" style="padding: 20px 10px 20px">
+                    <div class="h-title" style="font-size: 20px">OYO 10274 Hotel Aamara (HOTEL)</div>
+                    <div>
+                        <span class="ratings mr-3">
+                            <i class="la la-star"> </i>
+                            <i class="la la-star"> </i>
+                            <i class="la la-star-o"> </i>
+                            <i class="la la-star-o"> </i>
+                            <i class="la la-star-o"> </i>
+                        </span>
+                        <span class="h-s-title">Block A road no 4 street no 9 Mahipalpur Ext407Air, Delhi</span>
+                    </div>
+                    <div>
+                        <a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=OYO%2010274%20Hotel%20Aamara%20Block%20A%20road%20no%204%20street%20no%209%20Mahipalpur%20Ext407Air,%20Delhi" class="">Show on Map</a>
+                    </div>
+                    <div>
+                        <ul style="display: flex; justify-self: start; align-items: center; flex-wrap: wrap">
+                            <li class="mr-2"><i class="la la-star"></i> Small pets allowed (under 5 kg)</li>
+                            <li class="mr-2"><i class="la la-star"></i> Large pets allowed (over 5 kg)</li>
+                            <li class="mr-2"><i class="la la-star"></i> Wheelchair-accessible</li>
+                            <li class="mr-2"><i class="la la-star"></i> Car park</li>
+                            <li class="mr-2"><i class="la la-star"></i> Garage</li>
+                            <li class="mr-2"><i class="la la-star"></i> 24-hour reception</li>
+                            <li class="mr-2"><i class="la la-star"></i> Check-in hour</li>
+                            <li class="mr-2"><i class="la la-star"></i> Check-out hour</li>
+                            <li class="mr-2"><i class="la la-star"></i> Wired Internet</li>
+                            <li class="mr-2"><i class="la la-star"></i> Wi-fi</li>
+                            <li class="mr-2"><i class="la la-star"></i> Secure parking</li>
+                            <li class="mr-2"><i class="la la-star"></i> Room service</li>
+                            <li class="mr-2"><i class="la la-star"></i> 24-hour security</li>
+                            <li class="mr-2"><i class="la la-star"></i> Air conditioning in public areas</li>
+                            <li class="mr-2"><i class="la la-star"></i> Lift access</li>
+                            <li class="mr-2"><i class="la la-star"></i> Newspapers</li>
+                            <li class="mr-2"><i class="la la-star"></i> Electric kettle</li>
+                            <li class="mr-2"><i class="la la-star"></i> Towels and bed linen</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span>
+                            <i class="la la-star"></i><i class="la la-star"></i><i class="la la-star"></i><i class="la la-star"></i><i class="la la-star"></i>
+                        </span>
+                        <span class="text-primary">4179 Reviews</span>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-outline-primary btn-sm">Compare</button>
+                        <button type="button" class="btn btn-link">Full Description</button>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-12 c-item-3" style="padding: 20px 10px 20px; border-left: 1px solid #0000003b; padding-right: 25px">
+                    <div class="card-price">
+                        <span class="price__from">From </span>
+                        <span class="price__num">$ 61( <span style="text-decoration: line-through"> $ 122 </span> )</span>
+                    </div>
+                    <span class="theme-btn w-100 text-center margin-top-20px Search_Now">See details<i class="la la-angle-right"></i></span>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-lg-6 col-12 c-item-2" style="padding: 20px 10px 20px">
-        <div class="h-title" style="font-size: 20px">OYO 10274 Hotel Aamara (HOTEL)</div>
-        <div>
-          <span class="ratings mr-3">
-            <i class="la la-star"> </i>
-            <i class="la la-star"> </i>
-            <i class="la la-star-o"> </i>
-            <i class="la la-star-o"> </i>
-            <i class="la la-star-o"> </i>
-          </span>
-          <span class="h-s-title">Block A road no 4 street no 9 Mahipalpur Ext407Air, Delhi</span>
-        </div>
-        <div>
-          <a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=OYO%2010274%20Hotel%20Aamara%20Block%20A%20road%20no%204%20street%20no%209%20Mahipalpur%20Ext407Air,%20Delhi" class="">Show on Map</a>
-        </div>
-        <div>
-          <ul style="display: flex; justify-self: start; align-items: center; flex-wrap: wrap">
-            <li class="mr-2"><i class="la la-star"></i> Small pets allowed (under 5 kg)</li>
-            <li class="mr-2"><i class="la la-star"></i> Large pets allowed (over 5 kg)</li>
-            <li class="mr-2"><i class="la la-star"></i> Wheelchair-accessible</li>
-            <li class="mr-2"><i class="la la-star"></i> Car park</li>
-            <li class="mr-2"><i class="la la-star"></i> Garage</li>
-            <li class="mr-2"><i class="la la-star"></i> 24-hour reception</li>
-            <li class="mr-2"><i class="la la-star"></i> Check-in hour</li>
-            <li class="mr-2"><i class="la la-star"></i> Check-out hour</li>
-            <li class="mr-2"><i class="la la-star"></i> Wired Internet</li>
-            <li class="mr-2"><i class="la la-star"></i> Wi-fi</li>
-            <li class="mr-2"><i class="la la-star"></i> Secure parking</li>
-            <li class="mr-2"><i class="la la-star"></i> Room service</li>
-            <li class="mr-2"><i class="la la-star"></i> 24-hour security</li>
-            <li class="mr-2"><i class="la la-star"></i> Air conditioning in public areas</li>
-            <li class="mr-2"><i class="la la-star"></i> Lift access</li>
-            <li class="mr-2"><i class="la la-star"></i> Newspapers</li>
-            <li class="mr-2"><i class="la la-star"></i> Electric kettle</li>
-            <li class="mr-2"><i class="la la-star"></i> Towels and bed linen</li>
-          </ul>
-        </div>
-        <div>
-          <span>
-            <i class="la la-star"></i><i class="la la-star"></i><i class="la la-star"></i><i class="la la-star"></i><i class="la la-star"></i>
-          </span>
-          <span class="text-primary">4179 Reviews</span>
-        </div>
-        <div>
-          <button type="button" class="btn btn-outline-primary btn-sm">Compare</button>
-          <button type="button" class="btn btn-link">Full Description</button>
-        </div>
-      </div>
-      <div class="col-lg-3 col-12 c-item-3" style="padding: 20px 10px 20px; border-left: 1px solid #0000003b; padding-right: 25px">
-        <div class="card-price">
-          <span class="price__from">From </span>
-          <span class="price__num">$ 61( <span style="text-decoration: line-through"> $ 122 </span> )</span>
-        </div>
-        <span class="theme-btn w-100 text-center margin-top-20px Search_Now">See details<i class="la la-angle-right"></i></span>
-      </div>
-    </div>
-  </div>
-
-                </div> --}}
-
-
-
-
-
-
+    </div> --}}
 
                      <div class="hotellist" id="hotellist">
                     <div class="wrapper">
