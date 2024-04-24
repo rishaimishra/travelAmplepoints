@@ -532,6 +532,17 @@ $childs =substr($childsStr,0,-1);
                         ================================= -->
  
 
+
+
+
+
+
+
+
+
+
+
+
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -539,7 +550,7 @@ $childs =substr($childsStr,0,-1);
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button type="button" class="close" id="mdlcls" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
            <div class="sidebar mt-0" >
@@ -625,7 +636,7 @@ $childs =substr($childsStr,0,-1);
                                 <div id="slider-range2" class="slider-range2" onclick="Show_Hotels('filter')"></div><!-- end slider-range -->
                             </div><!-- end main-search-input-item -->
                             <div class="btn-box pt-4">
-                                <button class="theme-btn theme-btn-small theme-btn-transparent" onclick="Show_Hotels('filter')" type="button">Apply</button>
+                                <button class="theme-btn theme-btn-small theme-btn-transparent" onclick="Show_Hotels('filter','mdl')" type="button">Apply</button>
                             </div>
                         </div>
                     </div><!-- end filter by price -->
@@ -850,8 +861,9 @@ jQuery("#hotel").show();
 
 
                                 
-                            function Show_Hotels(type)
+                            function Show_Hotels(type,mdl=null)
                             {   //var search_session='62f0011bf1e94';
+                            console.log(mdl)
                                
                                 if(opcty==0){
                                 jQuery('.hotellist').addClass('opacity_5');
@@ -862,7 +874,7 @@ jQuery("#hotel").show();
                                 var accommodationType='';
                                 if(type!='search'){ 
                                     
-                                    if(type=='filter'){  innerHtml=''; } else { page=page+1; }
+                                    if(type=='filter'){  innerHtml=''; if(mdl!=null){  $("#mdlcls").click();} } else { page=page+1; }
                                     
                                     jQuery('input[name=starrating]:checked').each(function(i) { 
                                         Cri_Rating[i] = jQuery(this).val();
@@ -895,6 +907,15 @@ jQuery("#hotel").show();
                                     });
                                      hotel_name = document.getElementById('findbynamefilter').value;
                                      price= document.getElementById("amount2_1").value;
+                                     // Split the price value into its components
+                                    var parts = price.split(' - ');
+
+                                    // Divide each component by 2
+                                    var newMinPrice = parseFloat(parts[0]) / 2;
+                                    var newMaxPrice = parseFloat(parts[1]) / 2;
+
+                                    // Construct the new price value
+                                    var newPrice = newMinPrice + ' - ' + newMaxPrice;
                                 }
                                 
                                 jQuery('.totalhotel_to').html(page*10); 
@@ -912,7 +933,7 @@ jQuery("#hotel").show();
                                     accommodationType: accommodationType, 
                                     Cri_amenity: Cri_amenity,  
                                     hotel_name: hotel_name, 
-                                    price: price,
+                                    price: newPrice,
                                     rand: Math.random()
                                 },
                                 dataType: "json",

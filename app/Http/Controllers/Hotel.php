@@ -757,6 +757,24 @@ public function getdetails($id){
 
 	}
 // getControls End	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 // HotelFinalCheckout Start	
 	public function HotelFinalCheckout(Request $request)  
@@ -931,11 +949,22 @@ public function getdetails($id){
 		Crud_Model::updateData('twc_booking',array('payment_status'=>'Confirmed'),array('order_id'=>$order_id));
 		$redirect_page=url('/')."/book-hotel?order_id=".$order_id;
 		
-		
+		// dd($request->all(),$paymentType);
 		return redirect($redirect_page);
 	}
 // HotelFinalCheckout End
 	
+
+
+
+
+
+
+
+
+
+
+
 // Book Hotel Start 
 	public function BookHotel(Request $request){
 	$request_data=$request->input('');  
@@ -943,6 +972,7 @@ public function getdetails($id){
 	   $hotel_book_req=crud_model::readOne('twc_booking',array('order_id'=>$request['order_id']));
 	   $request_xml=$hotel_book_req->request_xml;
 	   $payment_status=$hotel_book_req->payment_status;
+	   // dd($request->all(),$paymentType);
 	   
 	   if($payment_status=='Confirmed'){
 	   $bookingMode='Test';
@@ -1429,7 +1459,7 @@ public function getdetails($id){
 		// More headers
 		$headers .= 'From: <techieakm@gmai.com>' . "\r\n";
 		$headers .= 'Cc: amit4comp@gmail.com' . "\r\n";
-		mail($to,$subject,$content,$headers);
+		// mail($to,$subject,$content,$headers);
 	}	
 
 // clean Start	

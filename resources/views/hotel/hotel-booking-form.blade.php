@@ -49,7 +49,7 @@
                 <input class="form-control" type="hidden" name="currency" id="currency_main">
                 <input class="form-control" type="hidden" name="api_currency" id="api_currency" value="<?php echo $hotelSearchData->api_currency; ?>">
                 <input class="form-control" type="hidden" name="apiPrice" id="apiPrice">
-                <input class="form-control" type="text" name="chargeableRate" id="chargeableRate">
+                <input class="form-control" type="hidden" name="chargeableRate" id="chargeableRate">
                 <input class="form-control" type="hidden" name="base_fare" id="base_fare">
                 <input class="form-control" type="hidden" name="tax" id="tax">
                 <span class="inpurroomdata"></span>
@@ -71,7 +71,7 @@
                     <div class="input-box">
                       <label class="label-text">Title <span style="color:#FF0000">*</span></label>
                       <div class="form-group"> 
-                        <div class="select-contain w-auto">
+                        <div>
                           <select class="select-contain-select" name="passenger[adult][title][<?php echo $r; ?>][]" required>
                             <option value="mr">Mr</option>
                             <option value="mrs">Mrs</option>
@@ -113,7 +113,7 @@
                     <div class="input-box">
                       <label class="label-text">Gender <span style="color:#FF0000">*</span></label>
                       <div class="form-group"> 
-                        <div class="select-contain w-auto">
+                        <div class=" w-auto">
                           <select class="select-contain-select" name="passenger[adult][gender][<?php echo $r; ?>][]" required>
                             <option value="m">Male</option>
                             <option value="f">Female</option>
@@ -143,7 +143,7 @@
                     <div class="input-box">
                       <label class="label-text">Title <span style="color:#FF0000">*</span></label>
                       <div class="form-group"> 
-                        <div class="select-contain w-auto">
+                        <div class=" w-auto">
                           <select class="select-contain-select" name="passenger[child][title][<?php echo $r; ?>][]" required>
                             <option value="mr">Mr</option>
                             <option value="mrs">Mrs</option>
@@ -184,7 +184,7 @@
                     <div class="input-box">
                       <label class="label-text">Gender <span style="color:#FF0000">*</span></label>
                       <div class="form-group"> 
-                        <div class="select-contain w-auto">
+                        <div class=" w-auto">
                           <select class="select-contain-select" name="passenger[child][Gender][<?php echo $r; ?>][]" required>
                             <option value="m">Male</option>
                             <option value="f">Female</option>
@@ -238,7 +238,7 @@
                     <div class="input-box">
                       <label class="label-text">Country <span style="color:#FF0000">*</span></label>
                       <div class="form-group">
-                        <div class="select-contain w-auto">
+                        <div class=" w-auto">
                           <select class="select-contain-select" name="passenger[country]" required>
                             <option value="select-country">Select country</option>
                             <option value="Afghanistan">Afghanistan</option>
