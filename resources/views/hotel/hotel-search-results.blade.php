@@ -915,7 +915,11 @@ jQuery("#hotel").show();
                                     var newMaxPrice = parseFloat(parts[1]) / 2;
 
                                     // Construct the new price value
-                                    var newPrice = newMinPrice + ' - ' + newMaxPrice;
+                                    if(mdl!=null){
+                                        var newPrice = newMinPrice + ' - ' + newMaxPrice;
+                                    }else{
+                                        var newPrice = price;
+                                    }
                                 }
                                 
                                 jQuery('.totalhotel_to').html(page*10); 

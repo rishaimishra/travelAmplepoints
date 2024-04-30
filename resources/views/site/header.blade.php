@@ -187,7 +187,7 @@
                     <div class="header-top-content">
                         <div class="header-left">
                             <ul class="list-items">
-                            <li><a href="{{ asset('help-desk')}}" style="font-size: 1.5rem!important;" ><i class="la la-question-circle"></i>Support</a></li>
+                            {{-- <li><a href="{{ asset('help-desk')}}" style="font-size: 1.5rem!important;" ><i class="la la-question-circle"></i>Support</a></li> --}}
                             </ul>
                         </div>
                     </div>
@@ -258,7 +258,7 @@
                                     <li style="display:none"><a style="display:flex;" href="{{ asset('transfers-search')}}"><span class="form-icon an-custom-img-icon" style="margin: 0 5px 0 0;"><img src="<?php echo url('');?>/icon/car-black.png" alt=""></span>Transfers</a></li>
                                     
                                     <div style="display:none" class="mobile" >
-                                    <li><a href="{{ asset('help-desk')}}"><i class="la la-question-circle"></i>Support</a></li>
+                                 {{--    <li><a href="{{ asset('help-desk')}}"><i class="la la-question-circle"></i>Support</a></li> --}}
                                    	   <div class="col-lg-6">
                                             <div class="header-top-content">
                                                 <div class="header-right align-items-center justify-content-end an-remove-flex">
@@ -291,9 +291,9 @@
                                                          <a href="{{ asset('login')}}" class="theme-btn theme-btn-small" >Login</a>
                                                         <?php } ?>
                                                     </div>
-                                                    <div class="header-right-action" style="margin-top:10px;" an-div-sep>
+                                                    {{-- <div class="header-right-action" style="margin-top:10px;" an-div-sep>
                                                     <a href="{{ asset('agent-signup')}}" class="theme-btn">Become an Agent</a> 
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -304,9 +304,9 @@
                         </div><!-- end main-menu-content -->
                         <div class="nav-btn">
                         <?php if(isset($sessionval['first_name'])){ ?>
-                                <a href="{{ asset('admin-dashboard')}}" class="theme-btn">Dashboard</a>
+                                <a @if(@Auth::user()->user_type=="admin") href="{{ asset('admin-dashboard')}}" @else href="{{ route('customer.dashboard')}}" @endif class="theme-btn">Dashboard</a>
                          <?php }else{ ?>
-                            	<a href="{{ asset('agent-signup')}}" class="theme-btn">Become an Agent</a>     
+                            	{{-- <a href="{{ asset('agent-signup')}}" class="theme-btn">Become an Agent</a>      --}}
                          <?php } ?>                       
                         </div><!-- end nav-btn -->
                     </div><!-- end menu-wrapper -->

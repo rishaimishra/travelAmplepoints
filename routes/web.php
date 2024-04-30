@@ -15,6 +15,7 @@ use App\Http\Controllers\PdfController;
 use App\Http\Controllers\EmailController;
 
 use Illuminate\Support\Facades\DB;
+// use Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -564,6 +565,10 @@ Route::get('/review', function ()
 
 Route::get('/admin-dashboard', function ()  
  {     
+ 	if(@Auth::user()->user_type!="admin"){
+ 		// dd(Auth::user()->user_type);
+ 		return redirect()->route('customer.dashboard');
+ 	}
 	//$flightCount = DB::table('bookings')->first()->count();
 	$flightCount = crud_model::read('bookings')->count(); 
 	$hotelCount = crud_model::readByCondition('twc_booking',array('product'=>'hotel'))->count(); 
@@ -597,7 +602,7 @@ Route::get('/agent-dashboard', function ()
 
 Route::get('/customer-dashboard', function ()  
  {     
- 	// dd(Auth::check(),Session::get('user_id'));
+ 	// dd(Auth::check(),Session::get('user_id'), Auth::user()->id );
 	$flightCount = crud_model::readByCondition('bookings',array('user_id'=>session()->get('user_id')))->count();  
 	$hotelCount = crud_model::readByCondition('twc_booking',array('product'=>'hotel','user_id'=>session()->get('user_id')))->count(); 
 	$transferCount = crud_model::readByCondition('twc_booking',array('product'=>'transfer','user_id'=>session()->get('user_id')))->count(); 
@@ -610,7 +615,7 @@ Route::get('/customer-dashboard', function ()
 	$ip = DB::select("select ip,COUNT(ip) as total from visitor group by ip order by total DESC ");
 		
 	return view('admin/index', array('flightCount' => $flightCount,'hotelCount' => $hotelCount,'activityCount' => $activityCount,'transferCount' => $transferCount,'device' => $device,'os' => $os,'browser' => $browser,'country' => $country,'ip' => $ip));  
-});  
+})->name('customer.dashboard');  
 //site end
 
 //Email Verify
@@ -651,6 +656,8 @@ Route::get('/forgot-password', function ()
 
 Route::post('/signup', [Site::class, 'Signup'])->name('signup');
 Route::post('/post-login', [Site::class, 'Login']);
+Route::post('/post-login-new', [Site::class, 'Login_new']);
+Route::get('/test', [Site::class, 'test'])->name('test');
 Route::get('/logout', [Site::class, 'Logout']);
 
 Route::get('/send_otp', [EmailController::class, 'SendOtp']);
@@ -1160,4 +1167,7 @@ Route::post('/wallet-fund-by-pg-post', [Admin::class, 'WalletFundByPGPost']);
 
 Route::post('/userInserFromAmplepoint', [Site::class, 'userInserFromAmplepoint']);
 Route::get('/cronJobForUpdateAmplePoint', [Site::class, 'cronJobForUpdateAmplePoint']);
+Route::get('/processcheckoutpayment/{order_id}/{user_id}', [Hotel::class, 'processcheckoutpayment'])->name('processcheckoutpayment');
+Route::post('/createstrippayment',[Hotel::class, 'createstrippayment'])->name('createstrippayment');
+Route::any('/stripeorderstatus/{order_id}/{customer_id}',[Hotel::class, 'stripeorderstatus'])->name('stripeorderstatus');
 

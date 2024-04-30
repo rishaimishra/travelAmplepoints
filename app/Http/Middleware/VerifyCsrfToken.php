@@ -15,6 +15,7 @@ class VerifyCsrfToken extends Middleware
         //
         'signup',
         'hotel-final-checkout',
-        'post-login'
+        'post-login',
+         'post-login-new'
     ];
 }

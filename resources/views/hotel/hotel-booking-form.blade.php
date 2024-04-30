@@ -726,7 +726,7 @@ var innerHtml=''; var page=0; var search_session='';
 
     function applyAmplePoints(room_index, single_price, discount_price, discount) {
 
-        var user_total_alample = 100; //loggedin user ample points
+        var user_total_alample = {{@Auth::user()->ample}};
         var qty = 1;
         var totalamples = $('#useamplestoshop_' + room_index).val();
         var amplesbyuser = $('#inputamples_' + room_index).val();
@@ -753,7 +753,7 @@ var innerHtml=''; var page=0; var search_session='';
 
         if (checkapplyample > checkusertotal) {
 
-            alert("You Don't Have Enough Ample Please Earn More Ample");
+            alert("You Don't Have Enough Ample Please Earn More Ample, your remaining ample is "+user_total_alample);
             return false;
         }
 

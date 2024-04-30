@@ -9,7 +9,7 @@ use Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
-
+use Illuminate\Support\Facades\Cookie;
 
 class Site extends Controller
 {
@@ -481,6 +481,28 @@ public function cronJobForUpdateAmplePoint(){
 
     // Handle the response as needed
     return response()->json(['response' => "Data updated"]);
+}
+
+
+
+
+
+
+public function Login_new(Request $request){
+	$userDetail=User::where('email',$request->email)->first();
+	// dd($userDetail);
+	Auth::login($userDetail);
+	 // Store user ID in a cookie
+        Cookie::queue('user_id', $userDetail->id, 60000); // Cookie will last for 60 minutes
+
+	// dd(Auth::user()->id);
+	// return view('test');
+	return redirect()->route('test');
+}
+
+
+public function test(){
+	 return view('test');
 }
 
 

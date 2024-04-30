@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\Markup;
 use App\Models\User;
+use Stripe\StripeClient;
+
 
 
 class Hotel extends Controller
@@ -779,38 +781,7 @@ public function getdetails($id){
 // HotelFinalCheckout Start	
 	public function HotelFinalCheckout(Request $request)  
     {
-    	// dd($request->all());
-    	
-        $admin_model_obj = new \App\Models\commonFunctionModel;
-        $toCurrencyRate = $admin_model_obj->getFromToCurrencyRate(1.00,'INR', 'USD');
-        $original_single_price = $request->chargeableRate;
-        $OfferedPriceRoundedOff = $admin_model_obj->displayFinalRates($request->chargeableRate, $toCurrencyRate);
-
-        //dd($original_single_price,$OfferedPriceRoundedOff);
-        $single_price = (($OfferedPriceRoundedOff) * 2);
-        $wholesale_price = ($single_price / 2);
-        $free_with_amples = 0.00;
-        $no_of_amples = 0.00;
-        $discount_price = 0.00;
-        $discount = 0.00;
-        $FinalTextAmount = 0.00;
-        $calculateDiscount = ((($single_price - $wholesale_price) * 100) / $single_price);
-        $discount = round($calculateDiscount, 2);
-        $discount_price = (($single_price * $discount) / 100);
-        $discount_margin = $discount_price;
-        $buyandearnamples = ($discount_margin / .12);
-        $no_of_amples = $buyandearnamples;
-        if(@Auth::user()->id || Session::get('user_id') ){
-        	// dd(1);
-        	//update ample
-        	$userDetail = User::where('id', @Auth::user()->id)
-		    ->orWhere('id', Session::get('user_id'))
-		    ->first();
-        	$newAmple=int($userDetail->ample) + round($no_of_amples);
-        	$up=User::where('id', @Auth::user()->id)->orWhere('id', Session::get('user_id'))->update(['ample'=>$newAmple]);
-        }
-
-        // dd($request->input(),round($no_of_amples),$request->chargeableRate,$request->user_id);
+    	// dd($request->all());       
 
 		$request_data=array();
 		$request_data=$request->input();
@@ -940,20 +911,151 @@ public function getdetails($id){
 		);
 		$value = Crud_Model::insertData('twc_booking',$data);
 		$redirect_page=url('/')."/travel/payment/".$request_data['payment_type']."/?order_id=".$order_id."&module=hotel";
+
 		if($request_data['payment_type']=='wallet'){
 			$return=$this->WalletDeduct($request_data['chargeableRate'],$request_data['api_currency'],$user_id,$order_id);
 			$redirect_page=url('/')."/book-hotel?order_id=".$order_id;
 		}
 		
 		
-		Crud_Model::updateData('twc_booking',array('payment_status'=>'Confirmed'),array('order_id'=>$order_id));
-		$redirect_page=url('/')."/book-hotel?order_id=".$order_id;
+		//Crud_Model::updateData('twc_booking',array('payment_status'=>'Confirmed'),array('order_id'=>$order_id));
+		// $redirect_page=url('/')."/book-hotel?order_id=".$order_id; //****************
+		// dd( @Auth::user()->id);
+		dd(1);
+
+		 return redirect()->route('processcheckoutpayment', ['order_id' => $order_id, 'user_id' => @Auth::user()->id]);
 		
 		// dd($request->all(),$paymentType);
-		return redirect($redirect_page);
+		// return redirect($redirect_page); //****************
 	}
 // HotelFinalCheckout End
 	
+
+
+
+
+
+
+
+
+
+	public function processcheckoutpayment($order_id,$user_id){
+    // dd($transaction_id,$user_id);
+        $bookingDetails=DB::table('twc_booking')->where('order_id',$order_id)->first();
+        $totaldata = $bookingDetails->chargable_rate;
+
+        // Passing data to the view
+        return view('payment.payment', [
+            'totaldata' => $totaldata,
+            'orderDetail' => $bookingDetails,
+        ]);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ public function createstrippayment(Request $request)
+    {
+           // dd($request->all());
+            // This is your test Secret API key.
+
+           //$stripe = new \Stripe\StripeClient("sk_test_51NpOZ4GY4n5u6WbIGKHcQBoih6sUZRXtG2a3qWq6NKqOMLrdPSo1DElWPfc0N4cBMrYLYmlUj25gqGHn1tmlmkoL00kNdf7OkS");
+
+            // This is your Live Secret API key.
+
+            // $stripe = new \Stripe\StripeClient("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");
+
+
+        // Ensure you have your Stripe API key set in your .env file
+        $stripe = new StripeClient("sk_test_51NpOZ4GY4n5u6WbIGKHcQBoih6sUZRXtG2a3qWq6NKqOMLrdPSo1DElWPfc0N4cBMrYLYmlUj25gqGHn1tmlmkoL00kNdf7OkS");
+
+        try {
+            // Retrieve JSON from POST body
+            $jsonObj = json_decode($request->getContent());
+
+            $totalAmount = $jsonObj->total_amount;
+            $order_id = $jsonObj->order_id;
+            $customer_id = $jsonObj->customer_id;
+            $customer_name = $jsonObj->customer_name;
+
+            $finalAmount = round($totalAmount) * 100;
+
+            // Create a PaymentIntent with amount and currency
+            $paymentIntent = $stripe->paymentIntents->create([
+                'amount' => $finalAmount,
+                'currency' => 'usd',
+                'description' => "Payment for Amplepoints Order ID $order_id",
+                'metadata' => [
+                    'order_id' => $order_id,
+                    'customer_id' => $customer_id,
+                    'customer_name' => $customer_name,
+                    'payment_from' => 'Amplepoints',
+                ],
+            ]);
+
+            return response()->json(['clientSecret' => $paymentIntent->client_secret]);
+
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+     public function stripeorderstatus($order_id,$customer_id,Request $request){
+        // dd($order_id,$customer_id,$request->all());
+       
+
+        $order_id = $order_id;
+        $customer_id = $customer_id;
+        $payment_intent = $request->payment_intent;
+        $payment_intent_client_secret = $request->payment_intent_client_secret;
+        $redirect_status = $request->redirect_status;
+
+        // dd($data,$order_id,$customer_id,$payment_intent,$payment_intent_client_secret,$redirect_status,$request->all());
+       // dd(1);
+        if (isset($redirect_status) && $redirect_status == 'succeeded') {
+
+        	Crud_Model::updateData('twc_booking',array('payment_status'=>'Confirmed'),array('order_id'=>$order_id));
+        	$redirect_page=url('/')."/book-hotel?order_id=".$order_id; 
+        	return redirect($redirect_page);
+
+    
+           // $paymentDetail = array(
+           //      'payment_intent' => $payment_intent,
+           //      'payment_intent_client_secret' => $payment_intent_client_secret,
+           //      'redirect_status' => $redirect_status
+           //  );
+
+        } else {
+            // $this->_redirect("/ordersuccess/msg/2/order_id/$order_id/user_id/$customer_id");
+            dd("payment not done");
+        }
+
+    }
+
+
+
+
+
 
 
 
@@ -967,6 +1069,52 @@ public function getdetails($id){
 
 // Book Hotel Start 
 	public function BookHotel(Request $request){
+		// dd($request->all());// *********************
+
+		// =================================================
+		$bookingDetails=DB::table('twc_booking')->where('order_id',$request->order_id)->first();
+
+		// dd($bookingDetails->chargable_rate);
+
+		 $admin_model_obj = new \App\Models\CommonFunctionModel;
+        $toCurrencyRate = $admin_model_obj->getFromToCurrencyRate(1.00,'USD', 'USD');
+        $original_single_price = (int)$bookingDetails->chargable_rate;
+        $OfferedPriceRoundedOff = $admin_model_obj->displayFinalRates((int)$bookingDetails->chargable_rate, $toCurrencyRate);
+
+        //dd($original_single_price,$OfferedPriceRoundedOff);
+        $single_price = (($OfferedPriceRoundedOff) * 2);
+        $wholesale_price = ($single_price / 2);
+        $free_with_amples = 0.00;
+        $no_of_amples = 0.00;
+        $discount_price = 0.00;
+        $discount = 0.00;
+        $FinalTextAmount = 0.00;
+        $calculateDiscount = ((($single_price - $wholesale_price) * 100) / $single_price);
+        $discount = round($calculateDiscount, 2);
+        $discount_price = (($single_price * $discount) / 100);
+        $discount_margin = $discount_price;
+        $buyandearnamples = ($discount_margin / .12);
+        $no_of_amples = $buyandearnamples;
+        // dd( $no_of_amples);
+        if(@Auth::user()->id || Session::get('user_id') ){
+        	// dd(1);
+        	//update ample
+        	$userDetail = User::where('id', @Auth::user()->id)
+		    ->orWhere('id', Session::get('user_id'))
+		    ->first();
+		    // dd($userDetail);
+		    if(@$userDetail->ample){
+		    	$newAmple=(int)($userDetail->ample) + round($no_of_amples);
+		    }else{
+                $newAmple=round($no_of_amples);
+		    }
+        	
+        	$up=User::where('id', @Auth::user()->id)->orWhere('id', Session::get('user_id'))->update(['ample'=>$newAmple]);
+        }
+
+        // dd($request->input(),round($no_of_amples),$request->chargeableRate,$request->user_id);
+
+		// =================================================
 	$request_data=$request->input('');  
 	   $order_id=$request->input('order_id');
 	   $hotel_book_req=crud_model::readOne('twc_booking',array('order_id'=>$request['order_id']));
