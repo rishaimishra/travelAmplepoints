@@ -964,38 +964,6 @@ public function getdetails($id){
 
  public function createstrippayment(Request $request)
     {
-           // dd($request->all());
-           
-
-        try {
-            // Retrieve JSON from POST body
-            $jsonObj = json_decode($request->getContent());
-
-            $totalAmount = $jsonObj->total_amount;
-            $order_id = $jsonObj->order_id;
-            $customer_id = $jsonObj->customer_id;
-            $customer_name = $jsonObj->customer_name;
-
-            $finalAmount = round($totalAmount) * 100;
-
-            // Create a PaymentIntent with amount and currency
-            $paymentIntent = $stripe->paymentIntents->create([
-                'amount' => $finalAmount,
-                'currency' => 'usd',
-                'description' => "Payment for Amplepoints Order ID $order_id",
-                'metadata' => [
-                    'order_id' => $order_id,
-                    'customer_id' => $customer_id,
-                    'customer_name' => $customer_name,
-                    'payment_from' => 'Amplepoints',
-                ],
-            ]);
-
-            return response()->json(['clientSecret' => $paymentIntent->client_secret]);
-
-        } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
-        }
     }
 
 
