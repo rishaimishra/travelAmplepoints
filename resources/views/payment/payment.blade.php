@@ -133,13 +133,7 @@ $customer_email =  @Auth::user()->email;
     var my_customer_id = '<?php echo $customer_id; ?>';
     var my_customer_name = '<?php echo $customer_name; ?>';
 
-    // This is your test publishable API key.
-
-    const stripe = Stripe("pk_test_51NpOZ4GY4n5u6WbIlWOsccAKTTMLq7xnjfG8fFboidp6jZCx2XlssuBHyNbvBsqfGDkbVkZH2Knka498eIzAjdPZ00YZBjdzik");
-
-    // This is your Live publishable API key.
-
-    // const stripe = Stripe("pk_live_51NpOZ4GY4n5u6WbIpfu1Ysf1rJ7qRurQD9U4lRTgeUPCSy8Crfl0D6bcDSPsRKk2fg5AnZ6vLrlxSnWJUx3OaZHX00O8wy3Qtn");
+  
 
     // The items the customer wants to buy
     const items = [{id: "xl-tshirt"}];
