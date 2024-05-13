@@ -524,9 +524,11 @@ public function getdetails($id){
 			// return $amenetyData;
 
 			$html = '';
-	        foreach ($amenetyData as $item) {
+	        foreach ($amenetyData as $key=> $item) {
 	        	//dd($item[0]);
-	            $html .= '<li class="mr-2"><i class="la la-star"></i>' . $item[0] . '</li>';
+	        	if($key<6){
+	             $html .= '<li class="mr-2"><i class="la la-star"></i>' . $item[0] . '</li>';
+	            }
 	        }
 	        $html .= '';
 
@@ -660,10 +662,36 @@ public function getdetails($id){
 		
 		$results = DB::select("select * from search_results_hotelbeds ".$moreQuery." ".$orderBy." LIMIT ".$page.", $limit");  
 		$datatype=''; $promoDescription=''; $isFavourate=''; $hotelFlight=''; $policyMatch=''; $inpolicy=''; $apply_rule_on=''; $currentAllotment='';
+
+
+
+		        $admin_model_obj = new \App\Models\CommonFunctionModel;
+                $toCurrencyRate = $admin_model_obj->getFromToCurrencyRate(1.00,'USD', 'USD');
+               
+
+
 		foreach($results as $Objs ){ 
 			$amenetyData=$this->getdetails($Objs->id);
+
+			 $OfferedPriceRoundedOff = $admin_model_obj->displayFinalRates($Objs->lowRate, $toCurrencyRate);
+
+                //dd($original_single_price,$OfferedPriceRoundedOff);
+                $single_price = (($OfferedPriceRoundedOff) * 2);
+                $wholesale_price = ($single_price / 2);
+                $free_with_amples = 0.00;
+                $no_of_amples = 0.00;
+                $discount_price = 0.00;
+                $discount = 0.00;
+                $FinalTextAmount = 0.00;
+                $calculateDiscount = ((($single_price - $wholesale_price) * 100) / $single_price);
+                $discount = round($calculateDiscount, 2);
+                $discount_price = (($single_price * $discount) / 100);
+                $discount_margin = $discount_price;
+                $buyandearnamples = ($discount_margin / .12);
+                $no_of_amples = $buyandearnamples;
+
 			// dd($amenetyData);
-				$data['result'][] =array('amenetyData'=>$amenetyData,'tid'=>$Objs->id,'total'=>$totalcount,'datatype'=>$datatype,'EANHotelID'=>$Objs->EANHotelID,'Name'=>$Objs->Name,'thumbnail'=>$Objs->thumbNailUrl,'StarRating'=>round($Objs->hotelRating),'popularity'=>$Objs->confidenceRating,'tripAdvisorRating'=>$Objs->tripAdvisorRating,'tripAdvisorReviewCount'=>$Objs->tripAdvisorReviewCount,'tripAdvisorRatingUrl'=>'','Address1'=>$Objs->address1,'Address2'=>$Objs->address2,'City'=>$Objs->city,'locationDescription'=>$Objs->locationDescription, 'LowRate'=>$Objs->lowRate,'currency_symbol'=>$this->currency_symbol,'HighRate'=>round($Objs->highRate,0),'discount_price'=>$Objs->discount_price,'nonRefundable'=>$Objs->nonRefundable,'Latitude'=>$Objs->latitude,'Longitude'=>$Objs->longitude,'rateClass_Name'=>$Objs->rateClass,'rateClass'=>$Objs->rateClass,'rateType'=>$Objs->rateType,'paymentType'=>$Objs->paymentType,'promoDescription'=>$promoDescription,'currentAllotment'=>$currentAllotment,'is_custom'=>$Objs->is_custom,'isActive'=>$Objs->isActive,'isFavourate'=>$isFavourate,'hotelFlight'=>$hotelFlight,'policyMatch'=>$policyMatch,'inpolicy'=>$inpolicy,'apply_rule_on'=>$apply_rule_on,'boardName'=>$Objs->boardName,'recommended'=>$Objs->recommended,'selling_points'=>$Objs->selling_points,'valueAdds'=>explode(',',$Objs->valueAdds),'product'=>$Objs->product,'accommodationType'=>$Objs->accommodationTypeCode); 	 
+				$data['result'][] =array('no_of_amples'=>$no_of_amples,'amenetyData'=>$amenetyData,'tid'=>$Objs->id,'total'=>$totalcount,'datatype'=>$datatype,'EANHotelID'=>$Objs->EANHotelID,'Name'=>$Objs->Name,'thumbnail'=>$Objs->thumbNailUrl,'StarRating'=>round($Objs->hotelRating),'popularity'=>$Objs->confidenceRating,'tripAdvisorRating'=>$Objs->tripAdvisorRating,'tripAdvisorReviewCount'=>$Objs->tripAdvisorReviewCount,'tripAdvisorRatingUrl'=>'','Address1'=>$Objs->address1,'Address2'=>$Objs->address2,'City'=>$Objs->city,'locationDescription'=>$Objs->locationDescription, 'LowRate'=>$Objs->lowRate,'currency_symbol'=>$this->currency_symbol,'HighRate'=>round($Objs->highRate,0),'discount_price'=>$Objs->discount_price,'nonRefundable'=>$Objs->nonRefundable,'Latitude'=>$Objs->latitude,'Longitude'=>$Objs->longitude,'rateClass_Name'=>$Objs->rateClass,'rateClass'=>$Objs->rateClass,'rateType'=>$Objs->rateType,'paymentType'=>$Objs->paymentType,'promoDescription'=>$promoDescription,'currentAllotment'=>$currentAllotment,'is_custom'=>$Objs->is_custom,'isActive'=>$Objs->isActive,'isFavourate'=>$isFavourate,'hotelFlight'=>$hotelFlight,'policyMatch'=>$policyMatch,'inpolicy'=>$inpolicy,'apply_rule_on'=>$apply_rule_on,'boardName'=>$Objs->boardName,'recommended'=>$Objs->recommended,'selling_points'=>$Objs->selling_points,'valueAdds'=>explode(',',$Objs->valueAdds),'product'=>$Objs->product,'accommodationType'=>$Objs->accommodationTypeCode); 	 
 		}
 	$datastr = json_encode($data);    
 	echo $datastr;
@@ -907,7 +935,8 @@ public function getdetails($id){
 		'itineraryId'=>'',
 		'confirmationNumbers'=>'',
 		'website'=>str_replace('www.','',$_SERVER['SERVER_NAME']),
-		'ip_address'=>$_SERVER['REMOTE_ADDR']
+		'ip_address'=>$_SERVER['REMOTE_ADDR'],
+		'booked_ample' =>$request->booked_ample,
 		);
 		$value = Crud_Model::insertData('twc_booking',$data);
 		$redirect_page=url('/')."/travel/payment/".$request_data['payment_type']."/?order_id=".$order_id."&module=hotel";
@@ -1102,10 +1131,11 @@ public function getdetails($id){
 		    ->orWhere('id', Session::get('user_id'))
 		    ->first();
 		    // dd($userDetail);
+		    // dd((int)($userDetail->ample) , round($no_of_amples), (int)$bookingDetails->booked_ample);
 		    if(@$userDetail->ample){
-		    	$newAmple=(int)($userDetail->ample) + round($no_of_amples);
+		    	$newAmple=(int)($userDetail->ample) + round($no_of_amples)-(int)@$bookingDetails->booked_ample;
 		    }else{
-                $newAmple=round($no_of_amples);
+                $newAmple=round($no_of_amples)-(int)@$bookingDetails->booked_ample;
 		    }
         	
         	$up=User::where('id', @Auth::user()->id)->orWhere('id', Session::get('user_id'))->update(['ample'=>$newAmple]);
@@ -1196,12 +1226,29 @@ public function getdetails($id){
  }
 // Book Hotel end	
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Cancel Hotel Start 
 	public function BookingCancellation(Request $request){
 		$obj=crud_model::readOne('twc_booking',array('order_id'=>$request['order_id']));
 	    $itineraryId=$obj->itineraryId;
 	
 		$actionUrl=$this->endpoint.'/bookings/'.$itineraryId.'?cancellationFlag=CANCELLATION';
+
+		// dd($obj,$itineraryId,$actionUrl);
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $actionUrl);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
@@ -1214,12 +1261,13 @@ public function getdetails($id){
 		curl_close($ch);
 		$this->createLogFile('Cancelled-'.$request['order_id'],$actionUrl,$content);
 		$res=json_decode($content,true);
+		// dd($res,$res['booking']);
 		if(isset($res['error'])){ 
 			$return=array('error'=>'Yes','msg'=>$res['error']['message']); 
 			$booking_status=$obj->booking_status;
 		}
 		else {
-			  	$responseData = $Response_Arr['booking'];
+			  	$responseData = $res['booking'];
 				$ResponseStatus = $responseData['status'];
 				$booking_status='Cancelled';
 				$return=array('error'=>'No','msg'=>'Cancellation Successfull');
@@ -1231,14 +1279,79 @@ public function getdetails($id){
 				'cancellationNumber'=>rand(),
 				'cancellation_date'=>date('Y-m-d H:i:s'),
 				'cancellation_request'=>$actionUrl,	
-				'cancellation_response'=>$contents,
+				'cancellation_response'=>$content,
 			 );
 	    Crud_Model::updateData('twc_booking',$data,array('order_id'=>$request['order_id']));
+
+
+	    // =========================================================
+	    $bookingDetails=DB::table('twc_booking')->where('order_id',$request['order_id'])->first();
+
+		// dd($bookingDetails->chargable_rate);
+
+		 $admin_model_obj = new \App\Models\CommonFunctionModel;
+        $toCurrencyRate = $admin_model_obj->getFromToCurrencyRate(1.00,'USD', 'USD');
+        $original_single_price = (int)$bookingDetails->chargable_rate;
+        $OfferedPriceRoundedOff = $admin_model_obj->displayFinalRates((int)$bookingDetails->chargable_rate, $toCurrencyRate);
+
+        //dd($original_single_price,$OfferedPriceRoundedOff);
+        $single_price = (($OfferedPriceRoundedOff) * 2);
+        $wholesale_price = ($single_price / 2);
+        $free_with_amples = 0.00;
+        $no_of_amples = 0.00;
+        $discount_price = 0.00;
+        $discount = 0.00;
+        $FinalTextAmount = 0.00;
+        $calculateDiscount = ((($single_price - $wholesale_price) * 100) / $single_price);
+        $discount = round($calculateDiscount, 2);
+        $discount_price = (($single_price * $discount) / 100);
+        $discount_margin = $discount_price;
+        $buyandearnamples = ($discount_margin / .12);
+        $no_of_amples = $buyandearnamples;
+        // dd( $no_of_amples);
+        if(@Auth::user()->id || Session::get('user_id') ){
+        	// dd(1);
+        	//update ample
+        	$userDetail = User::where('id', @Auth::user()->id)
+		    ->orWhere('id', Session::get('user_id'))
+		    ->first();
+		    // dd($userDetail);
+		    // dd((int)($userDetail->ample) , round($no_of_amples), (int)$bookingDetails->booked_ample);
+		    if(@$userDetail->ample){
+		    	$newAmple=(int)($userDetail->ample) - round($no_of_amples)+(int)@$bookingDetails->booked_ample;
+		    }else{
+                $newAmple= - round($no_of_amples)+(int)@$bookingDetails->booked_ample;
+		    }
+        	
+        	$up=User::where('id', @Auth::user()->id)->orWhere('id', Session::get('user_id'))->update(['ample'=>$newAmple]);
+        }
+
+        // dd($request->input(),round($no_of_amples),$request->chargeableRate,$request->user_id);
+
+		// =================================================
 	
 		echo json_encode($return);		
 	
 	}
 // Cancel Hotel end	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	public function RoomAvailability(Request $request){	

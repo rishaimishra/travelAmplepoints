@@ -45,7 +45,7 @@
                     <td>{{$data->user_email}}</td>
                     <td>{{$data->chargable_rate}}</td>
                     <td>{{$data->date_time}}</td>
-                    <td>{{$data->payment_method}}</td>
+                    <td>{{-- {{$data->payment_method}} --}}Online</td>
                     <td>@if($data->booking_status=='Failed')<span class="badge bg-danger">{{$data->booking_status}}@endif</span>
                     @if($data->booking_status=='Confirmed')<span class="badge bg-success">{{$data->booking_status}}@endif</span></td>
                      <td><div class="btn-group btn-group-sm">

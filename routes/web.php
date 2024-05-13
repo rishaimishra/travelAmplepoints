@@ -484,7 +484,7 @@ Route::get('/contact', function (){
  return view('site/contact',array('pageData' => $pageData)); 
  });
 
-Route::post('/enquiry', [Site::class, 'Enquiry']);
+Route::post('/enquiry', [Site::class, 'Enquiry'])->name("enq");
 
 Route::get('/services', function () { 
 	$sarviceMainData = crud_model::readByCondition('services',array('status'=>'active','type'=>'main'));
@@ -635,6 +635,13 @@ Route::get('/login', function ()
 	return view('site/login',array('pageData' => $pageData)); 
 });  
 
+//Admin login signup start
+Route::get('/admin-login', function ()  
+ {   
+ 	$pageData = crud_model::readOne('pages',array('page_id'=>'login'));
+	return view('site/admin_login',array('pageData' => $pageData)); 
+}); 
+
 Route::get('/agent-signup', function ()  
  {     
  	$pageData = crud_model::readOne('pages',array('page_id'=>'agent-signup'));
@@ -656,6 +663,7 @@ Route::get('/forgot-password', function ()
 
 Route::post('/signup', [Site::class, 'Signup'])->name('signup');
 Route::post('/post-login', [Site::class, 'Login']);
+Route::post('/admin-post-login', [Site::class, 'adminLogin']);
 Route::post('/post-login-new', [Site::class, 'Login_new']);
 Route::get('/test', [Site::class, 'test'])->name('test');
 Route::get('/logout', [Site::class, 'Logout']);

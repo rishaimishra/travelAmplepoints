@@ -126,6 +126,7 @@
                         <li><a href="{{ asset('support')}}">Support</a></li>
                         <li><a href="{{ asset('help-desk')}}">Help Desk</a></li>
                         <li><a href="{{ asset('contact')}}">Contact Us</a></li>
+                         <li><a href="#" data-toggle="modal" data-target="#myModalEnquery">Enquery</a></li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
@@ -339,6 +340,72 @@
         </div>
     </div>
 </div><!-- end modal-popup -->
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div id="myModalEnquery" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h4 class="modal-title">Inquiry Form</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="enquiryForm" method="post" action="{{route('enq')}}">
+            @csrf
+            <input type="hidden" name="type" value="req">
+          <div class="form-group">
+            <label for="name">First Name:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="name">Last Name:</label>
+            <input type="text" class="form-control" id="lname" name="lname" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" class="form-control" id="phone" name="phone" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea class="form-control" id="message" name="message" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Address:</label>
+            <textarea class="form-control" id="address" name="address"></textarea>
+          </div>
+
+          <button type="submit" class="btn" style="background:#f75b10;color:white;">Submit</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
 
 <!-- Template JS Files -->
  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>

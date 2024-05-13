@@ -276,21 +276,26 @@ public function userInserFromAmplepoint(Request $request){
   public function Enquiry(Request $request){ 
       $redirectUrl=$request->input('redirectUrl');
 	 $data = array(
-			'name' => $request->input('name')." ".$request->input('lname'),
-			'email' => $request->input('email'),
-			'phone' => $request->input('phone'),
-			'how_know_me' => $request->input('how_know_me'),
-			'address' => $request->input('address'),
-			'type' => $request->input('type'),
-			'tid' => $request->input('tid'),
-			'message' => $request->input('message'),
+			'name' => @$request->input('name')." ".@$request->input('lname'),
+			'email' => @$request->input('email'),
+			'phone' => @$request->input('phone'),
+			'how_know_me' => @$request->input('how_know_me'),
+			'address' => @$request->input('address'),
+			'type' => @$request->input('type'),
+			'tid' => @$request->input('tid'),
+			'message' => @$request->input('message'),
 			'date_time' => date('Y-m-d h:i:s'),
 			'website'=>str_replace('www.','',$_SERVER['SERVER_NAME']),
 		);
             // Insert
     $value = Crud_Model::insertData('enquiry',$data);
+   
+    
 	
 	$this->emailObj->EnquiryMail($value);
+	if($request->type="enq"){
+	 return back();
+	}
 	return redirect($redirectUrl); 
     //return $value;
   }
@@ -335,7 +340,7 @@ public function userInserFromAmplepoint(Request $request){
 
 
 			if($user_type == "admin"){
-				return redirect('/admin-dashboard');
+				return redirect('/login?msg=Invalid Username or Password!');
 			}
 			else if($user_type == "agent"){
 				return redirect('/agent-dashboard');
@@ -503,6 +508,69 @@ public function Login_new(Request $request){
 
 public function test(){
 	 return view('test');
+}
+
+
+
+
+
+
+
+
+
+
+
+public function adminLogin(Request $request){
+	$data = array(
+		'email' => $request->input('email'),
+		'password' => ($request->input('password')),
+		);
+		
+		$check = Crud_Model::auth_check('user',$data);
+		if($check){
+			$result_user = json_decode(json_encode($check), true);
+			$user_type=$result_user['user_type'];
+			
+			// dd($check);
+			$user = User::where('id',$check->id)->where('user_type','admin')->first();
+			if(!$user){
+				// dd(1);
+                  return redirect('/admin-login?msg=Credential missmatch.');
+			}
+            // dd($user);
+			Auth::login($user);
+			// dd(Auth::user()->id);
+
+
+			
+			
+			Session::put('user_id', $result_user['id']);
+			Session::put('email', $result_user['email']);
+			Session::put('first_name', $result_user['first_name']);
+			Session::put('last_name', $result_user['last_name']);
+			Session::put('markup', $result_user['mark_up']);
+			Session::put('user_type', $result_user['user_type']);
+			Session::put('user_image', $result_user['profile_pic']);
+
+			// dd(Session::get('user_id'));;
+
+
+			if($user_type == "admin"){
+				return redirect('/admin-dashboard');
+			}
+			else if($user_type == "agent"){
+				return redirect('/agent-dashboard');
+			}
+			else{
+				// dd(Session::get('user_id'));
+				return redirect('/customer-dashboard');
+				// return redirect('/');
+			} 
+
+		}
+		else{
+			return redirect('/admin-login?msg=Invalid Username or Password!');
+		}
 }
 
 

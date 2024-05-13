@@ -80,7 +80,7 @@
                    
           @if($sessionval['user_type']=='admin')
           
-          <li class="nav-item">
+          <li class="nav-item" style="display:none">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-list"></i>
               <p>
@@ -423,7 +423,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview" style="display: none;background: rgb(2, 9, 15);border-radius: 5px;">
-                   <li class="nav-item">
+                   <li class="nav-item" style="display: none">
                     <a href="{{ asset('flight-list') }}" class="nav-link">
                       <i class="nav-icon fas fa-plane"></i>
                       <p>
@@ -432,7 +432,7 @@
                     </a>
                   </li>
                  
-                  <li class="nav-item" style="display:none">
+                  <li class="nav-item">
                     <a href="{{ asset('booking-list/hotel') }}" class="nav-link">
                       <i class="nav-icon fas fa-bed"></i>
                       <p>

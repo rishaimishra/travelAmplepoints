@@ -204,6 +204,34 @@ body, html{
   opacity: 0.3;
 }
 
+
+
+
+
+
+
+
+.custom-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  margin: 0;
+}
+
+.custom-loader {
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #f75b10;; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 </style>
 
 <?php
@@ -247,6 +275,14 @@ $childs =substr($childsStr,0,-1);
     </div>
 </section>
 
+
+
+
+
+
+  <div class="custom-container" id="cc">
+    <div class="custom-loader"></div>
+  </div>
 <!-- end breadcrumb-area -->
 
 <!-- ================================
@@ -287,7 +323,8 @@ $childs =substr($childsStr,0,-1);
                             </div>
                         </div><!-- end filter-bar-filter -->
 
-                        <button style="border: 1px solid white" data-toggle="modal" data-target="#myModal"><img src="{{url('/')}}/travel/filter.png" style="width: 20px; background: #ffffff; border-radius: 1px solid #ffffff;"></button>
+                    <div style="display: flex;align-items: center;justify-content: start;">
+                        <button style="border: 1px solid white" data-toggle="modal" data-target="#myModal"><img src="{{url('/')}}/travel/filter.png" style="width: 20px; background: #ffffff; border-radius: 1px solid #ffffff; margin-right: 20px;"></button>
                         
                          <div class="select-contain" >
                             <select class="select-contain-select" name="sort" id="sort" onchange="Show_Hotels('filter')">
@@ -300,10 +337,14 @@ $childs =substr($childsStr,0,-1);
                                 <option value="Name_DESC">Duration: Z to A</option>
                             </select>
                         </div><!-- end select-contain -->
+                    </div>
+
                     </div><!-- end filter-bar -->
                 </div><!-- end filter-wrap -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
+
+       
         <div class="row">
      
 <div class="col-lg-4" @if($device!='Desktop') style="display:none" @else style="display:none"  @endif>
@@ -705,6 +746,11 @@ jQuery("#hotel").show();
 
 
       jQuery(document).ready(function(){   
+         jQuery('.sidebsr').hide();
+                                    jQuery('.searching').hide(); 
+                                    jQuery('.load_more').hide();
+                                    jQuery('.loader').hide();
+                                    jQuery('.whole_content').hide();
        
                     FindKey();
                      function FindKey() {
@@ -858,12 +904,27 @@ jQuery("#hotel").show();
 
 
 
+let apiCallsCompleted = 0;
 
+// Array to store unique hotels
+const uniqueHotels = [];
+
+  function hideLoader() {
+    // console.log("testii");
+      // Check if all API calls have been completed
+      if (apiCallsCompleted >= 5) {
+        // Hide the loader
+        // console.log("test");
+        $("#cc").hide();
+      }
+    }
 
                                 
                             function Show_Hotels(type,mdl=null)
                             {   //var search_session='62f0011bf1e94';
-                            console.log(mdl)
+                            // if(apiCallsCompleted <=5){
+                              apiCallsCompleted++;
+                              console.log(mdl)
                                
                                 if(opcty==0){
                                 jQuery('.hotellist').addClass('opacity_5');
@@ -960,6 +1021,14 @@ jQuery("#hotel").show();
                                         
                                     for(var i=0;i<data.result.length;i++){
                                         // console.log("jt",data.result[i])
+
+                                          const existingHotelIndex = uniqueHotels.findIndex(uniqueHotel => uniqueHotel === data.result[i].Name);
+                                            // If the hotel name doesn't exist, add the hotel to the unique hotels array
+                                            if (existingHotelIndex === -1) {
+                                                uniqueHotels.push(data.result[i].Name);
+                                            
+
+
                                          var book_link='hotel-details/'+btoa(data.result[i].tid)+'/'+data.result[i].Name; 
                                     
                                     
@@ -1007,22 +1076,28 @@ jQuery("#hotel").show();
                                                   <span class="text-primary">4179 Reviews</span>
                                                 </div>
                                                 <div>
-                                                  <button type="button" class="btn btn-outline-primary btn-sm">Compare</button>
+                                                  
+
+
+
                                                   <button type="button" class="btn btn-link">Full Description</button>
                                                 </div>
                                               </div>
                                               <div class="col-lg-3 col-12 c-item-3" style="padding: 20px 10px 20px; border-left: 1px solid #0000003b; padding-right: 25px">
                                                 <div class="card-price">
                                                   <span class="price__from">From </span>
-                                                  <span class="price__num">${data.result[i].currency_symbol} ${data.result[i].LowRate*2}</span>
+                                                  <span class="price__num" style="color: #f75b10;">${data.result[i].currency_symbol} ${data.result[i].LowRate*2} </span><br>
+                                                  <span> or <br> buy it free with </span>  <span class="price__num" style="color: #f75b10;"> ${parseInt(data.result[i].no_of_amples)} </span>  <span>  amplepoints </span>
                                                 </div>
                                                 <a href="${book_link}" class="theme-btn w-100 text-center margin-top-20px Search_Now">See details<i class="la la-angle-right"></i></a>
                                               </div>
                                             </div>
                                           </div>`;
+                                      }// end if of dublicate chk
 
-                                    }
+                                    }//end for
                                     }else{
+                                         console.log(123);
                                         jQuery('.not_found').show();
                                             jQuery('.loader').hide();
                                             alert("No Hotel Found.");
@@ -1030,19 +1105,24 @@ jQuery("#hotel").show();
                                     jQuery('.hotellist').html(innerHtml);
                                     }//
                                     else{
-                                        console.log(34);
-                                        jQuery('.sidebsr').show();
-                                    jQuery('.searching').show(); 
-                                    jQuery('.load_more').show();
-                                    jQuery('.loader').hide();
-                                    jQuery('.whole_content').show();
-                                        jQuery('.hotellist').html('No Data');
+                                        // console.log(34);
+                                        // jQuery('.sidebsr').hide();
+                                        // jQuery('.searching').hide(); 
+                                        // jQuery('.load_more').hide();
+                                        // jQuery('.loader').hide();
+                                        // jQuery('.whole_content').hide();
+                                        // jQuery('.hotellist').html('No Data');
                                     }
+                                    console.log("api "+apiCallsCompleted)
+                                    console.log(uniqueHotels);
+                                    // jQuery('.totalhotel').html(uniqueHotels.length);
+                                    hideLoader();
                                 },
                                 error: function (error) {
                                     console.log(`Error ${error}`);
                                 }
                                });
+                             // }
                             }
 
                             

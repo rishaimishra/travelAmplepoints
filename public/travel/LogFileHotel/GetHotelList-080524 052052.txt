@@ -1,0 +1,9 @@
+===========Credentials(GetHotelList)=========
+hotelbeds_key=273483fe031816b44f248428a028d28c
+ hotelbeds_secret=bee7c61cbf
+ endpoint=https://api.test.hotelbeds.com/hotel-api/1.0
+===========Request(GetHotelList)=========
+{"language":"ENG","currency":"USD","stay":{"checkIn":"2024-05-09","checkOut":"2024-05-11"},"occupancies":[{"rooms":1,"adults":"1","children":"0","paxes":[{"type":"AD","age":40}]}],"hotels":{"hotel":["105975","105974","105121","102897","102894","100951","97253","94698","93753","93378","91426","91424","91422","91420","89657","89655","89416","89021","87519","82651","82378","61281","61280","59413","59412","59410"]},"filter":{"packaging":true},"boards":{"included":true,"board":["RO","BB","AI","HB","FB","RR","AB","DB","GB","IB","LB"]}}
+===========Response(GetHotelList)=========
+{"auditData":{"processTime":"4","timestamp":"2024-05-08 05:20:53.966","requestHost":"116.193.141.109, 10.214.141.245, 10.214.136.195","serverId":"ip-10-214-138-194.eu-central-1.compute.internal","environment":"[awseucentral1, awseucentral1b, ip_10_214_138_194, eucentral1]","release":"","token":"D20B795237EC4E188044B390BC6C1C44","internal":"0||UK|07|0|0|||Y-RO,BB,AI,HB,FB,RR,AB,DB,GB,IB,LB|||Y||||||0||1~1~1~0|0|0||0|273483fe031816b44f248428a028d28c||||"},"hotels":{"total":0}}
+

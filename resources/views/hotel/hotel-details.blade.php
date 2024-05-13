@@ -19,6 +19,11 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
 <!-- ================================
     START BREADCRUMB AREA
 ================================= -->
+<style>
+    .bread-bg-7 {
+    height: 681px !important;
+}
+</style>
 <section class="breadcrumb-area bread-bg-7 py-0">
 <div class="video-bg" style="background:url(<?php if(isset($images[0])){ echo $images[0]; } ?>);background-size: cover;">
     </div>
@@ -192,7 +197,7 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                                      {{--   ( <span style="text-decoration: line-through;" class="text-value ml-2 mr-1"> <?php echo $currency_symbol." ".($hotelSearchData->lowRate)*2; ?> </span> )  --}}</p>
                                        
                                        @php
-                                       $admin_model_obj = new \App\Models\commonFunctionModel;
+                                       $admin_model_obj = new \App\Models\CommonFunctionModel;
                                        $toCurrencyRate = $admin_model_obj->getFromToCurrencyRate(1.00,'INR', 'USD');
                                         $original_single_price = $hotelSearchData->lowRate;
                                         $OfferedPriceRoundedOff = $admin_model_obj->displayFinalRates($hotelSearchData->lowRate, $toCurrencyRate);
@@ -466,7 +471,7 @@ var innerHtml=''; var page=0; var search_session='';
 					 BoardNameArr ={'RO':'Room only','BB':'Bed and breakfast','AI':'All inclusive','LB':'Lunch and breakfast','HB':'Half Board','FB':'Full Board'};
 					 var boardName = BoardNameArr[board];
 					 
-					htmlRoomlist+='<div class="row" style="margin:0; border-top: 1px solid rgba(128, 137, 150, 0.2); margin-bottom: 5px;"><div class="col-lg-3 responsive-column">'+boardName+'('+board+')</div><div class="col-lg-3 responsive-column">'+cancellationLebel+'</div><div class="col-lg-2 responsive-column"style="color:RED"> '+leastAllotment+' Room(s) Left</div><div class="col-lg-2 responsive-column"><p class="text-uppercase font-size-14">Per/night<strong class="mt-n1 text-black font-size-18 font-weight-black d-block"><?php echo $currency_symbol; ?> '+roomPrice*2+'</strong> <span style="text-decoration: line-through; display:none"><?php echo $currency_symbol; ?>  '+2*roomPrice+'</span></p></div><div class="col-lg-2 responsive-column cabin-price"><div class="custom-checkbox mb-0"><input style="display:none" type="radio" name="akm" id="selectChb'+i+''+j+'"><!--<label for="selectChb'+i+''+j+'" class="theme-btn theme-btn-small">Select</label>-->@if(@Auth::user()->id)<a href="{{ asset("hotel-booking") }}/'+btoa(board)+'/'+btoa(rateClass)+'/'+btoa(roomCodeIds)+'/<?php echo base64_encode($hotelSearchData->id); ?>" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Book Now</a>@else <a href="{{ asset("login") }}" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Login To Book</a> @endif</div></div></div>';
+					htmlRoomlist+='<div class="row" style="margin:0; border-top: 1px solid rgba(128, 137, 150, 0.2); margin-bottom: 5px;"><div class="col-lg-3 responsive-column">'+boardName+'('+board+')</div><div class="col-lg-3 responsive-column">'+cancellationLebel+'</div><div class="col-lg-2 responsive-column"style="color:RED"> '+leastAllotment+' Room(s) Left</div><div class="col-lg-2 responsive-column"><p class="text-uppercase font-size-14">Per/night<strong class="mt-n1 text-black font-size-18 font-weight-black d-block"><?php echo $currency_symbol; ?> '+roomPrice*2+'</strong> <span style="text-decoration: line-through; display:none"><?php echo $currency_symbol; ?>  '+2*roomPrice+'</span></p></div><div class="col-lg-2 responsive-column cabin-price"><div class="custom-checkbox mb-0"><input style="display:none" type="radio" name="akm" id="selectChb'+i+''+j+'"><!--<label for="selectChb'+i+''+j+'" class="theme-btn theme-btn-small">Select</label>-->@if(@Auth::user()->id && @Auth::user()->user_type!="admin")<a href="{{ asset("hotel-booking") }}/'+btoa(board)+'/'+btoa(rateClass)+'/'+btoa(roomCodeIds)+'/<?php echo base64_encode($hotelSearchData->id); ?>" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Book Now</a>@elseif(@Auth::user()->id && @Auth::user()->user_type=="admin") @else <a href="{{ asset("login") }}" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Login To Book</a> @endif</div></div></div>';
 											} // Inner for End
 									}// outer for End	
 									htmlRoomlist+='</div></div></div>';

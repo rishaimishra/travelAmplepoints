@@ -12,7 +12,16 @@
          @endphp
 <?php if(isset($_REQUEST['msg'])){ echo "<script>alert('".$_REQUEST['msg']."')</script>";  } ?>
 
-<div class="modal-content" @if($device=='Desktop') style="width:50%; margin:70px auto;box-shadow: 2px 2px 20px #dfdfdf;" @else style="width:90%; margin:70px auto;box-shadow: 2px 2px 20px #dfdfdf;" @endif >
+<style>
+    @media only screen and (max-width: 600px) {
+      .login-content {
+        width: 95%;
+      }
+    }
+</style>
+
+
+<div class="modal-content login-content" @if($device=='Desktop') style="width:50%; margin:70px auto;box-shadow: 2px 2px 20px #dfdfdf;" @else style="width:90%; margin:70px auto;box-shadow: 2px 2px 20px #dfdfdf;" @endif >
 
     <div class="modal-header">
         <div>

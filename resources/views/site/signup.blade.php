@@ -20,11 +20,17 @@ if($user_type=='agent'){ $status='inactive'; }else{ $status='inactive'; }
     align-items: center;
     justify-content: center;
 }
+
+    @media only screen and (max-width: 600px) {
+      .signup-content {
+        width: 95%;
+      }
+    }
 </style>
 
 
 <!-- signup form -->
-<div class="modal-content" @if($device=='Desktop') style="width:50%; margin:70px auto;box-shadow: 2px 2px 20px #dfdfdf;" @else style="width:90%; margin:70px auto;box-shadow: 2px 2px 20px #dfdfdf;" @endif >
+<div class="modal-content signup-content" @if($device=='Desktop') style="width:50%; margin:70px auto;box-shadow: 2px 2px 20px #dfdfdf;" @else style="width:90%; margin:70px auto;box-shadow: 2px 2px 20px #dfdfdf;" @endif >
     <div class="modal-header">
         <div>
             <h5 class="modal-title title" id="exampleModalLongTitle">Sign Up</h5>

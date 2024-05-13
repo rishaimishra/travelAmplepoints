@@ -274,4 +274,10 @@
         }
     }
 
+
+    .all-start #columns .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 </style>

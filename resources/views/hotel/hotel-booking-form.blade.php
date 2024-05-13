@@ -26,6 +26,13 @@
     <link rel="stylesheet" type="text/css" href="https://amplepoints.com/newcss/css/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="https://amplepoints.com/newcss/css/style-check.css" >
   
+    <style>
+      @media only screen and (max-width: 600px) {
+        .btn-b-apply {
+          margin: 0 !important;
+        }
+      }
+    </style>
 
 <section class="booking-area padding-top-100px padding-bottom-70px">
   <div class="container">
@@ -52,6 +59,7 @@
                 <input class="form-control" type="hidden" name="chargeableRate" id="chargeableRate">
                 <input class="form-control" type="hidden" name="base_fare" id="base_fare">
                 <input class="form-control" type="hidden" name="tax" id="tax">
+                 <input class="form-control" type="hidden" name="booked_ample" id="booked_ample" value="0">
                 <span class="inpurroomdata"></span>
                 
                 <div class="row">
@@ -359,7 +367,7 @@
               </div>
 
                @php
-               $admin_model_obj = new \App\Models\commonFunctionModel;
+               $admin_model_obj = new \App\Models\CommonFunctionModel;
                $toCurrencyRate = $admin_model_obj->getFromToCurrencyRate(1.00,'USD', 'USD');
                 $original_single_price = $hotelSearchData->lowRate;
                 $OfferedPriceRoundedOff = $admin_model_obj->displayFinalRates($hotelSearchData->lowRate, $toCurrencyRate);
@@ -481,7 +489,7 @@
             </div>
           </div>
         </div>
-        <div class='col-md-4 col-sm-4 col-xs-4 no-space add-cart-submit' style="margin-left: 210px;">
+        <div class='col-md-4 col-sm-4 col-xs-4 no-space add-cart-submit btn-b-apply' style="margin-left: 210px;">
           <button class="btn btn-dark" style="width:100%" id='applyamples_<?php echo $hotelSearchData->lowRate ?>'
           type='button'
           onclick="applyAmplePoints('<?php echo $hotelSearchData->lowRate ?>','<?php echo $single_price; ?>','<?php echo $discount_price; ?>','<?php echo $discount; ?>')">
@@ -726,7 +734,7 @@ var innerHtml=''; var page=0; var search_session='';
 
     function applyAmplePoints(room_index, single_price, discount_price, discount) {
 
-        var user_total_alample = {{@Auth::user()->ample}};
+        var user_total_alample = {{ @Auth::user()->ample ?? 0 }};
         var qty = 1;
         var totalamples = $('#useamplestoshop_' + room_index).val();
         var amplesbyuser = $('#inputamples_' + room_index).val();
@@ -845,6 +853,7 @@ var innerHtml=''; var page=0; var search_session='';
         $("#ta2").html(' ' + '$' + newFinal_Price);
 
         $("#chargeableRate").val(newFinal_Price/2)
+        $("#booked_ample").val(amplesbyuser)
 
 
     }
@@ -862,6 +871,7 @@ function ampleEnterFun(val,room_index){
     $("#ta2").html(' ' + '$' + 0);
     $('#newitemprice_' + room_index).text(' ' + '$' + room_index*2);
     $("#chargeableRate").val(room_index)
+    $("#booked_ample").val(0)
   }
 }
 
