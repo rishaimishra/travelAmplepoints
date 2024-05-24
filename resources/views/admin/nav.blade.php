@@ -422,8 +422,8 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview" style="display: none;background: rgb(2, 9, 15);border-radius: 5px;">
-                   <li class="nav-item" style="display: none">
+            <ul class="nav nav-treeview" style="display:;background: rgb(2, 9, 15);border-radius: 5px;">
+                   <li class="nav-item" >
                     <a href="{{ asset('flight-list') }}" class="nav-link">
                       <i class="nav-icon fas fa-plane"></i>
                       <p>

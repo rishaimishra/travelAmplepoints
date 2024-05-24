@@ -228,7 +228,8 @@
                     <div class="input-box">
                       <label class="label-text">Phone Number <span style="color:#FF0000">*</span> </label>
                       <div class="form-group"> <span class="la la-phone form-icon"></span>
-                        <input class="form-control" type="text" name="passenger[phone]" placeholder="Phone Number" required>
+                        <input class="form-control" type="tel" minlength="10" maxlength="15" name="passenger[phone]" placeholder="Phone Number" pattern="[0-9+\-\(\) ]{10,15}" required>
+
                       </div>
                     </div>
                   </div>

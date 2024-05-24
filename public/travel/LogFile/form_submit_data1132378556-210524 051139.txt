@@ -1,0 +1,7 @@
+===========Credentials(form_submit_data1132378556)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(form_submit_data1132378556)=========
+{"_token":"UdDbYfZ9wtNmtMdI6oepbxJIrHZqf5ZsO4ZsmMI4","OfferId":"off_0000Ai6c0NttjHVIAsm2cm","id":"28530","passenger":{"adult":{"title":["mr"],"first_name":["test"],"last_name":["test"],"dob":["2005-05-21"],"gender":["m"],"id":["009"]},"email":"j@m.com","phone":"1122334455","address":"test add","city":"kolkata","country":"INDIA"},"payment_type":"flutterwave"}
+===========Response(form_submit_data1132378556)=========
+
+

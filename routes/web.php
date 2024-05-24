@@ -83,8 +83,9 @@ Route::get('/flight-search', function () {
 
 Route::get('/flight-search-results', function (){
  $pageData = crud_model::readOne('pages',array('page_id'=>'flight-search-results'));
+ // dd(1, $pageData );
  return view('flight/flight-search-results', array('pageData' => $pageData)); 
-});
+})->name('flight.search.results');
 
 Route::get('/flightsearchresults', [Flight::class, 'SearchRequestFirst']);
 Route::get('/get_flight_search_id', [Flight::class, 'SearchRequest']);
@@ -295,7 +296,7 @@ Route::get('/hotel-details/{id}/{hotel_name}', function ($id,$hotel_name)
 		 //echo "<pre>amenetyData=="; print_r($amenetyData);
 	   return view('hotel/hotel-details', array('hotelSearchData' => $hotelSearchData,'pageData' => $pageData,'hotelData' => $data));	 	 
 	
-});
+})->name("hotel.details");
 
 Route::get('/hotel-booking/{board}/{rateClass}/{roomCodeIds}/{id}', function ($board,$rateClass,$roomCodeIds,$id)  
  {     $board=base64_decode($board);  $rateClass=base64_decode($rateClass);  $roomCodeIds=base64_decode($roomCodeIds); $id=base64_decode($id);
@@ -631,8 +632,20 @@ Route::get('/email_verify', function ()
 //login signup start
 Route::get('/login', function ()  
  {   
- 	$pageData = crud_model::readOne('pages',array('page_id'=>'login'));
-	return view('site/login',array('pageData' => $pageData)); 
+ 	    $previousUrl = URL::previous();
+        $cleanedPreviousUrl = str_replace('', '', $previousUrl);
+
+        // // Match the previous URL with the routes and get the route name
+        $prevRutNm = Route::getRoutes()->match(app('request')->create($cleanedPreviousUrl))->getName();
+        if($prevRutNm=="flight.search.results" || $prevRutNm=="hotel.details"){
+        	$prevUrl=url()->previous();
+        }else{
+        	$prevUrl=null;
+        }
+    
+      	// dd(url()->previous(),$prevRutNm);
+		 	$pageData = crud_model::readOne('pages',array('page_id'=>'login'));
+			return view('site/login',array('pageData' => $pageData,'prevUrl'=>$prevUrl)); 
 });  
 
 //Admin login signup start
@@ -1179,3 +1192,11 @@ Route::get('/processcheckoutpayment/{order_id}/{user_id}', [Hotel::class, 'proce
 Route::post('/createstrippayment',[Hotel::class, 'createstrippayment'])->name('createstrippayment');
 Route::any('/stripeorderstatus/{order_id}/{customer_id}',[Hotel::class, 'stripeorderstatus'])->name('stripeorderstatus');
 
+Route::get('/cancel/hotel-booking/{order_id}',[Hotel::class, 'BookingCancellationFromAdmin'])->name('admin.booking.cancel');
+
+
+
+//payment for flights
+Route::get('/processcheckoutpayment/flight/{order_id}/{user_id}', [Flight::class, 'processcheckoutpayment_flight'])->name('processcheckoutpayment_flight');
+Route::post('/createstrippayment/flight',[Flight::class, 'createstrippayment_flight'])->name('createstrippayment_flight');
+Route::any('/stripeorderstatus/flight/{order_id}/{customer_id}',[Flight::class, 'stripeorderstatus_flight'])->name('stripeorderstatus_flight');

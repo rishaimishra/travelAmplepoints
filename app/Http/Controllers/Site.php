@@ -306,6 +306,7 @@ public function userInserFromAmplepoint(Request $request){
 		return redirect('/login');  
   }
   
+  //user login
   public function Login(Request $request){
   	$data = array(
 		'email' => $request->input('email'),
@@ -324,6 +325,7 @@ public function userInserFromAmplepoint(Request $request){
             // dd($user);
 			Auth::login($user);
 			// dd(Auth::user()->id);
+
 
 
 			
@@ -346,6 +348,10 @@ public function userInserFromAmplepoint(Request $request){
 				return redirect('/agent-dashboard');
 			}
 			else{
+				if($request->prevUrl){
+					// dd($request->prevUrl);
+					return redirect()->to($request->prevUrl);
+				}
 				// dd(Session::get('user_id'));
 				return redirect('/customer-dashboard');
 				// return redirect('/');

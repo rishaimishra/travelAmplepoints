@@ -60,7 +60,7 @@ $customer_email =  @Auth::user()->email;
                                     <div class="col-md-8 col-md-offset-2 my_frm_cntr">
                                         <div class="reg_frm_container">
 
-                                            <legend>Payment For Order No: {{ $order_id }}</legend>
+                                            <legend>Payment For Hotel Order No: {{ $order_id }}</legend>
 
                                             @if(isset($message))
                                                 <div class="col-xs-12 col-md-12 no_left_padding no_right_padding">

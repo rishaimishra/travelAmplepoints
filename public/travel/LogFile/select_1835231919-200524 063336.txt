@@ -1,0 +1,7 @@
+===========Credentials(select_1835231919)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(select_1835231919)=========
+https://api.duffel.com/air/offers/off_0000Ai4eyHUGJijoRRkHer
+===========Response(select_1835231919)=========
+{"errors":[{"documentation_url":"https://duffel.com/docs/api/overview/response-handling","title":"Unsupported version","type":"invalid_request_error","message":"The version set in the 'Duffel-Version' header is no longer supported by the API. Please upgrade.","code":"unsupported_version"}],"meta":{"request_id":"F9Ee0P-PCKHzKfIFGuqC","status":400}}
+

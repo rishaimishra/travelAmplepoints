@@ -1,0 +1,7 @@
+===========Credentials(select_1327205033)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(select_1327205033)=========
+https://api.duffel.com/air/offers/off_0000Ai6nc94JhHcj8qnFmm
+===========Response(select_1327205033)=========
+{"errors":[{"documentation_url":"https://duffel.com/docs/api/overview/response-handling","source":"british_airways","title":"Requested offer is no longer available","type":"airline_error","message":"Please select another offer, or create a new offer request to get the latest availability.","code":"offer_no_longer_available"}],"meta":{"request_id":"F9FyEeGDXcBUBxMBbi9B","status":422}}
+

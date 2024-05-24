@@ -1,0 +1,7 @@
+===========Credentials(form_submit_data624792498)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(form_submit_data624792498)=========
+{"_token":"UdDbYfZ9wtNmtMdI6oepbxJIrHZqf5ZsO4ZsmMI4","OfferId":"off_0000Ai6tvzRWWDrgKxYXtJ","id":"70441","chargeableRate":"119","booked_ample":"900","discount_by_ample":"108.00","passenger":{"adult":{"title":["mr"],"first_name":["test"],"last_name":["jhjhf"],"dob":["2005-05-21"],"gender":["m"],"id":["08"]},"email":"j@m.ll","phone":"9999999999","address":"jkgjkg","city":"jg","country":"ALGERIA"},"payment_type":"flutterwave"}
+===========Response(form_submit_data624792498)=========
+
+

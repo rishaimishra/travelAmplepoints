@@ -9,6 +9,8 @@ use Session;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\Markup;
+use App\Models\User;
+use Stripe\StripeClient;
 
 
 class Flight extends Controller
@@ -82,7 +84,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($getFlightRequest));
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Accept: application/json','Duffel-Version: beta','Authorization: Bearer '.$this->ACCESS_TOKEN));
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Accept: application/json','Duffel-Version: v1','Authorization: Bearer '.$this->ACCESS_TOKEN));
       $contents = curl_exec($ch);
 	
 			$res=json_decode($contents,true);
@@ -97,6 +99,17 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 	 
 	 }
 	
+
+
+
+
+
+
+
+
+
+
+
 	public function SearchRequest(Request $request) 
     {
 		$request= $request->input();
@@ -138,12 +151,140 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($getFlightRequest));
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Accept: application/json','Duffel-Version: beta','Authorization: Bearer '.$this->ACCESS_TOKEN));
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Accept: application/json','Duffel-Version: v1','Authorization: Bearer '."$this->ACCESS_TOKEN"));
      $contents = curl_exec($ch);
 	curl_close($ch);
 			$res=json_decode($contents,true);
 	$this->createLogFile('search_'.rand(),json_encode($getFlightRequest),$contents);
-	//echo "res========<pre>";   print_r($res);  
+	//echo "res========<pre>";   print_r($res); 
+
+	// dd($res,$this->ACCESS_TOKEN);
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // The URL with query parameters
+// $url = "https://api.duffel.com/air/offer_requests?return_offers=false&supplier_timeout=10000";
+
+// // The JSON payload
+// $data = '{
+//     "data": {
+//         "slices": [
+//             {
+//                 "origin": "LHR",
+//                 "destination": "JFK",
+//                 "departure_time": {
+//                     "to": "17:00",
+//                     "from": "09:45"
+//                 },
+//                 "departure_date": "2024-06-24",
+//                 "arrival_time": {
+//                     "to": "17:00",
+//                     "from": "09:45"
+//                 }
+//             }
+//         ],
+//         "private_fares": {
+//             "QF": [
+//                 {
+//                     "corporate_code": "FLX53",
+//                     "tracking_reference": "ABN:2345678"
+//                 }
+//             ],
+//             "UA": [
+//                 {
+//                     "corporate_code": "1234",
+//                     "tour_code": "578DFL"
+//                 }
+//             ]
+//         },
+//         "passengers": [
+//             {
+//                 "family_name": "Earhart",
+//                 "given_name": "Amelia",
+//                 "loyalty_programme_accounts": [
+//                     {
+//                         "account_number": "12901014",
+//                         "airline_iata_code": "BA"
+//                     }
+//                 ],
+//                 "type": "adult"
+//             },
+//             {
+//                 "age": 14
+//             },
+//             {
+//                 "fare_type": "student"
+//             },
+//             {
+//                 "age": 5,
+//                 "fare_type": "contract_bulk_child"
+//             }
+//         ],
+//         "max_connections": 0,
+//         "cabin_class": "economy"
+//     }
+// }';
+
+// // Initialize cURL session
+// $ch = curl_init();
+
+// // Set cURL options
+// curl_setopt($ch, CURLOPT_URL, $url);
+// curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+// curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+// curl_setopt($ch, CURLOPT_POST, 1);
+// curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($getFlightRequest));
+// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+// curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+// curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+//     'Accept-Encoding: gzip',
+//     'Accept: application/json',
+//     'Content-Type: application/json',
+//     'Duffel-Version: v1',
+//     'Authorization: Bearer duffel_test_L4NMBFzdfUufvYjoUZR4igCa5h78GyQVk6KnOD_Cz7p'
+// ));
+
+// // Execute cURL request
+// $contents = curl_exec($ch);
+
+// // Error handling
+// if (curl_errno($ch)) {
+//     $error_msg = curl_error($ch);
+//     $this->createLogFile('curl_error_' . rand(), $data, $error_msg);
+//     curl_close($ch);
+//     throw new Exception('cURL Error: ' . $error_msg);
+// }
+
+// // Close cURL session
+// curl_close($ch);
+
+// // Decode JSON response
+// $res = json_decode($contents, true);
+
+// // Log request and response
+// $this->createLogFile('search_' . rand(), $data, $contents);
+// dd($res,$this->ACCESS_TOKEN);
+// // Proceed with $res as needed
+
+
+
+
+
+
+
+
+
+
 	if(isset($res['data'])){	
 		$offers=$res['data']['offers'];
 		
@@ -330,6 +471,37 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 	
 	
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// show flights
+
 	public function Show_Flights(Request $request) 
     {
 	$search_id =trim($request['search_id']); 
@@ -387,6 +559,9 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 	//echo $Sqls;
 	$results=DB::select($Sqls);
 	$flightData=array();
+	 $admin_model_obj = new \App\Models\CommonFunctionModel;
+     $toCurrencyRate = $admin_model_obj->getFromToCurrencyRate(1.00,'USD', 'USD');
+
     foreach($results as $Objs){ 	 
         $onewayFlights =json_decode($Objs->onewayFlights);	
         $returnFlights =json_decode($Objs->returnFlights);	
@@ -407,8 +582,32 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 		  $airObj =$airResults[0];
 		  $airLineData[]=array('airline_name'=>$airObj->name,'airline_code'=>$airlinecode);
 		}*/
+
+		      
+		      // calculate amplepoint
+		       $OfferedPriceRoundedOff = $admin_model_obj->displayFinalRates($Objs->price, $toCurrencyRate);
+
+                //dd($original_single_price,$OfferedPriceRoundedOff);
+                $single_price = (($OfferedPriceRoundedOff) * 2);
+                $wholesale_price = ($single_price / 2);
+                $free_with_amples = 0.00;
+                $no_of_amples = 0.00;
+                $discount_price = 0.00;
+                $discount = 0.00;
+                $FinalTextAmount = 0.00;
+                $calculateDiscount = ((($single_price - $wholesale_price) * 100) / $single_price);
+                $discount = round($calculateDiscount, 2);
+                $discount_price = (($single_price * $discount) / 100);
+                $discount_margin = $discount_price;
+                $buyandearnamples = ($discount_margin / .12);
+                $no_of_amples = $buyandearnamples;
+
+
+
+
+
         
-		$flightData['result'][] =array('totalcountfilter'=>$totalcount,'onewayFlights'=>$onewayFlights,'returnFlights'=>$returnFlights,'actual_price'=>$Objs->api_price,'price'=>$Objs->price,'Tax'=>$Objs->tax,'currency'=>$Objs->currency,'IsLCC'=>$Objs->IsLCC,'is_direct'=>$Objs->is_direct,'IsRefundable'=>$Objs->IsRefundable,'validating_carrier'=>$Objs->validating_carrier,
+		$flightData['result'][] =array('no_of_amples'=>$no_of_amples,'totalcountfilter'=>$totalcount,'onewayFlights'=>$onewayFlights,'returnFlights'=>$returnFlights,'actual_price'=>$Objs->api_price,'price'=>$Objs->price,'Tax'=>$Objs->tax,'currency'=>$Objs->currency,'IsLCC'=>$Objs->IsLCC,'is_direct'=>$Objs->is_direct,'IsRefundable'=>$Objs->IsRefundable,'validating_carrier'=>$Objs->validating_carrier,
 		'return_validating_carrier'=>$Objs->return_validating_carrier,
 		'departure_date'=>date('d M Y',$Objs->departure_datetime),
 		'departure_time'=>date('H:i',$Objs->departure_datetime),
@@ -480,6 +679,33 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 	
 	
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public function SelectFlight(Request $request) {
 		$flightData= crud_model::readOne('flight_results',array('id'=>$request->input('id'))); 
 		$OfferId=$flightData->OfferId;
@@ -489,7 +715,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 		curl_setopt($ch, CURLOPT_URL, $actionUrl);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Accept: application/json','Duffel-Version: beta','Authorization: Bearer '.$this->ACCESS_TOKEN));
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Accept: application/json','Duffel-Version: v1','Authorization: Bearer '.$this->ACCESS_TOKEN));
 		$contents = curl_exec($ch);
 		if (curl_errno($ch)) {
 			echo 'Error:' . curl_error($ch);
@@ -525,8 +751,23 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 	}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public function FlightFinalCheckout(Request $request) 
     {
+    	// dd($request->all());
+    	//base_fare+tax==admin_price==price in db
 	
 		$this->createLogFile('form_submit_data'.rand(),json_encode($_REQUEST),'');
 		
@@ -641,7 +882,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 		'base_price'=>$flightData->base_fare,
 		'adminPrice'=>$flightData->adminPrice,
 		'currency'=>$flightData->currency,
-		'prices'=>$flightData->price,
+		'prices'=> $request->chargeableRate, //$flightData->price,
 		'payment_status'=>'Pending',
 		'booking_status'=>'Pending',
 		'book_request'=>json_encode($book_request),
@@ -651,6 +892,8 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 		'infants'=>$flightData->infants,
 		'created_at'=>date('Y-m-d H:i:s'),
 		'website'=>str_replace('www.','',$_SERVER['SERVER_NAME']),
+		'booked_ample' =>$request->booked_ample,
+		'discount_by_ample' =>$request->discount_by_ample,
 		);
 		$value = Crud_Model::insertData('bookings',$data);
 		
@@ -660,17 +903,199 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 			$redirect_page=url('/')."/book-flight?order_id=".$order_id;
 		}
 		
-		Crud_Model::updateData('bookings',array('payment_status'=>'Confirmed'),array('order_id'=>$order_id));
-		$redirect_page=url('/')."/book-flight?order_id=".$order_id;
+		
+
+
+		////Crud_Model::updateData('bookings',array('payment_status'=>'Confirmed'),array('order_id'=>$order_id));
+		////$redirect_page=url('/')."/book-flight?order_id=".$order_id;
 			
 		//return redirect('/flight-payment/'.base64_encode($order_id)."/".base64_encode($request_data['chargeableRate']));	
-		return redirect($redirect_page);		
+		
+		////return redirect($redirect_page);	
+
+		 return redirect()->route('processcheckoutpayment_flight', ['order_id' => $order_id, 'user_id' => @Auth::user()->id]);	
 	}
 	
 	//  Final Checkout end
 	
+
+
+
+
+
+
+	public function processcheckoutpayment_flight($order_id,$user_id){
+    // dd($transaction_id,$user_id);
+        $bookingDetails=DB::table('bookings')->where('order_id',$order_id)->first();
+        $totaldata = $bookingDetails->prices;
+
+        // Passing data to the view
+        return view('payment.paymentFlight', [
+            'totaldata' => $totaldata,
+            'orderDetail' => $bookingDetails,
+        ]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+     public function createstrippayment_flight(Request $request)
+    {
+           // dd($request->all());
+            // This is your test Secret API key.
+
+           //$stripe = new \Stripe\StripeClient("sk_test_51NpOZ4GY4n5u6WbIGKHcQBoih6sUZRXtG2a3qWq6NKqOMLrdPSo1DElWPfc0N4cBMrYLYmlUj25gqGHn1tmlmkoL00kNdf7OkS");
+
+            // This is your Live Secret API key.
+
+            // $stripe = new \Stripe\StripeClient("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");
+
+
+        // Ensure you have your Stripe API key set in your .env file
+        $stripe = new StripeClient("sk_test_51NpOZ4GY4n5u6WbIGKHcQBoih6sUZRXtG2a3qWq6NKqOMLrdPSo1DElWPfc0N4cBMrYLYmlUj25gqGHn1tmlmkoL00kNdf7OkS");
+
+        try {
+            // Retrieve JSON from POST body
+            $jsonObj = json_decode($request->getContent());
+
+            $totalAmount = $jsonObj->total_amount;
+            $order_id = $jsonObj->order_id;
+            $customer_id = $jsonObj->customer_id;
+            $customer_name = $jsonObj->customer_name;
+
+            $finalAmount = round($totalAmount) * 100;
+
+            // Create a PaymentIntent with amount and currency
+            $paymentIntent = $stripe->paymentIntents->create([
+                'amount' => $finalAmount,
+                'currency' => 'usd',
+                'description' => "Payment for Amplepoints Order ID $order_id",
+                'metadata' => [
+                    'order_id' => $order_id,
+                    'customer_id' => $customer_id,
+                    'customer_name' => $customer_name,
+                    'payment_from' => 'Amplepoints',
+                ],
+            ]);
+
+            return response()->json(['clientSecret' => $paymentIntent->client_secret]);
+
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
+
+
+
+
+
+
+     public function stripeorderstatus_flight($order_id,$customer_id,Request $request){
+        // dd($order_id,$customer_id,$request->all());
+       
+
+        $order_id = $order_id;
+        $customer_id = $customer_id;
+        $payment_intent = $request->payment_intent;
+        $payment_intent_client_secret = $request->payment_intent_client_secret;
+        $redirect_status = $request->redirect_status;
+
+        // dd($data,$order_id,$customer_id,$payment_intent,$payment_intent_client_secret,$redirect_status,$request->all());
+       // dd(1);
+        if (isset($redirect_status) && $redirect_status == 'succeeded') {
+
+        	Crud_Model::updateData('bookings',array('payment_status'=>'Confirmed','payment_intent'=>$payment_intent),array('order_id'=>$order_id));
+            $redirect_page=url('/')."/book-flight?order_id=".$order_id;
+        	return redirect($redirect_page);
+
+    
+           // $paymentDetail = array(
+           //      'payment_intent' => $payment_intent,
+           //      'payment_intent_client_secret' => $payment_intent_client_secret,
+           //      'redirect_status' => $redirect_status
+           //  );
+
+        } else {
+            // $this->_redirect("/ordersuccess/msg/2/order_id/$order_id/user_id/$customer_id");
+            dd("payment not done");
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 	//  Book Flight Start 
-	public function BookFlight(Request $request){	
+	public function BookFlight(Request $request){
+
+		// dd($request->all());
+
+
+		// =================================================
+		$bookingDetails=DB::table('bookings')->where('order_id',$request->order_id)->first();
+
+		// dd($bookingDetails->prices);
+
+		 $admin_model_obj = new \App\Models\CommonFunctionModel;
+        $toCurrencyRate = $admin_model_obj->getFromToCurrencyRate(1.00,'USD', 'USD');
+        $original_single_price = (int)$bookingDetails->prices;
+        $OfferedPriceRoundedOff = $admin_model_obj->displayFinalRates((int)$bookingDetails->prices, $toCurrencyRate);
+
+        //dd($original_single_price,$OfferedPriceRoundedOff);
+        $single_price = (($OfferedPriceRoundedOff) * 2);
+        $wholesale_price = ($single_price / 2);
+        $free_with_amples = 0.00;
+        $no_of_amples = 0.00;
+        $discount_price = 0.00;
+        $discount = 0.00;
+        $FinalTextAmount = 0.00;
+        $calculateDiscount = ((($single_price - $wholesale_price) * 100) / $single_price);
+        $discount = round($calculateDiscount, 2);
+        $discount_price = (($single_price * $discount) / 100);
+        $discount_margin = $discount_price;
+        $buyandearnamples = ($discount_margin / .12);
+        $no_of_amples = $buyandearnamples;
+        // dd( $no_of_amples);
+        if(@Auth::user()->id || Session::get('user_id') ){
+        	// dd(1);
+        	//update ample
+        	$userDetail = User::where('id', @Auth::user()->id)
+		    ->orWhere('id', Session::get('user_id'))
+		    ->first();
+		    // dd($userDetail);
+		    // dd((int)($userDetail->ample) , round($no_of_amples), (int)$bookingDetails->booked_ample);
+		    if(@$userDetail->ample){
+		    	$newAmple=(int)($userDetail->ample) + round($no_of_amples)-(int)@$bookingDetails->booked_ample;
+		    }else{
+                $newAmple=round($no_of_amples)-(int)@$bookingDetails->booked_ample;
+		    }
+        	
+        	$up=User::where('id', @Auth::user()->id)->orWhere('id', Session::get('user_id'))->update(['ample'=>$newAmple]);
+        }
+
+        // dd($request->input(),round($no_of_amples),$request->chargeableRate,$request->user_id);
+
+		// =================================================
+
+
+
 	   $request_data=$request->input('');  
 	   echo "order_id==".$order_id=$request->input('order_id');
 	   
@@ -689,7 +1114,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $book_request);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Accept: application/json','Duffel-Version: beta','Authorization: Bearer '.$this->ACCESS_TOKEN));
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Accept: application/json','Duffel-Version: v1','Authorization: Bearer '.$this->ACCESS_TOKEN));
 		   $contents = curl_exec($ch);
 			curl_close($ch);
 			

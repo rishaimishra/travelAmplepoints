@@ -1,0 +1,11 @@
+===========Credentials(Cancelled-664EEF666549E)=========
+hotelbeds_key=273483fe031816b44f248428a028d28c
+ hotelbeds_secret=bee7c61cbf
+ endpoint=https://api.test.hotelbeds.com/hotel-api/1.0
+===========Request(Cancelled-664EEF666549E)=========
+https://api.test.hotelbeds.com/hotel-api/1.0/bookings/270-2769689?cancellationFlag=CANCELLATION
+===========Response(Cancelled-664EEF666549E)=========
+{
+    "error": "Upstream service reached hard timeout."
+}
+

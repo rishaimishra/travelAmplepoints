@@ -390,7 +390,7 @@ class Hotel extends Controller
 			$isFind='Yes';
 		}// end for
 		        // $this->convertCurrencyRate($api_currency,$hotelData[$i]['minRate']),
-		 $this->createLanding($regionid,$data['currency'],$data['lowRate'],$search_Session_Id,$data['thumbNailUrl']);
+		 $this->createLanding($regionid,@$data['currency'],@$data['lowRate'],$search_Session_Id,@$data['thumbNailUrl']);
 		 
 		
 	} //end if of  isset($results['hotels']['hotels'])
@@ -1062,7 +1062,7 @@ public function getdetails($id){
        // dd(1);
         if (isset($redirect_status) && $redirect_status == 'succeeded') {
 
-        	Crud_Model::updateData('twc_booking',array('payment_status'=>'Confirmed'),array('order_id'=>$order_id));
+        	Crud_Model::updateData('twc_booking',array('payment_status'=>'Confirmed','payment_intent'=>$payment_intent),array('order_id'=>$order_id));
         	$redirect_page=url('/')."/book-hotel?order_id=".$order_id; 
         	return redirect($redirect_page);
 
@@ -1243,7 +1243,40 @@ public function getdetails($id){
 
 // Cancel Hotel Start 
 	public function BookingCancellation(Request $request){
+
 		$obj=crud_model::readOne('twc_booking',array('order_id'=>$request['order_id']));
+	    $itineraryId=$obj->itineraryId;
+
+		$actionUrl=$this->endpoint.'/bookings/'.$itineraryId.'?cancellationFlag=CANCELLATION';
+		$booking_status='Cancelled Pending';
+		$return=array('error'=>'No','msg'=>'Cancellation Request Successfully Send To Admin.');
+		
+		
+		$data=array(
+				'booking_status'=>$booking_status,
+				'cancelled_by'=>session()->get('user_id'),
+				'cancellationNumber'=>rand(),
+				'cancellation_date'=>date('Y-m-d H:i:s'),
+				'cancellation_request'=>$actionUrl,	
+				'cancellation_response'=>"Customer Request",
+			 );
+	    Crud_Model::updateData('twc_booking',$data,array('order_id'=>$request['order_id']));
+		echo json_encode($return);		
+	
+	}
+// Cancel Hotel end	
+
+
+
+
+
+
+
+
+public function BookingCancellationFromAdmin($id){
+	  // dd($id);
+
+		$obj=crud_model::readOne('twc_booking',array('order_id'=>$id));
 	    $itineraryId=$obj->itineraryId;
 	
 		$actionUrl=$this->endpoint.'/bookings/'.$itineraryId.'?cancellationFlag=CANCELLATION';
@@ -1259,7 +1292,7 @@ public function getdetails($id){
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headerData);
 		$content = curl_exec($ch);
 		curl_close($ch);
-		$this->createLogFile('Cancelled-'.$request['order_id'],$actionUrl,$content);
+		$this->createLogFile('Cancelled-'.$id,$actionUrl,$content);
 		$res=json_decode($content,true);
 		// dd($res,$res['booking']);
 		if(isset($res['error'])){ 
@@ -1270,7 +1303,7 @@ public function getdetails($id){
 			  	$responseData = $res['booking'];
 				$ResponseStatus = $responseData['status'];
 				$booking_status='Cancelled';
-				$return=array('error'=>'No','msg'=>'Cancellation Successfull');
+				$return=array('error'=>'No','msg'=>'Cancellation Successfully.');
 		}
 		
 		$data=array(
@@ -1281,11 +1314,11 @@ public function getdetails($id){
 				'cancellation_request'=>$actionUrl,	
 				'cancellation_response'=>$content,
 			 );
-	    Crud_Model::updateData('twc_booking',$data,array('order_id'=>$request['order_id']));
+	    Crud_Model::updateData('twc_booking',$data,array('order_id'=>$id));
 
 
 	    // =========================================================
-	    $bookingDetails=DB::table('twc_booking')->where('order_id',$request['order_id'])->first();
+	    $bookingDetails=DB::table('twc_booking')->where('order_id',$id)->first();
 
 		// dd($bookingDetails->chargable_rate);
 
@@ -1309,11 +1342,10 @@ public function getdetails($id){
         $buyandearnamples = ($discount_margin / .12);
         $no_of_amples = $buyandearnamples;
         // dd( $no_of_amples);
-        if(@Auth::user()->id || Session::get('user_id') ){
+        if(@$bookingDetails->user_id){
         	// dd(1);
         	//update ample
-        	$userDetail = User::where('id', @Auth::user()->id)
-		    ->orWhere('id', Session::get('user_id'))
+        	$userDetail = User::where('id', $bookingDetails->user_id)
 		    ->first();
 		    // dd($userDetail);
 		    // dd((int)($userDetail->ample) , round($no_of_amples), (int)$bookingDetails->booked_ample);
@@ -1323,21 +1355,26 @@ public function getdetails($id){
                 $newAmple= - round($no_of_amples)+(int)@$bookingDetails->booked_ample;
 		    }
         	
-        	$up=User::where('id', @Auth::user()->id)->orWhere('id', Session::get('user_id'))->update(['ample'=>$newAmple]);
+        	$up=User::where('id', $bookingDetails->user_id)->update(['ample'=>$newAmple]);
         }
 
         // dd($request->input(),round($no_of_amples),$request->chargeableRate,$request->user_id);
 
-		// =================================================
-	
-		echo json_encode($return);		
-	
-	}
-// Cancel Hotel end	
+		
 
+		 // $stripe = new StripeClient("sk_test_51NpOZ4GY4n5u6WbIGKHcQBoih6sUZRXtG2a3qWq6NKqOMLrdPSo1DElWPfc0N4cBMrYLYmlUj25gqGHn1tmlmkoL00kNdf7OkS");
 
+		//refund code 
+		 // $refund = $stripe->refunds->create([
+   //      'payment_intent' => $bookingDetails->payment_intent,
+   //      ]);
+	   // dd($refund);
 
-
+        // =================================================
+		// echo json_encode($return);	
+		// dd($res);
+		return back()->with('success','Order Cancel Successfully');	
+}
 
 
 

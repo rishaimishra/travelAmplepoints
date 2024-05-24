@@ -1,0 +1,7 @@
+===========Credentials(select_480689529)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(select_480689529)=========
+https://api.duffel.com/air/offers/off_0000Ai6rD3XHNzNBrzkb1p
+===========Response(select_480689529)=========
+{"errors":[{"documentation_url":"https://duffel.com/docs/api/overview/response-handling","source":"duffel_airways","title":"Requested offer is no longer available","type":"airline_error","message":"Please select another offer, or create a new offer request to get the latest availability.","code":"offer_no_longer_available"}],"meta":{"request_id":"F9FzvbIjp3reRWgBJT9j","status":422}}
+

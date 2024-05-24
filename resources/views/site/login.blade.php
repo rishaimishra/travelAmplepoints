@@ -34,6 +34,7 @@
         <div class="contact-form-action">
             <form method="post" action="{{ asset('post-login') }}">
             @csrf 
+            <input type="hidden" name="prevUrl" value="{{@$prevUrl}}">
                 <div class="input-box">
                     <label class="label-text">Username</label>
                     <div class="form-group col-xs-3">

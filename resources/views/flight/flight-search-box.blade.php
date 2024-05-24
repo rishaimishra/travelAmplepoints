@@ -39,6 +39,48 @@
 }
 
 
+
+/* CSS for the loading modal */
+#loadingModal2 {
+  display: none; 
+  position: fixed; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  width: 410px;
+  height: 519px;
+  background-color: rgb(247 91 16);
+  z-index: 9999; 
+  color: white; 
+  text-align: center; /* Center-align the content */
+  border-radius: 10px; /* Add some border radius for rounded corners */
+  padding-top: 20px; /* Adjust vertical spacing as needed */
+}
+
+.modal2-content3 {
+  background-color: #f75b10;
+  padding: 20px;
+  border-radius: 10px; /* Add some border radius for rounded corners */
+  /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a subtle shadow effect */*/
+}
+
+.loader2 {
+  border: 1px solid green; /* Light grey */
+  border-top: 1px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin2 2s linear infinite;
+ /*margin: 9px 155px;*/
+     margin: -24px 76px 0px 155px;
+}
+
+/* Loader animation */
+@keyframes spin2 {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 </style>
 
 <?php 
@@ -58,7 +100,7 @@
 											 ?>
 	<div class="flighttab tab-pane fade show " id="flight" role="tabpanel" aria-labelledby="flight-tab">
 
-                       <form method="get" id="frm" action="{{ asset('flight-search-results') }}"  >
+                       <form method="get" id="frm2" action="{{ asset('flight-search-results') }}" onsubmit="formSubmit2()"   >
                        @csrf
                             <div class="section-tab section-tab-2 pb-3">
                                 <ul class="nav nav-tabs" id="myTab3" role="tablist">
@@ -200,7 +242,7 @@
                                                 <div class="input-box">
                                                     <label class="label-text">Coach</label>
                                                     <div class="form-group">
-                                                    <select class="form-control" name="cabin_class">
+                                                    <select class="form-control" name="cabin_class" id="cabin_class">
                                                                 <option <?php if($cabin_class=='economy'){ echo "selected"; }?> value="economy" >Economy</option>
                                                                 <option <?php if($cabin_class=='premium'){ echo "selected"; }?> value="premium">Premium</option>
                                                                 <option <?php if($cabin_class=='firstclass'){ echo "selected"; }?>value="firstclass">First Class</option>
@@ -220,6 +262,32 @@
                         </form>    
                             
     </div><!-- end tab-pane -->
+
+
+
+        <!-- HTML for the loading modal -->
+                <div id="loadingModal2" class="modal2">
+                    <div class="modal2-content3">
+                        <div class="loader2"></div>
+                        Searching Flights in..
+                        <p>Please Wait...</p>
+                        <br>
+               
+                        From: <h3 id="autosuggestion_from_html"></h3> 
+                        <br>
+                        To: <h3 id="autosuggestion_to_html"></h3> 
+                        <p id="timeline2"></p>
+                        <br>
+                        <p id="cabin_class"></p>
+                        <br>
+                        <p id="flighttype"></p>
+                        <br>
+                        Members: <p id="members"></p>
+                    </div>
+                </div>
+
+
+
                         
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
@@ -340,6 +408,58 @@
 	   //function myFunction(){ alert("call"); }   onclick="myFunction()"
 	   
 
-	  
+	   function formSubmit2() {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+        // Show the loading modal
+        document.getElementById("loadingModal2").style.display = "block";
+        var flighttype=$('input[name="flighttype"]').val();
+
+        var autosuggestion_from=$("#autosuggestion_from").val();
+
+        var autosuggestion_to=$("#autosuggestion_to").val();
+
+        var departure_date=$("#departure_date").val();
+
+        var return_date=$("#return_date").val();
+
+        var cabin_class= $('#cabin_class').val();
+
+        var adults=$("#adults").val();
+
+        var childs=$("#childs").val();
+
+        var infants=$("#infants").val();
+
+        $("#autosuggestion_from_html").html(autosuggestion_from);
+        $("#autosuggestion_to_html").html(autosuggestion_to);
+        $("#timeline2").html("time span: "+ departure_date + " - "+ return_date);
+        $("#flighttype").html("flight type: "+ flighttype);
+        $("#cabin_class").html("cabin class: "+ cabin_class);
+        $("#members").html("Adults: "+ adults + " , Childs: "+childs+" ,infants: "+infants);
+
+
+console.log(flighttype,
+autosuggestion_from, 
+autosuggestion_to,
+departure_date,
+return_date,
+cabin_class,
+adults,
+childs,
+infants);
+
+// return false
+
+
+        // return false;
+        // Set a timeout to submit the form after 5 seconds
+        setTimeout(function() {
+        document.getElementById("loadingModal2").style.display = "none"; // Hide the loading modal
+        document.getElementById("frm2").submit(); // Submit the form with ID "frm2"
+        }, 5000);
+        }
+
+
       </script>
       

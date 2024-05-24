@@ -51,11 +51,15 @@
                     <td>{{$data->pnr}}</td>
                     <td>{{$data->email}}</td>
                     <td>{{$data->created_at}}</td>
-                    <td>{{$data->payment_type}}</td>
+                    <td>{{-- {{$data->payment_type}} --}}Online</td>
                     <td>@if($data->payment_status=='Failed')<span class="badge bg-danger">{{$data->payment_status}}@endif</span>
-                    @if($data->payment_status=='Confirmed')<span class="badge bg-success">{{$data->payment_status}}@endif</span></td>
+                    @if($data->payment_status=='Confirmed')<span class="badge bg-success">{{$data->payment_status}}@endif</span>
+                    @if($data->payment_status=='Pending')<span class="badge bg-warning">{{$data->payment_status}}@endif</span></td>
+
                     <td>@if($data->booking_status=='Failed')<span class="badge bg-danger">{{$data->booking_status}}@endif</span>
-                    @if($data->booking_status=='Confirmed')<span class="badge bg-success">{{$data->booking_status}}@endif</span></td>
+                    @if($data->booking_status=='Confirmed')<span class="badge bg-success">{{$data->booking_status}}@endif</span>
+                    @if($data->booking_status=='Pending')<span class="badge bg-warning">{{$data->booking_status}}@endif</span>
+                  </td>
                      <td><div class="btn-group btn-group-sm">
                          <a href="flight-details/{{$data->id}}" target="_blank" class="btn btn-info"><i class="fas fa-edit"></i></a>&nbsp;
                         <a href="flight-ticket?order_id={{$data->order_id}}" class="btn btn-success"><i class="fas fa-download"></i></a>&nbsp;

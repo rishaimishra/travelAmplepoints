@@ -1,0 +1,9 @@
+===========Credentials(BookHotel-664EF7E4B27C8)=========
+hotelbeds_key=273483fe031816b44f248428a028d28c
+ hotelbeds_secret=bee7c61cbf
+ endpoint=https://api.test.hotelbeds.com/hotel-api/1.0
+===========Request(BookHotel-664EF7E4B27C8)=========
+{"holder":{"name":"hjgjjh","surname":"jhmgjhg"},"rooms":[{"rateKey":"20240525|20240527|W|270|663644|ROO.AS|BAR 12_RO-NOR|RO||1~1~0||N@06~~23a17~1241702557~N~~~NOR~9B1017851AC641D171645122208700PAUK0000005000000000823a17","paxes":[{"roomId":1,"type":"AD","name":"hjgjjh","surname":"jhmgjhg"}]}],"clientReference":"664EF7E4B27C8","remark":"No Remark.","tolerance":"2"}
+===========Response(BookHotel-664EF7E4B27C8)=========
+{"auditData":{"processTime":"159","timestamp":"2024-05-23 08:02:09.557","requestHost":"10.214.139.81","serverId":"ip-10-214-131-52.eu-central-1.compute.internal#A+","environment":"[awseucentral1, awseucentral1c, ip_10_214_131_52, eucentral1, secret]","release":"","token":"DB4CD7017A48461EAC349EFD8C4E74C6","internal":"0|06~~23a17~1241702557~N~~~NOR~9B1017851AC641D171645122208700PAUK0000005000000000823a17|UK|08|5|0||||||P|||||R|0|2|~1~1~0||0||0|273483fe031816b44f248428a028d28c||||"},"error":{"code":"SYSTEM_ERROR","message":"Internal server error"}}
+

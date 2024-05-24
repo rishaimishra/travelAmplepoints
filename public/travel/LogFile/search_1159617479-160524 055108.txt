@@ -1,0 +1,7 @@
+===========Credentials(search_1159617479)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(search_1159617479)=========
+{"data":{"slices":[{"origin":"DEL","destination":"BOM","departure_date":"2024-11-16"},{"origin":"BOM","destination":"DEL","departure_date":"2024-11-17"}],"passengers":[{"type":"adult"}],"cabin_class":"economy"}}
+===========Response(search_1159617479)=========
+{"errors":[{"documentation_url":"https://duffel.com/docs/api/overview/response-handling","title":"Unsupported version","type":"invalid_request_error","message":"The version set in the 'Duffel-Version' header is no longer supported by the API. Please upgrade.","code":"unsupported_version"}],"meta":{"request_id":"F8_iLaBFCQBeaeIBXNrC","status":400}}
+

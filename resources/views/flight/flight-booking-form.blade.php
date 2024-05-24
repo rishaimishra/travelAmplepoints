@@ -24,6 +24,12 @@
 <!-- ================================
     START BOOKING AREA
 ================================= -->
+
+  <link rel="stylesheet" type="text/css" href="https://amplepoints.com/newcss/css/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="https://amplepoints.com/newcss/css/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://amplepoints.com/newcss/css/style-check.css" >
+
+
 <section class="booking-area padding-top-100px padding-bottom-70px">
     <div class="container">
         <div class="row">
@@ -38,6 +44,11 @@
                             @csrf
                             <input class="form-control" type="hidden" name="OfferId" id="OfferId" value="<?php echo $flightData->OfferId; ?>">
                             <input class="form-control" type="hidden" name="id" id="id" value="<?php echo $flightData->id; ?>">
+
+                            <input class="form-control" type="hidden" name="chargeableRate" id="chargeableRate" value="<?php echo (int)$flightData->price; ?>">
+                             <input class="form-control" type="hidden" name="booked_ample" id="booked_ample" value="0">
+                              <input class="form-control" type="hidden" name="discount_by_ample" id="discount_by_ample" value="0">
+
                                 <div class="row">
                                 <?php for($a=0;$a<$flightData->adults;$a++){ ?>
                                  <div class="form-title-wrap col-lg-12">
@@ -48,7 +59,7 @@
                                         <div class="input-box">
                                             <label class="label-text">Title <span style="color:#FF0000">*</span></label>
                                             <div class="form-group">
-                                                <div class="select-contain w-auto">
+                                                <div >
                                                 <select class="select-contain-select" name="passenger[adult][title][]" requited>
                                                         <option value="mr">Mr</option>
                                                         <option value="mrs">Mrs</option>
@@ -89,7 +100,7 @@
                                         <div class="input-box">
                                             <label class="label-text">Gender <span style="color:#FF0000">*</span></label>
                                             <div class="form-group">
-                                                <div class="select-contain w-auto">
+                                                <div >
                                                 <select class="select-contain-select" name="passenger[adult][gender][]" requited>
                                                         <option value="m">Male</option>
                                                         <option value="f">Female</option>
@@ -103,7 +114,7 @@
                                         <div class="input-box">
                                             <label class="label-text">ID </label>
                                             <div class="form-group">
-                                                <div class="select-contain w-auto">
+                                                <div >
                                                 <input class="form-control" type="text" name="passenger[adult][id][]" placeholder="Document ID">
                                                  </div>
                                             </div>
@@ -119,7 +130,7 @@
                                         <div class="input-box">
                                             <label class="label-text">Title <span style="color:#FF0000">*</span></label>
                                             <div class="form-group">
-                                                <div class="select-contain w-auto">
+                                                <div >
                                                 <select class="select-contain-select" name="passenger[child][title][]" requited>
                                                         <option value="mr">Mr</option>
                                                         <option value="mrs">Mrs</option>
@@ -161,7 +172,7 @@
                                         <div class="input-box">
                                             <label class="label-text">Gender <span style="color:#FF0000">*</span></label>
                                             <div class="form-group">
-                                                <div class="select-contain w-auto">
+                                                <div >
                                                 <select class="select-contain-select" name="passenger[child][gender][]" requited>
                                                         <option value="m">Male</option>
                                                         <option value="f">Female</option>
@@ -175,7 +186,7 @@
                                         <div class="input-box">
                                             <label class="label-text">ID</label>
                                             <div class="form-group">
-                                                <div class="select-contain w-auto">
+                                                <div >
                                                 <input class="form-control" type="text" name="passenger[child][id][]" placeholder="Enter ID" >
                                                  </div>
                                             </div>
@@ -194,7 +205,7 @@
                                         <div class="input-box">
                                             <label class="label-text">Title <span style="color:#FF0000">*</span></label>
                                             <div class="form-group">
-                                                <div class="select-contain w-auto">
+                                                <div >
                                                 <select class="select-contain-select" name="passenger[infant][title][]" requited>
                                                         <option value="mr">Mr</option>
                                                         <option value="mrs">Mrs</option>
@@ -235,7 +246,7 @@
                                         <div class="input-box">
                                             <label class="label-text">Gender <span style="color:#FF0000">*</span></label>
                                             <div class="form-group">
-                                                <div class="select-contain w-auto">
+                                                <div >
                                                 <select class="select-contain-select" name="passenger[infant][gender][]">
                                                         <option value="m">Male</option>
                                                         <option value="f">Female</option>
@@ -249,7 +260,7 @@
                                         <div class="input-box">
                                             <label class="label-text">ID </label>
                                             <div class="form-group">
-                                                <div class="select-contain w-auto">
+                                                <div >
                                                 <input class="form-control" type="text" name="passenger[infant][id][]" placeholder="Enter ID">
                                                
                                                  </div>
@@ -285,7 +296,8 @@
 
                                                 <span class="la la-phone form-icon"></span>
 
-                                                <input class="form-control" type="text" name="passenger[phone]" placeholder="Phone Number" requited>
+                                               {{--  <input class="form-control" type="text" name="passenger[phone]" placeholder="Phone Number" requited> --}}
+                                                 <input class="form-control" type="tel" minlength="10" maxlength="15" name="passenger[phone]" placeholder="Phone Number" pattern="[0-9+\-\(\) ]{10,15}" required>
 
                                             </div>
 
@@ -339,7 +351,7 @@
 
                                             <div class="form-group">
 
-                                                <div class="select-contain w-auto">
+                                                <div >
 
                                                     <select class="select-contain-select" name="passenger[country]" required>
                                                     <option value="select-country">Select country</option>
@@ -365,7 +377,7 @@
                                         <div class="input-box">
                                             <label class="label-text">Choose Payment Type</label>
                                             <div class="form-group">
-                                                <div class="select-contain w-auto">
+                                                <div >
                                                     <select class="select-contain-select" name="payment_type">
                                                         <option value="flutterwave">Flutterwave</option>
                                                         <option value="braintree">Braintree</option>
@@ -820,13 +832,264 @@
 
                                 <ul class="list-items list-items-2 pt-3">
 
-                                    <li><span>Base Fare:</span><span class="base_fare">...<?php //echo $flightData->base_fare; ?></span></li>
+                                   {{--  <li><span>Base Fare:</span><span class="base_fare">...<?php echo $flightData->base_fare; ?></span></li>
 
-                                    <li><span>Taxes And Fees:</span><span class="tax">...<?php //echo $flightData->tax; ?></span></li>
+                                    <li><span>Taxes And Fees:</span><span class="tax">...<?php echo $flightData->tax; ?></span></li> --}}
+                                    
+                                   
+                                   
 
-                                    <li><span>Total Price:</span><span class="total_amount">...<?php //echo $flightData->price; ?></span></li>
+                               <li {{-- id="tali1" --}}><span>Total Price:</span><span class="total_amount" {{-- id="ta1" --}}>$ {{(int)$flightData->price*2;}} </span></li>
 
+                                <li id="dpli" style="display:none"><span>Discount Price:</span><span class="discount_amount" id="dp"></span></li>
+
+                               <li id="tali2" style="display:none"><span>New Price:</span><span class="total_amount2" id="ta2"></span></li>
                                 </ul>
+
+
+
+
+
+            @php
+               $admin_model_obj = new \App\Models\CommonFunctionModel;
+               $toCurrencyRate = $admin_model_obj->getFromToCurrencyRate(1.00,'USD', 'USD');
+                $original_single_price = (int)$flightData->price;
+                $OfferedPriceRoundedOff = $admin_model_obj->displayFinalRates((int)$flightData->price, $toCurrencyRate);
+
+                //dd($original_single_price,$OfferedPriceRoundedOff);
+                $single_price = (($OfferedPriceRoundedOff) * 2);
+                $wholesale_price = ($single_price / 2);
+                $free_with_amples = 0.00;
+                $no_of_amples = 0.00;
+                $discount_price = 0.00;
+                $discount = 0.00;
+                $FinalTextAmount = 0.00;
+                $calculateDiscount = ((($single_price - $wholesale_price) * 100) / $single_price);
+                $discount = round($calculateDiscount, 2);
+                $discount_price = (($single_price * $discount) / 100);
+                $discount_margin = $discount_price;
+                $buyandearnamples = ($discount_margin / .12);
+                $no_of_amples = $buyandearnamples;
+
+
+
+                $free_with_amples = ($single_price / .12);
+                $incrementIndex=0;
+                // $DayRates = isset($hotelDetailsData->DayRates) ? $hotelDetailsData->DayRates : array(); /*Array of Object*/
+                // $Price = $hotelDetailsData->Price; /*Object*/
+                // $Amenities = $hotelDetailsData->Amenities; /*Array*/
+                // $Amenity = $hotelDetailsData->Amenity; /*Array*/
+                // $SmokingPreference = $hotelDetailsData->SmokingPreference; /*string*/
+                // $BedTypes = $hotelDetailsData->BedTypes; /*Array*/
+                // $HotelSupplements = $hotelDetailsData->HotelSupplements; /*Array*/
+                // $LastCancellationDate = $hotelDetailsData->LastCancellationDate; /*Date time String Ex: 2020-04-16T23:59:59 */
+                // $CancellationPolicies = $hotelDetailsData->CancellationPolicies; /*Array*/
+                // $CancellationPolicy = $hotelDetailsData->CancellationPolicy; /*String*/
+                // $Inclusion = $hotelDetailsData->Inclusion; /*String*/
+            @endphp
+               <br>
+              <p>Book and earn amplepoints : {{round($no_of_amples)}}</p>
+            
+
+
+
+
+<div>
+  <div class='sidebar-booking-box'>
+    <h3 class='text-center' style="font-size: 15px !important;">USE AMPLE POINTS TO GET THIS
+    ROOM</h3>
+    <div class='booking-box-body'>
+      <form>
+        <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+          <div class="row">
+            <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+              <label>Price</label>
+            </div>
+            <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+              <input type='text'
+              id='itemprice_<?php echo (int)$flightData->price ?>'
+              name='itemprice'
+              class='form-control'
+              value='$<?php echo $single_price; ?>'
+              disabled>
+              <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
+            </div>
+          </div>
+        </div>
+        <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+          <div class="row">
+            <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+              <label>Buy & Earn</label>
+            </div>
+            <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+              <input type='text'
+              id='buyearnamples_<?php echo (int)$flightData->price ?>'
+              name='buyearnamples'
+              class='form-control'
+              placeholder='D'
+              value='<?php echo $admin_model_obj->DisplayAmplePoints($no_of_amples); ?>'
+              disabled>
+              <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
+            </div>
+          </div>
+        </div>
+        <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+          <div class="row">
+            <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+              <label>Amples Needed to Redeem</label>
+            </div>
+            <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+              <input type='text'
+              id='useamplestoshop_<?php echo (int)$flightData->price ?>'
+              name='useamplestoshop'
+              class='form-control'
+              value='<?php echo $admin_model_obj->DisplayAmplePoints($free_with_amples); ?> Amples'
+              disabled>
+              <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
+            </div>
+          </div>
+        </div>
+        <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+          <div class="row">
+            <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+              <label>Apply Amples</label>
+            </div>
+            <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+              <input type='text' onchange="ampleEnterFun(this.value,'<?php echo (int)$flightData->price ?>')"
+              id='inputamples_<?php echo (int)$flightData->price ?>'
+              name='inputamples'
+              class='form-control'>
+              <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
+            </div>
+          </div>
+        </div>
+        <div class='col-md-4 col-sm-4 col-xs-4 no-space add-cart-submit btn-b-apply' style="margin-left: 210px;">
+          <button class="btn btn-dark" style="width:100%" id='applyamples_<?php echo (int)$flightData->price ?>'
+          type='button'
+          onclick="applyAmplePoints('<?php echo (int)$flightData->price ?>','<?php echo $single_price; ?>','<?php echo $discount_price; ?>','<?php echo $discount; ?>')">
+          APPLY
+          </button>
+        </div>
+        
+        <div class='clearfix'></div>
+        <div class='grand-total1 text-center'>
+          <div class="row">
+            <div class='col-md-8 col-sm-8 col-xs-8 no-space'
+              id='newpricesection_<?php echo (int)$flightData->price ?>'
+              style='display:none;'><span
+              style="width: 42%;">New Price : </span>
+              <h4 id='newitemprice_<?php echo (int)$flightData->price ?>'
+              style="margin: 15px 10px;">&nbsp;
+              $<?php echo $single_price; ?></h4>
+              <span class='res-collection-sub'
+                style='display:none;margin: 12px 0 0 -10px;'
+              id="res_collection_sub_<?php echo (int)$flightData->price ?>">FREE</span>
+              <input type="hidden"
+              id="usernewitemprice_<?php echo (int)$flightData->price ?>"
+              value="<?php echo $single_price; ?>"/>
+            </div>
+            
+          </div>
+        </div>
+        <div class='res-collection-sub1'
+          id="res_collection_sub_1_<?php echo (int)$flightData->price ?>">
+          <div class='col-md-12 col-sm-12 col-xs-12 no-space'
+            id='earnrewardsection_<?php echo (int)$flightData->price ?>'
+            style='display:none;'>
+            <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+              <label>Earn Reward</label>
+            </div>
+            <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+              <input type='text'
+              id='earnrewardamples_<?php echo (int)$flightData->price ?>'
+              name='earnrewardamples'
+              class='form-control'
+              disabled>
+              <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
+            </div>
+          </div>
+          <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+            <div class="row">
+              <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+                <label>Reward Value</label>
+              </div>
+              <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+                <input type='text'
+                id='earnrewardonitem_<?php echo (int)$flightData->price ?>'
+                name='earnrewardonitem'
+                value='<?php echo $discount_price; ?>'
+                class='form-control'
+                disabled>
+              </div>
+            </div>
+          </div>
+          <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+            <div class="row">
+              <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+                <label>You Earn</label>
+              </div>
+              <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+                <input type='text'
+                id='youearndiscount_<?php echo (int)$flightData->price ?>'
+                name='youearndiscount'
+                value='<?php echo (int)$discount; ?>%'
+                class='form-control'
+                disabled>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='clearfix'></div>
+        {{-- <div class='grand-total text-center'>
+          <div class='col-md-12 col-sm-12 col-xs-12'>
+            <div class='button-group'
+              id='atax_<?php echo (int)$flightData->price ?>'
+              style="display:none"><a
+                class='btn-add-cart'
+                id="cartwithample_<?php echo (int)$flightData->price ?>"
+                href='javascript:void(0);'
+                onclick="bookRoomWithAmple('<?php echo (int)$flightData->price ?>','<?php echo $single_price; ?>','<?php echo $original_single_price; ?>','<?php echo $incrementIndex; ?>')">BOOK
+              NOW ample</a></div>
+              <div class='button-group'
+                id='btax_<?php echo (int)$flightData->price ?>'>
+                <a class='btn-add-cart'
+                  id="cartwithoutample_<?php echo (int)$flightData->price ?>"
+                  href="javascript:void(0);"
+                  onclick="bookRoomWithoutAmple('<?php echo (int)$flightData->price ?>','<?php echo $single_price; ?>','<?php echo $original_single_price; ?>','<?php echo $incrementIndex; ?>','<?php echo $admin_model_obj->DisplayAmplePoints($no_of_amples); ?>')">BOOK
+                NOW</a></div>
+              </div>
+            </div> --}}
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                             </div>
 
@@ -913,6 +1176,179 @@ var innerHtml=''; var page=0; var search_session='';
 								}
 							});
       });	   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function applyAmplePoints(room_index, single_price, discount_price, discount) {
+    // console.log(room_index)
+
+        var user_total_alample = {{ @Auth::user()->ample ?? 0 }};
+        var qty = 1;
+        var totalamples = $('#useamplestoshop_'+room_index).val();
+        var amplesbyuser = $('#inputamples_'+room_index).val();
+        var amplesbyusr = parseFloat(amplesbyuser);
+        // console.log(totalamples)
+        var totalpamples = totalamples.split(' ');
+        var totalitemamples = parseFloat(totalpamples[0]);
+
+        var checkusertotal = parseFloat(user_total_alample);
+        var checkapplyample = parseFloat(amplesbyuser);
+
+        var pattern = /^\d+(\.\d{1,2})?$/;
+
+        if (!pattern.test(amplesbyuser)) {
+
+            alert("Please Enter Valid AmplePoints");
+            return false;
+        }
+
+        if (amplesbyuser == '00' || amplesbyuser <= 0) {
+
+            alert("Please Enter Valid AmplePoints");
+            return false;
+        }
+
+        if (checkapplyample > checkusertotal) {
+
+            alert("You Don't Have Enough Ample Please Earn More Ample, your remaining ample is "+user_total_alample);
+            return false;
+        }
+
+        if (amplesbyuser == '') {
+            alert("Please enter number of amples you want to apply");
+        } else if (amplesbyusr > totalitemamples) {
+            alert("Please enter the number of amples below to total of amples for this product.");
+            $('#inputamples').val('');
+        } else {
+
+            $("#btax_" + room_index).hide();
+            $("#atax_" + room_index).show();
+
+            var amplepricebyuser = ((amplesbyuser * 12) / 100);
+            var itempricebyample = ((totalitemamples * 12) / 100);
+
+            var itemprice = single_price;
+            //    alert(itemprice);
+            var itemreward = discount_price;
+            var itemdiscount = discount;
+            //var newitemreward = (qty * itemreward);
+            var newitemprice = (qty * itemprice);
+            //alert(newitemprice);
+            var newitemdiscount = (qty * itemdiscount);
+
+            // New Price by user = (amples needed to redeem - apply amples)*.12  $...
+
+            // Earn Reward = (new price by user * discount percentage)/.12       Amples....
+
+            // If No amples applied by user then Reward Value = (retail price * discount percentage)  $....
+
+            // Reward Value = (new price by user * discount percentage)      $....
+
+            // You Earn = discount percentage
+
+            var newitempricebyuser = (itempricebyample - amplepricebyuser);
+
+            var earnrewardamples = (((newitempricebyuser * ((itemdiscount) / 100)) / 12) * 100);
+
+            var newitemreward = (newitempricebyuser * ((itemdiscount) / 100));
+
+            if (newitempricebyuser == 0.00) {
+                $("#newpricesection_" + room_index).css("display", "block");
+                $('#newitemprice_' + room_index).text(' ' + '$' + newitempricebyuser.toFixed(2));
+                //$('#usernewitemprice').val((newitempricebyuser/qty).toFixed(2));
+                $('#usernewitemprice_' + room_index).val(newitempricebyuser.toFixed(2));
+                $('#earnrewardamples_' + room_index).val('0.00');
+                $("#earnrewardsection_" + room_index).css("display", "none");
+                $("#res_collection_sub_1_" + room_index).css("display", "none");
+                $("#res_collection_sub_" + room_index).css("display", "block");
+            } else {
+                $("#res_collection_sub_1_" + room_index).css("display", "block");
+                $("#res_collection_sub_" + room_index).css("display", "none");
+                $("#earnrewardsection_" + room_index).css("display", "none");
+                $("#newpricesection_" + room_index).css("display", "block");
+                $("#newitemprice_" + room_index).css("display", "block");
+                $('#newitemprice_' + room_index).text(' ' + '$' + newitempricebyuser.toFixed(2));
+                //$('#usernewitemprice').val((newitempricebyuser/qty).toFixed(2));
+                $('#usernewitemprice_' + room_index).val(newitempricebyuser.toFixed(2));
+                $("#earnrewardsection_" + room_index).css("display", "block");
+                $('#earnrewardamples_' + room_index).val(earnrewardamples.toFixed(2) + ' Amples');
+                $('#earnrewardonitem_' + room_index).val('$' + newitemreward.toFixed(2));
+                if (qty > 1) {
+                    var newitemdiscountpercentage = parseInt((newitemdiscount) / qty);
+                    $('#youearndiscount_' + room_index).val(newitemdiscountpercentage.toFixed(2) + '%');
+                } else {
+                    var newitemdiscountpercentage = parseInt(newitemdiscount);
+                    $('#youearndiscount_' + room_index).val(newitemdiscountpercentage.toFixed(2) + '%');
+                }
+
+            }
+
+        }
+       
+
+        //first price
+       var firstPrice= $("#itemprice_" + room_index).val().split("$")[1];
+       var newFinal_Price=newitempricebyuser.toFixed(2);
+       var discount_price=(parseInt(firstPrice) - newFinal_Price).toFixed(2);
+
+       var ampleEnterPoint=$("#inputamples_"+room_index).val()
+
+        console.log(firstPrice,newFinal_Price,discount_price)
+
+        $("#dpli").show();
+        $("#tali2").show();
+        $("#tali1").hide();
+        $("#dp").html(' ' + '$' + discount_price);
+        $("#ta2").html(' ' + '$' + newFinal_Price);
+
+        $("#chargeableRate").val(newFinal_Price/2)
+         $("#discount_by_ample").val(discount_price);
+        $("#booked_ample").val(amplesbyuser)
+
+
+    }
+
+
+
+
+
+
+
+
+
+function ampleEnterFun(val,room_index){
+  // console.log(val,room_index)
+  if(val==0 || val=="" || val==null){
+    // var firstPrice= $("#itemprice_" + room_index).val().split("$")[1];
+
+    $("#dpli").show();
+    $("#tali2").hide();
+    $("#tali1").show();
+    $("#dp").html(' ' + '$' + 0);
+    $("#ta2").html(' ' + '$' + 0);
+    $('#newitemprice_' + room_index).text(' ' + '$' + room_index*2);
+    $("#chargeableRate").val(room_index)
+    $("#booked_ample").val(0)
+    $("#discount_by_ample").val(0);
+  }
+}
       </script>
 
 @include('site.footer')

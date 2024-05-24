@@ -488,7 +488,7 @@ $childs =substr($childsStr,0,-1);
                 </div>
             </div>
         </div> --}}
-        <div class="hotellist" id="hotellist">
+        <div class="hotellist" id="hotellist" style="font-weight: 600; color: #2d2727;">
             <div class="wrapper">
                 <div class="item">
                     <div class="animated-background round-box"></div>
@@ -907,7 +907,7 @@ jQuery("#hotel").show();
 let apiCallsCompleted = 0;
 
 // Array to store unique hotels
-const uniqueHotels = [];
+var uniqueHotels = [];
 
   function hideLoader() {
     // console.log("testii");
@@ -915,12 +915,16 @@ const uniqueHotels = [];
       if (apiCallsCompleted >= 5) {
         // Hide the loader
         // console.log("test");
+        if(apiCallsCompleted >= 6){
+            uniqueHotels = [];
+        }
         $("#cc").hide();
       }
+      // if()
     }
 
                                 
-                            function Show_Hotels(type,mdl=null)
+                        function Show_Hotels(type,mdl=null)
                             {   //var search_session='62f0011bf1e94';
                             // if(apiCallsCompleted <=5){
                               apiCallsCompleted++;
@@ -935,7 +939,7 @@ const uniqueHotels = [];
                                 var accommodationType='';
                                 if(type!='search'){ 
                                     
-                                    if(type=='filter'){  innerHtml=''; if(mdl!=null){  $("#mdlcls").click();} } else { page=page+1; }
+                                    if(type=='filter'){  innerHtml=''; if(mdl!=null){  $("#mdlcls").click();}  $("#cc").show();} else { page=page+1; }
                                     
                                     jQuery('input[name=starrating]:checked').each(function(i) { 
                                         Cri_Rating[i] = jQuery(this).val();
@@ -1021,10 +1025,13 @@ const uniqueHotels = [];
                                         
                                     for(var i=0;i<data.result.length;i++){
                                         // console.log("jt",data.result[i])
+                                        console.log(44);
 
                                           const existingHotelIndex = uniqueHotels.findIndex(uniqueHotel => uniqueHotel === data.result[i].Name);
                                             // If the hotel name doesn't exist, add the hotel to the unique hotels array
+                                             console.log(55);
                                             if (existingHotelIndex === -1) {
+                                                 console.log(66);
                                                 uniqueHotels.push(data.result[i].Name);
                                             
 
@@ -1033,17 +1040,17 @@ const uniqueHotels = [];
                                     
                                     
                                           innerHtml +=`<div class="card-item card-item-list mb-4" style="border-radius: 10px">
-                                            <div class="row">
+                                            <div class="row" style=" box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                                               <div class="col-lg-3 col-12 c-item-1">
                                                 <div class="card-img" style="height: 100%">
                                                   <span class="badge">${data.result[i].boardName}</span>
-                                                  <a href="${book_link}" style="height: 100%">`+'<img src="'+data.result[i].thumbnail+'" onerror="this.onerror=null; this.src=\'<?php echo url('');?>/images/nohotel.jpg\'" alt="hotel-img">'+
+                                                  <a href="${book_link}" style="height: 100%">`+'<img style="border-radius: 20px 0 0 20px;" src="'+data.result[i].thumbnail+'" onerror="this.onerror=null; this.src=\'<?php echo url('');?>/images/nohotel.jpg\'" alt="hotel-img">'+
                                                   `</a>
                                                   <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="" data-original-title="Bookmark"><i class="la la-heart-o"></i></div>
                                                 </div>
                                               </div>
                                               <div class="col-lg-6 col-12 c-item-2" style="padding: 20px 10px 20px">
-                                                <div class="h-title" style="font-size: 20px">${data.result[i].Name}(${data.result[i].accommodationType})</div>
+                                                <div class="h-title" style="font-size: 24px;font-weight: bolder !important;">${data.result[i].Name}(${data.result[i].accommodationType})</div>
                                                 <div>
                                               
 
@@ -1059,7 +1066,7 @@ const uniqueHotels = [];
 
                                             innerHtml += `</span>
 
-                                                  <span class="h-s-title">${data.result[i].Address1}, ${data.result[i].City}</span>
+                                                  <span class="h-s-title" style="font-weight: 400 !important;">${data.result[i].Address1}, ${data.result[i].City}</span>
                                                 </div>
                                                 <div>
                                                   <a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=${data.result[i].Name} ${data.result[i].Address1} ${data.result[i].City}" class="">Show on Map</a>
@@ -1102,10 +1109,11 @@ const uniqueHotels = [];
                                             jQuery('.loader').hide();
                                             alert("No Hotel Found.");
                                     }
+                                    console.log(888)
                                     jQuery('.hotellist').html(innerHtml);
                                     }//
                                     else{
-                                        // console.log(34);
+                                        console.log(55);
                                         // jQuery('.sidebsr').hide();
                                         // jQuery('.searching').hide(); 
                                         // jQuery('.load_more').hide();

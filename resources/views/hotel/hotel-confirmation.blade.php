@@ -141,6 +141,7 @@
 										
 											$(".cancel").show();
 											$(".canceling").hide();	
+                                              location.reload();
 									
 										},
 										error: function (error) {

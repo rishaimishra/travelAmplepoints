@@ -1,5 +1,6 @@
 @include('site.header')
 @inject('siteData1', 'App\Http\Controllers\Site')
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
          @php   $data=json_decode($siteData1::Index(),true);
 				$common_data= $data['siteData']['common_data'];
                 $device=$data['device'];
@@ -226,6 +227,9 @@ body, html{
                                 <h3 class="title font-size-16"> <a href="javascript:void(0)" rel="0" onclick="Edit_search()" class="Edit_search theme-btn theme-btn-small ">Edit</a> </h3>
                             </div>                            
                         </div><!-- end filter-bar-filter -->
+
+                    <div style="display: flex;align-items: center;justify-content: start;">
+                        <button style="border: 1px solid white" data-toggle="modal" data-target="#myModal2"><img src="{{url('/')}}/travel/filter.png" style="width: 20px; background: #ffffff; border-radius: 1px solid #ffffff; margin-right: 20px;"></button>
                         <div class="select-contain">
                             <select class="select-contain-select" name="sort" id="sort" onchange="Show_Flights('filter')">
                                 <option value="price_ASC" selected="selected">Sort Your Flight</option>
@@ -237,6 +241,7 @@ body, html{
                                 <option value="duration_DESC">Duration: high to low</option>
                             </select>
                         </div><!-- end select-contain -->
+                    </div>
                     </div><!-- end filter-bar -->
                 </div><!-- end filter-wrap -->
             </div><!-- end col-lg-12 -->
@@ -309,7 +314,27 @@ body, html{
                           <div class="animated-background rect5"></div>   
                     </div>
                 </div>
-            <div class="sidebar mt-0" style="display:none">
+           
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div id="myModal2" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" id="mdlcls2" data-dismiss="modal">&times;</button>
+        
+      </div>
+      <div class="modal-body">
+        <div class="sidebar mt-0" style="display:none">
                 <div class="onewayfilter" >
                     <div class="sidebar-widget">
                         <h3 class="title stroke-shape">Filter by Price</h3>
@@ -322,7 +347,7 @@ body, html{
                                 <div id="slider-range-price" onclick="Show_Flights('filter')" ></div><!-- end slider-range -->
                             </div><!-- end slider-range-wrap -->
                             <div class="btn-box pt-4">
-                                <button class="theme-btn theme-btn-small theme-btn-transparent" type="button" onclick="Show_Flights('filter')" >Apply</button>
+                                <button class="theme-btn theme-btn-small theme-btn-transparent" type="button" onclick="Show_Flights('filter_apply')" >Apply</button>
                             </div>
                         </div>
                     </div><!-- end sidebar-widget -->
@@ -338,7 +363,7 @@ body, html{
                                 <div id="slider-range-duration" onclick="Show_Flights('filter')"></div><!-- end slider-range -->
                             </div><!-- end slider-range-wrap -->
                             <div class="btn-box pt-4">
-                                <button class="theme-btn theme-btn-small theme-btn-transparent" type="button" onclick="Show_Flights('filter')">Apply</button>
+                                <button class="theme-btn theme-btn-small theme-btn-transparent" type="button" onclick="Show_Flights('filter_apply')">Apply</button>
                             </div>
                         </div>
                     </div><!-- end sidebar-widget -->
@@ -395,7 +420,7 @@ body, html{
                                 <div id="return-slider-range-duration" onclick="Show_Flights('filter')"></div><!-- end slider-range -->
                             </div><!-- end slider-range-wrap -->
                             <div class="btn-box pt-4">
-                                <button class="theme-btn theme-btn-small theme-btn-transparent" type="button" onclick="Show_Flights('filter')">Apply</button>
+                                <button class="theme-btn theme-btn-small theme-btn-transparent" type="button" onclick="Show_Flights('filter_apply')">Apply</button>
                             </div>
                         </div>
                     </div><!-- end sidebar-widget -->
@@ -439,8 +464,26 @@ body, html{
                 </div>
                </div>
             </div><!-- end col-lg-4 -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+           
             
-            <div class="col-lg-8 flight_list">
+
+
+            <div class="col-lg-12 flight_list">
             <div class="wrapper">
                    <div class="item">
                           <div class="animated-background round-box"></div>
@@ -533,269 +576,340 @@ body, html{
 
 
 
+<script src = "//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"> </script> 
+<script src = "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"> </script>
+
+<script src = "https://code.jquery.com/jquery-3.4.1.min.js"> </script> 
+<script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"> </script> 
 
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-<script type="text/javascript">
-jQuery(".common_beard_comb").hide(); 
-var innerHtml=''; var page=0; var search_id='';
+<script type = "text/javascript" >
+    jQuery(".common_beard_comb").hide();
+var innerHtml = '';
+var page = 0;
+var search_id = '';
 
-function Edit_search(){
-	jQuery("#flight").show();
+function Edit_search() {
+    jQuery("#flight").show();
     var rel = jQuery('.Edit_search').attr('rel');
-	if(rel==0){ 
-			jQuery('.Edit_search_sec').show(500);
-			jQuery('.Edit_search').attr('rel','1');
-	}else{
-			jQuery('.Edit_search_sec').hide(500);
-			jQuery('.Edit_search').attr('rel','0');
-	}
+    if (rel == 0) {
+        jQuery('.Edit_search_sec').show(500);
+        jQuery('.Edit_search').attr('rel', '1');
+    } else {
+        jQuery('.Edit_search_sec').hide(500);
+        jQuery('.Edit_search').attr('rel', '0');
+    }
 
 }
 
-      jQuery(document).ready(function(){			   				
-							
-						 
-      });	   
-	  
-	  		Show_Search();
-	  			   function Show_Search()
-					{
-						$.ajax({
-								url:'<?php url(''); ?>/get_flight_search_id',
-								type: "get",
-								data: {
-								    _token:"{{csrf_token()}}",
-									action: "findSearchKey",
-									flighttype: "<?php echo $_REQUEST['flighttype']; ?>",
-									origin: "<?php echo $_REQUEST['origin']; ?>",  
-									destination: "<?php echo $_REQUEST['destination']; ?>",
-									IATA_from: "<?php echo $_REQUEST['IATA_from']; ?>",  
-									IATA_to: "<?php echo $_REQUEST['IATA_to']; ?>",
-									departure_date: "<?php echo $_REQUEST['departure_date']; ?>",
-									return_date: "<?php echo $_REQUEST['return_date']; ?>",
-									adults: "<?php echo $_REQUEST['adults']; ?>",
-									childs: "<?php echo $_REQUEST['childs']; ?>",
-									infants: "<?php echo $_REQUEST['infants']; ?>",
-									cabin_class: "<?php echo $_REQUEST['cabin_class']; ?>",  
-									user_id: "<?php echo $user_id; ?>",
-									rand: "<?php echo rand(); ?>",
-									isDomestic: "No",
-								},
-								dataType: "json",
-								success: function (data) {
-								jQuery('.searching').show();
-								jQuery('.loader').hide();
-								console.log(data);
-									if(data.isFind=='Yes'){ 
-									search_id=data.search_id;
-										
-										Get_FlightController();
-										Show_Flights('load');
-										//Show_OutBoundFlights(data.search_session);
-										//Show_InBoundFlights(data.search_session);
-									}else{
-										jQuery('.not_found').show();
-										jQuery('.loader').hide();
-										jQuery('.whole_content').hide();
-										
-										alert("No Flight Found.");
-									}
-								},
-								error: function (error) {
-									console.log(`Error ${error}`);
-								}
-							});
-					}
-	  
-					function Show_Flights(type)
-					{      
-								jQuery('.flight_list').addClass('opacity_5');
-								if(type=='filter'){  innerHtml=''; } else { page=page+1; }
-								var sortVal= document.getElementById("sort").value;
-								var Arrival= document.getElementById("Arrival").value;
-								var Departure= document.getElementById("Departure").value;
-								var price= document.getElementById("price").value;
-								var duration= document.getElementById("duration").value;
-								var airlines='';
-								 jQuery("input[name=airlines]:checked").each( function () {
-									   var a=jQuery(this).val() ;
-									   airlines +=a+",";
-								 });
-								 
-								 var Stops='';
-								 jQuery("input[name=Stops]:checked").each( function () {
-									   var s=jQuery(this).val() ;
-									   Stops +=s+",";
-								 });
-								 
-								   //alert("page=="+page+"\nsearch_session"+search_session)
-							 $.ajax({
-								url:'<?php url(''); ?>/get_flight_list',
-								type: "GET",
-								data: {
-									_token:"{{csrf_token()}}",
-									action: "Show_Flights",
-									search_id: search_id,
-									sortVal: sortVal,
-									Arrival: Arrival,
-									Departure: Departure,
-									duration: duration,
-									price: price,
-									Stops: Stops,
-									airlines: airlines,  
-									user_id: "<?php echo $user_id; ?>",
-									rand: "<?php echo rand(); ?>",
-								},
-								dataType: "json",
-								success: function (data) {
-													jQuery('.load_more').show();
-													jQuery('.flight_list').removeClass('opacity_5');
-									                jQuery('.totalflight').html(data.result[0].totalcountfilter); 
-													jQuery('.showflight').html(page*20); 
-								for(var i=0;i<data.result.length;i++){ 
-									if(data.result[i].max_stops==0){ var onewaystop='Non';} else { onewaystop=data.result[i].max_stops; }
-									if(data.result[i].return_max_stops==0){ var returnstop='Non';} else { returnstop=data.result[i].return_max_stops; } 
-									if(data.result[i].isReturn=='Yes'){  var arraow='&#8596'; }else{  var arraow='&#8594'; }
-									$price=parseFloat(data.result[i].price);
-									
-									
-														innerHtml +='<div class="card-item flight-card flight--card card-item-list card-item-list-2"><div class="card-body"><div class="card-top-title d-flex justify-content-between"><div style="color:#287dfa"><h3 class="card-title font-size-17">';
-							if(data.result[i].isReturn=='Yes'){ innerHtml +='&nbsp;&nbsp;&nbsp; Return Trip'; }else { innerHtml +='&nbsp;&nbsp;&nbsp; Oneway'; }
-								innerHtml +='</h3></div><div><div class="text-right" style="color:#287dfa"><h6 class="font-weight-bold color-text"><?php echo $currency_symbol; ?> '+$price.toLocaleString()+'</h6></div></div></div><div style="text-align: center;" class="flight-details py-3" ><div class="flight-time pb-3">'
+jQuery(document).ready(function() {
 
-innerHtml +='<div class="flight-time-item  d-flex"><div class="flex-shrink-0 mr-4 take-off airlineimg"><img src="https://res.cloudinary.com/wego/image/upload/c_fit,w_100,h_100/v20190802/flights/airlines_square/'+data.result[i].validating_carrier+'"" height="35px"><p>'+data.result[i].onewayFlights[0].flight_no+'</p></div><div><h3 class="card-title font-size-15 font-weight-medium mb-0">'+data.result[i].origon_airport+'</h3><p class="card-meta font-size-14">'+data.result[i].departure_date+'</p><p class="card-meta font-size-14">'+data.result[i].departure_time+'</p></div><div style="width: 425px;margin-left:20px"><h3 class="card-title font-size-15 font-weight-medium mb-0">'+onewaystop+' Stop</h3><hr><h3 class="card-meta font-size-14">'+data.result[i].fly_duration+'</h3></div><div style="margin-left:20px" class="flex-shrink-0 mr-2 landing"></div><div><h3 class="card-title font-size-15 font-weight-medium mb-0">'+data.result[i].destination_airport+'</h3><p class="card-meta font-size-14">'+data.result[i].arrival_date+'</p><p class="card-meta font-size-14">'+data.result[i].arrival_time+'</p></div></div>'
 
-		//Return Start								 										 
-if(data.result[i].isReturn=='Yes'){  var arraow='&#8596';
-innerHtml +='<div class="flight-time-item  d-flex"><div class="flex-shrink-0 mr-4 take-off airlineimg"><img src="https://res.cloudinary.com/wego/image/upload/c_fit,w_100,h_100/v20190802/flights/airlines_square/'+data.result[i].return_validating_carrier+'"" height="35px"><p>'+data.result[i].returnFlights[0].flight_no+'</p></div><div><h3 class="card-title font-size-15 font-weight-medium mb-0">'+data.result[i].destination_airport+'</h3><p class="card-meta font-size-14">'+data.result[i].return_departure_date+'</p><p class="card-meta font-size-14">'+data.result[i].return_departure_time+'</p></div><div style="width: 425px;margin-left:20px"><h3 class="card-title font-size-15 font-weight-medium mb-0">Non Stop</h3><hr><h3 class="card-meta font-size-14">'+data.result[i].return_total_duration+'</h3></div><div style=" margin-left:20px" class="flex-shrink-0 mr-2 landing"></div><div><h3 class="card-title font-size-15 font-weight-medium mb-0">'+data.result[i].origon_airport+'</h3><p class="card-meta font-size-14">'+data.result[i].return_arrival_date+'</p><p class="card-meta font-size-14">'+data.result[i].return_arrival_time+'</p></div></div>'
+});
+
+Show_Search();
+
+function Show_Search() {
+    $.ajax({
+        url: '<?php url('
+        '); ?>/get_flight_search_id',
+        type: "get",
+        data: {
+            _token: "{{csrf_token()}}",
+            action: "findSearchKey",
+            flighttype: "<?php echo $_REQUEST['flighttype']; ?>",
+            origin: "<?php echo $_REQUEST['origin']; ?>",
+            destination: "<?php echo $_REQUEST['destination']; ?>",
+            IATA_from: "<?php echo $_REQUEST['IATA_from']; ?>",
+            IATA_to: "<?php echo $_REQUEST['IATA_to']; ?>",
+            departure_date: "<?php echo $_REQUEST['departure_date']; ?>",
+            return_date: "<?php echo $_REQUEST['return_date']; ?>",
+            adults: "<?php echo $_REQUEST['adults']; ?>",
+            childs: "<?php echo $_REQUEST['childs']; ?>",
+            infants: "<?php echo $_REQUEST['infants']; ?>",
+            cabin_class: "<?php echo $_REQUEST['cabin_class']; ?>",
+            user_id: "<?php echo $user_id; ?>",
+            rand: "<?php echo rand(); ?>",
+            isDomestic: "No",
+        },
+        dataType: "json",
+        success: function(data) {
+            jQuery('.searching').show();
+            jQuery('.loader').hide();
+            console.log(data, 1);
+            if (data.isFind == 'Yes') {
+                search_id = data.search_id;
+
+                Get_FlightController();
+                Show_Flights('load');
+                //Show_OutBoundFlights(data.search_session);
+                //Show_InBoundFlights(data.search_session);
+            } else {
+                jQuery('.not_found').show();
+                jQuery('.loader').hide();
+                jQuery('.whole_content').hide();
+
+                alert("No Flight Found.");
+            }
+        },
+        error: function(error) {
+            console.log(`Error ${error}`);
+        }
+    });
 }
 
-innerHtml +='</div></div><div class="btn-box text-center"><a href="flight-booking/'+btoa(data.result[i].id)+'" class="theme-btn theme-btn-small w-50">Book Now</a></div></div></div>'
-									
-						}// End For Loop 
-						
-				jQuery('.flight_list').html(innerHtml);	
-								},  // End Response
-								error: function (error) {
-									console.log(`Error ${error}`);
-								}  //end Error
-							   }); // end Ajax Fun
-				  } // end Show_Flights Fun
-							
-								
-			
-							function Get_FlightController()
-							{      
-								 $.ajax({
-								url:'<?php url(''); ?>/get_flight_filter_data',
-								//url:'<?php url(''); ?>/flight-controller',
-								type: "GET",
-								data: {
-									action: "get_flight_filter_data",
-									search_id: search_id,
-									user_id: "<?php echo $user_id; ?>",
-									rand: "<?php echo rand(); ?>",
-								},
-								dataType: "json",
-								success: function (data) { 
-								jQuery('.filter_loader').hide();
-								jQuery('.sidebar').show();
-								var cs=data.currency_symbol;
-									var airlines=data.airlines;  
-									var airlinesHtml='';    
-									var type="'filter'";
-									for(var i=0;i<airlines.length;i++){  
-										airlinesHtml+='<div class="custom-checkbox"><input onclick="Show_Flights('+type+')" type="checkbox" name="airlines" value="'+airlines[i].airline_code+'" id="chba'+i+'" ><label for="chba'+i+'">'+airlines[i].name+' ('+airlines[i].carriercount+')</label></div>';
-									}
-								jQuery('.Airline_Name_Filter').html(airlinesHtml);
-								jQuery('.return_Airline_Name_Filter').html(airlinesHtml);
-								var stopages=data.stopages;  
-									var stopagesHtml='';    
-									for(var i=0;i<stopages.length;i++){  
-										stopagesHtml+='<div class="custom-checkbox"><input onclick="Show_Flights('+type+')" type="checkbox" name="Stops" value="'+stopages[i].max_stops+'" id="stopes'+i+'" ><label for="stopes'+i+'">'+stopages[i].max_stops+' Stops ('+stopages[i].maxstopcount+')</label></div>'
-									}
-								jQuery('.Stops_Filter').html(stopagesHtml);
-								jQuery('.return_Stops_Filter').html(stopagesHtml);
-								
-									
-									var maxprice=data.maxprice;
-									var minprice=data.minprice;
-									var rangeSlider	=$('#slider-range-price');
-									var rangeSliderAmount =$('#price');	
-									if ($(rangeSlider).length) {
-            							$(rangeSlider).slider({
-											range: true,
-											min: minprice,
-											max: maxprice,
-											values: [ minprice, maxprice ],
-											slide: function( event, ui ) {
-												$(rangeSliderAmount).val( ui.values[ 0 ] + "-"+ ui.values[ 1 ] );
-											}
-										});
-									}
-				 $('#price_cs').html(cs);	
-				  $(rangeSliderAmount).val( $(rangeSlider).slider( "values", 0 ) + "-" + $(rangeSlider).slider( "values", 1 ) );
 
-									
-									var fly_duration_maxtime=data.fly_duration_maxtime;  
-									var fly_duration_mintime=data.fly_duration_mintime;  
-									 var rangeSliderDuration =$('#slider-range-duration');
-									var rangeSliderAmountDuration =$('#duration');	
-									if ($(rangeSliderDuration).length) {
-            							$(rangeSliderDuration).slider({
-											range: true,
-											min: fly_duration_mintime,
-											max: fly_duration_maxtime,
-											values: [ fly_duration_mintime, fly_duration_maxtime ],
-											slide: function( event, ui ) {
-												$(rangeSliderAmountDuration).val(  ui.values[ 0 ] + ":00-" + ui.values[ 1 ]+':00' );
-											}
-										});
-									}
-					$(rangeSliderAmountDuration).val( $(rangeSliderDuration).slider( "values", 0 ) + ":00-" + $(rangeSliderDuration).slider( "values", 1 )+':00' );
 
-									var fly_duration_maxtime1=data.returnfly_duration_maxtime;
-									var fly_duration_mintime1=data.returnfly_duration_mintime;
-									 var return_rangeSliderDuration =$('#return-slider-range-duration');
-									var return_rangeSliderAmountDuration =$('#return-duration');	
-									if ($(return_rangeSliderDuration).length) {
-            							$(return_rangeSliderDuration).slider({
-											range: true,
-											min: fly_duration_mintime1,
-											max: fly_duration_maxtime1,
-											values: [ fly_duration_mintime1, fly_duration_maxtime1 ],
-											slide: function( event, ui ) {
-												$(return_rangeSliderAmountDuration).val(  ui.values[ 0 ] + ":00 - " + ui.values[ 1 ]+':00' );
-											}
-										});
-									}
-					$(return_rangeSliderAmountDuration).val( $(return_rangeSliderDuration).slider( "values", 0 ) + ":00 - " + $(return_rangeSliderDuration).slider( "values", 1 )+':00' );
-					
-								},
 
-								error: function (error) {
-									console.log(`Error ${error}`);
-								}
-							   });
-							}
 
-	
-				function ShowHideFilter(type){
-					jQuery('.akm').removeClass('theme-btn-transparent mr-1');
-					
-					if(type=='outbound'){
-						jQuery('.onewayfilter').show(); 
-					    jQuery('.roundfilter').hide(); 
-						jQuery('.return').addClass('theme-btn-transparent mr-1');
-					}
-					else{
-						jQuery('.roundfilter').show(); 
-						jQuery('.onewayfilter').hide(); 
-						jQuery('.outbound').addClass('theme-btn-transparent mr-1');
-					}
 
-				}
-      </script>
+function Get_FlightController() {
+    $.ajax({
+        url: '<?php url('
+        '); ?>/get_flight_filter_data',
+        //url:'<?php url(''); ?>/flight-controller',
+        type: "GET",
+        data: {
+            action: "get_flight_filter_data",
+            search_id: search_id,
+            user_id: "<?php echo $user_id; ?>",
+            rand: "<?php echo rand(); ?>",
+        },
+        dataType: "json",
+        success: function(data) {
+            jQuery('.filter_loader').hide();
+            jQuery('.sidebar').show();
+            var cs = data.currency_symbol;
+            var airlines = data.airlines;
+            var airlinesHtml = '';
+            var type = "'filter'";
+            for (var i = 0; i < airlines.length; i++) {
+                airlinesHtml += '<div class="custom-checkbox"><input onclick="Show_Flights(' + type + ')" type="checkbox" name="airlines" value="' + airlines[i].airline_code + '" id="chba' + i + '" ><label for="chba' + i + '">' + airlines[i].name + ' (' + airlines[i].carriercount + ')</label></div>';
+            }
+            jQuery('.Airline_Name_Filter').html(airlinesHtml);
+            jQuery('.return_Airline_Name_Filter').html(airlinesHtml);
+            var stopages = data.stopages;
+            var stopagesHtml = '';
+            for (var i = 0; i < stopages.length; i++) {
+                stopagesHtml += '<div class="custom-checkbox"><input onclick="Show_Flights(' + type + ')" type="checkbox" name="Stops" value="' + stopages[i].max_stops + '" id="stopes' + i + '" ><label for="stopes' + i + '">' + stopages[i].max_stops + ' Stops (' + stopages[i].maxstopcount + ')</label></div>'
+            }
+            jQuery('.Stops_Filter').html(stopagesHtml);
+            jQuery('.return_Stops_Filter').html(stopagesHtml);
+
+
+            var maxprice = data.maxprice + 700;
+            var minprice = data.minprice;
+            var rangeSlider = $('#slider-range-price');
+            var rangeSliderAmount = $('#price');
+            if ($(rangeSlider).length) {
+                $(rangeSlider).slider({
+                    range: true,
+                    min: minprice,
+                    max: maxprice,
+                    values: [minprice, maxprice],
+                    slide: function(event, ui) {
+                        $(rangeSliderAmount).val(ui.values[0] + "-" + ui.values[1]);
+                    }
+                });
+            }
+            $('#price_cs').html(cs);
+            $(rangeSliderAmount).val($(rangeSlider).slider("values", 0) + "-" + $(rangeSlider).slider("values", 1));
+
+
+            var fly_duration_maxtime = data.fly_duration_maxtime;
+            var fly_duration_mintime = data.fly_duration_mintime;
+            var rangeSliderDuration = $('#slider-range-duration');
+            var rangeSliderAmountDuration = $('#duration');
+            if ($(rangeSliderDuration).length) {
+                $(rangeSliderDuration).slider({
+                    range: true,
+                    min: fly_duration_mintime,
+                    max: fly_duration_maxtime,
+                    values: [fly_duration_mintime, fly_duration_maxtime],
+                    slide: function(event, ui) {
+                        $(rangeSliderAmountDuration).val(ui.values[0] + ":00-" + ui.values[1] + ':00');
+                    }
+                });
+            }
+            $(rangeSliderAmountDuration).val($(rangeSliderDuration).slider("values", 0) + ":00-" + $(rangeSliderDuration).slider("values", 1) + ':00');
+
+            var fly_duration_maxtime1 = data.returnfly_duration_maxtime;
+            var fly_duration_mintime1 = data.returnfly_duration_mintime;
+            var return_rangeSliderDuration = $('#return-slider-range-duration');
+            var return_rangeSliderAmountDuration = $('#return-duration');
+            if ($(return_rangeSliderDuration).length) {
+                $(return_rangeSliderDuration).slider({
+                    range: true,
+                    min: fly_duration_mintime1,
+                    max: fly_duration_maxtime1,
+                    values: [fly_duration_mintime1, fly_duration_maxtime1],
+                    slide: function(event, ui) {
+                        $(return_rangeSliderAmountDuration).val(ui.values[0] + ":00 - " + ui.values[1] + ':00');
+                    }
+                });
+            }
+            $(return_rangeSliderAmountDuration).val($(return_rangeSliderDuration).slider("values", 0) + ":00 - " + $(return_rangeSliderDuration).slider("values", 1) + ':00');
+
+        },
+
+        error: function(error) {
+            console.log(`Error ${error}`);
+        }
+    });
+}
+
+
+
+
+
+
+
+
+
+function Show_Flights(type) {
+    // console.log(type,22)
+    jQuery('.flight_list').addClass('opacity_5');
+    if (type == 'filter') {
+        innerHtml = '';
+    } else if (type == 'filter_apply') {
+        innerHtml = '';
+        $("#mdlcls2").click();
+    } else {
+        page = page + 1;
+    }
+    var sortVal = document.getElementById("sort").value;
+    var Arrival = document.getElementById("Arrival").value;
+    var Departure = document.getElementById("Departure").value;
+    var price = document.getElementById("price").value;
+    var duration = document.getElementById("duration").value;
+    var airlines = '';
+
+    // Split the price value into its components
+    var parts = price.split('-');
+    // console.log(price,parts[0],parts[1])
+
+    // Divide each component by 2
+    var newMinPrice = parseFloat(parts[0]) / 2;
+    var newMaxPrice = parseFloat(parts[1]) / 2;
+
+    // Construct the new price value
+    if (type == 'filter_apply' || type == "filter") {
+        var newPrice = newMinPrice + ' - ' + newMaxPrice;
+    } else {
+        var newPrice = price;
+    }
+
+
+    jQuery("input[name=airlines]:checked").each(function() {
+        var a = jQuery(this).val();
+        airlines += a + ",";
+    });
+
+    var Stops = '';
+    jQuery("input[name=Stops]:checked").each(function() {
+        var s = jQuery(this).val();
+        Stops += s + ",";
+    });
+
+    //alert("page=="+page+"\nsearch_session"+search_session)
+    $.ajax({
+        url: '<?php url('
+        '); ?>/get_flight_list',
+        type: "GET",
+        data: {
+            _token: "{{csrf_token()}}",
+            action: "Show_Flights",
+            search_id: search_id,
+            sortVal: sortVal,
+            Arrival: Arrival,
+            Departure: Departure,
+            duration: duration,
+            price: newPrice,
+            Stops: Stops,
+            airlines: airlines,
+            user_id: "<?php echo $user_id; ?>",
+            rand: "<?php echo rand(); ?>",
+        },
+        dataType: "json",
+        success: function(data) {
+            console.log(data)
+            if (data.hasOwnProperty('result')) {
+                jQuery('.load_more').show();
+                jQuery('.flight_list').removeClass('opacity_5');
+                jQuery('.totalflight').html(data.result[0].totalcountfilter);
+                jQuery('.showflight').html(page * 20);
+
+
+                for (var i = 0; i < data.result.length; i++) {
+                    if (data.result[i].max_stops == 0) {
+                        var onewaystop = 'Non';
+                    } else {
+                        onewaystop = data.result[i].max_stops;
+                    }
+                    if (data.result[i].return_max_stops == 0) {
+                        var returnstop = 'Non';
+                    } else {
+                        returnstop = data.result[i].return_max_stops;
+                    }
+                    if (data.result[i].isReturn == 'Yes') {
+                        var arraow = '&#8596';
+                    } else {
+                        var arraow = '&#8594';
+                    }
+                    $price = parseFloat(data.result[i].price * 2);
+
+
+                    innerHtml += '<div class="card-item flight-card flight--card card-item-list card-item-list-2"><div class="card-body"><div class="card-top-title d-flex justify-content-between"><div style="color:black"><h3 class="card-title font-size-17">';
+                    if (data.result[i].isReturn == 'Yes') {
+                        innerHtml += '&nbsp;&nbsp;&nbsp; Return Trip';
+                    } else {
+                        innerHtml += '&nbsp;&nbsp;&nbsp; Oneway';
+                    }
+                    innerHtml += '</h3></div><div><div class="text-right" style="color:black"><h6 class="font-weight-bold color-text" ><span style="color: #f75b10;"><?php echo $currency_symbol; ?> ' + $price.toLocaleString() + '</span><br><span> or <br> buy it free with </span>  <span class="price__num" style="color: #f75b10;">' + parseInt(data.result[i].no_of_amples) + '</span><span> amplepoints </span></h6></div></div></div><div style="text-align: center;" class="flight-details py-3" ><div class="flight-time pb-3">'
+
+                    innerHtml += '<div class="flight-time-item  d-flex"><div class="flex-shrink-0 mr-4 take-off airlineimg"><img src="https://res.cloudinary.com/wego/image/upload/c_fit,w_100,h_100/v20190802/flights/airlines_square/' + data.result[i].validating_carrier + '"" height="35px"><p>' + data.result[i].onewayFlights[0].flight_no + '</p></div><div><h3 class="card-title font-size-15 font-weight-medium mb-0">' + data.result[i].origon_airport + '</h3><p class="card-meta font-size-14">' + data.result[i].departure_date + '</p><p class="card-meta font-size-14">' + data.result[i].departure_time + '</p></div><div style="width: 425px;margin-left:20px"><h3 class="card-title font-size-15 font-weight-medium mb-0">' + onewaystop + ' Stop</h3><hr><h3 class="card-meta font-size-14">' + data.result[i].fly_duration + '</h3></div><div style="margin-left:20px" class="flex-shrink-0 mr-2 landing"></div><div><h3 class="card-title font-size-15 font-weight-medium mb-0">' + data.result[i].destination_airport + '</h3><p class="card-meta font-size-14">' + data.result[i].arrival_date + '</p><p class="card-meta font-size-14">' + data.result[i].arrival_time + '</p></div></div>'
+
+                    //Return Start                                                                       
+                    if (data.result[i].isReturn == 'Yes') {
+                        var arraow = '&#8596';
+                        innerHtml += '<div class="flight-time-item  d-flex"><div class="flex-shrink-0 mr-4 take-off airlineimg"><img src="https://res.cloudinary.com/wego/image/upload/c_fit,w_100,h_100/v20190802/flights/airlines_square/' + data.result[i].return_validating_carrier + '"" height="35px"><p>' + data.result[i].returnFlights[0].flight_no + '</p></div><div><h3 class="card-title font-size-15 font-weight-medium mb-0">' + data.result[i].destination_airport + '</h3><p class="card-meta font-size-14">' + data.result[i].return_departure_date + '</p><p class="card-meta font-size-14">' + data.result[i].return_departure_time + '</p></div><div style="width: 425px;margin-left:20px"><h3 class="card-title font-size-15 font-weight-medium mb-0">Non Stop</h3><hr><h3 class="card-meta font-size-14">' + data.result[i].return_total_duration + '</h3></div><div style=" margin-left:20px" class="flex-shrink-0 mr-2 landing"></div><div><h3 class="card-title font-size-15 font-weight-medium mb-0">' + data.result[i].origon_airport + '</h3><p class="card-meta font-size-14">' + data.result[i].return_arrival_date + '</p><p class="card-meta font-size-14">' + data.result[i].return_arrival_time + '</p></div></div>'
+                    }
+
+                    innerHtml += '</div></div><div class="btn-box text-center">@if(@Auth::user()->id && @Auth::user()->user_type!="admin")<a href="flight-booking/' + btoa(data.result[i].id) + '" class="theme-btn theme-btn-small w-50">Book Now</a>@elseif(@Auth::user()->id && @Auth::user()->user_type=="admin")@else <a href="{{ asset("login") }}" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Login To Book</a> @endif</div></div></div>'
+
+                } // End For Loop 
+
+                jQuery('.flight_list').html(innerHtml);
+            } //end if of has property
+            else {
+                jQuery('.flight_list').html('No data found');
+            }
+        }, // End Response
+        error: function(error) {
+            console.log(`Error ${error}`);
+        } //end Error
+    }); // end Ajax Fun
+} // end Show_Flights Fun
+
+
+
+
+
+
+function ShowHideFilter(type) {
+    jQuery('.akm').removeClass('theme-btn-transparent mr-1');
+
+    if (type == 'outbound') {
+        jQuery('.onewayfilter').show();
+        jQuery('.roundfilter').hide();
+        jQuery('.return').addClass('theme-btn-transparent mr-1');
+    } else {
+        jQuery('.roundfilter').show();
+        jQuery('.onewayfilter').hide();
+        jQuery('.outbound').addClass('theme-btn-transparent mr-1');
+    }
+
+} 
+</script>
+
 @include('site.footer')
