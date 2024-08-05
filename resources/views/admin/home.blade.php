@@ -94,6 +94,24 @@
               <a href="{{ asset('booking-list/transfer') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+
+      @if(@Auth::user()->id && @Auth::user()->user_type!="admin")
+       <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-secondary">
+              <div class="inner">
+                <h3>{{@Auth::user()->ample}}</h3>
+
+                <p>Your AmplePoints</p>
+              </div>
+              <div class="icon">
+                <i class="nav-icon fas fa-car"></i>
+              </div>
+          
+            </div>
+          </div>
+
+      @endif
           <!-- ./col -->
         </div>
         

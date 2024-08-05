@@ -24,9 +24,64 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
     height: 681px !important;
 }
 </style>
+
+  <style>
+        .loader-htl {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #loader-container-htl {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 9999;
+        }
+        .bread-bg-7 {
+             background-image: inherit !important; 
+        }
+    </style>
+@php
+ // dd(explode(",",$hotelSearchData->Cri_Adults));
+@endphp
 <section class="breadcrumb-area bread-bg-7 py-0">
-<div class="video-bg" style="background:url(<?php if(isset($images[0])){ echo $images[0]; } ?>);background-size: cover;">
+    <div id="loader-container-htl">
+        <div class="loader-htl"></div>
     </div>
+    
+    @php
+    use App\Helpers\ImageHelper;
+
+    $originalImageUrl = isset($images[0]) ? $images[0] : '';
+    $fallbackImageUrl = str_replace('/xxl', '', $originalImageUrl);
+
+    $backgroundImageUrl = '';
+
+    if (ImageHelper::isValidImageUrl($originalImageUrl)) {
+        $backgroundImageUrl = $originalImageUrl;
+    } elseif (ImageHelper::isValidImageUrl($fallbackImageUrl)) {
+        $backgroundImageUrl = $fallbackImageUrl;
+    }
+@endphp
+
+<div class="video-bg" id="htl-img" style="background:url('{{ $backgroundImageUrl }}'); background-size: cover; display: none;">
+</div>
     <div class="breadcrumb-wrap">
         <div class="container">
             <div class="row">
@@ -97,7 +152,14 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                                         <span class="badge badge-warning text-white font-size-16">{{ $hotelSearchData->hotelRating; }}/5</span>
                                         <!--<span>(4,209 Reviews)</span>-->
                                     </p>
+                                   
                                 </div>
+                                 <p class="mr-2 hotel_full_address">Mobile Numbers
+
+                                        @foreach($phones as $ph)
+                                        <span>{{$ph['phoneNumber']}}</span>
+                                        @endforeach
+                                    </p> 
                             </div><!-- end single-content-item -->
                             <div class="section-block"></div>
                             <p class="py-3 roomDetailDescription">{{$hotelData['HotelDetails']['roomDetailDescription']; }}</p>
@@ -117,6 +179,13 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                                 
                                 
                             </div><!-- end single-content-item -->
+                           
+                            @if(@Auth::user()->id && @Auth::user()->user_type!="admin")
+                             <h4>Total Room selected <span id="tm">0</span> </h4>
+                             <br><button class="btn btn-warning" onclick="roomsee()">See Rooms</button>
+                              <button style="display:none" id="bn" class="btn btn-primary bn" onclick="roomBook()">Book Now</button>
+                             @endif
+
                             @if($hotelSearchData->hotelDetails!='')
                             <div class="section-block"></div>
                             <div class="single-content-item padding-top-40px padding-bottom-40px">
@@ -155,6 +224,7 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                         </div>
                         @endif
                         <!-- Business Amenities end-->
+                       
                         <!-- Amenities start-->
                         <?php $PropertyAmenity=$hotelData['PropertyAmenities']['PropertyAmenity']; ?>
                         @if(count($PropertyAmenity)>0)
@@ -172,7 +242,7 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                                                     <i class="la la-check"></i>
                                                  </div>
                                                  <div class="single-feature-titles">
-                                                    <h3 class="title font-size-15 font-weight-medium">{{$PropertyAmenity[$i]['amenity']}}</h3>
+                                                    <h3 class="title font-size-15 font-weight-medium">{{$PropertyAmenity[$i]['amenity']}} @if($PropertyAmenity[$i]['amount'])  (${{$PropertyAmenity[$i]['amount']}})@endif</h3>
                                                 </div>
                                             </div>
                                          </div>
@@ -252,8 +322,14 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                             </div><!-- end sidebar-widget-item -->
                             <?php 
 							$AdultsArr=json_decode($hotelSearchData->Cri_Adults,true);
+                            $AdultsArr = explode(',', $AdultsArr);
+                            //echo $AdultsArr[1];
+
 							$ChildsArr=json_decode($hotelSearchData->Cri_Childs,true);
+                            $ChildsArr=explode(',', $ChildsArr);
+                            //echo $ChildsArr;
 							$ChildAgeArr=json_decode($hotelSearchData->child_age,true);
+
 							for($i=0;$i<$hotelSearchData->rooms;$i++){ ?>
                             <br />
                             <div class="sidebar-widget-item">
@@ -285,11 +361,125 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                 </div><!-- end col-lg-4 -->
             </div><!-- end row -->
         </div><!-- end container -->
+
+
+
+
+
+
+
+
+<style>
+  .bg-success {
+    background-color: #28a745 !important; /* Green background color */
+    color: #fff; /* White text color */
+  }
+</style>
+
+
+
+
+
+<!-- Toast HTML -->
+<!-- Toast HTML -->
+<div id="successToast" class="toast bg-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000" style="position: absolute; z-index: 1055;">
+  <div class="toast-header">
+    <strong class="mr-auto">Success</strong>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    Room successfully added!
+  </div>
+</div>
+
+
+
+        <!-- Modal HTML -->
+<div id="roomsModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Selected Rooms</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Room No</th>
+              <th>Board</th>
+              <th>Rate Class</th>
+              <th>Price</th>
+              {{-- <th>Rate Key</th>
+              <th>Hotel ID</th> --}}
+            </tr>
+          </thead>
+          <tbody id="roomsTableBody">
+            <!-- Dynamic rows will be added here -->
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button style="display:none" id="bn" class="btn btn-primary bn" onclick="roomBook()">Book Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<form id="arrayForm" method="get" action="{{route('hotel.booking.new')}}">
+    @csrf
+        <div class="form-group">
+            <label for="arrayInput">Enter array values (comma-separated):</label>
+            <input type="text" class="form-control" id="arrayInput" name="arryinput" placeholder="e.g. 1,2,3,4">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div><!-- end single-content-box -->
 </section><!-- end tour-detail-area -->
 <!-- ================================
     END TOUR DETAIL AREA
 ================================= -->
+
+      
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const imgDiv = document.getElementById('htl-img');
+            const loaderContainer = document.getElementById('loader-container-htl');
+
+
+            // After 3 seconds, hide loader and show image
+            setTimeout(function () {
+                loaderContainer.style.display = 'none';
+                imgDiv.style.display = 'block';
+            }, 3000);
+        });
+    </script>
+
+
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
@@ -358,7 +548,7 @@ var innerHtml=''; var page=0; var search_session='';
 									destination: "<?php echo $hotelSearchData->city; ?>",
 									checkIn: "<?php echo $hotelSearchData->checkin; ?>",  
 									checkOut: "<?php echo $hotelSearchData->checkout; ?>",
-									rooms: "<?php echo $hotelSearchData->rooms; ?>",
+									rooms: "<?php echo 1; ?>",
 									adults: '<?php echo $hotelSearchData->Cri_Adults; ?>',
 									childs: '<?php echo $hotelSearchData->Cri_Childs; ?>',
 									tid: "<?php echo $hotelSearchData->id; ?>",
@@ -370,18 +560,58 @@ var innerHtml=''; var page=0; var search_session='';
 									var RoomGroup =response.responseData.RoomTypes.RoomGroup;
 									var policy_data =response.responseData.RoomTypes.policy_data;
 									var currency_symbol=response.currency_symbol;
+
+                                    // console.log(response.responseData.RoomTypes.RoomGroup)
 									
 									/*=== RoomList ====*/
 									var htmlRoomlist=''; 
 									if(countRoomCombination<1){  htmlRoomlist +='No Room Available';  }
 									htmlRoomlist+='<div class="cabin-type padding-top-30px"><div class="cabin-type-item seat-selection-item d-flex"><div class="" style="border: 1px solid rgba(128, 137, 150, 0.2);">';
 
+                                    // console.log("p1"+countRoomCombination)
+
 									for(var i=0;i<countRoomCombination;i++){
 									  var boardArr = Object.keys(RoomGroup[i].name);
+                                      // console.log(boardArr)
 									  for(var j=0;j<boardArr.length;j++){
 									  
 									  //cabin-type-detail
+                                      var tax="0";
 										var board =boardArr[j];
+                                        if(board=="BB"){
+                                            tax=RoomGroup[i]?.rates?.BB.NOR[0]?.rates?.taxes?.taxes[0]?.amount;
+
+                                        }else if(board=="HB"){
+                                            tax=RoomGroup[i].rates?.HB?.NOR[0]?.rates?.taxes?.taxes[0]?.amount;
+                                        }else{
+                                           tax = RoomGroup[i].rates?.[board]?.NOR[0]?.rates?.taxes?.taxes[0]?.amount || 0;
+                                        }
+
+                                        var offersPresent = RoomGroup[i]?.rates?.[board]?.NOR[0]?.rates?.hasOwnProperty('offers');
+                                        if(offersPresent){
+                                            var offerName=RoomGroup[i].rates?.[board]?.NOR[0]?.rates?.offers[0]?.name || "";
+                                            var offerRate= RoomGroup[i].rates?.[board]?.NOR[0]?.rates?.offers[0]?.amount || "";
+                                            var offerString = "Offer: "+offerName + " (" + offerRate + ") ";
+                                       }else{
+                                         var offerString = "";
+                                       }
+
+
+
+                                       var childAge=RoomGroup[i]?.rates?.[board]?.NOR[0]?.rates?.hasOwnProperty('childrenAges');
+                                        var chldAge="";
+                                       if(childAge){
+                                         chldAge="Children age "+RoomGroup[i]?.rates?.[board]?.NOR[0]?.rates?.childrenAges;
+
+                                       }else{
+                                          chldAge="";
+                                       }
+
+                                       // console.log(chldAge)
+
+                                        // console.log(offerName,offerRate,offerString);
+
+                                        // console.log(tax)
 										var nameArr =RoomGroup[i].name[board];
 										var ratesArr =RoomGroup[i].rates[board];
 										var keys = Object.keys(nameArr);
@@ -401,7 +631,8 @@ var innerHtml=''; var page=0; var search_session='';
 										var ratesA =ratesArr[key];
 										if(j==0){
 										 var roomCombineName =	CountRoomName(nameA);
-									htmlRoomlist+='<h3 class="title" style="background-color:rgba(128, 137, 150, 0.2); padding:5px 15px;">'+roomCombineName+'</h3>';	
+									htmlRoomlist+='<h3 class="title" style="background-color:rgba(128, 137, 150, 0.2); padding:5px 15px;">'+roomCombineName+'</h3>';
+                                    // console.log(nameA,roomCombineName)	
 										}
 										
 										var roomPrice =0;
@@ -416,7 +647,8 @@ var innerHtml=''; var page=0; var search_session='';
 										 rateKeyIds+=ratesA[l].rates.rateKey+'~~~~';
 										 var allotment =ratesA[l].rates.allotment;
 										 allotmentArr.push(allotment);
-										 var CPArr =ratesA[l].rates.cancellationPolicies;
+										 var CPArr =ratesA[l].rates?.cancellationPolicies;
+                                         // console.log(ratesA[l].rates)
 										 var net =ratesA[l].rates.net;	
 										 roomPrice =(parseFloat(roomPrice)+parseFloat(net)).toFixed(2);
 										 var pax =ratesA[l].rates.adults;
@@ -431,7 +663,7 @@ var innerHtml=''; var page=0; var search_session='';
 												cancellationLebel='<i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Non Refundable';  
 												cptool+='<p>Non Refundable</p>';
 										}
-										else if(CPArr.length>0){
+										else if(CPArr?.length>0){
 											for(var c=0; c<CPArr.length;c++){
 													var fdate = CPArr[c].from.split('T');
 													var fdateArr =fdate[0].split('-');
@@ -470,8 +702,9 @@ var innerHtml=''; var page=0; var search_session='';
 
 					 BoardNameArr ={'RO':'Room only','BB':'Bed and breakfast','AI':'All inclusive','LB':'Lunch and breakfast','HB':'Half Board','FB':'Full Board'};
 					 var boardName = BoardNameArr[board];
-					 
-					htmlRoomlist+='<div class="row" style="margin:0; border-top: 1px solid rgba(128, 137, 150, 0.2); margin-bottom: 5px;"><div class="col-lg-3 responsive-column">'+boardName+'('+board+')</div><div class="col-lg-3 responsive-column">'+cancellationLebel+'</div><div class="col-lg-2 responsive-column"style="color:RED"> '+leastAllotment+' Room(s) Left</div><div class="col-lg-2 responsive-column"><p class="text-uppercase font-size-14">Per/night<strong class="mt-n1 text-black font-size-18 font-weight-black d-block"><?php echo $currency_symbol; ?> '+roomPrice*2+'</strong> <span style="text-decoration: line-through; display:none"><?php echo $currency_symbol; ?>  '+2*roomPrice+'</span></p></div><div class="col-lg-2 responsive-column cabin-price"><div class="custom-checkbox mb-0"><input style="display:none" type="radio" name="akm" id="selectChb'+i+''+j+'"><!--<label for="selectChb'+i+''+j+'" class="theme-btn theme-btn-small">Select</label>-->@if(@Auth::user()->id && @Auth::user()->user_type!="admin")<a href="{{ asset("hotel-booking") }}/'+btoa(board)+'/'+btoa(rateClass)+'/'+btoa(roomCodeIds)+'/<?php echo base64_encode($hotelSearchData->id); ?>" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Book Now</a>@elseif(@Auth::user()->id && @Auth::user()->user_type=="admin") @else <a href="{{ asset("login") }}" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Login To Book</a> @endif</div></div></div>';
+                     // console.log(board)
+					 var hid={{$hotelSearchData->id}};
+					htmlRoomlist+='<div class="row" style="margin:0; border-top: 1px solid rgba(128, 137, 150, 0.2); margin-bottom: 5px;"><div class="col-lg-3 responsive-column">'+boardName+'('+board+')</div><div class="col-lg-3 responsive-column">'+cancellationLebel+'<br> Exclude tax:'+tax+'<br>'+offerString+'</div><div class="col-lg-2 responsive-column"style="color:RED"> '+leastAllotment+' Room(s) Left</div><div class="col-lg-2 responsive-column"><p class="text-uppercase font-size-14">Per/night<strong class="mt-n1 text-black font-size-18 font-weight-black d-block"><?php echo $currency_symbol; ?> '+parseInt(roomPrice)*2+'</strong> <span style="text-decoration: line-through; display:none"><?php echo $currency_symbol; ?>  '+2*roomPrice+'</span></p></div><div class="col-lg-2 responsive-column cabin-price"><div class="custom-checkbox mb-0"><input style="display:none" type="radio" name="akm" id="selectChb'+i+''+j+'"><!--<label for="selectChb'+i+''+j+'" class="theme-btn theme-btn-small">Select</label>-->@if(@Auth::user()->id && @Auth::user()->user_type!="admin")<button onclick="arrayInsetFun(\'' + board + '\',\'' + rateClass + '\', \'' + roomCodeIds + '\',\'' + rateKeyIds + '\',\'' + hid + '\',\'' + roomCombineName + '\',\'' + boardName + '\',\'' + roomPrice + '\',event)" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Add</button>@elseif(@Auth::user()->id && @Auth::user()->user_type=="admin") @else <a href="{{ asset("login") }}" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Login To Book</a> @endif</div></div></div>';
 											} // Inner for End
 									}// outer for End	
 									htmlRoomlist+='</div></div></div>';
@@ -498,7 +731,7 @@ var innerHtml=''; var page=0; var search_session='';
 								result+=current+' + ';  
 							  }
 							  else{									  
-							  result+= cnt+' X '+current+'+ ';	
+							  result+= current+'+ ';	
 							  }
 							}
 							current = array_elements[i]['name'];
@@ -513,14 +746,138 @@ var innerHtml=''; var page=0; var search_session='';
 								result+=current+' + ';  
 							  }
 							  else{									  
-							  result+= cnt+' X '+current+'+ ';	
+							  result+= current+'+ ';	
 							  }
 					}  
 					return result.slice(0,-2);
 			}
 
+
+
+
+
+
+
+
+
+var arr = [];
+var rooms = {{ $hotelSearchData->rooms }};
+
+function arrayInsetFun(board, rateClass, roomCodeIds, rateKeyIds, hotelid,roomCombineName,boardName,roomPrice,event) {
+    // console.log(board, rateClass, roomCodeIds, rateKeyIds, hotelid,roomCombineName,roomPrice);
+    if (arr.length < rooms) {
+        var obj = {
+            'board': board,
+            'rateClass': rateClass,
+            'roomCodeIds': roomCodeIds,
+            'rateKeyIds': rateKeyIds,
+            'hotelid': hotelid,
+            'roomCombineName': roomCombineName,
+            'boardName':boardName,
+            'roomPrice':roomPrice
+        };
+        arr.push(obj);
+        updateModalContent();
+        showToast(event);
+        $("#tm").html(arr.length)
+        var jsonString = JSON.stringify(arr);
+        $('#arrayInput').val(jsonString);
+    } else {
+        alert("You can not add more rooms than what you have requested");
+        return false;
+    }
+    console.log(arr);
+}
+
+
+
+
+function updateModalContent() {
+    var tbody = document.getElementById('roomsTableBody');
+    tbody.innerHTML = ''; // Clear existing rows
+
+    arr.forEach(function(item, index) {
+        var row = document.createElement('tr');
+
+          var boardCell = document.createElement('td');
+        boardCell.textContent = index+1;
+        row.appendChild(boardCell);
+
+        var boardCell = document.createElement('td');
+        boardCell.textContent = item.boardName + "(" + item.board + ")";
+        row.appendChild(boardCell);
+
+        var rateClassCell = document.createElement('td');
+        rateClassCell.textContent = item.roomCombineName;
+        row.appendChild(rateClassCell);
+
+        var roomCodeCell = document.createElement('td');
+        roomCodeCell.textContent = "$" + parseInt(item.roomPrice)*2;
+        row.appendChild(roomCodeCell);
+
+        var deleteCell = document.createElement('td');
+        var deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.className = 'btn btn-danger btn-sm';
+        deleteButton.onclick = function() {
+            deleteRow(index);
+        };
+        deleteCell.appendChild(deleteButton);
+        row.appendChild(deleteCell);
+
+        tbody.appendChild(row);
+    });
+
+    if (arr.length == rooms) {
+        $('#roomsModal').modal('show'); // Show the modal
+        $(".bn").show();
+    }else{
+        $(".bn").hide();
+    }
+}
+
+
+
+function deleteRow(index) {
+    arr.splice(index, 1); // Remove the element at the specified index
+    updateModalContent(); // Update the modal content after deletion
+    $("#tm").html(arr.length); // Update the count display
+}
+
+
+
+
+
+
+
+function showToast(event) {
+    var toast = $('#successToast');
+    var offset = $(event.target).offset();
+    toast.css({
+        top: offset.top + 20, // Adjust the position as needed
+        left: offset.left - 50 // Adjust the position as needed
+    });
+    toast.toast('show');
+}
+
+
+
+function roomsee(){
+     $('#roomsModal').modal('show'); 
+}
+
+
+
+function roomBook(){
+    $("#arrayForm").submit();
+}
+
+
       </script>
 
-      
+
+@php
+//dd($images[0]);
+@endphp
 
 @include('site.footer')

@@ -1,0 +1,7 @@
+===========Credentials(Book_1716262436)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(Book_1716262436)=========
+{"data":{"selected_offers":["off_0000Aj8xdozRLQ41pDJzCJ"],"payments":[{"type":"balance","currency":"USD","amount":"362.35"}],"passengers":[{"phone_number":"+918877665544","email":"test@m.com","born_on":"2005-06-21","title":"mr","gender":"m","family_name":"test test","given_name":"test test","id":"pas_0000Aj8xdoayoMUwbLsS4R"},{"phone_number":"+918877665544","email":"test@m.com","born_on":"2005-06-21","title":"mr","gender":"m","family_name":"test test","given_name":"test test","id":"pas_0000Aj8xdoayoMUwbLsS4S"},{"phone_number":"+918877665544","email":"test@m.com","born_on":"2005-06-21","title":"mr","gender":"m","family_name":"test test","given_name":"test test","id":"pas_0000Aj8xdoayoMUwbLsS4T"}]}}
+===========Response(Book_1716262436)=========
+{"errors":[{"documentation_url":"https://duffel.com/docs/api/overview/response-handling","source":{"field":"type","pointer":"/passengers/2/type"},"title":"Passenger date of birth mismatch","type":"validation_error","message":"Field 'type' does not match date of birth for this passenger","code":"born_on_does_not_match"}],"meta":{"request_id":"F9rwb2W4bxvboXEBgqJB","status":422}}
+

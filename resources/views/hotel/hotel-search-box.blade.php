@@ -76,9 +76,9 @@ color:#fff;
 
 </style>
 <?php
-if(isset($_REQUEST['city_code'])) { $city_code=$_REQUEST['city_code']; }else{ $city_code='DEL'; }
-	if(isset($_REQUEST['city_name'])) { $city_name=$_REQUEST['city_name']; }else{ $city_name='Delhi'; }
-	if(isset($_REQUEST['dest_name'])) { $dest_name=$_REQUEST['dest_name']; }else{ $dest_name='Delhi and NCR, India'; }
+if(isset($_REQUEST['city_code'])) { $city_code=$_REQUEST['city_code']; }else{ $city_code='LVS'; }
+	if(isset($_REQUEST['city_name'])) { $city_name=$_REQUEST['city_name']; }else{ $city_name='Las Vegas - NV'; }
+	if(isset($_REQUEST['dest_name'])) { $dest_name=$_REQUEST['dest_name']; }else{ $dest_name='Las Vegas - NV, United States of America'; }
 	if(isset($_REQUEST['date_range'])) { $date_range=$_REQUEST['date_range']; }else{ $date_range=date('d/m/Y ', strtotime(date('m/d/Y').' +3 day')); }
 	
 if(isset($_REQUEST['adult'])) { $adult=$_REQUEST['adult']; }else{ $adult=1; }
@@ -197,7 +197,8 @@ if(isset($_REQUEST['child'])) { $child=$_REQUEST['child']; }else{ $child=0; }
 									startDate: start,
 							endDate: end,
 				locale: {
-				format: 'YYYY/MM/DD',
+				// format: 'YYYY/MM/DD',
+			format: 'MM/DD/YYYY',
 								}
 				});
 						
@@ -248,34 +249,39 @@ if(isset($_REQUEST['child'])) { $child=$_REQUEST['child']; }else{ $child=0; }
 		{
 		managePax(type);
 		var rooms=document.getElementById("rooms").value;
-		var innerHtml='';
-		for(var i=0;i<rooms;i++){ var rn=i+1; var adultId='adult_'+i; var clildId='child_'+i;
-		
-		innerHtml+='<div class="dropdown-item"><b>Room '+(i+1)+'</b></div>';
-		innerHtml+='<div class="dropdown-item">';
-			innerHtml+='<div class="qty-box d-flex align-items-center justify-content-between">';
-				innerHtml+='<label>Adults</label>';
-				innerHtml+='<div class="qtyBtn d-flex align-items-center">';
-					innerHtml+='<div class="qtyDec"><i class="la la-minus"></i></div>';
-					innerHtml+='<input type="text" name="adults[]" value="<?php echo $adult;  ?>" onchange="managePax(\''+adultId+'\')" id="'+adultId+'" min="1" max="4" >';
-					innerHtml+='<div class="qtyInc"><i class="la la-plus"></i></div>';
-				innerHtml+='</div>';
-			innerHtml+='</div>';
-		innerHtml+='</div>';
-		
-		
-		innerHtml+='<div class="dropdown-item">';
-			innerHtml+='<div class="qty-box d-flex align-items-center justify-content-between">';
-				innerHtml+='<label>Children</label>';
-				innerHtml+='<div class="qtyBtn d-flex align-items-center">';
-					innerHtml+='<div class="qtyDec" ><i class="la la-minus"></i></div>';
-					innerHtml+='<input type="text" onchange="addChildAge(\''+clildId+'\',\''+i+'\')" name="childs[]" value="<?php echo $child;  ?>" id="'+clildId+'" min="0" max="4">';
-					innerHtml+='<div class="qtyInc" ><i  class="la la-plus"></i></div>';
-				innerHtml+='</div>';
-			innerHtml+='</div>';
-			innerHtml+='<div id="age_'+clildId+'"></div>';
-		innerHtml+='</div>';
-		
+var innerHtml = '';
+for (var i = 0; i < rooms; i++) {
+    var rn = i + 1;
+    var adultId = 'adult_' + i;
+    var adultNameId = 'adult_name_' + i; // New ID for adult name input
+    var childId = 'child_' + i;
+
+    innerHtml += '<div class="dropdown-item"><b>Room ' + (i + 1) + '</b></div>';
+    innerHtml += '<div class="dropdown-item">';
+    innerHtml += '<div class="qty-box d-flex align-items-center justify-content-between">';
+    innerHtml += '<label>Adults</label>';
+    innerHtml += '<div class="qtyBtn d-flex align-items-center">';
+    innerHtml += '<div class="qtyDec"><i class="la la-minus"></i></div>';
+    innerHtml += '<input type="text" name="adults[]" value="<?php echo $adult; ?>" onchange="managePax(\'' + adultId + '\')" id="' + adultId + '" min="1" max="4" >';
+    innerHtml += '<div class="qtyInc"><i class="la la-plus"></i></div>';
+    innerHtml += '</div>';
+    innerHtml += '</div>';
+    innerHtml += '<input type="text" style="width: 100%;" placeholder="Adult Name" require name="adult_names[]" id="' + adultNameId + '">'; // New input for adult name
+    innerHtml += '</div>';
+
+
+    innerHtml += '<div class="dropdown-item">';
+    innerHtml += '<div class="qty-box d-flex align-items-center justify-content-between">';
+    innerHtml += '<label>Children</label>';
+    innerHtml += '<div class="qtyBtn d-flex align-items-center">';
+    innerHtml += '<div class="qtyDec" ><i class="la la-minus"></i></div>';
+    innerHtml += '<input type="text" onchange="addChildAge(\'' + childId + '\',\'' + i + '\')" name="childs[]" value="<?php echo $child; ?>" id="' + childId + '" min="0" max="4">';
+    innerHtml += '<div class="qtyInc" ><i  class="la la-plus"></i></div>';
+    innerHtml += '</div>';
+    innerHtml += '</div>';
+    innerHtml += '<div id="age_' + childId + '"></div>';
+    innerHtml += '</div>';
+
 		
 		if(i<(rooms-1)){ innerHtml+='<hr>' };
 		}

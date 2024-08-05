@@ -1,0 +1,7 @@
+===========Credentials(Book_479819007)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(Book_479819007)=========
+{"data":{"selected_offers":["off_0000Aj8xdozRLQ41pDJzCJ"],"payments":[{"type":"balance","currency":"USD","amount":"362.35"}],"passengers":[{"phone_number":"+911122334455","email":"t@m.com","born_on":"2001-05-29","title":"mr","gender":"m","family_name":"test test","given_name":"test test","id":"pas_0000Aj8xdoayoMUwbLsS4R"},{"phone_number":"+911122334455","email":"t@m.com","born_on":"2001-06-13","title":"mr","gender":"m","family_name":"test test","given_name":"test test","id":"pas_0000Aj8xdoayoMUwbLsS4S"},{"phone_number":"+911122334455","email":"t@m.com","born_on":"2017-06-15","title":"mr","gender":"f","family_name":"test test","given_name":"test test","id":"pas_0000Aj8xdoayoMUwbLsS4T"}]}}
+===========Response(Book_479819007)=========
+{"errors":[{"documentation_url":"https://duffel.com/docs/api/overview/response-handling","source":{"field":"selected_offers","pointer":"/selected_offers"},"title":"Can't book multiple offers from the same offer request","type":"validation_error","message":"Field 'selected_offers' has offers included in a offer request that has already been booked; please perform a new search","code":"offer_request_already_booked"}],"meta":{"request_id":"F9rw7sCog0NkJ_EBXY-i","status":422}}
+

@@ -63,7 +63,11 @@
                      <td><div class="btn-group btn-group-sm">
                          <a href="flight-details/{{$data->id}}" target="_blank" class="btn btn-info"><i class="fas fa-edit"></i></a>&nbsp;
                         <a href="flight-ticket?order_id={{$data->order_id}}" class="btn btn-success"><i class="fas fa-download"></i></a>&nbsp;
-                      </div></td>
+                      </div>
+                      @if($data->booking_status=='Cancelled Pending' && @Auth::user()->user_type=="admin")
+                        <a href="{{route('admin.flight.cancel',$data->order_id)}}"><button class="btn btn-warning">Approve Cancellation</button></a>&nbsp;
+                        @endif
+                    </td>
                   </tr>  @php $i++; @endphp
                   @endforeach
                   </tbody>

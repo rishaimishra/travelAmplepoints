@@ -10,7 +10,7 @@ use App\Models\Crud_Model;
 use Illuminate\Support\Facades\DB;
 use Session;
 use Illuminate\Support\Facades\Auth;
-
+// use DB;
 
 class PdfController extends Controller
 {
@@ -43,9 +43,9 @@ class PdfController extends Controller
 	    $bookingsData = crud_model::readOne('bookings',array('order_id'=>$order_id));
 		$pageData = crud_model::readOne('pages',array('page_id'=>'flight-ticket'));
 		if(session()->get('user_type')=='agent' ){
-	   		$siteData = crud_model::readOne('user',array('id'=>$bookingsData->user_id));
+	   		$siteData = crud_model::readOne('users',array('user_id'=>$bookingsData->user_id));
 		}else{
-			$siteData = crud_model::readOne('user',array('website'=> str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
+			$siteData = crud_model::readOne('users',array('website'=> str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
 		}
 	    $filename = 'voucher/flight-ticket-'.$order_id.'.pdf';
     	$data = [
@@ -72,16 +72,18 @@ class PdfController extends Controller
 	    $bookingsData = crud_model::readOne('twc_booking',array('order_id'=>$order_id));
 		$pageData = crud_model::readOne('pages',array('page_id'=>'hotel-ticket'));
 		if(session()->get('user_type')=='agent' ){
-	   		$siteData = crud_model::readOne('user',array('id'=>$bookingsData->user_id));
+	   		$siteData = crud_model::readOne('users',array('user_id'=>$bookingsData->user_id));
 		}else{
-			$siteData = crud_model::readOne('user',array('website'=> str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
+			$siteData = crud_model::readOne('users',array('website'=> str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
 		} 
 	    $filename = 'voucher/hotel-voucher-'.$order_id.'.pdf';
+	    $adultData=DB::table('hotel_book_adults')->where('order_id',$order_id)->get();
     	$data = [
 			'bookingsData' => $bookingsData,
 			'siteData' => $siteData,
 			'pageData' => $pageData,
 			'show_price' => $request['show_price'],
+			'adultData'=>$adultData,
     	];
     	$view = \View::make('voucher/hotel-voucher', $data);
         $html = $view->render();
@@ -100,9 +102,9 @@ class PdfController extends Controller
 	    $bookingsData = crud_model::readOne('twc_booking',array('order_id'=>$order_id));
 		$pageData = crud_model::readOne('pages',array('page_id'=>'tours-ticket'));
 		if(session()->get('user_type')=='agent' ){
-	   		$siteData = crud_model::readOne('user',array('id'=>$bookingsData->user_id));
+	   		$siteData = crud_model::readOne('users',array('user_id'=>$bookingsData->user_id));
 		}else{
-			$siteData = crud_model::readOne('user',array('website'=> str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
+			$siteData = crud_model::readOne('users',array('website'=> str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
 		} 
 	    $filename = 'voucher/tours-voucher-'.$order_id.'.pdf';
     	$data = [
@@ -128,9 +130,9 @@ class PdfController extends Controller
 	    $bookingsData = crud_model::readOne('twc_booking',array('order_id'=>$order_id));
 		$pageData = crud_model::readOne('pages',array('page_id'=>'transfers-ticket'));
 		if(session()->get('user_type')=='agent' ){
-	   		$siteData = crud_model::readOne('user',array('id'=>$bookingsData->user_id));
+	   		$siteData = crud_model::readOne('users',array('user_id'=>$bookingsData->user_id));
 		}else{
-			$siteData = crud_model::readOne('user',array('website'=> str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
+			$siteData = crud_model::readOne('users',array('website'=> str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
 		} 
 	    $filename = 'voucher/transfers-voucher-'.$order_id.'.pdf';
     	$data = [

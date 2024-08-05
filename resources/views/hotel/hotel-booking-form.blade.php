@@ -6,7 +6,7 @@
 
   @inject('siteData1', 'App\Http\Controllers\Site')
          @php   $data=json_decode($siteData1::Index(),true);
-				$common_data= $data['siteData']['common_data'];
+        $common_data= $data['siteData']['common_data'];
                 $common=json_decode($common_data,true);
                 $images_main=  $data['siteData']['images'];
                 $images_main=json_decode($images_main,true);
@@ -64,9 +64,12 @@
                 
                 <div class="row">
                   <?php 
-				  $AdultArr=json_decode($hotelSearchData->Cri_Adults,true);
-				  $ChildArr=json_decode($hotelSearchData->Cri_Childs,true);
-				   for($r=0;$r<$hotelSearchData->rooms;$r++){ ?>
+          $AdultArr=json_decode($hotelSearchData->Cri_Adults,true);
+           $AdultArr = explode(',', $AdultArr);
+
+          $ChildArr=json_decode($hotelSearchData->Cri_Childs,true);
+           $ChildArr=explode(',', $ChildArr);
+           for($r=0;$r<$hotelSearchData->rooms;$r++){ ?>
                    <div class="form-title-wrap col-lg-12">
                     <h3 class="title">Room <?php echo $r+1; ?></h3>
                   </div>
@@ -131,7 +134,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-4 responsive-column">
+                  {{-- <div class="col-lg-4 responsive-column">
                     <div class="input-box">
                       <label class="label-text">ID</label>
                       <div class="form-group"> 
@@ -140,7 +143,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> --}}
                   <?php } ?>
                   <?php for($a=0;$a<$ChildArr[$r];$a++){ ?>
                   <div class="form-title-wrap col-lg-12">
@@ -202,7 +205,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-4 responsive-column">
+                  {{-- <div class="col-lg-4 responsive-column">
                     <div class="input-box">
                       <label class="label-text">ID</label>
                       <div class="form-group"> 
@@ -211,10 +214,10 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> --}}
                   <?php }
-				  echo "<hr>";
-				   }?>
+          echo "<hr>";
+           }?>
                   <div class="col-lg-6 responsive-column">
                     <div class="input-box">
                       <label class="label-text">Your Email <span style="color:#FF0000">*</span></label>
@@ -261,10 +264,10 @@
                   </div>
                  
                   <!-- end col-lg-6 --> <?php if(!isset($sessionval['user_id'])){ $sessionval['user_type']=''; } ?>
-								@if($sessionval['user_type']=='agent')
+                @if($sessionval['user_type']=='agent')
                                 <input type="hidden" name="payment_type" value="wallet" />
                                 @else
-                  				<div class="col-lg-6 responsive-column" style="display:none">
+                          <div class="col-lg-6 responsive-column" style="display:none">
                                         <div class="input-box">
                                             <label class="label-text">Choose Payment Type</label>
                                             <div class="form-group">
@@ -290,7 +293,7 @@
                   <!-- end col-lg-12 -->
                 </div>
                 <button class="theme-btn" onclick="checkTerm()" type="button" >Confirm Booking</button>
- 				<button style="display:none" class="theme-btn"  id="submit_btn" type="cubmit">Confirm Booking</button>
+        <button style="display:none" class="theme-btn"  id="submit_btn" type="cubmit">Confirm Booking</button>
               </form>
             </div>
             <!-- end contact-form-action -->
@@ -328,11 +331,13 @@
                   <li><span>Board Name:</span><?php echo $hotelSearchData->boardName;  ?> </li>
                   <li><span>Payment Type:</span><?php echo $hotelSearchData->paymentType; ?></li>
                   <li>
-				  		   <?php 
-							$AdultsArr=json_decode($hotelSearchData->Cri_Adults,true);
-							$ChildsArr=json_decode($hotelSearchData->Cri_Childs,true);
-							$ChildAgeArr=json_decode($hotelSearchData->child_age,true);
-							for($i=0;$i<$hotelSearchData->rooms;$i++){ ?>
+                 <?php 
+              $AdultsArr=json_decode($hotelSearchData->Cri_Adults,true);
+               $AdultsArr = explode(',', $AdultsArr);
+              $ChildsArr=json_decode($hotelSearchData->Cri_Childs,true);
+               $ChildsArr=explode(',', $ChildsArr);
+              $ChildAgeArr=json_decode($hotelSearchData->child_age,true);
+              for($i=0;$i<$hotelSearchData->rooms;$i++){ ?>
                             <br />
                             <div class="sidebar-widget-item">
                                 <div class="qty-box mb-2 d-flex align-items-center justify-content-between">
@@ -353,25 +358,24 @@
                                  <?php for($c=0;$c<$ChildsArr[$i];$c++){ ?>
                                  <div class="qty-box mb-2 d-flex align-items-center justify-content-between">
                                     <div class=" d-flex align-items-center">
-                                        <input class=" form-control" type="text" name="Cri_Adults"  value="Child {{$c+1}} Age : <?php echo $ChildAgeArr[$i][$c]; ?>" readonly>	</div></div>
-										<?php } ?>
+                                        <input class=" form-control" type="text" name="Cri_Adults"  value="Child {{$c+1}} Age : <?php echo $ChildAgeArr[$i][$c]; ?>" readonly>  </div></div>
+                    <?php } ?>
                             </div><!-- end sidebar-widget-item -->
                             <?php } ?>
                   </li>
                 </ul>
                 <div class="section-block"></div>
                 <ul class="list-items list-items-2 pt-3 price_details">
-                  <!--<li><span>Base Fare:</span><span class="base_fare"><?php $hotelSearchData->currency." ".$hotelSearchData->lowRate;?></span></li>
-                  <li><span>Taxes And Fees:</span><span class="tax"><?php echo $hotelSearchData->currency; ?> </span></li>-->
-                  <li><span>Total Price:</span><span class="total_amount"><?php echo $hotelSearchData->currency." ".$hotelSearchData->lowRate*2; ?></span></li>
+                  
+                  <li><span>Total Price:</span><span class="total_amount"><?php echo $hotelSearchData->currency." ".$totalPrice*2 ?></span></li>
                 </ul>
               </div>
 
                @php
                $admin_model_obj = new \App\Models\CommonFunctionModel;
                $toCurrencyRate = $admin_model_obj->getFromToCurrencyRate(1.00,'USD', 'USD');
-                $original_single_price = $hotelSearchData->lowRate;
-                $OfferedPriceRoundedOff = $admin_model_obj->displayFinalRates($hotelSearchData->lowRate, $toCurrencyRate);
+                $original_single_price = $totalPrice;
+                $OfferedPriceRoundedOff = $admin_model_obj->displayFinalRates($totalPrice, $toCurrencyRate);
 
                 //dd($original_single_price,$OfferedPriceRoundedOff);
                 $single_price = (($OfferedPriceRoundedOff) * 2);
@@ -434,7 +438,7 @@
             </div>
             <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
               <input type='text'
-              id='itemprice_<?php echo $hotelSearchData->lowRate ?>'
+              id='itemprice_<?php echo $totalPrice ?>'
               name='itemprice'
               class='form-control'
               value='$<?php echo $single_price; ?>'
@@ -450,7 +454,7 @@
             </div>
             <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
               <input type='text'
-              id='buyearnamples_<?php echo $hotelSearchData->lowRate ?>'
+              id='buyearnamples_<?php echo $totalPrice ?>'
               name='buyearnamples'
               class='form-control'
               placeholder='D'
@@ -467,7 +471,7 @@
             </div>
             <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
               <input type='text'
-              id='useamplestoshop_<?php echo $hotelSearchData->lowRate ?>'
+              id='useamplestoshop_<?php echo $totalPrice ?>'
               name='useamplestoshop'
               class='form-control'
               value='<?php echo $admin_model_obj->DisplayAmplePoints($free_with_amples); ?> Amples'
@@ -482,8 +486,8 @@
               <label>Apply Amples</label>
             </div>
             <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
-              <input type='text' onchange="ampleEnterFun(this.value,'<?php echo $hotelSearchData->lowRate ?>')"
-              id='inputamples_<?php echo $hotelSearchData->lowRate ?>'
+              <input type='text' onchange="ampleEnterFun(this.value,'<?php echo $totalPrice ?>')"
+              id='inputamples_<?php echo $totalPrice ?>'
               name='inputamples'
               class='form-control'>
               <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
@@ -491,9 +495,9 @@
           </div>
         </div>
         <div class='col-md-4 col-sm-4 col-xs-4 no-space add-cart-submit btn-b-apply' style="margin-left: 210px;">
-          <button class="btn btn-dark" style="width:100%" id='applyamples_<?php echo $hotelSearchData->lowRate ?>'
+          <button class="btn btn-dark" style="width:100%" id='applyamples_<?php echo $totalPrice ?>'
           type='button'
-          onclick="applyAmplePoints('<?php echo $hotelSearchData->lowRate ?>','<?php echo $single_price; ?>','<?php echo $discount_price; ?>','<?php echo $discount; ?>')">
+          onclick="applyAmplePoints('<?php echo $totalPrice ?>','<?php echo $single_price; ?>','<?php echo $discount_price; ?>','<?php echo $discount; ?>')">
           APPLY
           </button>
         </div>
@@ -502,33 +506,33 @@
         <div class='grand-total1 text-center'>
           <div class="row">
             <div class='col-md-8 col-sm-8 col-xs-8 no-space'
-              id='newpricesection_<?php echo $hotelSearchData->lowRate ?>'
+              id='newpricesection_<?php echo $totalPrice ?>'
               style='display:none;'><span
               style="width: 42%;">New Price : </span>
-              <h4 id='newitemprice_<?php echo $hotelSearchData->lowRate ?>'
+              <h4 id='newitemprice_<?php echo $totalPrice ?>'
               style="margin: 15px 10px;">&nbsp;
               $<?php echo $single_price; ?></h4>
               <span class='res-collection-sub'
                 style='display:none;margin: 12px 0 0 -10px;'
-              id="res_collection_sub_<?php echo $hotelSearchData->lowRate ?>">FREE</span>
+              id="res_collection_sub_<?php echo $totalPrice ?>">FREE</span>
               <input type="hidden"
-              id="usernewitemprice_<?php echo $hotelSearchData->lowRate ?>"
+              id="usernewitemprice_<?php echo $totalPrice ?>"
               value="<?php echo $single_price; ?>"/>
             </div>
             
           </div>
         </div>
         <div class='res-collection-sub1'
-          id="res_collection_sub_1_<?php echo $hotelSearchData->lowRate ?>">
+          id="res_collection_sub_1_<?php echo $totalPrice ?>">
           <div class='col-md-12 col-sm-12 col-xs-12 no-space'
-            id='earnrewardsection_<?php echo $hotelSearchData->lowRate ?>'
+            id='earnrewardsection_<?php echo $totalPrice ?>'
             style='display:none;'>
             <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
               <label>Earn Reward</label>
             </div>
             <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
               <input type='text'
-              id='earnrewardamples_<?php echo $hotelSearchData->lowRate ?>'
+              id='earnrewardamples_<?php echo $totalPrice ?>'
               name='earnrewardamples'
               class='form-control'
               disabled>
@@ -542,7 +546,7 @@
               </div>
               <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
                 <input type='text'
-                id='earnrewardonitem_<?php echo $hotelSearchData->lowRate ?>'
+                id='earnrewardonitem_<?php echo $totalPrice ?>'
                 name='earnrewardonitem'
                 value='<?php echo $discount_price; ?>'
                 class='form-control'
@@ -557,7 +561,7 @@
               </div>
               <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
                 <input type='text'
-                id='youearndiscount_<?php echo $hotelSearchData->lowRate ?>'
+                id='youearndiscount_<?php echo $totalPrice ?>'
                 name='youearndiscount'
                 value='<?php echo (int)$discount; ?>%'
                 class='form-control'
@@ -570,19 +574,19 @@
         {{-- <div class='grand-total text-center'>
           <div class='col-md-12 col-sm-12 col-xs-12'>
             <div class='button-group'
-              id='atax_<?php echo $hotelSearchData->lowRate ?>'
+              id='atax_<?php echo $totalPrice ?>'
               style="display:none"><a
                 class='btn-add-cart'
-                id="cartwithample_<?php echo $hotelSearchData->lowRate ?>"
+                id="cartwithample_<?php echo $totalPrice ?>"
                 href='javascript:void(0);'
-                onclick="bookRoomWithAmple('<?php echo $hotelSearchData->lowRate ?>','<?php echo $single_price; ?>','<?php echo $original_single_price; ?>','<?php echo $incrementIndex; ?>')">BOOK
+                onclick="bookRoomWithAmple('<?php echo $totalPrice ?>','<?php echo $single_price; ?>','<?php echo $original_single_price; ?>','<?php echo $incrementIndex; ?>')">BOOK
               NOW ample</a></div>
               <div class='button-group'
-                id='btax_<?php echo $hotelSearchData->lowRate ?>'>
+                id='btax_<?php echo $totalPrice ?>'>
                 <a class='btn-add-cart'
-                  id="cartwithoutample_<?php echo $hotelSearchData->lowRate ?>"
+                  id="cartwithoutample_<?php echo $totalPrice ?>"
                   href="javascript:void(0);"
-                  onclick="bookRoomWithoutAmple('<?php echo $hotelSearchData->lowRate ?>','<?php echo $single_price; ?>','<?php echo $original_single_price; ?>','<?php echo $incrementIndex; ?>','<?php echo $admin_model_obj->DisplayAmplePoints($no_of_amples); ?>')">BOOK
+                  onclick="bookRoomWithoutAmple('<?php echo $totalPrice ?>','<?php echo $single_price; ?>','<?php echo $original_single_price; ?>','<?php echo $incrementIndex; ?>','<?php echo $admin_model_obj->DisplayAmplePoints($no_of_amples); ?>')">BOOK
                 NOW</a></div>
               </div>
             </div> --}}
@@ -611,94 +615,104 @@
 <script type="text/javascript">
 function checkTerm()
 {
-	var val=$("#receiveChb").prop("checked");
-	if(val==true){
-		$("#submit_btn").trigger("click");
-	}
-	else{
-		alert('Please Accept Terms and Condition.');
-	}
-		
+  var val=$("#receiveChb").prop("checked");
+  if(val==true){
+    $("#submit_btn").trigger("click");
+  }
+  else{
+    alert('Please Accept Terms and Condition.');
+  }
+    
 }
 
 var innerHtml=''; var page=0; var search_session='';
 
       jQuery(document).ready(function(){
 
-	 // var innerHtml='<div class="loader"><svg class="spinner" viewBox="0 0 50 50"><circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle></svg></div>';   jQuery('.flight_ist').html(innerHtml);	
+   // var innerHtml='<div class="loader"><svg class="spinner" viewBox="0 0 50 50"><circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle></svg></div>';   jQuery('.flight_ist').html(innerHtml); 
 
-	 
+   
 
-	 //'action=RoomAvailability&pid='+$scope.pid+'&hotelId=' + $scope.hotelId + '&regionid=' + $scope.regionid + '&boardCode='+$scope.boardCode+'&rateClass='+$scope.rateClass+'&roomCodeIds='+$scope.roomCodeIds+'&checkIn=' + $scope.checkIn + '&checkOut=' + $scope.checkOut + '&rooms=' + $scope.rooms + '&adults=' + $scope.adults + '&children=' + $scope.children + '&childAge='+$scope.childage+'&group='+$scope.group+'&language=' + $scope.language + '&isCombo='+$scope.isCombo+'&currency=' + $scope.currency;
+   //'action=RoomAvailability&pid='+$scope.pid+'&hotelId=' + $scope.hotelId + '&regionid=' + $scope.regionid + '&boardCode='+$scope.boardCode+'&rateClass='+$scope.rateClass+'&roomCodeIds='+$scope.roomCodeIds+'&checkIn=' + $scope.checkIn + '&checkOut=' + $scope.checkOut + '&rooms=' + $scope.rooms + '&adults=' + $scope.adults + '&children=' + $scope.children + '&childAge='+$scope.childage+'&group='+$scope.group+'&language=' + $scope.language + '&isCombo='+$scope.isCombo+'&currency=' + $scope.currency;
 
-	 
+   
 
-	  RoomAvailability();  
-			   			 function RoomAvailability(){  
-			   			 $.ajax({ 
-								url:'/RoomAvailability',
-								type: "GET",
-								data: {
-									action: "RoomAvailability",  
-									hotelId: "<?php echo $hotelSearchData->EANHotelID; ?>",
-									regionid: "<?php echo $hotelSearchData->desti_lat_lon; ?>",
-									destination: "<?php echo $hotelSearchData->city; ?>",
-									checkIn: "<?php echo $hotelSearchData->checkin; ?>",  
-									checkOut: "<?php echo $hotelSearchData->checkout; ?>",
-									rooms: "<?php echo $hotelSearchData->rooms; ?>",
-									adults: '<?php echo $hotelSearchData->Cri_Adults; ?>',
-									childs: '<?php echo $hotelSearchData->Cri_Childs; ?>',  
-									boardCode: "<?php  echo $board;  ?>",
-									rateClass: "<?php  echo $rateClass;  ?>",
-									roomCodeIds: "<?php  echo $roomCodeIds;  ?>",
-									search_session: "<?php echo $hotelSearchData->search_session; ?>",
-									tid: "<?php echo $hotelSearchData->id; ?>",
-								},
-								dataType: "json",
-								success: function (response) {
-								var SelectedRoom=response.responseData.SelectedRoom;
-								var innerHtml='';
-								var priceHtml ='';
-								var total_price=0;
-								var total_apiPrice=0;
-								for(var i=0;i<SelectedRoom.length;i++){
-									innerHtml +='<ul style="display:none" >';
-									innerHtml +='<input  name="roomPrice[]" value="'+SelectedRoom[i].rates.net+'"/>';
-									innerHtml +='<input name="roomName[]" value="'+SelectedRoom[i].name+'" />';
-									innerHtml +='<input name="rateClass[]" value="'+SelectedRoom[i].rates.rateClass+'" />';
-									innerHtml +='<input name="boardCode[]" value="'+SelectedRoom[i].rates.boardCode+'" />';
-									innerHtml +='<input name="boardName[]" value="'+SelectedRoom[i].rates.boardName+'" />';
-									innerHtml +='<input name="rateType[]" value="'+SelectedRoom[i].rates.rateType+'" />';
-									innerHtml +='<input name="paymentType" value="'+SelectedRoom[i].rates.paymentType+'" />';
-									innerHtml +='<input name="rateCommentsId[]" value="'+SelectedRoom[i].rates.rateCommentsId+'" />';
-								innerHtml +='<textarea type="text" name="rateKey[]" style="white-space: pre-line">'+SelectedRoom[i].rates.rateKey+'</textarea>';
-									innerHtml +='</ul>';
+    RoomAvailability();  
+               function RoomAvailability(){  
+               $.ajax({ 
+                url:'/RoomAvailability',
+                type: "GET",
+                data: {
+                  action: "RoomAvailability",  
+                  hotelId: "<?php echo $hotelSearchData->EANHotelID; ?>",
+                  regionid: "<?php echo $hotelSearchData->desti_lat_lon; ?>",
+                  destination: "<?php echo $hotelSearchData->city; ?>",
+                  checkIn: "<?php echo $hotelSearchData->checkin; ?>",  
+                  checkOut: "<?php echo $hotelSearchData->checkout; ?>",
+                  rooms: "<?php echo $hotelSearchData->rooms; ?>",
+                  adults: '<?php echo $hotelSearchData->Cri_Adults; ?>',
+                  childs: '<?php echo $hotelSearchData->Cri_Childs; ?>',  
+                  boardCode: "<?php  echo $board;  ?>",
+                  rateClass: "<?php  echo $rateClass;  ?>",
+                  roomCodeIds: "<?php  echo $roomCodeIds;  ?>",
+                  search_session: "<?php echo $hotelSearchData->search_session; ?>",
+                  tid: "<?php echo $hotelSearchData->id; ?>",
+                },
+                dataType: "json",
+                success: function (response) {
+                  // console.log(response.responseData)
+                var SelectedRoom=response.responseData.SelectedRoom;
+                var innerHtml='';
+                // var priceHtml ='';
+                var total_price=0;
+                var total_apiPrice=0;
+                let rateKeys = []; // Array to store rate keys
+                for(var i=0;i<SelectedRoom.length;i++){
+                  // console.log(SelectedRoom[i].rates)
+                   rateKeys.push(SelectedRoom[i].rates.rateKey); 
+                  innerHtml +='<ul style="display: none" >';
+                  innerHtml +='<input  name="roomPrice[]" value="'+SelectedRoom[i].rates.net+'"/>';
+                  innerHtml +='<input name="roomName[]" value="'+SelectedRoom[i].name+'" />';
+                  innerHtml +='<input name="rateClass[]" value="'+SelectedRoom[i].rates.rateClass+'" />';
+                  innerHtml +='<input name="boardCode[]" value="'+SelectedRoom[i].rates.boardCode+'" />';
+                  innerHtml +='<input name="boardName[]" value="'+SelectedRoom[i].rates.boardName+'" />';
+                  innerHtml +='<input name="rateType[]" value="'+SelectedRoom[i].rates.rateType+'" />';
+                  innerHtml +='<input name="paymentType" value="'+SelectedRoom[i].rates.paymentType+'" />';
+                  innerHtml +='<input name="rateCommentsId[]" value="'+SelectedRoom[i].rates.rateCommentsId+'" />';
+                innerHtml +='<input name="rateKey[]" value="'+SelectedRoom[i].rates.rateKey+'" />';
+                  innerHtml +='</ul>';
 
-									priceHtml +='Room: '+parseInt(parseInt(i)+parseInt(1))+'<li><span>Base Fare:</span><span class="base_fare">'+response.currency_symbol+' '+SelectedRoom[i].rates.net.toFixed(2)*2+'</span></li>';
-									total_price=parseFloat(total_price)+parseFloat(SelectedRoom[i].rates.net);
-									total_apiPrice=parseFloat(total_apiPrice)+parseFloat(SelectedRoom[i].rates.api_price);
-									
-								}
-                priceHtml +='<li id="dpli" style="display:none"><span>Discount Price:</span><span class="discount_amount" id="dp"></span></li>';
+                  // priceHtml +='Room: '+parseInt(parseInt(i)+parseInt(1))+'<li><span>Base Fare:</span><span class="base_fare">'+response.currency_symbol+' '+parseFloat(SelectedRoom[i].rates.net)*2+'</span></li>';
 
-								priceHtml +='<li id="tali1"><span>Total Price:</span><span class="total_amount" id="ta1">'+response.currency_symbol+' '+total_price*2+'</span></li>';
+                  // total_price=parseFloat(total_price)+parseFloat(SelectedRoom[i].rates.net);
 
-                priceHtml +='<li id="tali2" style="display:none"><span>Total Price:</span><span class="total_amount2" id="ta2"></span></li>';
+                  // total_apiPrice=parseFloat(total_apiPrice)+parseFloat(SelectedRoom[i].rates.api_price || SelectedRoom[i].rates.net);
 
-								jQuery('.price_details').html(priceHtml);
-								jQuery('.total_amount').html(response.currency_symbol+' '+total_price.toFixed(2)*2);
-								jQuery('.inpurroomdata').html(innerHtml);
-								document.getElementById('currency_main').value=response.currency;
-								document.getElementById('chargeableRate').value=total_price.toFixed(2);
-								document.getElementById('apiPrice').value=total_apiPrice.toFixed(2);
-								},
-								error: function (error) {
-									console.log(`Error ${error}`);
+                  // console.log(total_price,total_apiPrice)
+                  
+                }
 
-								}
-							});
-							}
-      });	   
+                // console.log(innerHtml,SelectedRoom.length);
+                // priceHtml +='<li id="dpli" style="display:none"><span>Discount Price:</span><span class="discount_amount" id="dp"></span></li>';
+
+                // priceHtml +='<li id="tali1"><span>Total Price:</span><span class="total_amount" id="ta1">'+response.currency_symbol+' '+total_price*2+'</span></li>';
+
+                // priceHtml +='<li id="tali2" style="display:none"><span>Total Price:</span><span class="total_amount2" id="ta2"></span></li>';
+
+                // jQuery('.price_details').html(priceHtml);
+                // jQuery('.total_amount').html(response.currency_symbol+' '+total_price.toFixed(2)*2);
+                jQuery('.inpurroomdata').html(innerHtml);
+                // document.getElementById('currency_main').value=response.currency;
+                // document.getElementById('chargeableRate').value=total_price.toFixed(2);
+                // document.getElementById('apiPrice').value=total_apiPrice.toFixed(2);
+                },
+                error: function (error) {
+                  console.log(`Error ${error}`);
+
+                }
+              });
+              }
+      });    
       </script>
 
 
@@ -875,6 +889,91 @@ function ampleEnterFun(val,room_index){
     $("#booked_ample").val(0)
   }
 }
+
+
+</script>
+
+
+
+
+
+
+
+<script>
+  
+    var priceHtml ='';
+    var total_price=0;
+    var total_apiPrice=0;
+    var roomArray = @json($roomArray);
+    var length = roomArray.length;
+     console.log(roomArray,length);
+
+      for (let k = 0; k < length; k++) {
+        RoomAvailabilitytwo(k);
+    }
+   
+    
+               function RoomAvailabilitytwo(index){ 
+
+               // for(var i=0; i<3;i++){ 
+                // alert(1);
+
+               $.ajax({ 
+                url:'/RoomAvailability',
+                type: "GET",
+                data: {
+                  action: "RoomAvailability",  
+                  hotelId: "<?php echo $hotelSearchData->EANHotelID; ?>",
+                  regionid: "<?php echo $hotelSearchData->desti_lat_lon; ?>",
+                  destination: "<?php echo $hotelSearchData->city; ?>",
+                  checkIn: "<?php echo $hotelSearchData->checkin; ?>",  
+                  checkOut: "<?php echo $hotelSearchData->checkout; ?>",
+                  rooms: "<?php echo 1; ?>",
+                  adults: '<?php echo $hotelSearchData->Cri_Adults; ?>',
+                  childs: '<?php echo $hotelSearchData->Cri_Childs; ?>',  
+                  boardCode: roomArray[index].board,
+                  rateClass: roomArray[index].rateClass,
+                  roomCodeIds: roomArray[index].roomCodeIds,
+                  search_session: "<?php echo $hotelSearchData->search_session; ?>",
+                  tid: "<?php echo $hotelSearchData->id; ?>",
+                },
+                dataType: "json",
+                success: function (response) {
+                 
+                var SelectedRoom=response.responseData.SelectedRoom;
+                
+                for(var i=0;i<SelectedRoom.length;i++){
+                
+
+                  priceHtml +='Room: '+parseInt(parseInt(index)+parseInt(1))+'<li><span>Base Fare:</span><span class="base_fare">'+response.currency_symbol+' '+parseFloat(SelectedRoom[i].rates.net)*2+'</span></li>';
+
+                  total_price=parseFloat(total_price)+parseFloat(SelectedRoom[i].rates.net);
+
+                  total_apiPrice=parseFloat(total_apiPrice)+parseFloat(SelectedRoom[i].rates.api_price || SelectedRoom[i].rates.net);
+                  
+                }
+
+                if(index+1==length){
+                priceHtml +='<li id="dpli" style="display:none"><span>Discount Price:</span><span class="discount_amount" id="dp"></span></li>';
+
+                priceHtml +='<li id="tali1"><span>Total Price:</span><span class="total_amount" id="ta1">'+response.currency_symbol+' '+total_price*2+'</span></li>';
+
+                priceHtml +='<li id="tali2" style="display:none"><span>Total Price:</span><span class="total_amount2" id="ta2"></span></li>';
+              }
+
+                jQuery('.price_details').html(priceHtml);
+                jQuery('.total_amount').html(response.currency_symbol+' '+total_price.toFixed(2)*2);
+             
+                document.getElementById('currency_main').value=response.currency;
+                document.getElementById('chargeableRate').value=total_price.toFixed(2);
+                document.getElementById('apiPrice').value=total_apiPrice.toFixed(2);
+                },
+                error: function (error) {
+                  console.log(`Error ${error}`);
+
+                }
+              });
+              }
 
 
 </script>

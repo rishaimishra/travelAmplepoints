@@ -18,7 +18,7 @@ class Markup extends Controller
 		public function __construct(){
 			$this->emailObj= new EmailController();
 			$this->emailObj= new EmailController();
-		    $data= crud_model::readOne('user',array('id'=>1)); 
+		    $data= crud_model::readOne('users',array('user_id'=>1)); 
 		   	$common_data= $data->common_data;
 			$common_dataArr= json_decode($common_data,true);
 			
@@ -73,7 +73,7 @@ class Markup extends Controller
 	
 	public function calAgentPrice($price,$product){
 			$user_id=session()->get('user_id');
-			$data= crud_model::readOne('user',array('id'=>$user_id)); //$this->crud_model->readOne('website_setting',1);
+			$data= crud_model::readOne('users',array('user_id'=>$user_id)); //$this->crud_model->readOne('website_setting',1);
 		   	$common_data= $data->common_data;
 			$common_dataArr= json_decode($common_data,true);
 			

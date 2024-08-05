@@ -1,0 +1,7 @@
+===========Credentials(https://api.test.hotelbeds.com/hotel-api/1.0/checkrates?rateKey=20240711|20240713|W|270|664016|ROO.AS|BAR 12_RO-NRF|RO||1~1~0||N@06~~23218~-2084275355~N~~~NRF~0011495A207A438172054270513800PAUS0000005000000000823218)=========
+hotelbeds_key=273483fe031816b44f248428a028d28c
+ hotelbeds_secret=bee7c61cbf
+ endpoint=https://api.test.hotelbeds.com/hotel-api/1.0
+===========Response(https://api.test.hotelbeds.com/hotel-api/1.0/checkrates?rateKey=20240711|20240713|W|270|664016|ROO.AS|BAR 12_RO-NRF|RO||1~1~0||N@06~~23218~-2084275355~N~~~NRF~0011495A207A438172054270513800PAUS0000005000000000823218)=========
+
+

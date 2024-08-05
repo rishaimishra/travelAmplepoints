@@ -188,6 +188,9 @@
                         <div class="header-left">
                             <ul class="list-items">
                             {{-- <li><a href="{{ asset('help-desk')}}" style="font-size: 1.5rem!important;" ><i class="la la-question-circle"></i>Support</a></li> --}}
+                            @if(@Auth::user()->id && @Auth::user()->user_type!="admin")
+                             <a href="#" class="theme-btn theme-btn-small">Your Amplepoints: {{@Auth::user()->ample}}</a>
+                             @endif
                             </ul>
                         </div>
                     </div>

@@ -21,7 +21,7 @@ class Flight extends Controller
 		public function __construct(){
 			$this->emailObj= new EmailController();
 			$this->markupObj= new Markup(); 
-		    $data= crud_model::readOne('user',array('website'=>str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin')); 
+		    $data= crud_model::readOne('users',array('website'=>str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin')); 
 			//$this->crud_model->readOne('website_setting',1);
 		   	$common_data= $data->common_data;
 			$common_dataArr= json_decode($common_data,true);
@@ -910,10 +910,16 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 		////$redirect_page=url('/')."/book-flight?order_id=".$order_id;
 			
 		//return redirect('/flight-payment/'.base64_encode($order_id)."/".base64_encode($request_data['chargeableRate']));	
+
+		if($request->chargeableRate<1){
+			Crud_Model::updateData('bookings',array('payment_status'=>'Confirmed','payment_intent'=>0),array('order_id'=>$order_id));
+            $redirect_page=url('/')."/book-flight?order_id=".$order_id;
+        	return redirect($redirect_page);
+    	}
 		
 		////return redirect($redirect_page);	
 
-		 return redirect()->route('processcheckoutpayment_flight', ['order_id' => $order_id, 'user_id' => @Auth::user()->id]);	
+		 return redirect()->route('processcheckoutpayment_flight', ['order_id' => $order_id, 'user_id' => @Auth::user()->user_id]);	
 	}
 	
 	//  Final Checkout end
@@ -1059,6 +1065,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
         $OfferedPriceRoundedOff = $admin_model_obj->displayFinalRates((int)$bookingDetails->prices, $toCurrencyRate);
 
         //dd($original_single_price,$OfferedPriceRoundedOff);
+        if($OfferedPriceRoundedOff>1){
         $single_price = (($OfferedPriceRoundedOff) * 2);
         $wholesale_price = ($single_price / 2);
         $free_with_amples = 0.00;
@@ -1072,22 +1079,25 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
         $discount_margin = $discount_price;
         $buyandearnamples = ($discount_margin / .12);
         $no_of_amples = $buyandearnamples;
+        }else{
+         $no_of_amples=0;
+        }
         // dd( $no_of_amples);
-        if(@Auth::user()->id || Session::get('user_id') ){
+        if(@Auth::user()->user_id || Session::get('user_id') ){
         	// dd(1);
         	//update ample
-        	$userDetail = User::where('id', @Auth::user()->id)
-		    ->orWhere('id', Session::get('user_id'))
+        	$userDetail = User::where('user_id', @Auth::user()->user_id)
+		    ->orWhere('user_id', Session::get('user_id'))
 		    ->first();
 		    // dd($userDetail);
-		    // dd((int)($userDetail->ample) , round($no_of_amples), (int)$bookingDetails->booked_ample);
-		    if(@$userDetail->ample){
-		    	$newAmple=(int)($userDetail->ample) + round($no_of_amples)-(int)@$bookingDetails->booked_ample;
+		    // dd((int)($userDetail->total_ample) , round($no_of_amples), (int)$bookingDetails->booked_ample);
+		    if(@$userDetail->total_ample){
+		    	$newAmple=(int)($userDetail->total_ample) + round($no_of_amples)-(int)@$bookingDetails->booked_ample;
 		    }else{
                 $newAmple=round($no_of_amples)-(int)@$bookingDetails->booked_ample;
 		    }
         	
-        	$up=User::where('id', @Auth::user()->id)->orWhere('id', Session::get('user_id'))->update(['ample'=>$newAmple]);
+        	$up=User::where('user_id', @Auth::user()->user_id)->orWhere('id', Session::get('user_id'))->update(['total_ample'=>$newAmple]);
         }
 
         // dd($request->input(),round($no_of_amples),$request->chargeableRate,$request->user_id);
@@ -1120,6 +1130,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 			
 			$this->createLogFile('Book_'.rand(),$book_request,$contents);
 			$book_response_Arr=json_decode($contents,true);
+			// dd($book_response_Arr);
 			
 			if(isset($book_response_Arr['errors'])){ 
 				$PNR=''; 
@@ -1146,13 +1157,13 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 	
 	
 	public function WalletDeduct($amount,$currency,$user_id,$order_id){ 
-		 $userData = crud_model::readOne('user',array('id'=>$user_id));
+		 $userData = crud_model::readOne('users',array('user_id'=>$user_id));
 		 $walletAmt=$userData->wallet;
 		 $finalAmt=$walletAmt-$amount;
 		 		
 		 $walletAmt=$this->getWalletBal($user_id);
 		 if($amount<=$walletAmt){
-		 	  $status = Crud_Model::updateData('user',array('wallet'=>$finalAmt),array('id'=>$user_id));
+		 	  $status = Crud_Model::updateData('users',array('wallet'=>$finalAmt),array('user_id'=>$user_id));
 			  $data = array(
 				  'agent_id' => $user_id,
 				  'currency' =>$currency,
@@ -1184,7 +1195,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 	}
 	
 	public function getWalletBal($user_id){ 
-		 $userData = crud_model::readOne('user',array('id'=>$user_id));
+		 $userData = crud_model::readOne('users',array('user_id'=>$user_id));
 		 $walletAmt=$userData->wallet;
 		 return $walletAmt;
 	}
@@ -1197,7 +1208,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 		
 	//  create user start
 	public function createUser($first_name,$last_name,$email,$phone,$address,$city,$country){
-		$obj= crud_model::readOne('user',array('email'=>$email)); 
+		$obj= crud_model::readOne('users',array('email'=>$email)); 
 
 		if(!is_object($obj)){
 			$password=rand();
@@ -1214,7 +1225,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 				'status'=>'active',
 				'date_time'=>date('Y-m-d H:i:s')
 			);
-			$value = Crud_Model::insertData('user',$data);
+			$value = Crud_Model::insertData('users',$data);
 			$this->UserCreateMailSend($email,$password,$first_name);
 			return DB::getPdo()->lastInsertId();
 		}else{ return $obj->id; }
@@ -1251,7 +1262,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 	
 	public function calAgentPrice($price){
 			$user_id=session()->get('user_id');
-			$data= crud_model::readOne('user',array('id'=>$user_id)); //$this->crud_model->readOne('website_setting',1);
+			$data= crud_model::readOne('users',array('user_id'=>$user_id)); //$this->crud_model->readOne('website_setting',1);
 		   	$common_data= $data->common_data;
 			$common_dataArr= json_decode($common_data,true);
 			
@@ -1367,6 +1378,50 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 				$status = Crud_Model::updateData('pages',$data,array('city_from_code'=>$citySingelFROM->code,'city_to_code'=>$citySingelTO->code,'type'=>'landing','type_name'=>'flights'));
 			}
 			
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public function flight_cancel_req(Request $request){
+		$order_id=$request->order_id;
+		$flightData = crud_model::readOne('bookings',array('order_id'=>$order_id));
+		// dd($flightData);
+		$booking_status='Cancelled Pending';
+
+		$data=array(
+				'booking_status'=>$booking_status,
+				'cancelled_by'=>session()->get('user_id'),
+				'cancellationNumber'=>rand(),
+				'cancellation_date'=>date('Y-m-d H:i:s'),
+				'cancel_response'=>"Customer Request",
+			 );
+	    Crud_Model::updateData('bookings',$data,array('order_id'=>$order_id));
+	    return back()->with('success','Cancellation Request send to admin');
+	}
+
+
+
+
+
+
+
+
+
+
+	public function FlightCancellationFromAdmin($id){
+		dd($id);
 	}
 	
 	

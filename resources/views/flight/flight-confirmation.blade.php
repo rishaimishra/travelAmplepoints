@@ -21,6 +21,11 @@
 <!-- ================================
     START BOOKING AREA
 ================================= -->
+
+@php
+$datas=json_decode($flightData->book_response,true);
+//dd($datas['data']['available_actions'][0]);
+@endphp
 <section class="payment-area section-bg section-padding">
     <div class="container">
         <div class="row">
@@ -77,7 +82,17 @@
                                 <!--<li><span class="text-black font-weight-bold">Cancellation cost</span>From now on: USD 34</li>-->
                             </ul>
                             <div class="btn-box" @if($flightData->booking_status!='Confirmed') style="display:none"  @endif>
-                                <!--<a href="#" class="theme-btn border-0 text-white bg-7">Cancel your booking</a>-->
+                                @if($datas['data']['available_actions'][0]=="cancel")
+                                <form method="post" action="{{route('flight.cancel.req')}}" id="frm" style="display:none">
+                                    @csrf
+                                    <input type="hidden" name="order_id" value="{{$flightData->order_id}}">
+                                    <button type="submit" class="theme-btn border-0 text-white bg-7"></button>
+
+                                </form>
+                               <a href="#" onclick="cancel()" class="theme-btn border-0 text-white bg-7">Cancel your booking</a>
+                                @else
+                                <span style="margin-right:10px">No cancellaton</span>
+                                @endif
                                 <a href="<?php url('') ?>/flight-ticket?order_id={{$flightData->order_id}}" class="theme-btn mb-2 mr-2">Download E-Ticket </a>
                             </div>
                         </div><!-- end card-item -->
@@ -121,6 +136,13 @@ var page=0; var search_session='';
 										}
 									});				
 			});
+      </script>
+
+
+      <script>
+          function cancel(){
+            $("#frm").submit();
+          }
       </script>
 
       

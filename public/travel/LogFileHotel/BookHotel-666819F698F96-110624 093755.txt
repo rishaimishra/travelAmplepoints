@@ -1,0 +1,11 @@
+===========Credentials(BookHotel-666819F698F96)=========
+hotelbeds_key=273483fe031816b44f248428a028d28c
+ hotelbeds_secret=bee7c61cbf
+ endpoint=https://api.test.hotelbeds.com/hotel-api/1.0
+===========Request(BookHotel-666819F698F96)=========
+{"holder":{"name":"test1","surname":"test1"},"rooms":[{"rateKey":"20240613|20240615|W|270|664016|ROO.AS|BAR 12_RO-NRF|RO||1~2~0||N@06~~23218~1027828045~N~~~NRF~BA45877AA647420171809758435200PAUS0000002000000000823218","paxes":[{"roomId":1,"type":"AD","name":"test1","surname":"test1"},{"roomId":1,"type":"AD","name":"test12","surname":"test12"}]},{"rateKey":"20240613|20240615|W|270|664016|ROO.AS|BAR 12_RO-NRF|RO||1~1~0||N@06~~23218~244449070~N~~~NRF~BA45877AA647420171809758435200PAUS0000002000000000823218","paxes":[{"roomId":1,"type":"AD","name":"test13","surname":"test1"}]}],"clientReference":"666819F698F96","remark":"No Remark.","tolerance":"2"}
+===========Response(BookHotel-666819F698F96)=========
+{
+    "error": "Upstream service reached hard timeout."
+}
+

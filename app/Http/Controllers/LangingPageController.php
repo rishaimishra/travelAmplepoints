@@ -25,7 +25,7 @@ class LangingPageController extends Controller
 		public $currency='';  public $currency_symbol=''; public $headerData=''; public $hotelbeds_key=''; public $hotelbeds_secret='';
 		
 		public function __construct(){
-		    $data= crud_model::readOne('user',array('id'=>1)); //$this->crud_model->readOne('website_setting',1);
+		    $data= crud_model::readOne('users',array('user_id'=>1)); //$this->crud_model->readOne('website_setting',1);
 		   	$common_data= $data->common_data;
 			$common_dataArr= json_decode($common_data,true);
 			$this->currency=$data->currency;

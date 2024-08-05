@@ -21,7 +21,7 @@ class Admin extends Controller
 	  public static function Index(){
 		 $id=session()->get('user_id'); 
 		$currency_list = crud_model::readByCondition('currency_rates',array('published'=>'Yes'));
-		$siteData = crud_model::readOne('user',array('id'=>$id)); //crud_model::readOne('website_setting',array('id'=>1));
+		$siteData = crud_model::readOne('users',array('user_id'=>$id)); //crud_model::readOne('website_setting',array('id'=>1));
 		return json_encode(array('currency'=>$currency_list,'siteData'=>$siteData));
 	  }
      
@@ -88,7 +88,7 @@ class Admin extends Controller
 			'common_data' => $common_data_json,
 		);
 		
-		$status = Crud_Model::updateData('user',$data,array('id'=>$id));
+		$status = Crud_Model::updateData('user',$data,array('user_id'=>$id));
 		if($id==1){
 			if($status==1){
 			    return redirect('/user-details?msg='.$this->success_message); die; 
@@ -680,7 +680,7 @@ class Admin extends Controller
 			  $proof_of_payment_path="uploads/".$proof_of_payment_name;
 		  }else { $proof_of_payment_path=$request->input('proof_of_payment_pre'); }
 		  
-		  $userData = crud_model::readOne('user',array('id'=>session()->get('user_id')));
+		  $userData = crud_model::readOne('users',array('user_id'=>session()->get('user_id')));
 		
 	  $data = array(
 	  	  'currency' => $userData->currency,
@@ -714,7 +714,7 @@ class Admin extends Controller
 		 $txn_detail = $request->input('txn_detail');
 		 
 		 $requestAmt=$request->input('amount');
-		 $userData = crud_model::readOne('user',array('id'=>$agent_id));
+		 $userData = crud_model::readOne('users',array('user_id'=>$agent_id));
 		 $walletAmt=$userData->wallet;
 		 echo "<br>request Amt==".$requestAmt;
 		 echo "<br>walletAmt==".$walletAmt;
@@ -727,7 +727,7 @@ class Admin extends Controller
 		 
 		 echo "<br>finalAmt==".$finalAmt;
 		 echo "<pre>"; print_r($userData); 
-		 $status = Crud_Model::updateData('user',array('wallet'=>$finalAmt),array('id'=>$agent_id));
+		 $status = Crud_Model::updateData('users',array('wallet'=>$finalAmt),array('user_id'=>$agent_id));
 						
 	  $data = array(
 		  'agent_id' => $agent_id,
@@ -762,14 +762,14 @@ class Admin extends Controller
 		 $reqData = crud_model::readOne('wallet_fund_request',array('id'=>$id));
 		 if(is_object($reqData) && $reqData->status='complete'){
 			 $requestAmt=$reqData->price;
-			 $userData = crud_model::readOne('user',array('id'=>$reqData->agent_id));
+			 $userData = crud_model::readOne('users',array('user_id'=>$reqData->agent_id));
 			 $walletAmt=$userData->wallet;
 			 echo "<br>request Amt==".$requestAmt;
 			 echo "<br>walletAmt==".$walletAmt;
 			 $finalAmt=$walletAmt+$requestAmt;
 			 echo "<br>finalAmt==".$finalAmt;
 			 echo "<pre>"; print_r($userData); 
-			 $status = Crud_Model::updateData('user',array('wallet'=>$finalAmt),array('id'=>$userData->id));
+			 $status = Crud_Model::updateData('users',array('wallet'=>$finalAmt),array('user_id'=>$userData->id));
 			 $status = Crud_Model::updateData('wallet_fund_request',array('status'=>'complete','fund_date'=>date('Y-m-d H:i:s')),array('id'=>$id));	
 		 
 	  $data = array(

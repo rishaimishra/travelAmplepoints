@@ -12,7 +12,7 @@ $company_address=$common['address1'];
 $company_name=$siteData->website_name;
 
  $pnr=$bookingsData->pnr; 
- $BookingID=$bookingsData->BookingID;  
+ $BookingID=$bookingsData->order_id; //BookingID;  
  $booking_status=$bookingsData->booking_status; 
  $date=$bookingsData->created_at; 
   $back_img1='';   $QR_Img='';  $strip_color=''; $passengrr_phone=''; $passenger_email=''; $passenger_phone=''; $passenger_address=''; $passenger_city=''; $passenger_state=''; $passenger_city=''; $passenger_postalCode=''; $back_img2='';
@@ -140,7 +140,7 @@ $company_name=$siteData->website_name;
 											 ?>
 												<tr>
 												<td style="border: 1px solid #e4e4e4;">
-												     -
+												    {{$BookingID}}
 												</td>
 												<td style="border: 1px solid #e4e4e4;">
 													<?php echo $Passengers[$i]['title']; ?>
@@ -150,7 +150,7 @@ $company_name=$siteData->website_name;
 														<?php  echo $Passengers[$i]['gender']; ?>
 												</td>
 												<td style="border: 1px solid #e4e4e4;">
-													<?php $Passengers[$i]['born_on']; ?>
+													<?php echo $Passengers[$i]['born_on']; ?>
 												</td>
 												<td style="border: 1px solid #e4e4e4;">
 													<?php echo $Passengers[$i]["email"]; ?><br />

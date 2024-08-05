@@ -13,6 +13,8 @@
          @endphp
          
         <?php  
+       // dd($_REQUEST['adult_names']);
+              if(isset($_REQUEST['adult_names'])){ $adult_names=$_REQUEST['adult_names']; }else{$adult_names=[];} 
                 if(!isset($_REQUEST['city_code'])){ $_REQUEST['city_code']=$pageData->city_to_code; } 
                 if(!isset($_REQUEST['city_name'])){ $_REQUEST['city_name']=$pageData->city_to;  } 
                 if(!isset($_REQUEST['date_range'])){ 
@@ -303,19 +305,19 @@ $childs =substr($childsStr,0,-1);
     </div>
 </section>
 
-<section class="card-area section--padding whole_content" >
+<section class="card-area section--padding whole_content" style="  font-family: 'Merriweather', serif;" >
     <div class="container" >
         <div class="row">
             <div class="col-lg-12">
                 <div class="filter-wrap margin-bottom-30px">
-                    <div class="filter-top d-flex align-items-center justify-content-between pb-4">
+                    <div class="filter-top d-flex align-items-center justify-content-between pb-4" style="width:110%">
                         <div>
                             <h3 class="title font-size-24"><span class="totalhotel"></span> Hotels found</h3>
                             <p class="font-size-14"><span class="mr-1 pt-1">Book with confidence:</span>No hotel booking fees</p>
                         </div>
                     </div><!-- end filter-top -->
 
-                   <div class="filter-bar d-flex align-items-center justify-content-between">
+                   <div class="filter-bar d-flex align-items-center justify-content-between" style="width:110%">
                    
                         <div class="filter-bar-filter d-flex flex-wrap align-items-center">
                         <div class="filter-option">
@@ -345,10 +347,10 @@ $childs =substr($childsStr,0,-1);
         </div><!-- end row -->
 
        
-        <div class="row">
+        <div class="row" style=" width: 120%;">
      
-<div class="col-lg-4" @if($device!='Desktop') style="display:none" @else style="display:none"  @endif>
-    <div class="wrapper filter_loader">
+<div class="col-lg-3" @if($device!='Desktop') style="display:" @else style="display:"  @endif>
+   {{--  <div class="wrapper filter_loader" style="display:none">
         <div class="item">
             <div class="animated-background round-box"></div>
             <div class="animated-background rect1"></div>
@@ -413,81 +415,128 @@ $childs =substr($childsStr,0,-1);
             <div class="animated-background rect4"></div>
             <div class="animated-background rect5"></div>
         </div>
-    </div>
+    </div> --}}
+
+<div class="sidebar mt-0" >
+    <div class="sidebar-widget">
+        <h3 class="title stroke-shape">Filter by Rating</h3>
+        <div class="sidebar-review">
+            <div class="custom-checkbox">
+                <input type="checkbox" name="starrating" value="5" onclick="Show_Hotels('filter')" id="s5">
+                <label for="s5">
+                    <span class="ratings d-flex align-items-center">
+                        <i class="la la-star"></i>
+                        <i class="la la-star"></i>
+                        <i class="la la-star"></i>
+                        <i class="la la-star"></i>
+                        <i class="la la-star"></i>
+                        <span class="color-text-3 font-size-13 ml-1 star5">(...)</span>
+                    </span>
+                </label>
+            </div>
+            <div class="custom-checkbox">
+                <input type="checkbox" name="starrating" value="4" onclick="Show_Hotels('filter')" id="s4">
+                <label for="s4">
+                    <span class="ratings d-flex align-items-center">
+                        <i class="la la-star"></i>
+                        <i class="la la-star"></i>
+                        <i class="la la-star"></i>
+                        <i class="la la-star"></i>
+                        <i class="la la-star-o"></i>
+                        <span class="color-text-3 font-size-13 ml-1 star4">(...)</span>
+                    </span>
+                </label>
+            </div>
+            <div class="custom-checkbox">
+                <input type="checkbox" name="starrating" value="3" onclick="Show_Hotels('filter')" id="s3">
+                <label for="s3">
+                    <span class="ratings d-flex align-items-center">
+                        <i class="la la-star"></i>
+                        <i class="la la-star"></i>
+                        <i class="la la-star"></i>
+                        <i class="la la-star-o"></i>
+                        <i class="la la-star-o"></i>
+                        <span class="color-text-3 font-size-13 ml-1 star3">(...)</span>
+                    </span>
+                </label>
+            </div>
+            <div class="custom-checkbox">
+                <input type="checkbox" name="starrating" value="2"  onclick="Show_Hotels('filter')" id="s2">
+                <label for="s2">
+                    <span class="ratings d-flex align-items-center">
+                        <i class="la la-star"></i>
+                        <i class="la la-star"></i>
+                        <i class="la la-star-o"></i>
+                        <i class="la la-star-o"></i>
+                        <i class="la la-star-o"></i>
+                        <span class="color-text-3 font-size-13 ml-1 star2">(...)</span>
+                    </span>
+                </label>
+            </div>
+            <div class="custom-checkbox mb-0">
+                <input type="checkbox" name="starrating" value="1" onclick="Show_Hotels('filter')" id="s1">
+                <label for="s1">
+                    <span class="ratings d-flex align-items-center">
+                        <i class="la la-star"></i>
+                        <i class="la la-star-o"></i>
+                        <i class="la la-star-o"></i>
+                        <i class="la la-star-o"></i>
+                        <i class="la la-star-o"></i>
+                        <span class="color-text-3 font-size-13 ml-1 star1">(...)</span>
+                    </span>
+                </label>
+            </div>
+        </div>
+        </div><!-- end filter by rating -->
+        <div class="sidebar-widget">
+            <h3 class="title stroke-shape">Filter by Price</h3>
+            <div class="sidebar-price-range">
+                <div class="main-search-input-item">
+                    <div class="price-slider-amount padding-bottom-20px">
+                        <label for="amount2" class="filter__label">Price:</label>
+                        <input type="text" id="amount2_1" class="amounts amount2_1">
+                        </div><!-- end price-slider-amount -->
+                        <div id="slider-range2" class="slider-range2" onclick="Show_Hotels('filter')"></div><!-- end slider-range -->
+                        </div><!-- end main-search-input-item -->
+                        <div class="btn-box pt-4">
+                            <button class="theme-btn theme-btn-small theme-btn-transparent" onclick="Show_Hotels('filter','mdl')" type="button">Apply</button>
+                        </div>
+                    </div>
+                    </div><!-- end filter by price -->
+                    <div class="sidebar-widget">
+                        <h3 class="title stroke-shape">Search By Hotel Name </h3>
+                        <div class="sidebar-category">
+                            <div class="custom-checkbox">
+                                <input name="findbynamefilter" id="findbynamefilter" placeholder="Search By Hotel Name" type="text" id="ht1"><input id="findbynamebtn" onclick="Show_Hotels('filter')" type="button" value="search" id="ht1">
+                            </div>
+                        </div>
+                        </div><!-- end filter by name -->
+                        <div class="sidebar-widget">
+                            <h3 class="title stroke-shape">Filter by Board</h3>
+                            <div class="sidebar-category board">
+                            </div>
+                            </div><!-- end filter by board -->
+                            <div class="sidebar-widget">
+                                <h3 class="title stroke-shape">Filter by Product</h3>
+                                <div class="sidebar-category product">
+                                </div>
+                                </div><!-- end filter by board -->
+                                <div class="sidebar-widget">
+                                    <h3 class="title stroke-shape">Filter by Accommodation Type</h3>
+                                    <div class="sidebar-category accommodationType">
+                                    </div>
+                                    </div><!-- end filter by board -->
+                                    <div class="sidebar-widget">
+                                        <h3 class="title stroke-shape">Facilities</h3>
+                                        <div class="sidebar-category amenity">
+                                        </div>
+                                        </div><!-- end filter by aminity -->
+                                        </div><!-- end sidebar -->
     
     </div><!-- end col-lg-4 -->
     
-    <div class="col-lg-12">
-        {{--                <div class="" id="">
-            <div class="card-item card-item-list mb-4" style="border-radius: 10px">
-                <div class="row">
-                    <div class="col-lg-3 col-12 c-item-1">
-                        <div class="card-img" style="height: 100%">
-                            <span class="badge">ROOM ONLY</span>
-                            <a href="http://127.0.0.1:8000/hotel-details/NzYz/OYO%2010274%20Hotel%20Aamara" class="d-block" style="height: 100%">
-                                <img src="./hotel-search-results_files/663786a_hb_a_001.jpg" alt="hotel-img" class="img-fluid" style="height: 100%; object-fit: cover" />
-                            </a>
-                            <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="" data-original-title="Bookmark"><i class="la la-heart-o"></i></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-12 c-item-2" style="padding: 20px 10px 20px">
-                        <div class="h-title" style="font-size: 20px">OYO 10274 Hotel Aamara (HOTEL)</div>
-                        <div>
-                            <span class="ratings mr-3">
-                                <i class="la la-star"> </i>
-                                <i class="la la-star"> </i>
-                                <i class="la la-star-o"> </i>
-                                <i class="la la-star-o"> </i>
-                                <i class="la la-star-o"> </i>
-                            </span>
-                            <span class="h-s-title">Block A road no 4 street no 9 Mahipalpur Ext407Air, Delhi</span>
-                        </div>
-                        <div>
-                            <a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=OYO%2010274%20Hotel%20Aamara%20Block%20A%20road%20no%204%20street%20no%209%20Mahipalpur%20Ext407Air,%20Delhi" class="">Show on Map</a>
-                        </div>
-                        <div>
-                            <ul style="display: flex; justify-self: start; align-items: center; flex-wrap: wrap">
-                                <li class="mr-2"><i class="la la-star"></i> Small pets allowed (under 5 kg)</li>
-                                <li class="mr-2"><i class="la la-star"></i> Large pets allowed (over 5 kg)</li>
-                                <li class="mr-2"><i class="la la-star"></i> Wheelchair-accessible</li>
-                                <li class="mr-2"><i class="la la-star"></i> Car park</li>
-                                <li class="mr-2"><i class="la la-star"></i> Garage</li>
-                                <li class="mr-2"><i class="la la-star"></i> 24-hour reception</li>
-                                <li class="mr-2"><i class="la la-star"></i> Check-in hour</li>
-                                <li class="mr-2"><i class="la la-star"></i> Check-out hour</li>
-                                <li class="mr-2"><i class="la la-star"></i> Wired Internet</li>
-                                <li class="mr-2"><i class="la la-star"></i> Wi-fi</li>
-                                <li class="mr-2"><i class="la la-star"></i> Secure parking</li>
-                                <li class="mr-2"><i class="la la-star"></i> Room service</li>
-                                <li class="mr-2"><i class="la la-star"></i> 24-hour security</li>
-                                <li class="mr-2"><i class="la la-star"></i> Air conditioning in public areas</li>
-                                <li class="mr-2"><i class="la la-star"></i> Lift access</li>
-                                <li class="mr-2"><i class="la la-star"></i> Newspapers</li>
-                                <li class="mr-2"><i class="la la-star"></i> Electric kettle</li>
-                                <li class="mr-2"><i class="la la-star"></i> Towels and bed linen</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <span>
-                                <i class="la la-star"></i><i class="la la-star"></i><i class="la la-star"></i><i class="la la-star"></i><i class="la la-star"></i>
-                            </span>
-                            <span class="text-primary">4179 Reviews</span>
-                        </div>
-                        <div>
-                            <button type="button" class="btn btn-outline-primary btn-sm">Compare</button>
-                            <button type="button" class="btn btn-link">Full Description</button>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-12 c-item-3" style="padding: 20px 10px 20px; border-left: 1px solid #0000003b; padding-right: 25px">
-                        <div class="card-price">
-                            <span class="price__from">From </span>
-                            <span class="price__num">$ 61( <span style="text-decoration: line-through"> $ 122 </span> )</span>
-                        </div>
-                        <span class="theme-btn w-100 text-center margin-top-20px Search_Now">See details<i class="la la-angle-right"></i></span>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
+    <div class="col-lg-9">
+     
         <div class="hotellist" id="hotellist" style="font-weight: 600; color: #2d2727;">
             <div class="wrapper">
                 <div class="item">
@@ -765,6 +814,7 @@ jQuery("#hotel").show();
                                     checkOut: "<?php echo $check_out; ?>",
                                     rooms: "<?php echo $_REQUEST['rooms']; ?>",
                                     adults: '<?php echo json_encode($adults); ?>',
+                                    adultNames: '<?php echo json_encode($adult_names);  ?>',
                                     childs: '<?php echo json_encode($childs); ?>',
                                     rand: Math.random()
                                 },
@@ -797,6 +847,7 @@ jQuery("#hotel").show();
                                     checkOut: "<?php echo $check_out; ?>",
                                     rooms: "<?php echo $_REQUEST['rooms']; ?>",
                                     adults: '<?php echo json_encode($adults);  ?>',
+                                    adultNames: '<?php echo json_encode($adult_names);  ?>',
                                     childs: '<?php echo json_encode($childs); ?>',
                                     childAge: '<?php echo json_encode($_REQUEST['child_age']); ?>',
                                     page_number: page_number,
@@ -849,6 +900,7 @@ jQuery("#hotel").show();
                                     checkOut: "<?php echo $check_out; ?>",
                                     rooms: "<?php echo $_REQUEST['rooms']; ?>",
                                     adults: '<?php echo json_encode($adults);  ?>',
+                                    adultNames: '<?php echo json_encode($adult_names);  ?>',
                                     childs: '<?php echo json_encode($childs); ?>',
                                     childAge: '<?php echo json_encode($_REQUEST['child_age']); ?>',
                                     page_number: page_number,
@@ -912,10 +964,10 @@ var uniqueHotels = [];
   function hideLoader() {
     // console.log("testii");
       // Check if all API calls have been completed
-      if (apiCallsCompleted >= 5) {
+      if (apiCallsCompleted >= 2) {  //4
         // Hide the loader
         // console.log("test");
-        if(apiCallsCompleted >= 6){
+        if(apiCallsCompleted >= 3){  //5
             uniqueHotels = [];
         }
         $("#cc").hide();
@@ -1042,9 +1094,9 @@ var uniqueHotels = [];
                                           innerHtml +=`<div class="card-item card-item-list mb-4" style="border-radius: 10px">
                                             <div class="row" style=" box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                                               <div class="col-lg-3 col-12 c-item-1">
-                                                <div class="card-img" style="height: 100%">
+                                                <div class="card-img" style="height: 100%; background:url(${data.result[i].thumbnail}); background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 20px 0 0 20px;">
                                                   <span class="badge">${data.result[i].boardName}</span>
-                                                  <a href="${book_link}" style="height: 100%">`+'<img style="border-radius: 20px 0 0 20px;" src="'+data.result[i].thumbnail+'" onerror="this.onerror=null; this.src=\'<?php echo url('');?>/images/nohotel.jpg\'" alt="hotel-img">'+
+                                                  <a href="${book_link}" style="height: 100%">`+'<img style="border-radius: 20px 0 0 20px;opacity:0;" src="'+data.result[i].thumbnail+'" onerror="this.onerror=null; this.src=\'<?php echo url('');?>/images/nohotel.jpg\'" alt="hotel-img">'+
                                                   `</a>
                                                   <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="" data-original-title="Bookmark"><i class="la la-heart-o"></i></div>
                                                 </div>
@@ -1173,6 +1225,7 @@ var uniqueHotels = [];
                                         productHtml+='<div class="custom-checkbox"><input onclick="Show_Hotels(\'filter\')" name="product" value="'+product[i].name+'" type="checkbox" id="p'+i+'"><label for="p'+i+'">'+product[i].name+'</label></div>';
                                     }
                                 jQuery('.product').html(productHtml);
+                                // console.log(data,1111111111);
                                 
                                 var accommodationType=data.accommodationType;
                                     var accommodationTypeHtml='';  

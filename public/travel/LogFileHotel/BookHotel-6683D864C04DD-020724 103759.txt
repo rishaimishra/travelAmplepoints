@@ -1,0 +1,9 @@
+===========Credentials(BookHotel-6683D864C04DD)=========
+hotelbeds_key=273483fe031816b44f248428a028d28c
+ hotelbeds_secret=bee7c61cbf
+ endpoint=https://api.test.hotelbeds.com/hotel-api/1.0
+===========Request(BookHotel-6683D864C04DD)=========
+{"holder":{"name":"ChildName1","surname":"ChildName1"},"rooms":[{"rateKey":"20240704|20240706|W|228|198726|STU.ST|NRF-BAR2|RO||1~1~1|2|N@06~~200154~-1392164113~N~~~NRF~9D5C34A9E442429171991655152300PAUS00000020000000008254129","paxes":[{"roomId":1,"type":"AD","name":"ChildName1","surname":"ChildName1"},{"roomId":1,"type":"CH","name":"ChildName1","surname":"ChildName1"}]},{"rateKey":"20240704|20240706|W|228|198726|STU.ST|NRF-BAR2|RO||1~1~1|2|N@06~~200154~-1392164113~N~~~NRF~9D5C34A9E442429171991655152300PAUS00000020000000008254129","paxes":[{"roomId":1,"type":"AD","name":"ChildName1","surname":"ChildName1"},{"roomId":1,"type":"CH","name":"ChildName1","surname":"ChildName1"},{"roomId":1,"type":"CH","name":"ChildName1","surname":"ChildName1"}]}],"clientReference":"6683D864C04DD","remark":"No Remark.","tolerance":"2"}
+===========Response(BookHotel-6683D864C04DD)=========
+{"auditData":{"processTime":"1","timestamp":"2024-07-02 10:37:59.413","requestHost":"10.214.131.118","serverId":"ip-10-214-137-35.eu-central-1.compute.internal#A+","environment":"[awseucentral1, awseucentral1b, ip_10_214_137_35, eucentral1, secret]","release":"","token":"E0CB5E3D22F745778626B364D6AD3647","internal":"0|06~~200154~-1392164113~N~~~NRF~9D5C34A9E442429171991655152300PAUS00000020000000008254129|US|08|2|0||||||P|||||R|0|4|~2~2~2||0||0|273483fe031816b44f248428a028d28c||||"},"error":{"code":"INVALID_DATA","message":"Error at property rooms: The distribution of paxes is not correct. The number of children specified in the paxes do not match with the requested ones."}}
+

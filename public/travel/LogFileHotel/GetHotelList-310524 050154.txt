@@ -1,0 +1,9 @@
+===========Credentials(GetHotelList)=========
+hotelbeds_key=273483fe031816b44f248428a028d28c
+ hotelbeds_secret=bee7c61cbf
+ endpoint=https://api.test.hotelbeds.com/hotel-api/1.0
+===========Request(GetHotelList)=========
+{"language":"ENG","currency":"USD","stay":{"checkIn":"2024-06-15","checkOut":"2024-06-17"},"occupancies":[{"rooms":1,"adults":1,"children":1,"paxes":[{"roomId":1,"type":"AD","name":"jeet","surname":"Surname1"},{"roomId":1,"type":"CH","age":"3","name":"ChildName1","surname":"Surname1"}]},{"rooms":1,"adults":1,"children":2,"paxes":[{"roomId":2,"type":"AD","name":"xyz","surname":"Surname1"},{"roomId":2,"type":"CH","age":"1","name":"ChildName1","surname":"Surname1"},{"roomId":2,"type":"CH","age":"1","name":"ChildName2","surname":"Surname2"}]}],"hotels":{"hotel":["105975","105974","105121","102897","102894","100951","97253","94698","93753","93378","91426","91424","91422","91420","89657","89655","89416","89021","87519","82651","82378","61281","61280","59413","59412","59410"]},"filter":{"packaging":true,"deal":true},"boards":{"included":true,"board":["RO","BB","AI","HB","FB","RR","AB","DB","GB","IB","LB"]},"sourceMarket":"US","remark":"Require non-smoking room"}
+===========Response(GetHotelList)=========
+{"auditData":{"processTime":"37","timestamp":"2024-05-31 05:01:55.942","requestHost":"34.250.205.162, 10.214.140.221, 10.214.139.115","serverId":"ip-10-214-131-52.eu-central-1.compute.internal","environment":"[awseucentral1, awseucentral1c, ip_10_214_131_52, eucentral1, secret]","release":"","token":"556742FD1716422AA203500CD3A802DA","internal":"0||US|07|0|0|||Y-RO,BB,AI,HB,FB,RR,AB,DB,GB,IB,LB|||Y||||||0||2~2~2~3|0|0||0|273483fe031816b44f248428a028d28c||||"},"hotels":{"total":0}}
+

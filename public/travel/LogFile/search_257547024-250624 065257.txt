@@ -1,0 +1,7 @@
+===========Credentials(search_257547024)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(search_257547024)=========
+{"data":{"slices":[{"origin":"DEL","destination":"BOM","departure_date":"2024-12-25"},{"origin":"BOM","destination":"DEL","departure_date":"2024-12-26"}],"passengers":[{"type":"adult"},{"type":"child"},{"type":"infant"}],"cabin_class":"economy"}}
+===========Response(search_257547024)=========
+{"errors":[{"documentation_url":"https://duffel.com/docs/api/overview/response-handling","source":{"field":"type","pointer":"/passengers/2/type"},"title":"Field value not in list","type":"validation_error","message":"Field 'type' must be one of \"adult\", \"child\", \"infant_without_seat\"","code":"validation_inclusion"}],"meta":{"request_id":"F9wsw9gadrTPC7gBULCC","status":422}}
+

@@ -162,6 +162,12 @@ Route::get('/hotel-search-results', function (){
 	return view('hotel/hotel-search-results',array('pageData' => $pageData)); 
 });
 
+
+
+
+
+
+
 Route::get('/hotel-details/{id}/{hotel_name}', function ($id,$hotel_name)  
  {     $id=base64_decode($id);
 	 $hotelSearchData = crud_model::readOne('search_results_hotelbeds',array('id'=>$id));
@@ -177,6 +183,7 @@ Route::get('/hotel-details/{id}/{hotel_name}', function ($id,$hotel_name)
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		$response = curl_exec($curl);
 		$hotelObj=json_decode($response);
+
 		
 		$hotelData =json_decode($hotelSearchData->hotelDetails,true);
 		if(count($hotelData)>0){
@@ -186,6 +193,7 @@ Route::get('/hotel-details/{id}/{hotel_name}', function ($id,$hotel_name)
 			$countRoom =count($RoomType);
 		
 			$contentArr =json_decode($hotelObj->content,true);
+			// dd($contentArr['phones']);
 			
 			$feature_image ='http://photos.hotelbeds.com/giata/xxl/'.$hotelObj->img_path;
 			if(isset($contentArr['images'])){
@@ -218,9 +226,12 @@ Route::get('/hotel-details/{id}/{hotel_name}', function ($id,$hotel_name)
 			
 			if(isset($contentArr['facilities'])){ 
 				$facilities =$contentArr['facilities'];
+				// dd($facilities);
 				foreach($facilities as $f){
 				 $groupCode =$f['facilityGroupCode'];
 				 $facilityCode =$f['facilityCode'];
+				 $facilityAmont =@$f['amount'];
+				 // dd($facilityAmont);
 				 
 				 if(isset($f['number'])){ $pre_content =$f['number'];}
 				 else if(isset($f['indLogic']) && $f['indLogic']==true){ $pre_content ='Yes';}
@@ -239,7 +250,8 @@ Route::get('/hotel-details/{id}/{hotel_name}', function ($id,$hotel_name)
 						$roomDetailDescription[]= trim($content.': '.$pre_content); 
 					  }	
 					  if($groupCode==70){
-						$amenetyData[]= array('id'=>$facilityCode,'amenity'=>$content); 
+						$amenetyData[]= array('id'=>$facilityCode,'amenity'=>$content,'amount'=>$facilityAmont); 
+
 					  }
 					  if($groupCode==30){
 						$paymentMethods[]= array('id'=>$facilityCode,'title'=>$content); 
@@ -259,6 +271,7 @@ Route::get('/hotel-details/{id}/{hotel_name}', function ($id,$hotel_name)
 				  
 				}
 			}
+			// dd($amenetyData,$facilities);
 			
 			if($Pointsofinterest==''){
 			 $Pointsofinterest =@implode("<br />",$PointsofinterestArr);	
@@ -292,19 +305,34 @@ Route::get('/hotel-details/{id}/{hotel_name}', function ($id,$hotel_name)
 		else{
 			$status =400;     
 		  }
-		  
+		  // dd($data);
+		  // dd($contentArr['phones']);
 		 //echo "<pre>amenetyData=="; print_r($amenetyData);
-	   return view('hotel/hotel-details', array('hotelSearchData' => $hotelSearchData,'pageData' => $pageData,'hotelData' => $data));	 	 
+	   return view('hotel/hotel-details', array('hotelSearchData' => $hotelSearchData,'pageData' => $pageData,'hotelData' => $data,'phones'=>$contentArr['phones']));	 	 
 	
 })->name("hotel.details");
 
-Route::get('/hotel-booking/{board}/{rateClass}/{roomCodeIds}/{id}', function ($board,$rateClass,$roomCodeIds,$id)  
+
+
+
+
+
+
+
+Route::any('/hotel-booking', [Hotel::class, 'hotelBookingNew'])->name('hotel.booking.new');
+
+
+
+Route::get('/hotel-booking/{board}/{rateClass}/{roomCodeIds}/{rateKeyIds}/{id}', function ($board,$rateClass,$roomCodeIds,$rateKeyIds,$id)  
  {     $board=base64_decode($board);  $rateClass=base64_decode($rateClass);  $roomCodeIds=base64_decode($roomCodeIds); $id=base64_decode($id);
+
 	$hotelSearchData= crud_model::readOne('search_results_hotelbeds',array('id'=>$id));	
+	// dd($board,$rateClass,$roomCodeIds,$rateKeyIds,$id,$hotelSearchData);
 	$pageData = crud_model::readOne('pages',array('page_id'=>'hotel-booking'));	
 	$countryData=DB::select("select * from country order by name ASC ");
 	return view('hotel/hotel-booking-form', array('board' => $board,'rateClass' => $rateClass,'roomCodeIds' => $roomCodeIds,'hotelSearchData' => $hotelSearchData,'pageData' => $pageData,'countryData' => $countryData)); 
 });
+
 Route::post('/hotel-final-checkout', [Hotel::class, 'HotelFinalCheckout']);
 
 Route::get('/hotel-booking/{roomid}/{hotelid}', function ($roomid,$hotelid)  
@@ -1200,3 +1228,7 @@ Route::get('/cancel/hotel-booking/{order_id}',[Hotel::class, 'BookingCancellatio
 Route::get('/processcheckoutpayment/flight/{order_id}/{user_id}', [Flight::class, 'processcheckoutpayment_flight'])->name('processcheckoutpayment_flight');
 Route::post('/createstrippayment/flight',[Flight::class, 'createstrippayment_flight'])->name('createstrippayment_flight');
 Route::any('/stripeorderstatus/flight/{order_id}/{customer_id}',[Flight::class, 'stripeorderstatus_flight'])->name('stripeorderstatus_flight');
+
+//flight cancel
+Route::post('/flight-cancel-request',[Flight::class, 'flight_cancel_req'])->name('flight.cancel.req');
+Route::get('/cancel/flight-booking/{order_id}',[Flight::class, 'FlightCancellationFromAdmin'])->name('admin.flight.cancel');

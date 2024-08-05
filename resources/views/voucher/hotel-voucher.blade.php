@@ -119,7 +119,7 @@ if(isset($book_response["booking"])){
 									<th align="right" style="border: 1px solid #e4e4e4;"><strong>Hotel Confirmation No</strong></th>
 								</tr>
 								<tr>
-									<td align="left" style="border: 1px solid #e4e4e4;"><?php echo $order_id; ?></td>
+									<td align="left" style="border: 1px solid #e4e4e4;"><?php echo @$book_response["booking"]['reference']; ?></td>
 									<td align="center" style="border: 1px solid #e4e4e4;"><?php echo $BookingID; ?></td>
 									<td align="right" style="border: 1px solid #e4e4e4;"><?php echo $itineraryId; ?></td>
 								</tr>
@@ -140,7 +140,25 @@ if(isset($book_response["booking"])){
 											<tr>
 								<td align="center"><!--<img width="35" src="https://www.abengines.com/tools/TCPDF/examples/templates/images/htktimg01.png">--></td>
 											</tr>
-											<tr><td align="center" height="15" style="color: #fff;"> <strong> 1 Guest(s)</strong> </td>
+											@php
+											    // Extract and clean up the adults and children arrays
+											    $adults = array_map(function($value) {
+											        return intval(trim($value, '"'));
+											    }, explode(',', $bookingsData->adults));
+											    
+											    $children = array_map(function($value) {
+											        return intval(trim($value, '"'));
+											    }, explode(',', $bookingsData->children));
+
+											    // Sum the cleaned-up arrays
+											    $adultsSum = array_sum($adults);
+											    $childrenSum = array_sum($children);
+
+											    // Calculate the total sum
+											    $totalSum = $adultsSum + $childrenSum;
+											@endphp
+										
+											<tr><td align="center" height="15" style="color: #fff;"> <strong> {{$totalSum}} Guest(s)</strong> </td>
 											</tr>
 										
 										</table>
@@ -177,12 +195,62 @@ if(isset($book_response["booking"])){
 						<td height="5" style="font-size:0">&nbsp;</td>
 					</tr>
 				</table>
+
+
+
+
+
+				<table width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<td>
+							<table width="100%" cellpadding="8" cellspacing="0" border="0">
+								<tr>
+									<th height="34" colspan="6" align="left" bgcolor="#f6f5f5" style="font-size: 14px; border: 1px solid #e4e4e4; color:#5e993d"><strong>GUEST DETAILS PER ROOM</strong></th>
+								</tr>
+								<tr align="left">
+									<th width="10%" style="border: 1px solid #e4e4e4;"><strong>Room No</strong></th>
+									<th width="30%" style="border: 1px solid #e4e4e4;"><strong>Room Type</strong></th>
+									<th width="40%" style="border: 1px solid #e4e4e4;"><strong>Adult Names</strong></th>
+									<th width="20%" style="border: 1px solid #e4e4e4;"><strong>Gender</strong></th>
+								</tr>
+								@foreach($adultData as $key=> $data)
+								<tr align="left">
+									<td style="border: 1px solid #e4e4e4;">{{$data->room_no}}</td>
+									<td style="border: 1px solid #e4e4e4;">{{$data->room_name}}</td>
+									<td style="border: 1px solid #e4e4e4;">{{$data->title}}. {{$data->fname}} {{$data->lname}}</td>
+									<td style="border: 1px solid #e4e4e4;">@if($data->gender=="m") Male @else Female @endif</td>
+								</tr>
+								@endforeach
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td height="5" style="font-size:0">&nbsp;</td>
+					</tr>
+				</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 				<table width="100%" cellpadding="0" cellspacing="0" border="0">
 					<tr>
 						<td style="border: 1px solid #e4e4e4;">
 							<table width="100%" cellpadding="8" cellspacing="0" border="0">
 								<tr>
-									<th height="34" colspan="6" align="left" bgcolor="#f6f5f5" style="font-size: 14px; border: 1px solid #e4e4e4; color:#5e993d"><strong>HOTEL DETAILS</strong></th>
+									<th height="34" colspan="6" align="left" bgcolor="#f6f5f5" style="font-size: 14px; border: 1px solid #e4e4e4; color:#5e993d"><strong>HOTEL INFORMATION</strong></th>
 								</tr>
 							</table>
 							<table width="100%" cellpadding="10" cellspacing="0" border="0">
@@ -195,7 +263,7 @@ if(isset($book_response["booking"])){
 											</tr>
 											<tr>
 												<td style="color:#000;"><strong style="font-size:14px; color:#039;"><?php echo $bookingsData->hotelName.",".$bookingsData->hotelCity; ?></strong>
-													<br> <span style="font-size:11px"><strong>(2- Star Property )</strong></span> </td>
+													<br> <span style="font-size:11px"><strong>({{$bookingsData->hotelRating}}- Star Property )</strong></span> </td>
 											</tr>
 											<tr>
 												<td style="color:#000;"><strong>Address : </strong><?php echo $bookingsData->hotelAddress; ?> </td>
@@ -203,11 +271,11 @@ if(isset($book_response["booking"])){
                                             <tr>
 												<td style="color:#000;">&nbsp;</td>
 											</tr>
-                                            <tr>
+                                            {{-- <tr>
 												<td style="color:#390; font-size:16px"><strong>PAID : </strong>
                                                 <?php echo $bookingsData->chargable_rate; ?>
                                                 </td>
-											</tr>
+											</tr> --}}
 										</table>
 									</td>
 									<td width="18%" align="right"> <img src="img"> </td>
@@ -220,6 +288,17 @@ if(isset($book_response["booking"])){
 					<tr>
 						<td height="5" style="font-size:0">&nbsp;</td>
 					</tr>
+
+					<tr>
+						<td>
+							<table width="100%" cellpadding="8" cellspacing="0" border="0">
+								<tr align="left" height="34" bgcolor="#f6f5f5">
+									<th width="100%" style="font-size: 14px; border: 1px solid #e4e4e4; color:#5e993d"><strong>TOTAL ROOMS:{{ $bookingsData->rooms}}</strong></th>
+								</tr>
+							</table>
+						</td>
+					</tr>
+
 					<tr>
 						<td>
 							<table width="100%" cellpadding="8" cellspacing="0" border="0">
@@ -281,6 +360,16 @@ if(isset($book_response["booking"])){
 								<tr>
 									<td style="border: 1px solid #e4e4e4;">
 										<?php echo $pageData->content; ?>
+									</td>
+								</tr>
+							</table>
+
+							<table width="100%" cellspacing="0" cellpadding="10" border="0">
+								<tr>
+									<td style="border: 1px solid #e4e4e4;">
+										Payable through {{@$book_response["booking"]['hotel']['supplier']['name']}} , acting as agent for the service operating company, details of which can be provided upon request. 
+										VAT: {{@$book_response["booking"]['hotel']['supplier']['vatNumber']}} ,  
+										Reference: {{@$book_response["booking"]['reference']}}
 									</td>
 								</tr>
 							</table>

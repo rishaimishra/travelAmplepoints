@@ -19,7 +19,7 @@ class Transfers extends Controller
 		public $endpoint="https://api.test.hotelbeds.com/transfer-api/1.0";
 		
 		public function __construct(){
-		    $data= crud_model::readOne('user',array('id'=>1)); //$this->crud_model->readOne('website_setting',1);
+		    $data= crud_model::readOne('users',array('user_id'=>1)); //$this->crud_model->readOne('website_setting',1);
 		   	$common_data= $data->common_data;
 			$common_dataArr= json_decode($common_data,true);
 			$this->currency=$data->currency;
@@ -803,13 +803,13 @@ $booking_mode='Test';
  
  		
 	public function WalletDeduct($amount,$currency,$user_id,$order_id){ 
-		 $userData = crud_model::readOne('user',array('id'=>$user_id));
+		 $userData = crud_model::readOne('users',array('user_id'=>$user_id));
 		 $walletAmt=$userData->wallet;
 		 $finalAmt=$walletAmt-$amount;
 		 		
 		 $walletAmt=$this->getWalletBal($user_id);
 		 if($amount<=$walletAmt){
-		 	  $status = Crud_Model::updateData('user',array('wallet'=>$finalAmt),array('id'=>$user_id));
+		 	  $status = Crud_Model::updateData('users',array('wallet'=>$finalAmt),array('user_id'=>$user_id));
 			  $data = array(
 				  'agent_id' => $user_id,
 				  'currency' =>$currency,
@@ -841,7 +841,7 @@ $booking_mode='Test';
 	}
 	
 	public function getWalletBal($user_id){ 
-		 $userData = crud_model::readOne('user',array('id'=>$user_id));
+		 $userData = crud_model::readOne('users',array('user_id'=>$user_id));
 		 $walletAmt=$userData->wallet;
 		 return $walletAmt;
 	}	
@@ -852,7 +852,7 @@ $booking_mode='Test';
 	
 	//  create user start
 	public function createUser($first_name,$last_name,$email,$phone,$address,$city,$country){
-		$obj= crud_model::readOne('user',array('email'=>$email)); 
+		$obj= crud_model::readOne('users',array('email'=>$email)); 
 
 		if(!is_object($obj)){
 			$password=rand();
@@ -869,7 +869,7 @@ $booking_mode='Test';
 				'status'=>'active',
 				'date_time'=>date('Y-m-d H:i:s')
 			);
-			$value = Crud_Model::insertData('user',$data);
+			$value = Crud_Model::insertData('users',$data);
 			$this->UserCreateMailSend($email,$password,$first_name);
 			return DB::getPdo()->lastInsertId();
 		}else{ return $obj->id; }

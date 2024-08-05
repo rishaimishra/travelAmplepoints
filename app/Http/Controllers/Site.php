@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Hash;
+
+
 
 class Site extends Controller
 {
@@ -92,7 +95,7 @@ class Site extends Controller
 		
 		public function __construct(){
 			$this->emailObj= new EmailController();
-			$data= crud_model::readOne('user',array('website'=>str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
+			$data= crud_model::readOne('users',array('website'=>str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
 		   	//$data= crud_model::readOne('user',array('id'=>1)); //$this->crud_model->readOne('website_setting',1);
 		   	$common_data= $data->common_data;
 			$common_dataArr= json_decode($common_data,true);
@@ -105,7 +108,7 @@ class Site extends Controller
  	$id=$_REQUEST['client_id']; 
 	if(session()->get('user_type')=='agent' ){ $id=session()->get('user_id'); }
    	$currency_list = crud_model::readByCondition('currency_rates',array('published'=>'Yes'));
-	$siteData = crud_model::readOne('user',array('id'=>$id)); //crud_model::readOne('website_setting',array('id'=>1));
+	$siteData = crud_model::readOne('users',array('user_id'=>$id)); //crud_model::readOne('website_setting',array('id'=>1));
 	
 		//MOBILE DEVICE CHECK
 		$isMob = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile"));
@@ -127,7 +130,7 @@ class Site extends Controller
   
   public function Index3($id=0){
     // Fetch all records
-    $userData['data'] = Crud_Model::read('user','1');
+    $userData['data'] = User::where('user_id','1')->first();  //Crud_Model::read('users','1');
     return $userData;
   }
   public function ChangeCurrency(Request $request)  
@@ -142,7 +145,7 @@ class Site extends Controller
 			'currency' => json_encode($common_dataArr),
 			'currency_symbol' => $p_currencyArr[0],
 		   );
-		   $value = Crud_Model::updateData('user',$t_data,array('id'=>$id));
+		   $value = Crud_Model::updateData('users',$t_data,array('user_id'=>$id));
        return redirect($redirectUrl); 
     }
 	
@@ -166,19 +169,19 @@ class Site extends Controller
 			'first_name' => $request->input('first_name'),
 			'last_name' => $request->input('last_name'),
 			'email' => $request->input('email'),
-			'phone' => $request->input('contact_number'),
+			'mobile' => $request->input('contact_number'),
 			'address' => $request->input('address'),
 			'email' => $request->input('email'),
-			'password' => $request->input('pass1'),
+			'password' =>  Hash::make($request->input('pass1')), //$request->input('pass1'),
 			'status'=>$request->input('status'),
 			'images'=>$images,
 			'common_data'=>$common_data,
 			'website'=>str_replace('www.','',$_SERVER['SERVER_NAME']),
 		);
             // Insert
-    $value = Crud_Model::insertData('user',$data); 
+    $value = Crud_Model::insertData('users',$data); 
 	if($value>1){
-		$this->emailObj->AccountActivationMail($value);
+		// $this->emailObj->AccountActivationMail($value);
 		if($user_type=="customer"){
 			// dd(1);
 			$res=$this->insertAmplepointDatabase($data);
@@ -313,24 +316,36 @@ public function userInserFromAmplepoint(Request $request){
 		'password' => ($request->input('password')),
 		);
 		
-		$check = Crud_Model::auth_check('user',$data);
-		if($check){
-			$result_user = json_decode(json_encode($check), true);
-			$user_type=$result_user['user_type'];
-			if($result_user['status'] != "active" and $result_user['user_type']=='agent' ){
-					return redirect('/login?msg=Your Account is Not Activate.');
-			}
-			// dd($check);
-			$user = User::find($check->id);
-            // dd($user);
-			Auth::login($user);
+		//$check = Crud_Model::auth_check('users',$data);
+ // Fetch the user by email
+        $check = User::where('email', $request->input('email'))->first();
+
+        // Verify the password
+        if ($check && Hash::check($request->input('password'), $check->password)) {
+            // Convert user object to array
+            $result_user = json_decode(json_encode($check), true);
+            $user_type = $result_user['user_type'];
+
+            // Check if the user is an agent and inactive
+            if ($result_user['status'] !== 'active' && $user_type === 'agent') {
+                return redirect('/login?msg=Your Account is Not Activated.');
+            }
+
+            // Log the user in
+            Auth::login($check);
+
+            // Redirect to the intended page or dashboard
+            // return redirect()->intended('dashboard');
+        // }else{
+        	
+        // }
 			// dd(Auth::user()->id);
 
 
 
 			
 			
-			Session::put('user_id', $result_user['id']);
+			Session::put('user_id', $result_user['user_id']);
 			Session::put('email', $result_user['email']);
 			Session::put('first_name', $result_user['first_name']);
 			Session::put('last_name', $result_user['last_name']);
@@ -369,7 +384,7 @@ public function userInserFromAmplepoint(Request $request){
 		   $t_data = array(
 			'password' => $password,
 		   );
-		   $value = Crud_Model::updateData('user',$t_data,array('email'=>$email));
+		   $value = Crud_Model::updateData('users',$t_data,array('email'=>$email));
 		$data=array('error'=>'No','msg'=>'successfull');
 		echo json_encode($data);
 		die;
@@ -390,7 +405,7 @@ public function userInserFromAmplepoint(Request $request){
 		}
 
    public static function convertCurrencyRateFlight($from,$price){
-		$data= crud_model::readOne('user',array('id'=>1)); //$this->crud_model->readOne('website_setting',1);
+		$data= crud_model::readOne('users',array('user_id'=>1)); //$this->crud_model->readOne('website_setting',1);
 		$to=$data->currency;
 		$currency_symbol=$data->currency_symbol;
 		
@@ -532,20 +547,29 @@ public function adminLogin(Request $request){
 		'password' => ($request->input('password')),
 		);
 		
-		$check = Crud_Model::auth_check('user',$data);
-		if($check){
-			$result_user = json_decode(json_encode($check), true);
-			$user_type=$result_user['user_type'];
-			
-			// dd($check);
-			$user = User::where('id',$check->id)->where('user_type','admin')->first();
-			if(!$user){
-				// dd(1);
-                  return redirect('/admin-login?msg=Credential missmatch.');
-			}
-            // dd($user);
-			Auth::login($user);
-			// dd(Auth::user()->id);
+		 // Fetch the user by email
+        $check = User::where('email', $request->input('email'))->where('user_type','admin')->first();
+
+        // Verify the password
+        if ($check && Hash::check($request->input('password'), $check->password)) {
+            // Convert user object to array
+            $result_user = json_decode(json_encode($check), true);
+            $user_type = $result_user['user_type'];
+
+            // Check if the user is an agent and inactive
+            if ($result_user['status'] !== 'active' && $user_type === 'agent') {
+                return redirect('/login?msg=Your Account is Not Activated.');
+            }
+
+            // Log the user in
+            Auth::login($check);
+
+            // Redirect to the intended page or dashboard
+            // return redirect()->intended('dashboard');
+   //      }else{
+   //      	 return redirect('/admin-login?msg=Credential missmatch.');
+   //      }
+			// // dd(Auth::user()->id);
 
 
 			

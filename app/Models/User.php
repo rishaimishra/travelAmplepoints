@@ -17,7 +17,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $table="user";
+    protected $table="users";
+    protected $primaryKey = 'user_id';
     protected $fillable = [
         'name',
         'email',
@@ -42,4 +43,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    // Add the accessor to return `user_id` as `id`
+       protected $appends = ['id', 'ample'];
+
+     // Add accessor for `id`
+    public function getIdAttribute()
+    {
+        return $this->attributes['user_id'];
+    }
+
+     public function getAmpleAttribute()
+    {
+        return $this->attributes['total_ample'];
+    }
 }

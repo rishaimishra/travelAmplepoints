@@ -18,51 +18,7 @@
 ================================= -->
 
 <div class="section-block"></div>
-<section class="info-area info-bg padding-top-90px padding-bottom-70px">
-<div class="container">
-<div class="row">
-<div class="col-lg-4 responsive-column"> <a href="{{ asset('contact')}}" class="icon-box icon-layout-2 d-flex">
-<div class="info-icon flex-shrink-0 bg-rgb text-color-2"> <i class="la la-phone"></i> </div>
 
-<div class="info-content">
-<h4 class="info__title">Need Help? Contact us</h4>
-<p class="info__desc"> {{$common['email1']}} </p>
-<p class="info__desc"> {{$common['contact1']}} </p>
-</div>
-
-</a>
-
-</div>
-
-<div class="col-lg-4 responsive-column"> <a href="#" class="icon-box icon-layout-2 d-flex">
-<div class="info-icon flex-shrink-0 bg-rgb-2 text-color-3"> <i class="la la-money"></i> </div>
-
-<div class="info-content">
-<h4 class="info__title">Payments</h4>
-<p class="info__desc"> We Accept All Credit Cards Payment?  </p>
-</div>
-
-</a>
-
-</div>
-
-<div class="col-lg-4 responsive-column"> <a href="{{ asset('privacy-policy')}}" class="icon-box icon-layout-2 d-flex">
-<div class="info-icon flex-shrink-0 bg-rgb-3 text-color-4"> <i class="la la-times"></i> </div>
-
-<div class="info-content">
-<h4 class="info__title">Cancel Policy</h4>
-<p class="info__desc">Click Here to Know More</p>
-</div>
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
 
 <section class="cta-area subscriber-area section-bg-2 padding-top-60px padding-bottom-60px">
 <div class="container">
@@ -165,6 +121,48 @@
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
         </div><!-- end row -->
+
+
+
+        <section class="info-area info-bg padding-top-90px padding-bottom-70px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 responsive-column"> <a href="{{ asset('contact')}}" class="icon-box icon-layout-2 d-flex">
+                <div class="info-icon flex-shrink-0 bg-rgb text-color-2"> <i class="la la-phone"></i> </div>
+                <div class="info-content">
+                    <h4 class="info__title">Need Help? Contact us</h4>
+                    <p class="info__desc"> {{$common['email1']}} </p>
+                    <p class="info__desc"> {{$common['contact1']}} </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 responsive-column"> <a href="#" class="icon-box icon-layout-2 d-flex">
+            <div class="info-icon flex-shrink-0 bg-rgb-2 text-color-3"> <i class="la la-money"></i> </div>
+            <div class="info-content">
+                <h4 class="info__title">Payments</h4>
+                <p class="info__desc"> We Accept All Credit Cards Payment?  </p>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-4 responsive-column"> <a href="{{ asset('privacy-policy')}}" class="icon-box icon-layout-2 d-flex">
+        <div class="info-icon flex-shrink-0 bg-rgb-3 text-color-4"> <i class="la la-times"></i> </div>
+        <div class="info-content">
+            <h4 class="info__title">Cancel Policy</h4>
+            <p class="info__desc">Click Here to Know More</p>
+        </div>
+    </a>
+</div>
+</div>
+</div>
+</section>
+
+
+
+
+
+
+
+
         <div class="row align-items-center">
             <div class="col-lg-8">
                 <div class="term-box footer-item">
@@ -185,6 +183,16 @@
                 </div>
             </div><!-- end col-lg-4 -->
         </div><!-- end row -->
+
+
+
+
+
+
+
+
+
+
     </div><!-- end container -->
     <div class="section-block mt-4"></div>
     <div class="container">

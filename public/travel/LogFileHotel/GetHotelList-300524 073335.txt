@@ -1,0 +1,9 @@
+===========Credentials(GetHotelList)=========
+hotelbeds_key=273483fe031816b44f248428a028d28c
+ hotelbeds_secret=bee7c61cbf
+ endpoint=https://api.test.hotelbeds.com/hotel-api/1.0
+===========Request(GetHotelList)=========
+{"language":"ENG","currency":"USD","stay":{"checkIn":"2024-06-01","checkOut":"2024-06-03"},"occupancies":[{"rooms":1,"adults":"2","children":"1","paxes":[{"type":"AD","age":40},{"type":"AD","age":41},{"type":"CH","age":"2"}]},{"rooms":1,"adults":",","children":",","paxes":[]}],"hotels":{"hotel":["105975","105974","105121","102897","102894","100951","97253","94698","93753","93378","91426","91424","91422","91420","89657","89655","89416","89021","87519","82651","82378","61281","61280","59413","59412","59410"]},"filter":{"packaging":true,"deal":true},"boards":{"included":true,"board":["RO","BB","AI","HB","FB","RR","AB","DB","GB","IB","LB"]},"sourceMarket":"US","remark":"Require non-smoking room"}
+===========Response(GetHotelList)=========
+{"auditData":{"timestamp":"2024-05-30 07:33:36.089","requestHost":"10.214.139.81","serverId":"ip-10-214-131-52.eu-central-1.compute.internal","environment":"[awseucentral1, awseucentral1c, ip_10_214_131_52, eucentral1, secret]","release":"","token":"3D868263244146BF99F4D23F13F4AD3F","internal":"0||||0|0||||||||||||0||||0||0|273483fe031816b44f248428a028d28c||||"},"error":{"code":"INVALID_REQUEST","message":"Error at property occupancies->adults: Cannot deserialize value of type `java.lang.Integer` from String \",\": not a valid Integer value\n"}}
+

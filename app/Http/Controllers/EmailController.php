@@ -28,7 +28,7 @@ class EmailController extends Controller
 	
 	public $website_name='';
 	  public function __construct(){
-		    $data= crud_model::readOne('user',array('website'=>str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
+		    $data= crud_model::readOne('users',array('website'=>str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
 			$this->website_name = $data->website_name;
 		   	$common_data= $data->common_data;
 			$common_dataArr= json_decode($common_data,true);
@@ -39,7 +39,7 @@ class EmailController extends Controller
 	/*Send Otp Start*/
 	public function SendOtp(Request $request){ 
 		$email=$request['email'];
-		$user_check = crud_model::readOne('user',array('email'=>$email)); 
+		$user_check = crud_model::readOne('users',array('email'=>$email)); 
 		if(is_object($user_check)){
 			$otp=rand(10000,99999); 
 			 $data = array(
@@ -71,9 +71,9 @@ class EmailController extends Controller
 		$order_id=$request['order_id'];
 	    $bookingsData = crud_model::readOne('bookings',array('order_id'=>$order_id));
 	    if(session()->get('user_type')=='agent' ){
-	   		$siteData = crud_model::readOne('user',array('id'=>$bookingsData->user_id));
+	   		$siteData = crud_model::readOne('users',array('user_id'=>$bookingsData->user_id));
 		}else{
-			$siteData = crud_model::readOne('user',array('website'=> str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
+			$siteData = crud_model::readOne('users',array('website'=> str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
 		} 
 		
 		
@@ -129,9 +129,9 @@ class EmailController extends Controller
 		
 	    $bookingsData = crud_model::readOne('twc_booking',array('order_id'=>$order_id));
 		if(session()->get('user_type')=='agent' ){
-	   		$siteData = crud_model::readOne('user',array('id'=>$bookingsData->user_id));
+	   		$siteData = crud_model::readOne('users',array('user_id'=>$bookingsData->user_id));
 		}else{
-			$siteData = crud_model::readOne('user',array('website'=> str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
+			$siteData = crud_model::readOne('users',array('website'=> str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
 		} 
 		
 		
@@ -187,9 +187,9 @@ class EmailController extends Controller
 		
 	    $bookingsData = crud_model::readOne('twc_booking',array('order_id'=>$order_id));
 		if(session()->get('user_type')=='agent' ){
-	   		$siteData = crud_model::readOne('user',array('id'=>$bookingsData->user_id));
+	   		$siteData = crud_model::readOne('users',array('user_id'=>$bookingsData->user_id));
 		}else{
-			$siteData = crud_model::readOne('user',array('website'=> str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
+			$siteData = crud_model::readOne('users',array('website'=> str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
 		} 
 		
 		
@@ -245,9 +245,9 @@ class EmailController extends Controller
 		
 	    $bookingsData = crud_model::readOne('twc_booking',array('order_id'=>$order_id));
 		if(session()->get('user_type')=='agent' ){
-	   		$siteData = crud_model::readOne('user',array('id'=>$bookingsData->user_id));
+	   		$siteData = crud_model::readOne('users',array('user_id'=>$bookingsData->user_id));
 		}else{
-			$siteData = crud_model::readOne('user',array('website'=> str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
+			$siteData = crud_model::readOne('users',array('website'=> str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
 		} 
 		
 		
@@ -299,12 +299,12 @@ class EmailController extends Controller
 	/*AccountActivationMail  Start*/
 	public function AccountActivationMail($id){ 
 		
-	    $siteData = crud_model::readOne('user',array('id'=>$id));
+	    $siteData = crud_model::readOne('users',array('user_id'=>$id));
 		
 			 $data = array(
 				'siteData' => $siteData,
 				'email' => $siteData->email,
-				'user_id' => $siteData->id,
+				'user_id' => $siteData->user_id,
 				'website_name' => $this->website_name,
 				'show_price' => 'No', 
 			); 
@@ -326,7 +326,7 @@ class EmailController extends Controller
 	/*AccountActivatedMail  Start*/
 	public function AccountActivatedMail($id){ 
 		
-	    $siteData = crud_model::readOne('user',array('id'=>$id));
+	    $siteData = crud_model::readOne('users',array('user_id'=>$id));
 		
 			 $data = array(
 				'siteData' => $siteData,
@@ -355,7 +355,7 @@ class EmailController extends Controller
 	public function WalletFundRequestMail($id){ 
 		
 	    $walletData = crud_model::readOne('wallet_fund_request',array('id'=>$id));
-		$userData = crud_model::readOne('user',array('id'=>$walletData->agent_id));
+		$userData = crud_model::readOne('users',array('user_id'=>$walletData->agent_id));
 		
 			 $data = array(
 			 	'tid' => $id,
@@ -391,7 +391,7 @@ class EmailController extends Controller
 	public function WalletFundMail($id){ 
 		
 	    $walletData = crud_model::readOne('wallet_fund_request',array('id'=>$id));
-		$userData = crud_model::readOne('user',array('id'=>$walletData->agent_id));
+		$userData = crud_model::readOne('users',array('user_id'=>$walletData->agent_id));
 		
 			 $data = array(
 			 	'tid' => $id,
@@ -425,7 +425,7 @@ class EmailController extends Controller
 	public function WalletRejectdMail($id){ 
 		
 	    $walletData = crud_model::readOne('wallet_fund_request',array('id'=>$id));
-		$userData = crud_model::readOne('user',array('id'=>$walletData->agent_id));
+		$userData = crud_model::readOne('users',array('user_id'=>$walletData->agent_id));
 		
 			 $data = array(
 			 	'tid' => $id,
@@ -547,7 +547,7 @@ class EmailController extends Controller
 		
 	    // $enquiryData = crud_model::readOne('visa',array('id'=>$id));
 		$visaData = crud_model::readByCondition('visa',array('id'=>$visa_id));
-		$agentData = crud_model::readByCondition('user',array('id'=>$agent_id));
+		$agentData = crud_model::readByCondition('users',array('user_id'=>$agent_id));
 
 
 		if($visaData[0]->visa_nature == 'uae-visa'){
@@ -600,7 +600,7 @@ class EmailController extends Controller
 	public function VisaStatusUpdatedMail($visa_id, $agent_id){ 
 		
 		$visaData = crud_model::readByCondition('visa',array('id'=>$visa_id));
-		$agentData = crud_model::readByCondition('user',array('id'=>$agent_id));
+		$agentData = crud_model::readByCondition('users',array('user_id'=>$agent_id));
 
 		if($visaData[0]->visa_nature == 'uae-visa'){
 			$visa_nature = "UAE";

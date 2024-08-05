@@ -35,17 +35,21 @@ class Hotel extends Controller
 	   	public $currency='';  public $currency_symbol=''; public $signature=''; public $headerData='';
 		public $hotelbeds_key='';
 		public $hotelbeds_secret=''; 
-		public $endpoint='https://api.test.hotelbeds.com/hotel-api/1.0';
+		public $endpoint= 'https://api.test.hotelbeds.com/hotel-api/1.0';
+		//'https://api.test.hotelbeds.com/hotel-api/1.0';
+		//'https://api.hotelbeds.com/hotel-api/1.0';
 		
 		public function __construct(){
 			$this->emailObj= new EmailController();
 			$this->markupObj = new Markup();
-		    $data= crud_model::readOne('user',array('id'=>1)); //$this->crud_model->readOne('website_setting',1);
+		    $data= crud_model::readOne('users',array('user_id'=>1)); //
+		    // dd($data);
+		    // $this->crud_model->readOne('website_setting',1);
 		   	$common_data= $data->common_data;
 			$common_dataArr= json_decode($common_data,true);
 			$this->currency=$data->currency;
 			$this->currency_symbol=$data->currency_symbol;
-			$this->hotelbeds_key=$common_dataArr['hotelbeds_key'];
+			$this->hotelbeds_key='273483fe031816b44f248428a028d28c'; //$common_dataArr['hotelbeds_key'];
 			$this->hotelbeds_secret=$common_dataArr['hotelbeds_secret'];
 			$signature = hash("sha256", $this->hotelbeds_key.$this->hotelbeds_secret.time());
 			$this->headerData=array('Content-Type: application/json','Accept:application/json','Api-key:'.$this->hotelbeds_key, 'X-Signature:'.$signature);
@@ -98,7 +102,8 @@ class Hotel extends Controller
 
 
 // GetHotelList Start
-	public function GetHotelList(Request $request){		
+	public function GetHotelList(Request $request){	
+	// dd($this->signature,$this->headerData);	
 		$search_Session_Id=$request["search_session"];
 		$regionid=$request['regionid'];
 		$zonecode=$request['zonecode'];
@@ -115,36 +120,145 @@ class Hotel extends Controller
 		$orderfld ='LowRate';
 		$orderby ='ASC';
 	  
-		$checkIn = str_replace('/', '-', $_REQUEST['checkIn']);
+	   $FormattedCheckIn=\DateTime::createFromFormat('m/d/Y', $checkIn)->format('Y/m/d');
+		$formattedCheckOut=\DateTime::createFromFormat('m/d/Y', $checkOut)->format('Y/m/d');
+		
+	  	//dd($checkIn,$checkOut,	$FormattedCheckIn,	$formattedCheckOut);
+	  	
+		$checkIn = str_replace('/', '-', 	$FormattedCheckIn);
 		$checkIn=date('Y-m-d',strtotime($checkIn));
-		$checkOut = str_replace('/', '-', $_REQUEST['checkOut']);
+		$checkOut = str_replace('/', '-', 	$formattedCheckOut);
 		$checkOut=date('Y-m-d',strtotime($checkOut));
 
+
+//     	$checkIn = str_replace('/', '-', $_REQUEST['checkIn']);
+// 		$checkIn=date('Y-m-d',strtotime($checkIn));
+// 		$checkOut = str_replace('/', '-', $_REQUEST['checkOut']);
+// 		$checkOut=date('Y-m-d',strtotime($checkOut));
+		
+// 		dd($checkIn,$checkOut);
+
+		
    		$actionUrl=$this->endpoint.'/hotels';
 		$adultArr =json_decode($adults,true);  
 		$childArr = json_decode($childs,true); 	
 		$childAgeArr =json_decode($childAge,true); 
 		$occupancies =array();
-		
-		for($i=0;$i<$rooms;$i++){
-			 $total_adults=0;
-			 $total_childs=0;
-			 $packs =array();	
 
-			 $adt =$adultArr[$i];
-			 $chd =$childArr[$i];
+		// =================================================
+
+
+
+
+		//===================================================
+		// dd($request->all(),$adultArr,$childArr,$childAgeArr);
 		
-			 for($b=0;$b<$adt;$b++){
-			 $packs[] =array('type'=>'AD','age'=>(40+$b));
-			 }
+		// for($i=0;$i<$rooms;$i++){
+		// 	 $total_adults=0;
+		// 	 $total_childs=0;
+		// 	 $packs =array();	
+
+		// 	 $adt =$adultArr[$i];
+		// 	 $chd =$childArr[$i];
+		
+		// 	 for($b=0;$b<$adt;$b++){
+		// 	 $packs[] =array('type'=>'AD','age'=>(40+$b));
+		// 	 }
 			 
-			 if($chd>0){	
-			  for($d=0;$d<$chd;$d++){	 
-				 $packs[] =array('type'=>'CH','age'=> $childAgeArr[$i][$d]);
-				}
-			 }
-			 $occupancies[] =array('rooms'=>1,'adults'=>$adt,'children'=>$chd,'paxes'=>$packs);	
-		}
+		// 	 if($chd>0){	
+		// 	  for($d=0;$d<$chd;$d++){	 
+		// 		 $packs[] =array('type'=>'CH','age'=> $childAgeArr[$i][$d]);
+		// 		}
+		// 	 }
+		// 	 $occupancies[] =array('rooms'=>1,'adults'=>$adt,'children'=>$chd,'paxes'=>$packs);	
+		// }
+
+		// dd($occupancies);
+
+
+
+
+
+
+         // ================== new code for occupanc start =====================//
+
+	// Convert JSON string to array, or set to empty array if not convertible
+$decodedChildAge = json_decode($childAge, true) ?: [];
+
+// Ensure each room has its own array of child ages
+$childAges = [];
+for ($i = 0; $i < $rooms; $i++) {
+    // Extract inner array if present, or use an empty array
+    $innerArray = isset($decodedChildAge[$i]) ? $decodedChildAge[$i] : [];
+    $childAges[] = $innerArray;
+}
+
+// Convert child ages array to JSON
+$desiredChildAge = json_encode($childAges);
+
+// Construct the form request array
+$formRequest = [
+    "rooms" => $rooms,
+    "adults" => $adultArr,
+    "childs" => $childArr,
+    "childAge" => $desiredChildAge,
+];
+
+// Convert string data to arrays
+$rooms = (int) $formRequest['rooms'];
+$adults = array_map('intval', explode(',', $formRequest["adults"]));
+$children = array_map('intval', explode(',', $formRequest["childs"]));
+$childAges = json_decode($formRequest["childAge"], true);
+$adultNames = json_decode($request['adultNames'], true);
+
+// Initialize the occupancies array
+$occupancies = [];
+
+// Loop through the data to build the occupancies array
+for ($i = 0; $i < $rooms; $i++) {
+    $occupancy = [
+        'rooms' => 1,
+        'adults' => $adults[$i],
+        'children' => $children[$i],
+        'paxes' => []
+    ];
+
+    // Add adults to the paxes array
+    for ($j = 0; $j < $adults[$i]; $j++) {
+        $name = isset($adultNames[$i]) ? $adultNames[$i] : 'AdultName' . ($j + 1);
+        $occupancy['paxes'][] = [
+            'roomId' => $i + 1,
+            'type' => 'AD', // AD = Adult
+            'name' => $name,// Placeholder name, replace with actual name if available
+            'surname' => 'Surname' . ($j + 1) // Placeholder surname, replace with actual surname if available
+        ];
+    }
+
+    // Add children to the paxes array
+    for ($j = 0; $j < $children[$i]; $j++) {
+        $age = isset($childAges[$i][$j]) ? $childAges[$i][$j] : ''; // Get child's age
+        $occupancy['paxes'][] = [
+            'roomId' => $i + 1,
+            'type' => 'CH', // CH = Child
+            'age' => $age,
+            'name' => 'ChildName' . ($j + 1), // Placeholder name, replace with actual name if available
+            'surname' => 'Surname' . ($j + 1) // Placeholder surname, replace with actual surname if available
+        ];
+    }
+
+    // Add the occupancy to the occupancies array
+    $occupancies[] = $occupancy;
+}
+
+
+			// Print the occupancies array (or use it in your payload)
+			// print_r($occupancies);
+			// dd($occupancies);
+	         // dd($request->all(),$adultArr,$childArr,$childAgeArr,$occupancies);
+	        // ================== new code for occupanc end =====================//
+
+
+
 
 		$limit =200;
 		$size=200;
@@ -175,7 +289,14 @@ class Hotel extends Controller
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		$response = curl_exec($curl);
 		$res=json_decode($response,true);
-		$PropertyCount=$res['PropertyCount'];
+		//======================================= 2
+		 if (isset($res['PropertyCount'])) {
+		     	$PropertyCount=$res['PropertyCount'];
+		 }else{
+		  // dd($res);
+		  die;
+		 }
+		 // ==================================== 2
 		$hotel=$res['hotel'];
 		// dd($res,$hotel);
 		
@@ -189,6 +310,7 @@ class Hotel extends Controller
 	$brdlist=array('RO','BB','AI','HB','FB','RR','AB','DB','GB','IB','LB');
 	$boardarr =array('included'=>true,'board'=>$brdlist);
 	
+	
 	$reviewsArr[] =array('type'=>'TRIPADVISOR','maxRate'=>5,'minReviewCount'=>1);
 	$accommodationsArr=array('HOTEL','RESORT','HOSTEL','HOMES','APTHOTEL','APARTMENT');
 	$postdata =array('language'=>'ENG',
@@ -196,12 +318,16 @@ class Hotel extends Controller
 	                 'stay'=>array('checkIn'=>$checkIn,'checkOut'=>$checkOut),  //,'shiftDays'=>0
 	                 'occupancies'=>$occupancies,
                      'hotels'=>$hotel,//['893849','893839']
-					 'filter'=>array('packaging'=>true),
+					 'filter'=>array('packaging'=>true,"deal"=> true),
 					 'boards'=>$boardarr,
+					 'sourceMarket'=> "US",
+					 'remark' => 'Require non-smoking room',
+				
+
 					 //'filter'=>array('accommodations'=>$accommodationsArr)
 					 //'accommodations'=>$accommodationsArr
 	                );
-
+// dd($postdata);
 
 //echo "<pre>postdata=="; print_r($postdata);
 	$ch = curl_init();
@@ -225,6 +351,7 @@ class Hotel extends Controller
 	$data=array();
 	if(isset($results['hotels']['hotels'])){
 		// dd(1270);
+		// dd($postdata,$results);
 		$hotelData =$results['hotels']['hotels']; 
 		$dd=count($hotelData);
 		$status =200; 
@@ -236,7 +363,10 @@ class Hotel extends Controller
 		if(isset($hotelData[$i]['rooms'][0]['rates'][0]['rateClass'])){
 		 $hotel_id =$hotelData[$i]['code'];
 		 $RoomTypes =$hotelData[$i]['rooms'];  
+		  // dd( $rooms , $adultArr , $childArr , $hotelData[$i]['currency'] , $RoomTypes);
+
 		 $RoomConbination=$this->ManageRoomType($rooms,$adultArr,$childArr,$hotelData[$i]['currency'],$RoomTypes);
+
 		// echo "<pre>RoomConbination==".json_encode($RoomConbination); 
 		 
 		//$RoomConbination =ManageRoomType($rooms,$adults,$children,$api_currency,$RoomTypes); 
@@ -248,7 +378,7 @@ class Hotel extends Controller
 			// This section is taking more than 2.5 seconds
 			if(in_array('NOR',$keyArr)){$firstKey ='NOR';}
 			else{$firstKey = $keyArr[0];}
-			$roomArr =$roomData[$firstKey];
+			$roomArr =@$roomData[$firstKey];
 			$lowRate=0;
 			$base_price=0;
 			$adminPrice =0;
@@ -256,16 +386,17 @@ class Hotel extends Controller
 			
 			
 				for($r=0;$r<count($roomArr);$r++){ 
-					$api_price=($api_price+$roomArr[$r]['rates']['api_price']);
-					$base_price=($base_price+$roomArr[$r]['rates']['base_price_in_live_currency']);
-					$adminPrice=($adminPrice+$roomArr[$r]['rates']['adminPrice']);
-					$lowRate=($lowRate+$roomArr[$r]['rates']['net']);
+					$api_price=(@$api_price+@$roomArr[$r]['rates']['api_price']);
+					$base_price=($base_price+@$roomArr[$r]['rates']['base_price_in_live_currency']);
+					$adminPrice=($adminPrice+@$roomArr[$r]['rates']['adminPrice']);
+					$lowRate=($lowRate+@$roomArr[$r]['rates']['net']);
 					//$discount_price =($highRate-$lowRate);
 					$nonRefundable=0;
 					if($firstKey=='NRF'){
 					  $nonRefundable =1; 
 					} 		   
 				}  // This section is taking more than 2.5 seconds
+				// dd(1,$api_price);
 				
 		 
 		 if(isset($hotelData[$i]['reviews'])){ $tripAdvisorArr =$hotelData[$i]['reviews'][0]; } else { $tripAdvisorArr=array('rate'=>0.0,'reviewCount'=>0); }
@@ -281,14 +412,30 @@ class Hotel extends Controller
 		$obj=json_decode($response);
 		 
 		 
-		 $findArr =array('STARS','STAR','STAR AND A HALF','AND A HALF','HISTORICAL HOTEL LUXURIOUS','BOUTIQUE','LUXURY');
+		 $findArr =array('STARS','STAR','STAR AND A HALF','AND A HALF','HISTORICAL HOTEL LUXURIOUS','BOUTIQUE','LUXURY','SUPERIOR');
 	     $replaceArr =array('','','','','','','');
 		 
-		 $StarRating =trim(str_replace($findArr,$replaceArr,$hotelData[$i]['categoryName']));
+		 $StarRating1 =trim(str_replace($findArr,$replaceArr,$hotelData[$i]['categoryName']));
+		 $StarRating = str_replace('*', '', $StarRating1);
 		 $rates =$hotelData[$i]['rooms'][0]['rates'][0];		 
 		 $latitude =$hotelData[$i]['latitude'];
 		 $longitude =$hotelData[$i]['longitude'];
 		 $distance =''; //$this->distance($latitude, $longitude, $lat, $lng, '');
+
+
+		 // ======================================== 1
+		if (isset($obj->content)) {
+		    // Decode 'content' property
+		   $content =json_decode($obj->content,true);
+				 
+
+
+		} else {
+		    // Skip to the next iteration if 'content' property is missing
+		    // dd($obj);
+		    continue;
+		}
+		// ====================================== 1
 		 
 		 $content =json_decode($obj->content,true);
 		 
@@ -320,6 +467,7 @@ class Hotel extends Controller
 		 // dd(12);
 		 if($lowRate<100000){
 		 	// dd(1,$obj);
+		 	// dd($api_price);
 			 $data=array(
 					'EANHotelID'=>$hotel_id,
 					'Name'=>$this->clean($hotelData[$i]['name']),//
@@ -371,17 +519,20 @@ class Hotel extends Controller
 					'language'=>'en',
 					'search_session'=>$search_Session_Id,
 					'recommended'=>$obj->recommended,
+					
 					'selling_points'=>$obj->selling_points,
 					'room_details'=>json_encode($RoomTypes),
 					'hotelDetails'=>json_encode($hotelData[$i]),
 					'sort_order'=>0,
 					'rooms'=>$rooms,
-					'Cri_Adults'=>$adults,
+
+					'Cri_Adults'=>'"'.implode(',', $adults).'"',
 					'Cri_Childs'=>$childs,
 					'child_age'=>$childAge,
 					'product'=>'Hotelbeds',
 				);
-				//echo "<pre>"; print_r($data); 
+			 // dd($adults);
+				// echo "<pre>"; print_r($data); 
 				$status = Crud_Model::insertData('search_results_hotelbeds',$data);
 				
 			}// avoid unwanted hotel
@@ -416,6 +567,12 @@ class Hotel extends Controller
 	} 
 // GetHotelList List End
 	
+
+
+
+
+
+
 
 
 
@@ -809,10 +966,12 @@ public function getdetails($id){
 // HotelFinalCheckout Start	
 	public function HotelFinalCheckout(Request $request)  
     {
-    	// dd($request->all());       
+    	// dd($request->all(),$request['passenger']['adult'],$request->roomName[0]);       
 
 		$request_data=array();
 		$request_data=$request->input();
+
+
 		
 		$hotelSearchData=crud_model::readOne('search_results_hotelbeds',array('id'=>$request->input('ref_id'))); 
 		$rooms=$hotelSearchData->rooms;
@@ -823,9 +982,13 @@ public function getdetails($id){
 		$total_currency=$request_data['currency'];
 		 
 	 $adultArr =json_decode($hotelSearchData->Cri_Adults,true);
+	 $adultArr = explode(',', $adultArr);
 	 $childArr =json_decode($hotelSearchData->Cri_Childs,true);
+	 $childArr = explode(',', $childArr);
 	 $childAgeArr =json_decode($hotelSearchData->child_age,true);
 	  $rateKeyArr =$request_data['rateKey'];
+	  // dd($rateKeyArr);
+	  // dd($adultArr);
 	for($i=0;$i<$rooms;$i++){
 	 $paxes =array();	
 	 $roomId =1;	
@@ -848,6 +1011,7 @@ public function getdetails($id){
 	 $rateKey =nl2br(trim($rateKeyArr[$i]));
 	 $roomsArr[] =array('rateKey'=>$rateKey,'paxes'=>$paxes);
 	}
+	// dd(count($adultArr),$adults);
 		$firstName=$request_data['passenger']['adult']['first_name'][0][0];
 		$lastName=$request_data['passenger']['adult']['last_name'][0][0];
 		$username=$firstName.' '.$lastName;
@@ -939,6 +1103,35 @@ public function getdetails($id){
 		'booked_ample' =>$request->booked_ample,
 		);
 		$value = Crud_Model::insertData('twc_booking',$data);
+
+// dd(3);
+
+	
+	for($i=0;$i<$rooms;$i++){
+	 $paxes =array();	
+	 $roomId =1;	
+	 $adults =$adultArr[$i];
+	 
+	 for($a=0;$a<$adults;$a++){ 
+      $data = [
+		        	'room_no'=>$i+1,
+		        	'room_name'=>$request->roomName[$i],
+		        	'order_id'=>$order_id,
+			        'fname' => $request_data['passenger']['adult']['first_name'][$i][$a],
+			        'lname' => $request_data['passenger']['adult']['last_name'][$i][$a],
+			        'dob' => $request_data['passenger']['adult']['dob'][$i][$a],
+			        'title' => $request_data['passenger']['adult']['title'][$i][$a],
+			        'gender' => $request_data['passenger']['adult']['gender'][$i][$a],
+			        'updated_at' => now()
+			    ];
+
+			    // Insert data into the table
+			    DB::table('hotel_book_adults')->insert($data);
+	 }
+	
+	}
+		
+
 		$redirect_page=url('/')."/travel/payment/".$request_data['payment_type']."/?order_id=".$order_id."&module=hotel";
 
 		if($request_data['payment_type']=='wallet'){
@@ -951,7 +1144,7 @@ public function getdetails($id){
 		// $redirect_page=url('/')."/book-hotel?order_id=".$order_id; //****************
 		// dd( @Auth::user()->id);
 
-		 return redirect()->route('processcheckoutpayment', ['order_id' => $order_id, 'user_id' => @Auth::user()->id]);
+		 return redirect()->route('processcheckoutpayment', ['order_id' => $order_id, 'user_id' => @Auth::user()->user_id]);
 		
 		// dd($request->all(),$paymentType);
 		// return redirect($redirect_page); //****************
@@ -1124,21 +1317,21 @@ public function getdetails($id){
         $buyandearnamples = ($discount_margin / .12);
         $no_of_amples = $buyandearnamples;
         // dd( $no_of_amples);
-        if(@Auth::user()->id || Session::get('user_id') ){
+        if(@Auth::user()->user_id || Session::get('user_id') ){
         	// dd(1);
         	//update ample
-        	$userDetail = User::where('id', @Auth::user()->id)
-		    ->orWhere('id', Session::get('user_id'))
+        	$userDetail = User::where('user_id', @Auth::user()->user_id)
+		    ->orWhere('user_id', Session::get('user_id'))
 		    ->first();
 		    // dd($userDetail);
-		    // dd((int)($userDetail->ample) , round($no_of_amples), (int)$bookingDetails->booked_ample);
-		    if(@$userDetail->ample){
-		    	$newAmple=(int)($userDetail->ample) + round($no_of_amples)-(int)@$bookingDetails->booked_ample;
+		    // dd((int)($userDetail->total_ample) , round($no_of_amples), (int)$bookingDetails->booked_ample);
+		    if(@$userDetail->total_ample){
+		    	$newAmple=(int)($userDetail->total_ample) + round($no_of_amples)-(int)@$bookingDetails->booked_ample;
 		    }else{
                 $newAmple=round($no_of_amples)-(int)@$bookingDetails->booked_ample;
 		    }
         	
-        	$up=User::where('id', @Auth::user()->id)->orWhere('id', Session::get('user_id'))->update(['ample'=>$newAmple]);
+        	$up=User::where('user_id', @Auth::user()->user_id)->orWhere('user_id', Session::get('user_id'))->update(['total_ample'=>$newAmple]);
         }
 
         // dd($request->input(),round($no_of_amples),$request->chargeableRate,$request->user_id);
@@ -1152,7 +1345,7 @@ public function getdetails($id){
 	   // dd($request->all(),$paymentType);
 	   
 	   if($payment_status=='Confirmed'){
-	   $bookingMode='Test';
+	   $bookingMode='Test';  //'Test';
 			if($hotel_book_req->PaymentType=='"AT_HOTEL"'){
 			  if($bookingMode=='Live'){	
 				$actionUrl='https://api-secure.hotelbeds.com/hotel-api/1.2/bookings';
@@ -1345,17 +1538,21 @@ public function BookingCancellationFromAdmin($id){
         if(@$bookingDetails->user_id){
         	// dd(1);
         	//update ample
-        	$userDetail = User::where('id', $bookingDetails->user_id)
+        	$userDetail = User::where('user_id', $bookingDetails->user_id)
 		    ->first();
 		    // dd($userDetail);
-		    // dd((int)($userDetail->ample) , round($no_of_amples), (int)$bookingDetails->booked_ample);
-		    if(@$userDetail->ample){
-		    	$newAmple=(int)($userDetail->ample) - round($no_of_amples)+(int)@$bookingDetails->booked_ample;
+		    // dd((int)($userDetail->total_ample) , round($no_of_amples), (int)$bookingDetails->booked_ample);
+		     if( @$userDetail->total_ample < round($no_of_amples)){
+		    	return back()->with('error','This request can not be cancel as user account amplepoint is less that that of booking reward ample and we can not deduct that reward ample from user account due to less account amplepoints. when user will have sufficient amplepoints to deduct that reward ample , at that time this requst can be cancel.');
+		    }
+		    
+		    if(@$userDetail->total_ample){
+		    	$newAmple=(int)($userDetail->total_ample) - round($no_of_amples)+(int)@$bookingDetails->booked_ample;
 		    }else{
                 $newAmple= - round($no_of_amples)+(int)@$bookingDetails->booked_ample;
 		    }
         	
-        	$up=User::where('id', $bookingDetails->user_id)->update(['ample'=>$newAmple]);
+        	$up=User::where('user_id', $bookingDetails->user_id)->update(['ample'=>$newAmple]);
         }
 
         // dd($request->input(),round($no_of_amples),$request->chargeableRate,$request->user_id);
@@ -1392,14 +1589,18 @@ public function BookingCancellationFromAdmin($id){
 
 
 	public function RoomAvailability(Request $request){	
+		// dd($request->all());
 		$obj = crud_model::readOne('search_results_hotelbeds',array('id'=>$_REQUEST['tid']));
 		$obj->hotelDetails;
 		$hotelData =json_decode($obj->hotelDetails,true);
+		// dd($request->all(),$hotelData);
 		
 		$api_currency =$hotelData['currency'];
 		$RoomTypes =$hotelData['rooms'];
 		
 		$RoomConbination =$this->ManageRoomType($request['rooms'],json_decode($request['adults'],true),json_decode($request['childs'],true),$api_currency,$RoomTypes);
+
+		// dd(count($RoomConbination),$RoomConbination);
 		
 		 $SelectedRoom=array();
 		 
@@ -1426,6 +1627,8 @@ public function BookingCancellationFromAdmin($id){
 				   }	
 				 }
 		  }
+
+
 		 /////// Check RECHEK//
 	     if(is_countable($SelectedRoom)){
 			   if(count($SelectedRoom)>0){	
@@ -1433,6 +1636,7 @@ public function BookingCancellationFromAdmin($id){
 					  $rateType =$SelectedRoom[$i]['rates']['rateType'];
 					  $rateKey =$SelectedRoom[$i]['rates']['rateKey'];
 					  $old_net =$SelectedRoom[$i]['rates']['net'];
+					  $this->CheckRates($rateKey);
 					  if($rateType=='RECHECK'){ 
 						$results =$this->CheckRates($rateKey);
 						$cResponse =json_decode($results,true);	
@@ -1481,21 +1685,38 @@ public function BookingCancellationFromAdmin($id){
 					
 			  } 
 		}
+
+
+		  // dd(count($SelectedRoom));
 		 //selected Room Work End	
 		  $selectTid='';
 		 
 	   $RoomList =array('RoomTypes'=>array('size'=>count($RoomConbination),'RoomGroup'=>$RoomConbination),'SelectedRoom'=>$SelectedRoom,'selectTid'=>$selectTid);
 	   $data =array('status'=>200,'status_message'=>'OK','currency'=>$this->currency,'currency_symbol'=>$this->currency_symbol,'responseData'=>$RoomList);
-	   
+	   // dd($data);
 	   echo json_encode($data);
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
  function ManageRoomType($rooms,$adultArr,$childrenArr,$api_currency,$RoomTypes){
   $RoomConbination =array();
-  /*$adultArr =explode(',',$adults);
-  $childrenArr =explode(',',$children);*/
-  $checkArr =array();	
+  $adultArr =explode(',',$adultArr);
+  $childrenArr =explode(',',$childrenArr);
+  $checkArr =array();
+  // dd($adultArr,$childrenArr);
+  // dd($RoomTypes);	
   
 // echo  json_encode($RoomTypes); die;
   if(is_countable($RoomTypes) && $RoomTypes!=''){  
@@ -1508,17 +1729,21 @@ public function BookingCancellationFromAdmin($id){
 			// room loop start		
 			for($r=0;$r<$rooms;$r++){
 				  $adult =$adultArr[$r];
+				  // dd($adultArr[1],$rooms);
 				  $children =$childrenArr[$r];	
 				  if($children==''){$children=0;}
 				  //rates loop start
+				  // dd($adultArr,$childrenArr);
 				  for($n=0;$n<count($ratesArr);$n++){
 				  	  $rates = $ratesArr[$n];
 					  $boardCode =$rates['boardCode'];
 					  $rateClass =$rates['rateClass'];
 					  $radults =$rates['adults'];
 					  $rchildren =$rates['children'];
+					  // dd($rates,$boardCode,$rateClass,$radults,$rchildren );
 					  if($rchildren==''){$rchildren=0;}
-					  if(($adult==$radults) && ($children==$rchildren) ){
+
+					  if(((int)$adult==(int)$radults) && ((int)$children==(int)$rchildren) ){
 					  	  
 						  $base_price_in_live_currency =  $this->markupObj->convertCurrencyRate($api_currency,$rates['net']);
 						  $adminPrice=$this->markupObj->calAdminPrice($base_price_in_live_currency,'hotel');
@@ -1535,22 +1760,24 @@ public function BookingCancellationFromAdmin($id){
 						  
 						  
 						  			  
-						  $rateClass =$rates['rateClass'];
+						  $rateClass ="NOR";
 						  if(isset($rates['cancellationPolicies'])){ $cancellationPolicies =$rates['cancellationPolicies']; } else{ $cancellationPolicies=''; }
 						  
 					      $nameArr[$boardCode][$rateClass][$r] =array('code'=>$code,'name'=>$name);	  
 					      $boardArr[$boardCode][$rateClass][$r] =array('code'=>$code,'name'=>$name,'rates'=>$rates);
 					  }
 					  else{
+					  	// dd($adult,$radults,$children,$rchildren);
 						$return =$this->FindNextRoom($r,$adult,$children,$boardCode,$rateClass,$RoomTypes); 
-						$boardCode =$return['boardCode'];
-						$rateClass =$return['rateClass'];
-						$code = $return['code'];
-						$name = $return['name'];
-						$rates = $return['rates'];
+						// dd($return);
+						$boardCode =@$return['boardCode'];
+						$rateClass =@$return['rateClass'];
+						$code =@$return['code'];
+						$name =@$return['name'];
+						$rates =@$return['rates'];
 						
-						$net =$rates['net'];
-						$rates['net'] = $net;
+						$net =@$rates['net'];
+						$rates['net'] = @$net;
 						
 						if($boardCode!=''){
 						 $nameArr[$boardCode][$rateClass][$r] =array('code'=>$code,'name'=>$name);
@@ -1561,7 +1788,7 @@ public function BookingCancellationFromAdmin($id){
 				  //rates loop end
 			} 
 			// room loop end
-			
+			// dd(count( $nameArr[$boardCode][$rateClass]));
 			$checker ='';
 			foreach($nameArr as $k=>$v){
 				$checker.=$k.'~';
@@ -1572,6 +1799,7 @@ public function BookingCancellationFromAdmin($id){
 				 }
 				}
 			}
+			// dd($checker);
 					
 			if(!in_array($checker,$checkArr)){
 			  $checkArr[] =$checker;	
@@ -1580,11 +1808,21 @@ public function BookingCancellationFromAdmin($id){
 			
 		  } // RoomTypes loop end
 		} // is_countable($RoomTypes) end
-
+// dd($RoomConbination);
  return $RoomConbination; 	  
 	}
 	
 	
+
+
+
+
+
+
+
+
+
+
 	
 	function FindNextRoom($r, $adult, $children, $boardCode, $rateClass, $RoomTypes)
 	{
@@ -1606,11 +1844,11 @@ public function BookingCancellationFromAdmin($id){
 					$rchildren = 0;
 				}
 				//echo 'MME'.$adult.'-'.$radults.'=>'.$children.'-'.$rchildren.'<br>';
-				if (($adult == $radults) && ($children == $rchildren) && ($boardCode == $rboardCode) && ($rateClass == $rrateClass)) {  echo "<br> 2 if";
+				if (($adult == $radults) && ($children == $rchildren) && ($boardCode == $rboardCode) && ($rateClass == $rrateClass)) {  //echo "<br> 2 if";
 					$return = array('code' => $code, 'name' => $name, 'boardCode' => $boardCode, 'rateClass' => $rateClass, 'rates' => $ratesArr[$n]);
 					return $return;
 					break;
-				} else if (($adult == $radults) && ($children == $rchildren) && ($boardCode == $rboardCode)) {  echo "<br> 3 if";
+				} else if (($adult == $radults) && ($children == $rchildren) && ($boardCode == $rboardCode)) { // echo "<br> 3 if";
 					$return = array('code' => $code, 'name' => $name, 'boardCode' => $boardCode, 'rateClass' => $rateClass, 'rates' => $ratesArr[$n]);
 					return $return;
 					break;
@@ -1623,13 +1861,13 @@ public function BookingCancellationFromAdmin($id){
 	
 	
 	public function WalletDeduct($amount,$currency,$user_id,$order_id){ 
-		 $userData = crud_model::readOne('user',array('id'=>$user_id));
+		 $userData = crud_model::readOne('users',array('user_id'=>$user_id));
 		 $walletAmt=$userData->wallet;
 		 $finalAmt=$walletAmt-$amount;
 		 		
 		 $walletAmt=$this->getWalletBal($user_id);
 		 if($amount<=$walletAmt){
-		 	  $status = Crud_Model::updateData('user',array('wallet'=>$finalAmt),array('id'=>$user_id));
+		 	  $status = Crud_Model::updateData('users',array('wallet'=>$finalAmt),array('user_id'=>$user_id));
 			  $data = array(
 				  'agent_id' => $user_id,
 				  'currency' =>$currency,
@@ -1661,7 +1899,7 @@ public function BookingCancellationFromAdmin($id){
 	}
 	
 	public function getWalletBal($user_id){ 
-		 $userData = crud_model::readOne('user',array('id'=>$user_id));
+		 $userData = crud_model::readOne('users',array('user_id'=>$user_id));
 		 $walletAmt=$userData->wallet;
 		 return $walletAmt;
 	}
@@ -1673,7 +1911,7 @@ public function BookingCancellationFromAdmin($id){
 
 	//  create user start
 	public function createUser($first_name,$last_name,$email,$phone,$address,$city,$country){
-		$obj= crud_model::readOne('user',array('email'=>$email)); 
+		$obj= crud_model::readOne('users',array('email'=>$email)); 
 
 		if(!is_object($obj)){
 			$password=rand();
@@ -1691,7 +1929,7 @@ public function BookingCancellationFromAdmin($id){
 				'status'=>'active',
 				'date_time'=>date('Y-m-d H:i:s')
 			);
-			$value = Crud_Model::insertData('user',$data);
+			$value = Crud_Model::insertData('users',$data);
 			$this->UserCreateMailSend($email,$password,$first_name);
 			return DB::getPdo()->lastInsertId();
 		}else{ return $obj->id; }
@@ -1854,6 +2092,11 @@ public function createLanding($toIATA,$api_currency,$total_amount,$search_id,$im
 			}
 	}
 	
+	
+
+
+
+
 	function CheckRates($rateKey){		
 		$actionUrl=$this->endpoint.'/checkrates?rateKey='.$rateKey;
 
@@ -1867,18 +2110,77 @@ public function createLanding($toIATA,$api_currency,$total_amount,$search_id,$im
 		$content = curl_exec($ch);
 		curl_close($ch);				
 		$results =json_decode($content,true);
+		// $this->createLogFile('Checkrate',json_encode($actionUrl),$results);
+
+		$credentials="hotelbeds_key=".$this->hotelbeds_key."\r\n hotelbeds_secret=".$this->hotelbeds_secret."\r\n endpoint=".$this->endpoint; 
+		$file_name ="checkRate".'-'.date('dmy his');	
+		$log_filename = "travel/LogFileHotel"; 
+		if (!file_exists($log_filename)) {  
+			mkdir($log_filename, 0777);  
+		}   
+		$log_file_data = $log_filename.'/'.$file_name.'.txt';
+		
+		$log_data ="===========Credentials($actionUrl)========="."\r\n";
+		$log_data.=$credentials."\r\n";
+	    $log_data.="===========Response($actionUrl)========="."\r\n";
+		$log_data.=$content."\r\n";
+		
+		file_put_contents($log_file_data, $log_data . "\r\n", FILE_APPEND);
+
+
 				
-		$hotelResults =$results['hotel'];
+		$hotelResults =@$results['hotel'];
 		$data =array();
-		if($hotelResults['code']>0){
+		if(@$hotelResults['code']>0){
 		 $status =200;	
-		 $data =array('size'=>1,'RateResponse'=>$hotelResults); 
+		 $data =array('size'=>1,'RateResponse'=>@$hotelResults); 
 		}
 		else{
 		  $status =400;     
 		}
 		
 		return $data;		
+	}
+
+
+
+
+
+
+
+
+
+
+
+	public function hotelBookingNew(Request $request){
+		// dd($request->all());
+		$inputVal=json_decode($request->arryinput, true);
+		// dd($inputVal);
+		// dd($inputVal[0]['hotelid']);
+		$id=$inputVal[0]['hotelid'];
+
+		$totalPrice=0;
+		  foreach ($inputVal as $item) {
+           $totalPrice+=$item['roomPrice'];
+        }
+        // dd($totalPrice);
+        // die;
+
+
+
+		$hotelSearchData= crud_model::readOne('search_results_hotelbeds',array('id'=>$id));	
+		// dd($board,$rateClass,$roomCodeIds,$rateKeyIds,$id,$hotelSearchData);
+		$pageData = crud_model::readOne('pages',array('page_id'=>'hotel-booking'));	
+		$countryData=DB::select("select * from country order by name ASC ");
+		
+		//====
+		$board=$inputVal[0]['board'];
+        $rateClass=$inputVal[0]['rateClass'];
+        $roomCodeIds=$inputVal[0]['roomCodeIds'];
+        //====
+
+		return view('hotel/hotel-booking-form', array('board' => $board,'rateClass' => $rateClass,'roomCodeIds' => $roomCodeIds,'hotelSearchData' => $hotelSearchData,'pageData' => $pageData,'countryData' => $countryData,'roomArray'=>$inputVal,'totalPrice'=>$totalPrice)); 
+
 	}
 
 

@@ -1,0 +1,11 @@
+===========Credentials(GetHotelList)=========
+hotelbeds_key=216ed78bd01d216eb6d4261178bc2eb8
+ hotelbeds_secret=bee7c61cbf
+ endpoint=https://api.test.hotelbeds.com/hotel-api/1.0
+===========Request(GetHotelList)=========
+{"language":"ENG","currency":"USD","stay":{"checkIn":"2024-09-11","checkOut":"2024-09-17"},"occupancies":[{"rooms":1,"adults":1,"children":0,"paxes":[{"roomId":1,"type":"AD","name":"","surname":"Surname1"}]}],"hotels":{"hotel":["105975","105974","105121","102897","102894","100951","97253","94698","93753","93378","91426","91424","91422","91420","89657","89655","89416","89021","87519","82651","82378","61281","61280","59413","59412","59410"]},"filter":{"packaging":true,"deal":true},"boards":{"included":true,"board":["RO","BB","AI","HB","FB","RR","AB","DB","GB","IB","LB"]},"sourceMarket":"US","remark":"Require non-smoking room"}
+===========Response(GetHotelList)=========
+{
+    "error": "Request signature verification failed"
+}
+

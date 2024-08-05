@@ -10,6 +10,8 @@
                 $currency=$data['siteData']['currency'];  
                 $currency_symbol=$data['siteData']['currency_symbol'];                
 				$DOB=date('Y/m/d ', strtotime(date('m/d/Y').' -19 year')); 
+                $DOB2=date('Y/m/d ', strtotime(date('m/d/Y').' -11 year')); 
+                $DOB3=date('Y/m/d ', strtotime(date('m/d/Y').' -2 year')); 
          @endphp
          
 
@@ -28,6 +30,13 @@
   <link rel="stylesheet" type="text/css" href="https://amplepoints.com/newcss/css/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="https://amplepoints.com/newcss/css/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="https://amplepoints.com/newcss/css/style-check.css" >
+
+
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 
 
 <section class="booking-area padding-top-100px padding-bottom-70px">
@@ -92,7 +101,7 @@
                                             <label class="label-text">DOB <span style="color:#FF0000">*</span></label>
                                             <div class="form-group">
                                                 <span class="la la-calendar form-icon"></span>
-                                               <input class="form-control date-picker-single2" type="text" name="passenger[adult][dob][]" value="{{$DOB}}" placeholder="" requited>
+                                               <input class="form-control adult_dob" type="text" name="passenger[adult][dob][]" value="{{$DOB}}" placeholder="" requited>
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-6 -->
@@ -122,6 +131,10 @@
                                     </div>
                                  <?php } ?>
             						<hr /><hr />
+
+
+
+
                                   <?php for($a=0;$a<$flightData->children;$a++){ ?>
                                  <div class="form-title-wrap col-lg-12">
                                     <h3 class="title">Children <?php echo $a+1; ?></h3>
@@ -163,11 +176,11 @@
                                             <label class="label-text">DOB <span style="color:#FF0000">*</span></label>
                                             <div class="form-group">
                                                 <span class="la la-calendar form-icon"></span>
-                                                <input class="form-control date-picker-single2" type="text" name="passenger[child][dob][]" value="{{$DOB}}" requited>
+                                                <input class="form-control child-dob" type="text" name="passenger[child][dob][]" value="{{$DOB2}}" requited>
                                             </div>
                                         </div>
                                     	</div><!-- end col-lg-6 -->
-                                    </div>
+                                  
                                     <div class="col-lg-4 responsive-column">
                                         <div class="input-box">
                                             <label class="label-text">Gender <span style="color:#FF0000">*</span></label>
@@ -195,6 +208,10 @@
                                  
                                  <?php } ?>
                                  <hr /><hr />
+
+
+
+
 
                                   <?php for($a=0;$a<$flightData->infants;$a++){ ?>
                                  <div class="form-title-wrap col-lg-12">
@@ -238,7 +255,7 @@
                                             <label class="label-text">DOB <span style="color:#FF0000">*</span></label>
                                             <div class="form-group">
                                                 <span class="la la-calendar form-icon"></span>
-                                                <input class="form-control date-picker-single2" type="text" name="passenger[infant][dob][]" value="{{$DOB}}" requited>
+                                                <input class="form-control infa_dob" type="text" name="passenger[infant][dob][]" value="{{$DOB3}}" requited>
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-6 -->
@@ -1350,5 +1367,63 @@ function ampleEnterFun(val,room_index){
   }
 }
       </script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var datePickers = document.querySelectorAll('.child-dob');
+
+        var today = new Date();
+        var maxChildDate = new Date(today.getFullYear() - 2, today.getMonth(), today.getDate());
+        var minChildDate = new Date(today.getFullYear() - 11, today.getMonth(), today.getDate());
+
+        datePickers.forEach(function(datePicker) {
+            flatpickr(datePicker, {
+                dateFormat: 'Y-m-d',
+                minDate: minChildDate,
+                maxDate: maxChildDate
+            });
+        });
+    });
+
+
+     document.addEventListener('DOMContentLoaded', function () {
+        var adultDatePickers = document.querySelectorAll('.adult_dob');
+
+        var today = new Date();
+         // Adult date range (12 years and older)
+        var maxAdultDate = new Date(today.getFullYear() - 12, today.getMonth(), today.getDate());
+        // Note: No minimum date for adults since there's no upper limit to age
+
+        adultDatePickers.forEach(function(datePicker) {
+            flatpickr(datePicker, {
+                dateFormat: 'Y-m-d',
+                maxDate: maxAdultDate
+            });
+        });
+    });
+
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+        var infantDatePickers = document.querySelectorAll('.infa_dob');
+
+        var today = new Date();
+         // Infant date range (under 2 years)
+        var maxInfantDate = today;
+        var minInfantDate = new Date(today.getFullYear() - 2, today.getMonth(), today.getDate());
+        
+
+        infantDatePickers.forEach(function(datePicker) {
+            flatpickr(datePicker, {
+                dateFormat: 'Y-m-d',
+                minDate: minInfantDate,
+                maxDate: maxInfantDate
+            });
+        });
+    });
+</script>
+
+
 
 @include('site.footer')
