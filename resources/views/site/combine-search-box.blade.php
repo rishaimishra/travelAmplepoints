@@ -55,7 +55,7 @@
                                         <i class="la la-plane"></i>&nbsp;&nbsp;Flights
                                     </a>
                                 </li>
-                                <li class="nav-item bgc">
+                                {{-- <li class="nav-item bgc">
                                     <a class="nav-link d-flex align-items-center" id="tour-tab" data-toggle="tab" href="#tour" role="tab" aria-controls="tour" aria-selected="false">
                                         <i class="la la-camera"></i>&nbsp;&nbsp;Tours
                                     </a>
@@ -64,7 +64,7 @@
                                     <a class="nav-link d-flex align-items-center" id="car-tab" data-toggle="tab" href="#car" role="tab" aria-controls="car" aria-selected="true">
                                        <i class="la la-car"></i>&nbsp;&nbsp;Transfers
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li  class="nav-item bgc" style="display:none">
                                     <a class="nav-link d-flex align-items-center" id="package-tab" data-toggle="tab" href="#package" role="tab" aria-controls="package" aria-selected="false">
                                         <span class="form-icon an-custom-img-icon" style="margin: 0 10px 0 0;"><img src="icon/bag-white.png" alt="" style="width: 20px;"></span><span class="form-icon an-custom-img-icon" style="margin: 0 10px 0 0;"><img src="icon/bag-blue.png" alt="" style="width: 20px;"></span>Vacation Packages
@@ -77,8 +77,8 @@
                         <div class="tab-content search-fields-container" id="myTabContent">
                             @include('hotel.hotel-search-box')
                             @include('flight.flight-search-box')
-                            @include('tours.tours-search-box')
-                            @include('transfers.transfers-search-box')
+                           {{--  @include('tours.tours-search-box')
+                            @include('transfers.transfers-search-box') --}}
 							
                             
                             <!-- end tab-pane -->

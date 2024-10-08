@@ -1,0 +1,7 @@
+===========Credentials(Book_557626003)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(Book_557626003)=========
+{"data":{"selected_offers":["off_0000Am7T8hDhk2Jc9HvpCi"],"payments":[{"type":"balance","currency":"USD","amount":"72.85"}],"passengers":[{"phone_number":"+911122334455","email":"test@gmail.com","born_on":"2005-09-18","title":"mr","gender":"m","family_name":"test test","given_name":"test test","id":"pas_0000Am7T8gffmZ5qRk0eA2"}]}}
+===========Response(Book_557626003)=========
+{"errors":[{"documentation_url":"https://duffel.com/docs/api/overview/response-handling","source":{"field":"selected_offers","pointer":"/selected_offers"},"title":"Can't book multiple offers from the same offer request","type":"validation_error","message":"Field 'selected_offers' has offers included in a offer request that has already been booked; please perform a new search","code":"offer_request_already_booked"}],"meta":{"request_id":"F_ZDiHI3d729wz0CiCuB","status":422}}
+

@@ -1,0 +1,14 @@
+===========Credentials(https://api.hotelbeds.com/hotel-api/1.0/checkrates?rateKey=20240906|20240908|W|256|105709|ROO.2Q|ID_B2B_19|RO|RATE1|1~1~0||P@07~A-SIC~23b9e~-266259584~N~~~NOR~~DB59506C9FEA407172543824126606PAUS0008000800060823b9e)=========
+hotelbeds_key=216ed78bd01d216eb6d4261178bc2eb8
+ hotelbeds_secret=b14ebd32e7
+ endpoint=https://api.hotelbeds.com/hotel-api/1.0
+===========Response(https://api.hotelbeds.com/hotel-api/1.0/checkrates?rateKey=20240906|20240908|W|256|105709|ROO.2Q|ID_B2B_19|RO|RATE1|1~1~0||P@07~A-SIC~23b9e~-266259584~N~~~NOR~~DB59506C9FEA407172543824126606PAUS0008000800060823b9e)=========
+{"auditData":{"processTime":"22","timestamp":"2024-09-04 08:29:05.853","requestHost":"10.214.35.63","serverId":"ip-10-214-45-232.eu-central-1.compute.internal#A+","environment":"[awseucentral1, awseucentral1b, ip_10_214_45_232, eucentral1, secret]","release":"","token":"CF4352803E2A410E84BF1F24FB3BE7A9","internal":"0|07~A-SIC~23b9e~-266259584~N~~~NOR~~DB59506C9FEA407172543824126606PAUS0008000800060823b9e|||0|0|||||||||||R|0|2|~1~1~0||0||0|216ed78bd01d216eb6d4261178bc2eb8||||"},"error":{"code":"INVALID_DATA","message":"The first request was unsuccessful. The initial error was Insufficient allotment. Please do not retry again."}}
+
+===========Credentials(https://api.hotelbeds.com/hotel-api/1.0/checkrates?rateKey=20240906|20240908|W|256|105709|ROO.2Q|ID_B2B_19|RO|RATE1|1~1~0||P@07~A-SIC~23b9e~-266259584~N~~~NOR~~DB59506C9FEA407172543824126606PAUS0008000800060823b9e)=========
+hotelbeds_key=216ed78bd01d216eb6d4261178bc2eb8
+ hotelbeds_secret=b14ebd32e7
+ endpoint=https://api.hotelbeds.com/hotel-api/1.0
+===========Response(https://api.hotelbeds.com/hotel-api/1.0/checkrates?rateKey=20240906|20240908|W|256|105709|ROO.2Q|ID_B2B_19|RO|RATE1|1~1~0||P@07~A-SIC~23b9e~-266259584~N~~~NOR~~DB59506C9FEA407172543824126606PAUS0008000800060823b9e)=========
+{"auditData":{"processTime":"76","timestamp":"2024-09-04 08:29:06.336","requestHost":"10.214.35.63","serverId":"ip-10-214-3-174.eu-central-1.compute.internal#A+","environment":"[awseucentral1, awseucentral1c, ip_10_214_3_174, eucentral1, secret]","release":"","token":"A4FEE54C696243CD9AE6917ED955FCDF","internal":"0|07~A-SIC~23b9e~-266259584~N~~~NOR~~DB59506C9FEA407172543824126606PAUS0008000800060823b9e|||0|0|||||||||||R|0|2|~1~1~0||0||0|216ed78bd01d216eb6d4261178bc2eb8||||"},"error":{"code":"INVALID_DATA","message":"The first request was unsuccessful. The initial error was Insufficient allotment. Please do not retry again."}}
+

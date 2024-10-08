@@ -75,6 +75,56 @@ color:#fff;
 }
 
 </style>
+
+
+<style>
+  #loadingModal {
+    padding: 0 !important;
+    height: auto;
+    min-width: 500px;
+    overflow: hidden;
+  }
+  .modal-content2 {
+    padding: 0 !important;
+    border: 1px solid #00000033;
+    box-shadow: 0 0 10px -5px #000;
+  }
+  .div-title {
+    font-size: 28px;
+    padding: 9px 0 9px;
+    border-bottom: 1px solid #00000030;
+    line-height: 40px;
+    font-weight: 500;
+  }
+  .modal-c-body {
+    padding: 10px 10px 10px;
+  }
+  .c-l-middle-main {
+    position: relative;
+    height: 100px;
+  }
+  .modal-c-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    color: #000000c2;
+    padding: 8px 10px 8px;
+  }
+
+
+  div#loadingModal {
+    background: #fff;
+}
+
+.modal-content2 {background: #fff;color: #111;}
+
+.modal-c-footer {
+    background: rgb(247 91 16);
+    color: #fff;
+}
+</style>
+
 <?php
 if(isset($_REQUEST['city_code'])) { $city_code=$_REQUEST['city_code']; }else{ $city_code='LVS'; }
 	if(isset($_REQUEST['city_name'])) { $city_name=$_REQUEST['city_name']; }else{ $city_name='Las Vegas - NV'; }
@@ -92,13 +142,13 @@ if(isset($_REQUEST['child'])) { $child=$_REQUEST['child']; }else{ $child=0; }
 			@csrf
 			<div class="col-lg-3 pr-0">
 				<div class="input-box">
-					<label class="label-text">Destination </label>
+					<label class="label-text">Where to? </label>
 					<div class="form-group">
 						<span class="la la-map-marker form-icon">
 						</span>
-						<input class="form-control autosuggestion_hotel" name="city_code" id="city_code" type="hidden" value="<?php echo $city_code;  ?>" >
-						<input class="form-control autosuggestion_hotel" name="city_name" id="city_name" type="hidden" value="<?php echo $city_name;  ?>" >
-						<input class="form-control autosuggestion_hotel"  name="dest_name" id="dest_name" type="text" value="<?php echo $dest_name;  ?>" placeholder="Enter city or property" autocomplete="off">
+						<input class="form-control autosuggestion_hotel" name="city_code" id="city_code" type="hidden" value="<?php //echo $city_code;  ?>" >
+						<input class="form-control autosuggestion_hotel" name="city_name" id="city_name" type="hidden" value="<?php //echo $city_name;  ?>" >
+						<input class="form-control autosuggestion_hotel"  name="dest_name" id="dest_name" type="text" value="<?php //echo $dest_name;  ?>" placeholder="Enter city or property" autocomplete="off" required>
 					</div>
 				</div>
 				<div class="input-box hotel_list" style="display:none"></div>
@@ -163,7 +213,7 @@ if(isset($_REQUEST['child'])) { $child=$_REQUEST['child']; }else{ $child=0; }
 					</div>
 				</div>
 				<!-- HTML for the loading modal -->
-				<div id="loadingModal" class="modal">
+			{{-- 	<div id="loadingModal" class="modal">
 					<div class="modal-content2">
 						<div class="loader"></div>
 						Searching Hotel in..
@@ -177,7 +227,95 @@ if(isset($_REQUEST['child'])) { $child=$_REQUEST['child']; }else{ $child=0; }
 						<br>
 						<p id="gst"></p>
 					</div>
-				</div>
+				</div> --}}
+
+				<div id="loadingModal" class="modal" aria-modal="true" style="display: none">
+  <div class="modal-content2">
+    <div class="div-title">Travel AmplePoints</div>
+
+    <div class="modal-c-body">
+      <p>Searching Hotel in..</p>
+      <!-- new loader start -->
+      <style>
+        .c-l-middle {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          position: absolute;
+        }
+        .c-l-bar {
+          width: 10px;
+          height: 70px;
+          background: #fff;
+          display: inline-block;
+          transform-origin: bottom center;
+          border-top-right-radius: 20px;
+          border-top-left-radius: 20px;
+          animation: c_l_loader 1.2s linear infinite;
+        }
+        .c-l-bar1 {
+          animation-delay: 0.1s;
+        }
+        .c-l-bar2 {
+          animation-delay: 0.2s;
+        }
+        .c-l-bar3 {
+          animation-delay: 0.3s;
+        }
+        .c-l-bar4 {
+          animation-delay: 0.4s;
+        }
+        .c-l-bar5 {
+          animation-delay: 0.5s;
+        }
+        .c-l-bar6 {
+          animation-delay: 0.6s;
+        }
+        .c-l-bar7 {
+          animation-delay: 0.7s;
+        }
+        .c-l-bar8 {
+          animation-delay: 0.8s;
+        }
+        @keyframes c_l_loader {
+          0% {
+            transform: scaleY(0.1);
+            background: transparent;
+          }
+          50% {
+            transform: scaleY(1);
+            background: #f75b10;
+            /*background: #ffffff;*/
+          }
+          100% {
+            transform: scaleY(0.1);
+            background: transparent;
+          }
+        }
+      </style>
+      <div class="c-l-middle-main">
+        <div class="c-l-middle">
+          <div class="c-l-bar c-l-bar1"></div>
+          <div class="c-l-bar c-l-bar2"></div>
+          <div class="c-l-bar c-l-bar3"></div>
+          <div class="c-l-bar c-l-bar4"></div>
+          <div class="c-l-bar c-l-bar5"></div>
+          <div class="c-l-bar c-l-bar6"></div>
+          <div class="c-l-bar c-l-bar7"></div>
+          <div class="c-l-bar c-l-bar8"></div>
+        </div>
+      </div>
+      <!-- new loader end -->
+      <p style="padding: 10px 0 0">Please Wait...</p>
+      <br />
+      <h2 id="place"></h2>
+      <p id="rm"></p>
+      <p id="gst"></p>
+    </div>
+    <div class="modal-c-footer">
+     	<p id="timeline"></p>
+    </div></div>
+</div>
 				<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 				<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 				<script src="https://code.jquery.com/jquery-1.12.4.js"></script>

@@ -172,7 +172,7 @@ class Site extends Controller
 			'mobile' => $request->input('contact_number'),
 			'address' => $request->input('address'),
 			'email' => $request->input('email'),
-			'password' =>  Hash::make($request->input('pass1')), //$request->input('pass1'),
+			'password' => $request->input('pass1'),  //Hash::make($request->input('pass1')), //
 			'status'=>$request->input('status'),
 			'images'=>$images,
 			'common_data'=>$common_data,
@@ -374,6 +374,48 @@ public function userInserFromAmplepoint(Request $request){
 
 		}
 		else{
+			// 
+			$check2 = User::where('email', $request->input('email'))->where('password',$request->input('password'))->first();
+			if($check2){
+				$result_user = json_decode(json_encode($check), true);
+	            $user_type = $result_user['user_type'];
+
+	            // Check if the user is an agent and inactive
+	            if ($result_user['status'] !== 'active' && $user_type === 'agent') {
+	                return redirect('/login?msg=Your Account is Not Activated.');
+	            }
+
+	            // Log the user in
+	            Auth::login($check);
+			
+				Session::put('user_id', $result_user['user_id']);
+				Session::put('email', $result_user['email']);
+				Session::put('first_name', $result_user['first_name']);
+				Session::put('last_name', $result_user['last_name']);
+				Session::put('markup', $result_user['mark_up']);
+				Session::put('user_type', $result_user['user_type']);
+				Session::put('user_image', $result_user['profile_pic']);
+
+
+				if($user_type == "admin"){
+					return redirect('/login?msg=Invalid Username or Password!');
+				}
+				else if($user_type == "agent"){
+					return redirect('/agent-dashboard');
+				}
+				else{
+					if($request->prevUrl){
+						// dd($request->prevUrl);
+						return redirect()->to($request->prevUrl);
+					}
+					// dd(Session::get('user_id'));
+					return redirect('/customer-dashboard');
+					// return redirect('/');
+				} 
+			}
+			else{
+				return redirect('/login?msg=Invalid Username or Password!');
+			}
 			return redirect('/login?msg=Invalid Username or Password!');
 		}
   }
@@ -548,10 +590,11 @@ public function adminLogin(Request $request){
 		);
 		
 		 // Fetch the user by email
-        $check = User::where('email', $request->input('email'))->where('user_type','admin')->first();
+        // $check = User::where('email', $request->input('email'))->where('user_type','admin')->first();
+        $check = User::where('email', $request->input('email'))->where('password',$request->input('password'))->where('user_type','admin')->first();
 
         // Verify the password
-        if ($check && Hash::check($request->input('password'), $check->password)) {
+        if ($check ) {
             // Convert user object to array
             $result_user = json_decode(json_encode($check), true);
             $user_type = $result_user['user_type'];

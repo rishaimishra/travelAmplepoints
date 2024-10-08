@@ -1,0 +1,9 @@
+===========Credentials(Cancelled-66D97DCBD832C)=========
+hotelbeds_key=216ed78bd01d216eb6d4261178bc2eb8
+ hotelbeds_secret=b14ebd32e7
+ endpoint=https://api.hotelbeds.com/hotel-api/1.0
+===========Request(Cancelled-66D97DCBD832C)=========
+https://api.hotelbeds.com/hotel-api/1.0/bookings/256-13192146?cancellationFlag=CANCELLATION
+===========Response(Cancelled-66D97DCBD832C)=========
+{"auditData":{"processTime":"210","timestamp":"2024-09-21 10:36:39.712","requestHost":"10.214.32.158","serverId":"ip-10-214-6-220.eu-central-1.compute.internal#A+","environment":"[awseucentral1, awseucentral1c, ip_10_214_6_220, eucentral1, secret]","release":"","token":"3B0FF09D966F4619990A3EB850A017B3","internal":"0||||0|0||||||||||||0||||0||0|216ed78bd01d216eb6d4261178bc2eb8||||"},"error":{"code":"INVALID_DATA","message":"The booking has already been cancelled."}}
+

@@ -1,0 +1,9 @@
+===========Credentials(GetHotelDetails)=========
+hotelbeds_key=216ed78bd01d216eb6d4261178bc2eb8
+ hotelbeds_secret=b14ebd32e7
+ endpoint=https://api.hotelbeds.com/hotel-api/1.0
+===========Request(GetHotelDetails)=========
+https://dev.plistbooking.travel/travel/hotel-update-rates.php?action=get_single_hotels&hotel_id=105709
+===========Response(GetHotelDetails)=========
+
+

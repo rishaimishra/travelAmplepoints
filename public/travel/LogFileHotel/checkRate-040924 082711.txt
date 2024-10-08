@@ -1,0 +1,7 @@
+===========Credentials(https://api.hotelbeds.com/hotel-api/1.0/checkrates?rateKey=20240906|20240908|W|256|105709|ROO.2Q|ID_B2B_19|RO|RATE1|1~1~0||P@07~A-SIC~23b9e~-266259584~N~~~NOR~~DB59506C9FEA407172543824126606PAUS0008000800060823b9e)=========
+hotelbeds_key=216ed78bd01d216eb6d4261178bc2eb8
+ hotelbeds_secret=b14ebd32e7
+ endpoint=https://api.hotelbeds.com/hotel-api/1.0
+===========Response(https://api.hotelbeds.com/hotel-api/1.0/checkrates?rateKey=20240906|20240908|W|256|105709|ROO.2Q|ID_B2B_19|RO|RATE1|1~1~0||P@07~A-SIC~23b9e~-266259584~N~~~NOR~~DB59506C9FEA407172543824126606PAUS0008000800060823b9e)=========
+{"auditData":{"processTime":"44","timestamp":"2024-09-04 08:27:12.411","requestHost":"10.214.35.63","serverId":"ip-10-214-7-130.eu-central-1.compute.internal#A+","environment":"[awseucentral1, awseucentral1c, ip_10_214_7_130, eucentral1, secret]","release":"","token":"37390DBC83AA4342A7968D1EE963E154","internal":"0|07~A-SIC~23b9e~-266259584~N~~~NOR~~DB59506C9FEA407172543824126606PAUS0008000800060823b9e|||0|0|||||||||||R|0|2|~1~1~0||0||0|216ed78bd01d216eb6d4261178bc2eb8||||"},"error":{"code":"PRODUCT_ERROR","message":"Insufficient allotment"}}
+

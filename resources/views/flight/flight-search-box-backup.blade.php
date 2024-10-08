@@ -42,12 +42,19 @@
 </style>
 
 <?php 
-      if(isset($_REQUEST['IATA_from'])) { $IATA_from=$_REQUEST['IATA_from']; }else{ $IATA_from='DEL'; } 
-	  if(isset($_REQUEST['IATA_to'])) { $IATA_to=$_REQUEST['IATA_to']; }else{ $IATA_to='BOM'; }
-	  if(isset($_REQUEST['origin'])) { $origin=$_REQUEST['origin']; }else{ $origin='Delhi, India'; }
-	  if(isset($_REQUEST['destination'])) { $destination=$_REQUEST['destination']; }else{ $destination='Mumbai, India'; }  
-	if(isset($_REQUEST['departure_date'])) { $departure_date=$_REQUEST['departure_date']; }else{ $departure_date=date('d/m/Y ', strtotime(date('m/d/Y').' +6 month')); }
-	  if(isset($_REQUEST['return_date'])) { $return_date=$_REQUEST['return_date']; }else{ $return_date=date('d/m/Y ', strtotime(date('m/d/Y').' +7 month'));; }
+     // if(isset($_REQUEST['IATA_from'])) { $IATA_from=$_REQUEST['IATA_from']; }else{ $IATA_from='DEL'; } 
+	  //if(isset($_REQUEST['IATA_to'])) { $IATA_to=$_REQUEST['IATA_to']; }else{ $IATA_to='BOM'; }
+	  //if(isset($_REQUEST['origin'])) { $origin=$_REQUEST['origin']; }else{ $origin='Delhi, India'; }
+	  //if(isset($_REQUEST['destination'])) { $destination=$_REQUEST['destination']; }else{ $destination='Mumbai, India'; }  
+
+      if(isset($_REQUEST['IATA_from'])) { $IATA_from=$_REQUEST['IATA_from']; }else{ $IATA_from='LVS'; } 
+      if(isset($_REQUEST['IATA_to'])) { $IATA_to=$_REQUEST['IATA_to']; }else{ $IATA_to='LAX'; }
+      if(isset($_REQUEST['origin'])) { $origin=$_REQUEST['origin']; }else{ $origin='Las Vegas Arpt, US (LVS)'; }
+      if(isset($_REQUEST['destination'])) { $destination=$_REQUEST['destination']; }else{ $destination='Los Angeles Intl Arpt, US (LAX)'; } 
+
+
+	if(isset($_REQUEST['departure_date'])) { $departure_date=$_REQUEST['departure_date']; }else{ $departure_date=date('d/m/Y ', strtotime(date('m/d/Y').' +1 month')); }
+	  if(isset($_REQUEST['return_date'])) { $return_date=$_REQUEST['return_date']; }else{ $return_date=date('d/m/Y ', strtotime(date('m/d/Y').' +2 month'));; }
 	  
       if(isset($_REQUEST['adults'])) { $adults=$_REQUEST['adults']; }else{ $adults=1; }
       if(isset($_REQUEST['childs'])) { $childs=$_REQUEST['childs']; }else{ $childs=0; }   

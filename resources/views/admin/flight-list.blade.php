@@ -59,6 +59,8 @@
                     <td>@if($data->booking_status=='Failed')<span class="badge bg-danger">{{$data->booking_status}}@endif</span>
                     @if($data->booking_status=='Confirmed')<span class="badge bg-success">{{$data->booking_status}}@endif</span>
                     @if($data->booking_status=='Pending')<span class="badge bg-warning">{{$data->booking_status}}@endif</span>
+                     @if($data->booking_status=='Cancelled')<span class="badge bg-danger">{{$data->booking_status}}@endif</span>
+                      @if($data->booking_status=='Cancelled Pending')<span class="badge bg-warning">{{$data->booking_status}}@endif</span>
                   </td>
                      <td><div class="btn-group btn-group-sm">
                          <a href="flight-details/{{$data->id}}" target="_blank" class="btn btn-info"><i class="fas fa-edit"></i></a>&nbsp;

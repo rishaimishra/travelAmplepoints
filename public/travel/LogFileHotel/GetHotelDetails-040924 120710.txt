@@ -1,0 +1,3301 @@
+===========Credentials(GetHotelDetails)=========
+hotelbeds_key=216ed78bd01d216eb6d4261178bc2eb8
+ hotelbeds_secret=b14ebd32e7
+ endpoint=https://api.hotelbeds.com/hotel-api/1.0
+===========Request(GetHotelDetails)=========
+https://api.hotelbeds.com/hotel-content-api/1.0/hotels/16192/details?language=ENG&useSecondaryLanguage=False
+===========Response(GetHotelDetails)=========
+{
+  "auditData" : {
+    "processTime" : "100",
+    "timestamp" : "2024-09-04 12:07:11.012",
+    "requestHost" : "10.214.37.7",
+    "serverId" : "hotel-content-api-7d9f86d9c-8qk8j",
+    "environment" : "[live, awseucentral1, k8s, gcpeuropewest1, secret, hotel-content-api-7d9f86d9c-8qk8j]",
+    "release" : ""
+  },
+  "hotel" : {
+    "code" : 16192,
+    "name" : {
+      "content" : "Four Queens Hotel & Casino"
+    },
+    "description" : {
+      "content" : "This popular hotel is located in the centre of Las Vegas, on the famous Fremont Street, where nightly light shows are to be enjoyed. This hotel offers guests excellent value for money. McCarran International Airport is less than 10 kilometres away. The hotel's lobby features a reception desk manned around the clock, a currency exchange desk. Furthermore, the building offers guests a casino, as well as a series of pubs and restaurants offering great value for money. Guests may also take advantage of the hotel's room service, laundry service and onsite parking.  The comfortably furnished rooms all come with an en suite bathroom. The air conditioning and heating are individually adjustable. **Under the Nevada State Governor's mandate the hotels are limited on amenities such as valet, bell service, bars being with seating and just to clarify that bars are serving but through cocktail waitress' only.**"
+    },
+    "country" : {
+      "code" : "US",
+      "isoCode" : "US",
+      "description" : {
+        "content" : "United States"
+      }
+    },
+    "state" : {
+      "code" : "NV",
+      "name" : "NEVADA"
+    },
+    "destination" : {
+      "code" : "LVS",
+      "name" : {
+        "content" : "Las Vegas - NV"
+      },
+      "countryCode" : "US"
+    },
+    "zone" : {
+      "zoneCode" : 2,
+      "name" : "Fremont Street - Downtown",
+      "description" : {
+        "content" : "Fremont Street - Downtown"
+      }
+    },
+    "coordinates" : {
+      "longitude" : -115.14335400000000000000,
+      "latitude" : 36.17029600000000000000
+    },
+    "exclusiveDeal" : 3,
+    "category" : {
+      "code" : "3EST",
+      "description" : {
+        "content" : "3 STARS"
+      }
+    },
+    "categoryGroup" : {
+      "code" : "GRUPO3",
+      "description" : {
+        "content" : "Includes 3-star hotels and rural hotels."
+      }
+    },
+    "accommodationType" : {
+      "code" : "H",
+      "typeMultiDescription" : {
+        "content" : "Hotel"
+      },
+      "typeDescription" : "Hotel"
+    },
+    "boards" : [ {
+      "code" : "RO",
+      "description" : {
+        "content" : "ROOM ONLY"
+      }
+    } ],
+    "segments" : [ {
+      "code" : 34,
+      "description" : {
+        "content" : "Business hotels "
+      }
+    } ],
+    "address" : {
+      "content" : "202 Fremont St",
+      "street" : "202 Fremont St"
+    },
+    "postalCode" : "89101",
+    "city" : {
+      "content" : "LAS VEGAS"
+    },
+    "email" : "reservations@fourqueens.com",
+    "phones" : [ {
+      "phoneNumber" : "702-386-7867",
+      "phoneType" : "PHONEBOOKING"
+    }, {
+      "phoneNumber" : "7023854011",
+      "phoneType" : "PHONEHOTEL"
+    } ],
+    "rooms" : [ {
+      "roomCode" : "DBL.2D",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 4,
+      "maxAdults" : 4,
+      "maxChildren" : 3,
+      "minAdults" : 1,
+      "description" : "DOUBLE TWO DOUBLE BEDS",
+      "type" : {
+        "code" : "DBL",
+        "description" : {
+          "content" : "DOUBLE"
+        }
+      },
+      "characteristic" : {
+        "code" : "2D",
+        "description" : {
+          "content" : "TWO DOUBLE BEDS"
+        }
+      }
+    }, {
+      "roomCode" : "DBL.2Q-PI",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 4,
+      "maxAdults" : 4,
+      "maxChildren" : 3,
+      "minAdults" : 1,
+      "description" : "DOUBLE TWO QUEEN BEDS PREMIUM",
+      "type" : {
+        "code" : "DBL",
+        "description" : {
+          "content" : "DOUBLE"
+        }
+      },
+      "characteristic" : {
+        "code" : "2Q-PI",
+        "description" : {
+          "content" : "TWO QUEEN BEDS PREMIUM"
+        }
+      }
+    }, {
+      "roomCode" : "DBL.GD",
+      "isParentRoom" : true,
+      "minPax" : 1,
+      "maxPax" : 2,
+      "maxAdults" : 2,
+      "maxChildren" : 1,
+      "minAdults" : 1,
+      "description" : "DOUBLE GRAND",
+      "type" : {
+        "code" : "DBL",
+        "description" : {
+          "content" : "DOUBLE"
+        }
+      },
+      "characteristic" : {
+        "code" : "GD",
+        "description" : {
+          "content" : "GRAND"
+        }
+      },
+      "roomFacilities" : [ {
+        "facilityCode" : 10,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Bathroom"
+        },
+        "indLogic" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 20,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Shower"
+        },
+        "indLogic" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 40,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Hairdryer"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 50,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Direct dial telephone"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 55,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "TV"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 80,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Radio"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 100,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Internet access"
+        },
+        "indLogic" : false,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 130,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Fridge"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 143,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Tea and coffee making facilities "
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 147,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Ironing set"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 160,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Carpeted floors"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 180,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Individually adjustable air conditioning"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 195,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Individually adjustable heating "
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 200,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Safe"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 220,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Living room"
+        },
+        "indLogic" : false,
+        "number" : 0,
+        "voucher" : false
+      }, {
+        "facilityCode" : 250,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Wheelchair-accessible"
+        },
+        "indYesOrNo" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 261,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Wi-fi"
+        },
+        "indFee" : true,
+        "indYesOrNo" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 272,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Pay movies"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 273,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Alarm clock"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 276,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Toiletries"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 279,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Desk"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 287,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Smoking rooms"
+        },
+        "indYesOrNo" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 295,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Room size (sqm)"
+        },
+        "number" : 58,
+        "indYesOrNo" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 297,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Smoke detector"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 298,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Number of bedrooms"
+        },
+        "indLogic" : false,
+        "number" : 1,
+        "voucher" : false
+      }, {
+        "facilityCode" : 300,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Housekeeping"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      } ],
+      "roomStays" : [ {
+        "stayType" : "BED",
+        "order" : "1",
+        "description" : "Bed room",
+        "roomStayFacilities" : [ {
+          "facilityCode" : 155,
+          "facilityGroupCode" : 61,
+          "description" : {
+            "content" : "King-size bed 150-183 width"
+          },
+          "number" : 1
+        } ]
+      } ],
+      "PMSRoomCode" : "201889582-37321"
+    }, {
+      "roomCode" : "DBL.GD-1",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 4,
+      "maxAdults" : 4,
+      "maxChildren" : 3,
+      "minAdults" : 1,
+      "description" : "DOUBLE GRAND",
+      "type" : {
+        "code" : "DBL",
+        "description" : {
+          "content" : "DOUBLE"
+        }
+      },
+      "characteristic" : {
+        "code" : "GD-1",
+        "description" : {
+          "content" : "GRAND"
+        }
+      }
+    }, {
+      "roomCode" : "DBL.KG",
+      "isParentRoom" : true,
+      "minPax" : 1,
+      "maxPax" : 2,
+      "maxAdults" : 2,
+      "maxChildren" : 1,
+      "minAdults" : 1,
+      "description" : "DOUBLE KING SIZE BED",
+      "type" : {
+        "code" : "DBL",
+        "description" : {
+          "content" : "DOUBLE"
+        }
+      },
+      "characteristic" : {
+        "code" : "KG",
+        "description" : {
+          "content" : "KING SIZE BED"
+        }
+      },
+      "roomFacilities" : [ {
+        "facilityCode" : 10,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Bathroom"
+        },
+        "indLogic" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 20,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Shower"
+        },
+        "indLogic" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 40,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Hairdryer"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 50,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Direct dial telephone"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 55,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "TV"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 80,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Radio"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 100,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Internet access"
+        },
+        "indLogic" : false,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 143,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Tea and coffee making facilities "
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 147,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Ironing set"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 160,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Carpeted floors"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 180,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Individually adjustable air conditioning"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 195,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Individually adjustable heating "
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 200,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Safe"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 220,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Living room"
+        },
+        "indLogic" : false,
+        "number" : 0,
+        "voucher" : false
+      }, {
+        "facilityCode" : 250,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Wheelchair-accessible"
+        },
+        "indYesOrNo" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 261,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Wi-fi"
+        },
+        "indFee" : true,
+        "indYesOrNo" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 272,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Pay movies"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 273,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Alarm clock"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 276,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Toiletries"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 279,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Desk"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 287,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Smoking rooms"
+        },
+        "indYesOrNo" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 295,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Room size (sqm)"
+        },
+        "number" : 27,
+        "indYesOrNo" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 297,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Smoke detector"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 298,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Number of bedrooms"
+        },
+        "indLogic" : false,
+        "number" : 1,
+        "voucher" : false
+      }, {
+        "facilityCode" : 300,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Housekeeping"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      } ],
+      "roomStays" : [ {
+        "stayType" : "BED",
+        "order" : "1",
+        "description" : "Bed room",
+        "roomStayFacilities" : [ {
+          "facilityCode" : 155,
+          "facilityGroupCode" : 61,
+          "description" : {
+            "content" : "King-size bed 150-183 width"
+          },
+          "number" : 1
+        } ]
+      } ],
+      "PMSRoomCode" : "2990-37321"
+    }, {
+      "roomCode" : "DBL.KG-1",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 4,
+      "maxAdults" : 4,
+      "maxChildren" : 3,
+      "minAdults" : 1,
+      "description" : "DOUBLE KING SIZE BED",
+      "type" : {
+        "code" : "DBL",
+        "description" : {
+          "content" : "DOUBLE"
+        }
+      },
+      "characteristic" : {
+        "code" : "KG-1",
+        "description" : {
+          "content" : "KING SIZE BED"
+        }
+      }
+    }, {
+      "roomCode" : "DBL.PI",
+      "isParentRoom" : true,
+      "minPax" : 1,
+      "maxPax" : 2,
+      "maxAdults" : 2,
+      "maxChildren" : 1,
+      "minAdults" : 1,
+      "description" : "DOUBLE PREMIUM",
+      "type" : {
+        "code" : "DBL",
+        "description" : {
+          "content" : "DOUBLE"
+        }
+      },
+      "characteristic" : {
+        "code" : "PI",
+        "description" : {
+          "content" : "PREMIUM"
+        }
+      },
+      "roomFacilities" : [ {
+        "facilityCode" : 10,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Bathroom"
+        },
+        "indLogic" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 20,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Shower"
+        },
+        "indLogic" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 40,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Hairdryer"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 50,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Direct dial telephone"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 55,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "TV"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 80,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Radio"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 100,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Internet access"
+        },
+        "indLogic" : false,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 130,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Fridge"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 143,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Tea and coffee making facilities "
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 147,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Ironing set"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 160,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Carpeted floors"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 180,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Individually adjustable air conditioning"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 195,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Individually adjustable heating "
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 200,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Safe"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 220,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Living room"
+        },
+        "indLogic" : false,
+        "number" : 0,
+        "voucher" : false
+      }, {
+        "facilityCode" : 250,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Wheelchair-accessible"
+        },
+        "indYesOrNo" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 260,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Disability-friendly bathroom"
+        },
+        "indLogic" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 261,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Wi-fi"
+        },
+        "indFee" : true,
+        "indYesOrNo" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 272,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Pay movies"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 273,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Alarm clock"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 275,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Extra beds on demand"
+        },
+        "indLogic" : true,
+        "indFee" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 276,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Toiletries"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 279,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Desk"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 287,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Smoking rooms"
+        },
+        "indYesOrNo" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 295,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Room size (sqm)"
+        },
+        "number" : 30,
+        "indYesOrNo" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 297,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Smoke detector"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 298,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Number of bedrooms"
+        },
+        "indLogic" : false,
+        "number" : 1,
+        "voucher" : false
+      }, {
+        "facilityCode" : 300,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Housekeeping"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      } ],
+      "roomStays" : [ {
+        "stayType" : "BED",
+        "order" : "1",
+        "description" : "Bed room",
+        "roomStayFacilities" : [ {
+          "facilityCode" : 294,
+          "facilityGroupCode" : 61,
+          "description" : {
+            "content" : "Queen-size bed 150-154 width"
+          },
+          "number" : 1
+        } ]
+      } ],
+      "PMSRoomCode" : "437834-37340"
+    }, {
+      "roomCode" : "DBL.PI-1",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 4,
+      "maxAdults" : 4,
+      "maxChildren" : 3,
+      "minAdults" : 1,
+      "description" : "DOUBLE PREMIUM",
+      "type" : {
+        "code" : "DBL",
+        "description" : {
+          "content" : "DOUBLE"
+        }
+      },
+      "characteristic" : {
+        "code" : "PI-1",
+        "description" : {
+          "content" : "PREMIUM"
+        }
+      }
+    }, {
+      "roomCode" : "DBL.PI-QN",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 4,
+      "maxAdults" : 4,
+      "maxChildren" : 3,
+      "minAdults" : 1,
+      "description" : "DOUBLE PREMIUM QUEEN BED",
+      "type" : {
+        "code" : "DBL",
+        "description" : {
+          "content" : "DOUBLE"
+        }
+      },
+      "characteristic" : {
+        "code" : "PI-QN",
+        "description" : {
+          "content" : "PREMIUM QUEEN BED"
+        }
+      }
+    }, {
+      "roomCode" : "DBL.QN",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 4,
+      "maxAdults" : 4,
+      "maxChildren" : 3,
+      "minAdults" : 1,
+      "description" : "DOUBLE QUEEN SIZE BED",
+      "type" : {
+        "code" : "DBL",
+        "description" : {
+          "content" : "DOUBLE"
+        }
+      },
+      "characteristic" : {
+        "code" : "QN",
+        "description" : {
+          "content" : "QUEEN SIZE BED"
+        }
+      }
+    }, {
+      "roomCode" : "DBL.ST-2",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 4,
+      "maxAdults" : 4,
+      "maxChildren" : 3,
+      "minAdults" : 1,
+      "description" : "DOUBLE STANDARD",
+      "type" : {
+        "code" : "DBL",
+        "description" : {
+          "content" : "DOUBLE"
+        }
+      },
+      "characteristic" : {
+        "code" : "ST-2",
+        "description" : {
+          "content" : "STANDARD"
+        }
+      }
+    }, {
+      "roomCode" : "DBT.AX",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 6,
+      "maxAdults" : 6,
+      "maxChildren" : 3,
+      "minAdults" : 1,
+      "description" : "Double or Twin ANNEX",
+      "type" : {
+        "code" : "DBT",
+        "description" : {
+          "content" : "Double or Twin"
+        }
+      },
+      "characteristic" : {
+        "code" : "AX",
+        "description" : {
+          "content" : "ANNEX"
+        }
+      }
+    }, {
+      "roomCode" : "DBT.EY",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 6,
+      "maxAdults" : 6,
+      "maxChildren" : 3,
+      "minAdults" : 1,
+      "description" : "Double or Twin ECONOMY",
+      "type" : {
+        "code" : "DBT",
+        "description" : {
+          "content" : "Double or Twin"
+        }
+      },
+      "characteristic" : {
+        "code" : "EY",
+        "description" : {
+          "content" : "ECONOMY"
+        }
+      }
+    }, {
+      "roomCode" : "DBT.KG",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 6,
+      "maxAdults" : 6,
+      "maxChildren" : 3,
+      "minAdults" : 1,
+      "description" : "Double or Twin KING SIZE BED",
+      "type" : {
+        "code" : "DBT",
+        "description" : {
+          "content" : "Double or Twin"
+        }
+      },
+      "characteristic" : {
+        "code" : "KG",
+        "description" : {
+          "content" : "KING SIZE BED"
+        }
+      }
+    }, {
+      "roomCode" : "DBT.PI",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 6,
+      "maxAdults" : 6,
+      "maxChildren" : 3,
+      "minAdults" : 1,
+      "description" : "Double or Twin PREMIUM",
+      "type" : {
+        "code" : "DBT",
+        "description" : {
+          "content" : "Double or Twin"
+        }
+      },
+      "characteristic" : {
+        "code" : "PI",
+        "description" : {
+          "content" : "PREMIUM"
+        }
+      }
+    }, {
+      "roomCode" : "DBT.ST",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 6,
+      "maxAdults" : 6,
+      "maxChildren" : 3,
+      "minAdults" : 1,
+      "description" : "Double or Twin STANDARD",
+      "type" : {
+        "code" : "DBT",
+        "description" : {
+          "content" : "Double or Twin"
+        }
+      },
+      "characteristic" : {
+        "code" : "ST",
+        "description" : {
+          "content" : "STANDARD"
+        }
+      }
+    }, {
+      "roomCode" : "DBT.PT",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 6,
+      "maxAdults" : 6,
+      "maxChildren" : 3,
+      "minAdults" : 1,
+      "description" : "Double or Twin PRESTIGE",
+      "type" : {
+        "code" : "DBT",
+        "description" : {
+          "content" : "Double or Twin"
+        }
+      },
+      "characteristic" : {
+        "code" : "PT",
+        "description" : {
+          "content" : "PRESTIGE"
+        }
+      }
+    }, {
+      "roomCode" : "DUS.ST",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 2,
+      "maxAdults" : 1,
+      "maxChildren" : 1,
+      "minAdults" : 1,
+      "description" : "DOUBLE SINGLE USE STANDARD",
+      "type" : {
+        "code" : "DUS",
+        "description" : {
+          "content" : "DOUBLE SINGLE USE"
+        }
+      },
+      "characteristic" : {
+        "code" : "ST",
+        "description" : {
+          "content" : "STANDARD"
+        }
+      }
+    }, {
+      "roomCode" : "FAM.PI",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 8,
+      "maxAdults" : 8,
+      "maxChildren" : 4,
+      "minAdults" : 1,
+      "description" : "FAMILY ROOM PREMIUM",
+      "type" : {
+        "code" : "FAM",
+        "description" : {
+          "content" : "FAMILY ROOM"
+        }
+      },
+      "characteristic" : {
+        "code" : "PI",
+        "description" : {
+          "content" : "PREMIUM"
+        }
+      }
+    }, {
+      "roomCode" : "QUA.PI",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 6,
+      "maxAdults" : 4,
+      "maxChildren" : 3,
+      "minAdults" : 1,
+      "description" : "QUADRUPLE PREMIUM",
+      "type" : {
+        "code" : "QUA",
+        "description" : {
+          "content" : "QUADRUPLE"
+        }
+      },
+      "characteristic" : {
+        "code" : "PI",
+        "description" : {
+          "content" : "PREMIUM"
+        }
+      }
+    }, {
+      "roomCode" : "ROO.RO-2",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 10,
+      "maxAdults" : 10,
+      "maxChildren" : 6,
+      "minAdults" : 1,
+      "description" : "Room RUN OF HOUSE",
+      "type" : {
+        "code" : "ROO",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "characteristic" : {
+        "code" : "RO-2",
+        "description" : {
+          "content" : "RUN OF HOUSE"
+        }
+      }
+    }, {
+      "roomCode" : "ROO.ST",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 10,
+      "maxAdults" : 10,
+      "maxChildren" : 6,
+      "minAdults" : 1,
+      "description" : "Room STANDARD",
+      "type" : {
+        "code" : "ROO",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "characteristic" : {
+        "code" : "ST",
+        "description" : {
+          "content" : "STANDARD"
+        }
+      }
+    }, {
+      "roomCode" : "SGL.AX",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 1,
+      "maxAdults" : 1,
+      "maxChildren" : 0,
+      "minAdults" : 1,
+      "description" : "SINGLE ANNEX",
+      "type" : {
+        "code" : "SGL",
+        "description" : {
+          "content" : "SINGLE"
+        }
+      },
+      "characteristic" : {
+        "code" : "AX",
+        "description" : {
+          "content" : "ANNEX"
+        }
+      }
+    }, {
+      "roomCode" : "SGL.EY",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 1,
+      "maxAdults" : 1,
+      "maxChildren" : 0,
+      "minAdults" : 1,
+      "description" : "SINGLE ECONOMY",
+      "type" : {
+        "code" : "SGL",
+        "description" : {
+          "content" : "SINGLE"
+        }
+      },
+      "characteristic" : {
+        "code" : "EY",
+        "description" : {
+          "content" : "ECONOMY"
+        }
+      }
+    }, {
+      "roomCode" : "SGL.KG",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 1,
+      "maxAdults" : 1,
+      "maxChildren" : 0,
+      "minAdults" : 1,
+      "description" : "SINGLE KING SIZE BED",
+      "type" : {
+        "code" : "SGL",
+        "description" : {
+          "content" : "SINGLE"
+        }
+      },
+      "characteristic" : {
+        "code" : "KG",
+        "description" : {
+          "content" : "KING SIZE BED"
+        }
+      }
+    }, {
+      "roomCode" : "SGL.PI",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 1,
+      "maxAdults" : 1,
+      "maxChildren" : 0,
+      "minAdults" : 1,
+      "description" : "SINGLE PREMIUM",
+      "type" : {
+        "code" : "SGL",
+        "description" : {
+          "content" : "SINGLE"
+        }
+      },
+      "characteristic" : {
+        "code" : "PI",
+        "description" : {
+          "content" : "PREMIUM"
+        }
+      }
+    }, {
+      "roomCode" : "SGL.ST",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 1,
+      "maxAdults" : 1,
+      "maxChildren" : 0,
+      "minAdults" : 1,
+      "description" : "SINGLE STANDARD",
+      "type" : {
+        "code" : "SGL",
+        "description" : {
+          "content" : "SINGLE"
+        }
+      },
+      "characteristic" : {
+        "code" : "ST",
+        "description" : {
+          "content" : "STANDARD"
+        }
+      }
+    }, {
+      "roomCode" : "SUI.DB",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 8,
+      "maxAdults" : 8,
+      "maxChildren" : 5,
+      "minAdults" : 1,
+      "description" : "SUITE WITH DOUBLE BED",
+      "type" : {
+        "code" : "SUI",
+        "description" : {
+          "content" : "SUITE"
+        }
+      },
+      "characteristic" : {
+        "code" : "DB",
+        "description" : {
+          "content" : "WITH DOUBLE BED"
+        }
+      }
+    }, {
+      "roomCode" : "SUI.GD",
+      "isParentRoom" : true,
+      "minPax" : 1,
+      "maxPax" : 2,
+      "maxAdults" : 2,
+      "maxChildren" : 1,
+      "minAdults" : 1,
+      "description" : "SUITE GRAND",
+      "type" : {
+        "code" : "SUI",
+        "description" : {
+          "content" : "SUITE"
+        }
+      },
+      "characteristic" : {
+        "code" : "GD",
+        "description" : {
+          "content" : "GRAND"
+        }
+      },
+      "roomFacilities" : [ {
+        "facilityCode" : 10,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Bathroom"
+        },
+        "indLogic" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 20,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Shower"
+        },
+        "indLogic" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 40,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Hairdryer"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 50,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Direct dial telephone"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 55,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "TV"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 80,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Radio"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 100,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Internet access"
+        },
+        "indLogic" : false,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 130,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Fridge"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 140,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Microwave"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 143,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Tea and coffee making facilities "
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 147,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Ironing set"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 160,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Carpeted floors"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 180,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Individually adjustable air conditioning"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 195,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Individually adjustable heating "
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 200,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Safe"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 220,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Living room"
+        },
+        "indLogic" : false,
+        "number" : 0,
+        "voucher" : false
+      }, {
+        "facilityCode" : 250,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Wheelchair-accessible"
+        },
+        "indYesOrNo" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 261,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Wi-fi"
+        },
+        "indFee" : true,
+        "indYesOrNo" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 272,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Pay movies"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 273,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Alarm clock"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 276,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Toiletries"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 279,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Desk"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 287,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Smoking rooms"
+        },
+        "indYesOrNo" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 295,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Room size (sqm)"
+        },
+        "number" : 40,
+        "indYesOrNo" : true,
+        "voucher" : false
+      }, {
+        "facilityCode" : 297,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Smoke detector"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      }, {
+        "facilityCode" : 298,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Number of bedrooms"
+        },
+        "indLogic" : false,
+        "number" : 1,
+        "voucher" : false
+      }, {
+        "facilityCode" : 300,
+        "facilityGroupCode" : 60,
+        "description" : {
+          "content" : "Housekeeping"
+        },
+        "indLogic" : true,
+        "indFee" : false,
+        "voucher" : false
+      } ],
+      "roomStays" : [ {
+        "stayType" : "BED",
+        "order" : "1",
+        "description" : "Bed room",
+        "roomStayFacilities" : [ {
+          "facilityCode" : 155,
+          "facilityGroupCode" : 61,
+          "description" : {
+            "content" : "King-size bed 150-183 width"
+          },
+          "number" : 1
+        } ]
+      } ],
+      "PMSRoomCode" : "213008359-37321"
+    }, {
+      "roomCode" : "SUI.GD-1",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 8,
+      "maxAdults" : 8,
+      "maxChildren" : 5,
+      "minAdults" : 1,
+      "description" : "SUITE GRAND",
+      "type" : {
+        "code" : "SUI",
+        "description" : {
+          "content" : "SUITE"
+        }
+      },
+      "characteristic" : {
+        "code" : "GD-1",
+        "description" : {
+          "content" : "GRAND"
+        }
+      }
+    }, {
+      "roomCode" : "SUI.PI",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 8,
+      "maxAdults" : 8,
+      "maxChildren" : 5,
+      "minAdults" : 1,
+      "description" : "SUITE PREMIUM",
+      "type" : {
+        "code" : "SUI",
+        "description" : {
+          "content" : "SUITE"
+        }
+      },
+      "characteristic" : {
+        "code" : "PI",
+        "description" : {
+          "content" : "PREMIUM"
+        }
+      }
+    }, {
+      "roomCode" : "SUI.ST-2",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 8,
+      "maxAdults" : 8,
+      "maxChildren" : 5,
+      "minAdults" : 1,
+      "description" : "SUITE STANDARD",
+      "type" : {
+        "code" : "SUI",
+        "description" : {
+          "content" : "SUITE"
+        }
+      },
+      "characteristic" : {
+        "code" : "ST-2",
+        "description" : {
+          "content" : "STANDARD"
+        }
+      }
+    }, {
+      "roomCode" : "SUI.ST-3",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 8,
+      "maxAdults" : 8,
+      "maxChildren" : 5,
+      "minAdults" : 1,
+      "description" : "SUITE STANDARD",
+      "type" : {
+        "code" : "SUI",
+        "description" : {
+          "content" : "SUITE"
+        }
+      },
+      "characteristic" : {
+        "code" : "ST-3",
+        "description" : {
+          "content" : "STANDARD"
+        }
+      }
+    }, {
+      "roomCode" : "TPL.PI",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 5,
+      "maxAdults" : 3,
+      "maxChildren" : 4,
+      "minAdults" : 1,
+      "description" : "TRIPLE PREMIUM",
+      "type" : {
+        "code" : "TPL",
+        "description" : {
+          "content" : "TRIPLE"
+        }
+      },
+      "characteristic" : {
+        "code" : "PI",
+        "description" : {
+          "content" : "PREMIUM"
+        }
+      }
+    }, {
+      "roomCode" : "TWN.PI",
+      "isParentRoom" : false,
+      "minPax" : 1,
+      "maxPax" : 4,
+      "maxAdults" : 4,
+      "maxChildren" : 3,
+      "minAdults" : 1,
+      "description" : "TWIN PREMIUM",
+      "type" : {
+        "code" : "TWN",
+        "description" : {
+          "content" : "TWIN"
+        }
+      },
+      "characteristic" : {
+        "code" : "PI",
+        "description" : {
+          "content" : "PREMIUM"
+        }
+      }
+    } ],
+    "facilities" : [ {
+      "facilityCode" : 30,
+      "facilityGroupCode" : 10,
+      "description" : {
+        "content" : "Year of most recent renovation"
+      },
+      "order" : 1,
+      "number" : 2007,
+      "voucher" : false
+    }, {
+      "facilityCode" : 70,
+      "facilityGroupCode" : 10,
+      "description" : {
+        "content" : "Total number of rooms"
+      },
+      "order" : 1,
+      "indYesOrNo" : false,
+      "number" : 695,
+      "voucher" : false
+    }, {
+      "facilityCode" : 50,
+      "facilityGroupCode" : 10,
+      "description" : {
+        "content" : "Number of floors (main building)"
+      },
+      "order" : 1,
+      "number" : 19,
+      "voucher" : false
+    }, {
+      "facilityCode" : 129,
+      "facilityGroupCode" : 10,
+      "description" : {
+        "content" : "Superior rooms"
+      },
+      "order" : 1,
+      "number" : 34,
+      "voucher" : false
+    }, {
+      "facilityCode" : 124,
+      "facilityGroupCode" : 10,
+      "description" : {
+        "content" : "Disability-friendly rooms"
+      },
+      "order" : 1,
+      "number" : 14,
+      "voucher" : false
+    }, {
+      "facilityCode" : 10,
+      "facilityGroupCode" : 20,
+      "description" : {
+        "content" : "hotel"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : false
+    }, {
+      "facilityCode" : 10,
+      "facilityGroupCode" : 30,
+      "description" : {
+        "content" : "American Express"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : false
+    }, {
+      "facilityCode" : 50,
+      "facilityGroupCode" : 30,
+      "description" : {
+        "content" : "MasterCard"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : false
+    }, {
+      "facilityCode" : 60,
+      "facilityGroupCode" : 30,
+      "description" : {
+        "content" : "Visa"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : false
+    }, {
+      "facilityCode" : 10,
+      "facilityGroupCode" : 40,
+      "description" : {
+        "content" : "City centre"
+      },
+      "order" : 1,
+      "distance" : 18000,
+      "voucher" : false
+    }, {
+      "facilityCode" : 80,
+      "facilityGroupCode" : 40,
+      "description" : {
+        "content" : "Airport"
+      },
+      "order" : 1,
+      "distance" : 235668,
+      "voucher" : false
+    }, {
+      "facilityCode" : 295,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Wheelchair-accessible"
+      },
+      "order" : 1,
+      "indYesOrNo" : true,
+      "voucher" : false
+    }, {
+      "facilityCode" : 320,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Car park"
+      },
+      "order" : 1,
+      "indFee" : true,
+      "indYesOrNo" : true,
+      "voucher" : true
+    }, {
+      "facilityCode" : 330,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Garage"
+      },
+      "order" : 1,
+      "indLogic" : false,
+      "indFee" : true,
+      "amount" : 3,
+      "currency" : "USD",
+      "applicationType" : "UN",
+      "voucher" : false
+    }, {
+      "facilityCode" : 210,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Key Collection"
+      },
+      "order" : 1,
+      "timeFrom" : "16:00:00",
+      "timeTo" : "00:00:00",
+      "voucher" : true
+    }, {
+      "facilityCode" : 30,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "24-hour reception"
+      },
+      "order" : 1,
+      "indYesOrNo" : true,
+      "voucher" : false
+    }, {
+      "facilityCode" : 260,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Check-in hour"
+      },
+      "order" : 1,
+      "timeFrom" : "00:00:00",
+      "timeTo" : "00:00:00",
+      "voucher" : true
+    }, {
+      "facilityCode" : 390,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Check-out hour"
+      },
+      "order" : 1,
+      "timeFrom" : "12:00:00",
+      "timeTo" : "11:00:00",
+      "voucher" : false
+    }, {
+      "facilityCode" : 250,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Wired Internet"
+      },
+      "order" : 1,
+      "indLogic" : false,
+      "indFee" : true,
+      "amount" : 8.99,
+      "currency" : "USD",
+      "applicationType" : "UN",
+      "voucher" : false
+    }, {
+      "facilityCode" : 550,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Wi-fi"
+      },
+      "order" : 1,
+      "indFee" : true,
+      "indYesOrNo" : true,
+      "voucher" : false
+    }, {
+      "facilityCode" : 500,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Secure parking"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : true,
+      "voucher" : false
+    }, {
+      "facilityCode" : 560,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Valet parking"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : false
+    }, {
+      "facilityCode" : 270,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Room service"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : false
+    }, {
+      "facilityCode" : 280,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Laundry service"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : true,
+      "voucher" : false
+    }, {
+      "facilityCode" : 505,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Multilingual staff"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : true,
+      "voucher" : false
+    }, {
+      "facilityCode" : 520,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "24-hour security"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : false
+    }, {
+      "facilityCode" : 525,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Bellboy service"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : false
+    }, {
+      "facilityCode" : 10,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Air conditioning in public areas"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "voucher" : false
+    }, {
+      "facilityCode" : 12,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Smoke detector"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : false
+    }, {
+      "facilityCode" : 40,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Hotel safe"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : false
+    }, {
+      "facilityCode" : 50,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Currency exchange facilities"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : false
+    }, {
+      "facilityCode" : 70,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Lift access"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : true,
+      "voucher" : false
+    }, {
+      "facilityCode" : 90,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Newspaper stand"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : true,
+      "voucher" : false
+    }, {
+      "facilityCode" : 110,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Shop"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : false
+    }, {
+      "facilityCode" : 515,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Newspapers"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : true,
+      "voucher" : false
+    }, {
+      "facilityCode" : 568,
+      "facilityGroupCode" : 70,
+      "description" : {
+        "content" : "Clothes dryer"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "voucher" : false
+    }, {
+      "facilityCode" : 80,
+      "facilityGroupCode" : 71,
+      "description" : {
+        "content" : "Café"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : false
+    }, {
+      "facilityCode" : 130,
+      "facilityGroupCode" : 71,
+      "description" : {
+        "content" : "Bar"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : false
+    }, {
+      "facilityCode" : 200,
+      "facilityGroupCode" : 71,
+      "description" : {
+        "content" : "Restaurant"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "number" : 3,
+      "voucher" : false
+    }, {
+      "facilityCode" : 220,
+      "facilityGroupCode" : 71,
+      "description" : {
+        "content" : "Non-smoking area"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : false
+    }, {
+      "facilityCode" : 225,
+      "facilityGroupCode" : 71,
+      "description" : {
+        "content" : "Smoking area"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : false
+    }, {
+      "facilityCode" : 230,
+      "facilityGroupCode" : 71,
+      "description" : {
+        "content" : "Highchairs"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : false
+    }, {
+      "facilityCode" : 560,
+      "facilityGroupCode" : 71,
+      "description" : {
+        "content" : "Banquet hall"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : true,
+      "voucher" : false
+    }, {
+      "facilityCode" : 575,
+      "facilityGroupCode" : 71,
+      "description" : {
+        "content" : "Air conditioning in Restaurant"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "voucher" : false
+    }, {
+      "facilityCode" : 170,
+      "facilityGroupCode" : 72,
+      "description" : {
+        "content" : "Conference room"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "voucher" : false
+    }, {
+      "facilityCode" : 605,
+      "facilityGroupCode" : 72,
+      "description" : {
+        "content" : "Business centre"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : true,
+      "voucher" : false
+    }, {
+      "facilityCode" : 180,
+      "facilityGroupCode" : 73,
+      "description" : {
+        "content" : "Casino"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : true,
+      "voucher" : false
+    }, {
+      "facilityCode" : 140,
+      "facilityGroupCode" : 73,
+      "description" : {
+        "content" : "Pub"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : false
+    }, {
+      "facilityCode" : 40,
+      "facilityGroupCode" : 80,
+      "description" : {
+        "content" : "Breakfast"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "voucher" : false
+    }, {
+      "facilityCode" : 561,
+      "facilityGroupCode" : 85,
+      "description" : {
+        "content" : "Deposit on arrival"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "voucher" : true
+    }, {
+      "facilityCode" : 557,
+      "facilityGroupCode" : 85,
+      "description" : {
+        "content" : "Identification card at arrival"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : true
+    }, {
+      "facilityCode" : 564,
+      "facilityGroupCode" : 85,
+      "description" : {
+        "content" : "Minimum check-in age"
+      },
+      "order" : 1,
+      "number" : 21,
+      "voucher" : true
+    }, {
+      "facilityCode" : 565,
+      "facilityGroupCode" : 85,
+      "description" : {
+        "content" : "Credit card is compulsory as a deposit, no deposit in cash is accepted"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : false,
+      "voucher" : true
+    }, {
+      "facilityCode" : 295,
+      "facilityGroupCode" : 90,
+      "description" : {
+        "content" : "Fitness"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "indFee" : true,
+      "voucher" : false
+    }, {
+      "facilityCode" : 34,
+      "facilityGroupCode" : 91,
+      "description" : {
+        "content" : "USA - AHLA - Safe Stay"
+      },
+      "order" : 1,
+      "indLogic" : true,
+      "dateTo" : "2049-12-31",
+      "voucher" : false
+    } ],
+    "images" : [ {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_w_019.jpg",
+      "order" : 19,
+      "visualOrder" : 219
+    }, {
+      "type" : {
+        "code" : "DEP",
+        "description" : {
+          "content" : "Sports and Entertainment"
+        }
+      },
+      "path" : "01/016192/016192a_hb_f_008.jpg",
+      "order" : 8,
+      "visualOrder" : 803
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_w_018.jpg",
+      "order" : 18,
+      "visualOrder" : 218
+    }, {
+      "type" : {
+        "code" : "DEP",
+        "description" : {
+          "content" : "Sports and Entertainment"
+        }
+      },
+      "path" : "01/016192/016192a_hb_f_009.jpg",
+      "order" : 9,
+      "visualOrder" : 804
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_w_017.jpg",
+      "order" : 17,
+      "visualOrder" : 217
+    }, {
+      "type" : {
+        "code" : "DEP",
+        "description" : {
+          "content" : "Sports and Entertainment"
+        }
+      },
+      "path" : "01/016192/016192a_hb_f_006.jpg",
+      "order" : 6,
+      "visualOrder" : 801
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_016.jpg",
+      "order" : 16,
+      "visualOrder" : 216
+    }, {
+      "type" : {
+        "code" : "DEP",
+        "description" : {
+          "content" : "Sports and Entertainment"
+        }
+      },
+      "path" : "01/016192/016192a_hb_f_007.jpg",
+      "order" : 7,
+      "visualOrder" : 802
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_015.jpg",
+      "order" : 15,
+      "visualOrder" : 215
+    }, {
+      "type" : {
+        "code" : "DEP",
+        "description" : {
+          "content" : "Sports and Entertainment"
+        }
+      },
+      "path" : "01/016192/016192a_hb_f_004.jpg",
+      "order" : 4,
+      "visualOrder" : 902
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_014.jpg",
+      "order" : 14,
+      "visualOrder" : 214
+    }, {
+      "type" : {
+        "code" : "DEP",
+        "description" : {
+          "content" : "Sports and Entertainment"
+        }
+      },
+      "path" : "01/016192/016192a_hb_f_005.jpg",
+      "order" : 5,
+      "visualOrder" : 903
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_013.jpg",
+      "order" : 13,
+      "visualOrder" : 213
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_012.jpg",
+      "order" : 12,
+      "visualOrder" : 212
+    }, {
+      "type" : {
+        "code" : "DEP",
+        "description" : {
+          "content" : "Sports and Entertainment"
+        }
+      },
+      "path" : "01/016192/016192a_hb_f_003.jpg",
+      "order" : 3,
+      "visualOrder" : 901
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_011.jpg",
+      "order" : 11,
+      "visualOrder" : 211
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_010.jpg",
+      "order" : 10,
+      "visualOrder" : 210
+    }, {
+      "type" : {
+        "code" : "COM",
+        "description" : {
+          "content" : "Lobby"
+        }
+      },
+      "path" : "01/016192/016192a_hb_l_001.JPG",
+      "order" : 1,
+      "visualOrder" : 201
+    }, {
+      "type" : {
+        "code" : "COM",
+        "description" : {
+          "content" : "Lobby"
+        }
+      },
+      "path" : "01/016192/016192a_hb_l_003.jpg",
+      "order" : 3,
+      "visualOrder" : 102
+    }, {
+      "type" : {
+        "code" : "COM",
+        "description" : {
+          "content" : "Lobby"
+        }
+      },
+      "path" : "01/016192/016192a_hb_l_002.jpg",
+      "order" : 2,
+      "visualOrder" : 101
+    }, {
+      "type" : {
+        "code" : "PIS",
+        "description" : {
+          "content" : "Pool"
+        }
+      },
+      "path" : "01/016192/016192a_hb_p_002.jpg",
+      "order" : 2,
+      "visualOrder" : 401
+    }, {
+      "type" : {
+        "code" : "PIS",
+        "description" : {
+          "content" : "Pool"
+        }
+      },
+      "path" : "01/016192/016192a_hb_p_001.jpg",
+      "order" : 1,
+      "visualOrder" : 501
+    }, {
+      "type" : {
+        "code" : "BAR",
+        "description" : {
+          "content" : "Bar"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ba_017.jpg",
+      "order" : 17,
+      "visualOrder" : 607
+    }, {
+      "type" : {
+        "code" : "COM",
+        "description" : {
+          "content" : "Lobby"
+        }
+      },
+      "path" : "01/016192/016192a_hb_l_004.jpg",
+      "order" : 4,
+      "visualOrder" : 103
+    }, {
+      "type" : {
+        "code" : "BAR",
+        "description" : {
+          "content" : "Bar"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ba_008.jpg",
+      "order" : 8,
+      "visualOrder" : 701
+    }, {
+      "type" : {
+        "code" : "BAR",
+        "description" : {
+          "content" : "Bar"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ba_009.jpg",
+      "order" : 9,
+      "visualOrder" : 702
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_074.jpg",
+      "roomCode" : "DBL.GD",
+      "roomType" : "DBL",
+      "characteristicCode" : "GD",
+      "order" : 74,
+      "visualOrder" : 315
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_075.jpg",
+      "roomCode" : "DBL.GD",
+      "roomType" : "DBL",
+      "characteristicCode" : "GD",
+      "order" : 75,
+      "visualOrder" : 316
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_072.jpg",
+      "roomCode" : "DBL.GD",
+      "roomType" : "DBL",
+      "characteristicCode" : "GD",
+      "order" : 72,
+      "visualOrder" : 313
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_073.jpg",
+      "roomCode" : "DBL.GD",
+      "roomType" : "DBL",
+      "characteristicCode" : "GD",
+      "order" : 73,
+      "visualOrder" : 314
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_009.jpg",
+      "order" : 9,
+      "visualOrder" : 209
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_008.jpg",
+      "order" : 8,
+      "visualOrder" : 208
+    }, {
+      "type" : {
+        "code" : "DEP",
+        "description" : {
+          "content" : "Sports and Entertainment"
+        }
+      },
+      "path" : "01/016192/016192a_hb_f_011.jpg",
+      "order" : 11,
+      "visualOrder" : 806
+    }, {
+      "type" : {
+        "code" : "GEN",
+        "description" : {
+          "content" : "General view"
+        }
+      },
+      "path" : "01/016192/016192a_hb_a_010.jpg",
+      "order" : 10,
+      "visualOrder" : 104
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_005.jpg",
+      "order" : 5,
+      "visualOrder" : 205
+    }, {
+      "type" : {
+        "code" : "GEN",
+        "description" : {
+          "content" : "General view"
+        }
+      },
+      "path" : "01/016192/016192a_hb_a_011.jpg",
+      "order" : 11,
+      "visualOrder" : 105
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_004.jpg",
+      "order" : 4,
+      "visualOrder" : 204
+    }, {
+      "type" : {
+        "code" : "GEN",
+        "description" : {
+          "content" : "General view"
+        }
+      },
+      "path" : "01/016192/016192a_hb_a_012.jpg",
+      "order" : 12,
+      "visualOrder" : 106
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_007.jpg",
+      "order" : 7,
+      "visualOrder" : 207
+    }, {
+      "type" : {
+        "code" : "DEP",
+        "description" : {
+          "content" : "Sports and Entertainment"
+        }
+      },
+      "path" : "01/016192/016192a_hb_f_010.jpg",
+      "order" : 10,
+      "visualOrder" : 805
+    }, {
+      "type" : {
+        "code" : "GEN",
+        "description" : {
+          "content" : "General view"
+        }
+      },
+      "path" : "01/016192/016192a_hb_a_013.jpg",
+      "order" : 13,
+      "visualOrder" : 107
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_006.jpg",
+      "order" : 6,
+      "visualOrder" : 206
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_071.jpg",
+      "roomCode" : "SUI.GD",
+      "roomType" : "SUI",
+      "characteristicCode" : "GD",
+      "order" : 71,
+      "visualOrder" : 312
+    }, {
+      "type" : {
+        "code" : "RES",
+        "description" : {
+          "content" : "Restaurant"
+        }
+      },
+      "path" : "01/016192/016192a_hb_r_020.jpg",
+      "order" : 20,
+      "visualOrder" : 501
+    }, {
+      "type" : {
+        "code" : "RES",
+        "description" : {
+          "content" : "Restaurant"
+        }
+      },
+      "path" : "01/016192/016192a_hb_r_021.jpg",
+      "order" : 21,
+      "visualOrder" : 502
+    }, {
+      "type" : {
+        "code" : "RES",
+        "description" : {
+          "content" : "Restaurant"
+        }
+      },
+      "path" : "01/016192/016192a_hb_r_022.jpg",
+      "order" : 22,
+      "visualOrder" : 503
+    }, {
+      "type" : {
+        "code" : "RES",
+        "description" : {
+          "content" : "Restaurant"
+        }
+      },
+      "path" : "01/016192/016192a_hb_r_023.jpg",
+      "order" : 23,
+      "visualOrder" : 504
+    }, {
+      "type" : {
+        "code" : "RES",
+        "description" : {
+          "content" : "Restaurant"
+        }
+      },
+      "path" : "01/016192/016192a_hb_r_024.jpg",
+      "order" : 24,
+      "visualOrder" : 505
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_070.jpg",
+      "roomCode" : "SUI.GD",
+      "roomType" : "SUI",
+      "characteristicCode" : "GD",
+      "order" : 70,
+      "visualOrder" : 311
+    }, {
+      "type" : {
+        "code" : "RES",
+        "description" : {
+          "content" : "Restaurant"
+        }
+      },
+      "path" : "01/016192/016192a_hb_r_025.jpg",
+      "order" : 25,
+      "visualOrder" : 506
+    }, {
+      "type" : {
+        "code" : "RES",
+        "description" : {
+          "content" : "Restaurant"
+        }
+      },
+      "path" : "01/016192/016192a_hb_r_026.jpg",
+      "order" : 26,
+      "visualOrder" : 507
+    }, {
+      "type" : {
+        "code" : "CON",
+        "description" : {
+          "content" : "Conferences"
+        }
+      },
+      "path" : "01/016192/016192a_hb_k_002.jpg",
+      "order" : 2,
+      "visualOrder" : 802
+    }, {
+      "type" : {
+        "code" : "GEN",
+        "description" : {
+          "content" : "General view"
+        }
+      },
+      "path" : "01/016192/016192a_hb_a_008.jpg",
+      "order" : 8,
+      "visualOrder" : 102
+    }, {
+      "type" : {
+        "code" : "CON",
+        "description" : {
+          "content" : "Conferences"
+        }
+      },
+      "path" : "01/016192/016192a_hb_k_001.JPG",
+      "order" : 1,
+      "visualOrder" : 801
+    }, {
+      "type" : {
+        "code" : "GEN",
+        "description" : {
+          "content" : "General view"
+        }
+      },
+      "path" : "01/016192/016192a_hb_a_009.jpg",
+      "order" : 9,
+      "visualOrder" : 103
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_001.jpg",
+      "order" : 1,
+      "visualOrder" : 201
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_003.jpg",
+      "order" : 3,
+      "visualOrder" : 203
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_002.jpg",
+      "order" : 2,
+      "visualOrder" : 202
+    }, {
+      "type" : {
+        "code" : "GEN",
+        "description" : {
+          "content" : "General view"
+        }
+      },
+      "path" : "01/016192/016192a_hb_a_001.jpg",
+      "order" : 1,
+      "visualOrder" : 101
+    }, {
+      "type" : {
+        "code" : "BAR",
+        "description" : {
+          "content" : "Bar"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ba_010.jpg",
+      "order" : 10,
+      "visualOrder" : 703
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_068.jpg",
+      "roomCode" : "SUI.GD",
+      "roomType" : "SUI",
+      "characteristicCode" : "GD",
+      "order" : 68,
+      "visualOrder" : 309
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_069.jpg",
+      "roomCode" : "SUI.GD",
+      "roomType" : "SUI",
+      "characteristicCode" : "GD",
+      "order" : 69,
+      "visualOrder" : 310
+    }, {
+      "type" : {
+        "code" : "BAR",
+        "description" : {
+          "content" : "Bar"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ba_012.jpg",
+      "order" : 12,
+      "visualOrder" : 602
+    }, {
+      "type" : {
+        "code" : "BAR",
+        "description" : {
+          "content" : "Bar"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ba_011.jpg",
+      "order" : 11,
+      "visualOrder" : 601
+    }, {
+      "type" : {
+        "code" : "BAR",
+        "description" : {
+          "content" : "Bar"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ba_014.jpg",
+      "order" : 14,
+      "visualOrder" : 604
+    }, {
+      "type" : {
+        "code" : "BAR",
+        "description" : {
+          "content" : "Bar"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ba_013.jpg",
+      "order" : 13,
+      "visualOrder" : 603
+    }, {
+      "type" : {
+        "code" : "BAR",
+        "description" : {
+          "content" : "Bar"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ba_016.jpg",
+      "order" : 16,
+      "visualOrder" : 606
+    }, {
+      "type" : {
+        "code" : "BAR",
+        "description" : {
+          "content" : "Bar"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ba_015.jpg",
+      "order" : 15,
+      "visualOrder" : 605
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_060.jpg",
+      "roomCode" : "DBL.PI",
+      "roomType" : "DBL",
+      "characteristicCode" : "PI",
+      "order" : 60,
+      "visualOrder" : 301
+    }, {
+      "type" : {
+        "code" : "RES",
+        "description" : {
+          "content" : "Restaurant"
+        }
+      },
+      "path" : "01/016192/016192a_hb_r_014.jpg",
+      "order" : 14,
+      "visualOrder" : 601
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_064.jpg",
+      "roomCode" : "DBL.KG",
+      "roomType" : "DBL",
+      "characteristicCode" : "KG",
+      "order" : 64,
+      "visualOrder" : 305
+    }, {
+      "type" : {
+        "code" : "RES",
+        "description" : {
+          "content" : "Restaurant"
+        }
+      },
+      "path" : "01/016192/016192a_hb_r_015.jpg",
+      "order" : 15,
+      "visualOrder" : 602
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_065.jpg",
+      "roomCode" : "DBL.KG",
+      "roomType" : "DBL",
+      "characteristicCode" : "KG",
+      "order" : 65,
+      "visualOrder" : 306
+    }, {
+      "type" : {
+        "code" : "RES",
+        "description" : {
+          "content" : "Restaurant"
+        }
+      },
+      "path" : "01/016192/016192a_hb_r_016.jpg",
+      "order" : 16,
+      "visualOrder" : 603
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_066.jpg",
+      "roomCode" : "DBL.KG",
+      "roomType" : "DBL",
+      "characteristicCode" : "KG",
+      "order" : 66,
+      "visualOrder" : 307
+    }, {
+      "type" : {
+        "code" : "RES",
+        "description" : {
+          "content" : "Restaurant"
+        }
+      },
+      "path" : "01/016192/016192a_hb_r_017.jpg",
+      "order" : 17,
+      "visualOrder" : 604
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_067.jpg",
+      "roomCode" : "DBL.KG",
+      "roomType" : "DBL",
+      "characteristicCode" : "KG",
+      "order" : 67,
+      "visualOrder" : 308
+    }, {
+      "type" : {
+        "code" : "RES",
+        "description" : {
+          "content" : "Restaurant"
+        }
+      },
+      "path" : "01/016192/016192a_hb_r_018.jpg",
+      "order" : 18,
+      "visualOrder" : 605
+    }, {
+      "type" : {
+        "code" : "RES",
+        "description" : {
+          "content" : "Restaurant"
+        }
+      },
+      "path" : "01/016192/016192a_hb_r_019.jpg",
+      "order" : 19,
+      "visualOrder" : 606
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_063.jpg",
+      "roomCode" : "DBL.PI",
+      "roomType" : "DBL",
+      "characteristicCode" : "PI",
+      "order" : 63,
+      "visualOrder" : 304
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_062.jpg",
+      "roomCode" : "DBL.PI",
+      "roomType" : "DBL",
+      "characteristicCode" : "PI",
+      "order" : 62,
+      "visualOrder" : 303
+    }, {
+      "type" : {
+        "code" : "HAB",
+        "description" : {
+          "content" : "Room"
+        }
+      },
+      "path" : "01/016192/016192a_hb_ro_061.jpg",
+      "roomCode" : "DBL.PI",
+      "roomType" : "DBL",
+      "characteristicCode" : "PI",
+      "order" : 61,
+      "visualOrder" : 302
+    }, {
+      "type" : {
+        "code" : "GEN",
+        "description" : {
+          "content" : "General view"
+        }
+      },
+      "path" : "01/016192/016192a_hb_a_015.jpg",
+      "order" : 15,
+      "visualOrder" : 109
+    }, {
+      "type" : {
+        "code" : "GEN",
+        "description" : {
+          "content" : "General view"
+        }
+      },
+      "path" : "01/016192/016192a_hb_a_016.jpg",
+      "order" : 16,
+      "visualOrder" : 1
+    } ],
+    "wildcards" : [ {
+      "roomType" : "DBL.PI",
+      "roomCode" : "DBL",
+      "characteristicCode" : "PI",
+      "hotelRoomDescription" : {
+        "content" : "Premium Room (2 Queen Beds)"
+      }
+    }, {
+      "roomType" : "DBL.KG",
+      "roomCode" : "DBL",
+      "characteristicCode" : "KG",
+      "hotelRoomDescription" : {
+        "content" : "Standard Room (1 King Bed)"
+      }
+    }, {
+      "roomType" : "SUI.GD",
+      "roomCode" : "SUI",
+      "characteristicCode" : "GD",
+      "hotelRoomDescription" : {
+        "content" : "Regal Suite (1 King Bed)"
+      }
+    }, {
+      "roomType" : "DBL.GD",
+      "roomCode" : "DBL",
+      "characteristicCode" : "GD",
+      "hotelRoomDescription" : {
+        "content" : "Royal Room (1 King Bed)"
+      }
+    } ],
+    "web" : "www.fourqueens.com/",
+    "lastUpdate" : "2024-07-18",
+    "S2C" : "4*",
+    "ranking" : 57
+  }
+}
+

@@ -1,0 +1,7 @@
+===========Credentials(https://api.hotelbeds.com/hotel-api/1.0/checkrates)=========
+hotelbeds_key=216ed78bd01d216eb6d4261178bc2eb8
+ hotelbeds_secret=b14ebd32e7
+ endpoint=https://api.hotelbeds.com/hotel-api/1.0
+===========Response(https://api.hotelbeds.com/hotel-api/1.0/checkrates)=========
+{"auditData":{"processTime":"59","timestamp":"2024-09-23 08:14:12.951","requestHost":"10.214.8.63","serverId":"ip-10-214-45-7.eu-central-1.compute.internal#A+","environment":"[awseucentral1, awseucentral1b, ip_10_214_45_7, eucentral1, secret]","release":"","token":"F855066F9573450FAE0BCB2B5B2D6F16","internal":"0|07~A-SIC~22965~48602705~N~~~NOR~~44273867C7A14F1172707895382506PAUS0006000600030822965|US|08|6|0||||||P|||||R|0|2|~1~1~0||6||3|216ed78bd01d216eb6d4261178bc2eb8||||"},"error":{"code":"INVALID_DATA","message":"The first request was unsuccessful. The initial error was External error.. Please do not retry again."}}
+

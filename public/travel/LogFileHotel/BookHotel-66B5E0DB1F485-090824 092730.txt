@@ -1,0 +1,9 @@
+===========Credentials(BookHotel-66B5E0DB1F485)=========
+hotelbeds_key=273483fe031816b44f248428a028d28c
+ hotelbeds_secret=bee7c61cbf
+ endpoint=https://api.test.hotelbeds.com/hotel-api/1.0
+===========Request(BookHotel-66B5E0DB1F485)=========
+{"holder":{"name":"test","surname":"test"},"rooms":[{"rateKey":"20240811|20240813|W|256|602767|DBL.QN-2|OPAQUE|RO||1~1~0||N@06~~24c47~-1871830752~N~~~NOR~1F5402556280456172319548159505PAUS0000010000000000824c47","paxes":[{"roomId":1,"type":"AD","name":"test","surname":"test"}]}],"clientReference":"66B5E0DB1F485","remark":"No Remark.","tolerance":"2"}
+===========Response(BookHotel-66B5E0DB1F485)=========
+{"auditData":{"processTime":"286","timestamp":"2024-08-09 09:27:30.810","requestHost":"10.214.130.36","serverId":"ip-10-214-138-144.eu-central-1.compute.internal#A+","environment":"[awseucentral1, awseucentral1b, ip_10_214_138_144, eucentral1, secret]","release":"","token":"85E3701A68094496B950870531160DC6","internal":"0|06~~24c47~-1871830752~N~~~NOR~1F5402556280456172319548159505PAUS0000010000000000824c47|US|08|10|0||||||P|||||R|0|2|~1~1~0||0||0|273483fe031816b44f248428a028d28c||||"},"error":{"code":"PRODUCT_ERROR","message":"Insufficient allotment"}}
+

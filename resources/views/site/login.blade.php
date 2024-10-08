@@ -21,22 +21,23 @@
 </style>
 
 
-<div class="modal-content login-content" @if($device=='Desktop') style="width:50%; margin:70px auto;box-shadow: 2px 2px 20px #dfdfdf;" @else style="width:90%; margin:70px auto;box-shadow: 2px 2px 20px #dfdfdf;" @endif >
+<div class="modal-content login-content"  @if($device=='Desktop') style="width:50%; margin:70px auto;box-shadow: 2px 2px 20px #dfdfdf; border:4px #f75b10 solid" @else style="width:90%; margin:70px auto;box-shadow: 2px 2px 20px #dfdfdf;" @endif >
 
     <div class="modal-header">
         <div>
-            <h5 class="modal-title title" id="exampleModalLongTitle2">Login</h5>
-            <p class="font-size-14">Hello! Welcome to your account</p>
-        </div>
+            <h5 class="modal-title title" id="exampleModalLongTitle2">Member Login</h5>
+            {{-- <p class="font-size-14">Hello! Welcome to your account</p> --}}
 
+        </div>
     </div>
     <div class="modal-body">
-        <div class="contact-form-action">
+
+        <div class="contact-form-action" >
             <form method="post" action="{{ asset('post-login') }}">
             @csrf 
             <input type="hidden" name="prevUrl" value="{{@$prevUrl}}">
                 <div class="input-box">
-                    <label class="label-text">Username</label>
+                    <label class="label-text">Email</label>
                     <div class="form-group col-xs-3">
                         <span class="la la-user form-icon"></span>
                         <input class="form-control" type="text" name="email" placeholder="Type your username" required>

@@ -11,6 +11,7 @@ use App\Http\Controllers\EmailController;
 use App\Http\Controllers\Markup;
 use App\Models\User;
 use Stripe\StripeClient;
+use DateTime;
 
 
 class Flight extends Controller
@@ -109,7 +110,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 
 
 
-
+//1
 	public function SearchRequest(Request $request) 
     {
 		$request= $request->input();
@@ -287,8 +288,20 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 
 	if(isset($res['data'])){	
 		$offers=$res['data']['offers'];
+// dd(count($offers));
 		
-		if(count($offers)>0){ $count=20; }else { $count =0; }  $count=count($offers);
+		// if(count($offers)>0){ $count=30; }else { $count =0; }  $count=count($offers);
+		if(count($offers)>0){
+		 $count=30; 
+		 }else { 
+		 $count =0; 
+		 }  
+
+		 if(count($offers)<30){
+		 $count=count($offers);
+		  }
+
+		 // dd($count);
 		for($i=0;$i<$count;$i++)
 		{
 			$api_currency=$offers[$i]['base_currency'];   
@@ -407,13 +420,19 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 				$final_return_arrival_datetime=0;
 				$return_duration=0;
 			}
+
+			//chk if name is duffell or not
+
+			if($onewayFlights[0]['airline_name'] !== "Duffel Airways"){
+			// if(1==1){
+
 			
 			$data[]=array(
 					'TokenId'=>$TokenId,
 					'OfferId'=>$OfferId,
 					'IsLCC'=>$IsLCC,
 					'IsRefundable'=>$IsRefundable,
-					'onewayFlights'=>json_encode($onewayFlights),
+					'onewayFlights'=>json_encode($onewayFlights), //
 					'api_currency'=>$api_currency,
 					'api_price'=>$api_price,
 					'currency'=>$this->currency,
@@ -444,23 +463,30 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 					'children'=>$childs,
 					'infants'=>$infants,
 					'CabinClass'=>$cabin_class,
-					'returnFlights'=>json_encode($return_Flights),
+					'returnFlights'=>json_encode($return_Flights),  //
 					'return_validating_carrier'=>$return_validating_carrier,
 					'return_max_stops'=>$returnStops,
 					'return_departure_datetime'=>$final_return_departure_datetime,
 					'return_arrival_datetime'=>$final_return_arrival_datetime,
 					'return_duration'=>$return_duration,
 				);
+		    }
 		}
 		//echo "<pre>"; print_r($data);
+		// dd($data);
 		
 			//$data=$this->unique_key($offers,'flight_number');
+		if(isset($data)){
 			$status = Crud_Model::insertBulkData('flight_results',$data);		
-		$isFind='Yes'; $contents='';
+	     	$isFind='Yes'; $contents='';
 		
 		 $columns = array_column($data, "price");
 		 array_multisort($columns, SORT_ASC, $data);
 		 $this->createLanding($origin['iata_code'],$destination['iata_code'],$data[0]['currency'],$data[0]['price'],$search_session);
+		}else{
+			// dd(1);
+			$isFind='No';
+		}
 		
 	}else{ $isFind='No'; }
 	
@@ -805,10 +831,11 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
         		'amount'=> $total_amount
 			);
 		for($a=0;$a<$adults;$a++){
+			// dd($adultArr['dob'][$a]);
 			 $passengers[]=array(
 					'phone_number'=>'+91'.$request_data['passenger']['phone'],
 					'email'=> $request_data['passenger']['email'],
-					'born_on'=>$adultArr['dob'][$a],
+					'born_on'=> DateTime::createFromFormat('m-d-Y', $adultArr['dob'][$a])->format('Y-m-d'),   //$adultArr['dob'][$a],
 					'title'=> $adultArr['title'][$a],
 					'gender'=>$adultArr['gender'][$a],
 					'family_name'=> $adultArr['first_name'][$a].' '.$adultArr['last_name'][$a],
@@ -821,7 +848,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 			 $passengers[]=array(
 					'phone_number'=>'+91'.$request_data['passenger']['phone'],
 					'email'=>$request_data['passenger']['email'],
-					'born_on'=>$childArr['dob'][$c],
+					'born_on'=>DateTime::createFromFormat('m-d-Y', $childArr['dob'][$c])->format('Y-m-d'), //$childArr['dob'][$c],
 					'title'=> $childArr['title'][$c],
 					'gender'=>$childArr['gender'][$c],
 					'family_name'=> $childArr['first_name'][$c].' '.$childArr['last_name'][$c],
@@ -834,7 +861,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 			 $passengers[]=array(
 					'phone_numbe'=>'+91'.$request_data['passenger']['phone'],
 					'email'=> $request_data['passenger']['email'],
-					'born_on'=>$infantArr['dob'][$i],
+					'born_on'=> DateTime::createFromFormat('m-d-Y', $infantArr['dob'][$i])->format('Y-m-d'), //$infantArr['dob'][$i],
 					'title'=> $infantArr['title'][$i],
 					'gender'=>$infantArr['gender'][$i],
 					'family_name'=> $infantArr['first_name'][$i].' '.$infantArr['last_name'][$i],
@@ -1097,7 +1124,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
                 $newAmple=round($no_of_amples)-(int)@$bookingDetails->booked_ample;
 		    }
         	
-        	$up=User::where('user_id', @Auth::user()->user_id)->orWhere('id', Session::get('user_id'))->update(['total_ample'=>$newAmple]);
+        	$up=User::where('user_id', @Auth::user()->user_id)->orWhere('user_id', Session::get('user_id'))->update(['total_ample'=>$newAmple]);
         }
 
         // dd($request->input(),round($no_of_amples),$request->chargeableRate,$request->user_id);
@@ -1134,16 +1161,19 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 			
 			if(isset($book_response_Arr['errors'])){ 
 				$PNR=''; 
+				$order_ref_id=''; 
 				$booking_status='Failed'; 
 				$error=$book_response_Arr['errors'][0]['title'].', '.$book_response_Arr['errors'][0]['message']; 
 			}else { 
 				$PNR=$book_response_Arr['data']['booking_reference']; 
+				$order_ref_id=$book_response_Arr['data']['id']; 
 				$booking_status='Confirmed';  $error=''; 
 			}
 			$BookingId=strtoupper(uniqid());
 			$data=array(
 				'book_response'=>$contents,
 				'pnr'=>$PNR,
+				'order_ref_id' =>$order_ref_id,
 				'booking_status'=>$booking_status,
 				'error_msg'=>$error,
 			);
@@ -1228,7 +1258,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 			$value = Crud_Model::insertData('users',$data);
 			$this->UserCreateMailSend($email,$password,$first_name);
 			return DB::getPdo()->lastInsertId();
-		}else{ return $obj->id; }
+		}else{ return $obj->user_id; }
 	}
 	//  create user end		
 	
@@ -1396,19 +1426,69 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 
 	public function flight_cancel_req(Request $request){
 		$order_id=$request->order_id;
+		$apiUrl = "https://api.duffel.com/air/order_cancellations";
+		$apiToken = $this->ACCESS_TOKEN;
 		$flightData = crud_model::readOne('bookings',array('order_id'=>$order_id));
-		// dd($flightData);
-		$booking_status='Cancelled Pending';
+		$orderID =  $flightData->order_ref_id;
 
-		$data=array(
-				'booking_status'=>$booking_status,
-				'cancelled_by'=>session()->get('user_id'),
-				'cancellationNumber'=>rand(),
-				'cancellation_date'=>date('Y-m-d H:i:s'),
-				'cancel_response'=>"Customer Request",
-			 );
-	    Crud_Model::updateData('bookings',$data,array('order_id'=>$order_id));
-	    return back()->with('success','Cancellation Request send to admin');
+		$payload = json_encode([
+		    "data" => [
+		        "order_id" => $orderID
+		    ]
+		]);
+
+		$curl = curl_init();
+		curl_setopt_array($curl, [
+		    CURLOPT_URL => $apiUrl,
+		    CURLOPT_RETURNTRANSFER => true,
+		    CURLOPT_TIMEOUT => 30,
+		    CURLOPT_HTTPHEADER => [
+		        "Accept: application/json",
+		        "Duffel-Version: v1",
+		        "Content-Type: application/json",
+		        "Authorization: Bearer $apiToken"
+		    ],
+		    CURLOPT_POST => true,
+		    CURLOPT_POSTFIELDS => $payload
+		]);
+
+		// Execute the request
+		$response = curl_exec($curl);
+
+		
+
+		// Check for errors
+		if (curl_errno($curl)) {
+		    echo 'cURL error: ' . curl_error($curl);
+		} else {
+		    // Decode the JSON response
+		    $responseData = json_decode($response, true);
+
+		    // Handle the response
+		    if (isset($responseData['data'])) {
+		    	// dd($responseData['data']['id']);
+
+		    	//updation
+		    	$booking_status='Cancelled Pending';
+
+				$data=array(
+						'booking_status'=>$booking_status,
+						'cancelled_by'=>session()->get('user_id'),
+						'cancellationNumber'=>rand(),
+						'cancellation_date'=>date('Y-m-d H:i:s'),
+						'cancel_response'=>"Customer Request",
+						'cancel_id'=>$responseData['data']['id'],
+					 );
+			     Crud_Model::updateData('bookings',$data,array('order_id'=>$order_id));
+			     return back()->with('success','Cancellation Request send to admin');
+				       
+		    } else {
+		        echo "Failed to cancel order: " . $responseData['errors'][0]['title'];
+		    }
+		}
+
+		// Close the cURL session
+		curl_close($curl);
 	}
 
 
@@ -1420,8 +1500,60 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 
 
 
+
+
+
+
 	public function FlightCancellationFromAdmin($id){
-		dd($id);
+		// dd($id);
+		$order_id=$id;
+		$flightData = crud_model::readOne('bookings',array('order_id'=>$order_id));
+
+		// The order cancellation ID
+		$orderCancellationId = $flightData->cancel_id;
+		$url="https://api.duffel.com/air/order_cancellations/{$orderCancellationId}/actions/confirm";
+
+		// Initialize cURL
+		$ch = curl_init();
+
+		// Set the options for cURL
+		curl_setopt($ch, CURLOPT_URL, "https://api.duffel.com/air/order_cancellations/{$orderCancellationId}/actions/confirm");
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_ENCODING, "gzip"); // Accept-Encoding: gzip
+		curl_setopt($ch, CURLOPT_POST, true); // POST request
+
+		// Set headers
+		curl_setopt($ch, CURLOPT_HTTPHEADER,  array('Content-Type: application/json','Accept: application/json','Duffel-Version: v1','Authorization: Bearer '.$this->ACCESS_TOKEN));
+
+		// Execute the request
+		$response = curl_exec($ch);
+		// dd($response,$orderCancellationId,$url,$this->ACCESS_TOKEN);
+
+		// Check for errors
+		if(curl_errno($ch)) {
+		    echo 'Error: ' . curl_error($ch);
+		} else {
+		    // Decode the response
+		    // $decodedResponse = json_decode($response, true);
+		    // print_r($decodedResponse); // Output the response
+
+		        $booking_status='Cancelled';
+
+				$data=array(
+						'booking_status'=>$booking_status,
+						// 'cancelled_by'=>session()->get('user_id'),
+						// 'cancellationNumber'=>rand(),
+						'cancellation_date'=>date('Y-m-d H:i:s'),
+						'cancel_response'=>"Admin approved",
+					 );
+			    Crud_Model::updateData('bookings',$data,array('order_id'=>$order_id));
+			    return back()->with('success','Cancellation done');
+		}
+
+		// Close the cURL resource
+		curl_close($ch);
+			
+
 	}
 	
 	

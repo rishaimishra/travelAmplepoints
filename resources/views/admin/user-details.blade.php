@@ -4,15 +4,15 @@
   @php 
 	$profile_pic=''; $id=''; $first_name=''; $last_name=''; $email=''; $phone=''; $address=''; $city=''; $country=''; $user_type=''; $status=''; $is_member='';
   if(isset($userData)){ 
-       $id=$userData->id; 
+       $id=$userData->user_id; 
        $profile_pic=$userData->profile_pic;
        $first_name=$userData->first_name; 
        $last_name=$userData->last_name;  
        $email=$userData->email; 
        $phone=$userData->phone; 
        $address=$userData->address;  
-       $city=$userData->city; 
-       $country=$userData->country; 
+       $city=@$userData->city; 
+       $country=@$userData->country; 
        $user_type=$userData->user_type; 
        $status=$userData->status;  
        $is_member= $userData->is_member; 

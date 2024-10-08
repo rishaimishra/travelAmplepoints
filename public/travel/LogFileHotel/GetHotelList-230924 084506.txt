@@ -1,0 +1,9 @@
+===========Credentials(GetHotelList)=========
+hotelbeds_key=216ed78bd01d216eb6d4261178bc2eb8
+ hotelbeds_secret=b14ebd32e7
+ endpoint=https://api.hotelbeds.com/hotel-api/1.0
+===========Request(GetHotelList)=========
+{"language":"ENG","currency":"USD","stay":{"checkIn":"2024-09-25","checkOut":"2024-09-27"},"occupancies":[{"rooms":1,"adults":1,"children":0,"paxes":[{"roomId":1,"type":"AD","name":"","surname":"Surname1"}]}],"hotels":{"hotel":[59410,59412,61280,61281,82378,87519,89021,89416,89655,89657,91426,93378,93753,94698,100951,102897,105974,106042,106045,106047,106050,106051,106645,108623,108624,108625,108627,109334,110938,110939,110996,112029,112031,112047,114895,114899,118253,119392,119635,120484,122076,124537,124538,125165,126069,126312,126383,127953,128558,128575,130082,131510,131526,133336,135126,135127,136953,137644,137680,139579]},"filter":{"packaging":true,"deal":true},"boards":{"included":true,"board":["RO","BB","AI","HB","FB","RR","AB","DB","GB","IB","LB"]},"sourceMarket":"US","remark":"Require non-smoking room"}
+===========Response(GetHotelList)=========
+
+

@@ -50,8 +50,8 @@ Route::get('/flight-ticket-email', [EmailController::class, 'FlightTicketEmail']
 Route::get('flight-voucher/{order_id}', function ($order_id) {
 $show_price=$_REQUEST['show_price'];
 	$bookingsData = crud_model::readOne('bookings',array('order_id'=>$order_id));
-	$siteData = crud_model::readOne('user',array('id'=>$bookingsData->user_id)); 
-	if($siteData->user_type!='agent'){ $siteData = crud_model::readOne('user',array('id'=>1)); }
+	$siteData = crud_model::readOne('users',array('user_id'=>$bookingsData->user_id)); 
+	if($siteData->user_type!='agent'){ $siteData = crud_model::readOne('users',array('user_id'=>1)); }
 	return view('voucher/flight-voucher', array('bookingsData' => $bookingsData,'siteData' => $siteData,'show_price' => $show_price));
 });
 
@@ -62,7 +62,7 @@ Route::get('/', function () {
 	$reviewData = crud_model::readByCondition('customer_review',array('published'=>'Yes'));
 
 	$hotel_data = DB::select("select *,COUNT(hotel_id) as total from twc_booking group by hotel_id order by total DESC LIMIT 10");
-	$blogData =  DB::select("SELECT blogs.*, user.* FROM blogs INNER JOIN user ON blogs.user_id=user.id order by blogs.id desc");	
+	$blogData =  DB::select("SELECT blogs.*, users.* FROM blogs INNER JOIN users ON blogs.user_id=users.user_id order by blogs.id desc");	
 	$pageData = crud_model::readOne('pages',array('page_id'=>'home'));
 	
 	return view('site/index', array('hotel_data' => $hotel_data,'reviewData' => $reviewData,'blogData' => $blogData,'pageData' => $pageData));
@@ -160,15 +160,15 @@ Route::get('/hotel-search', function (){
 Route::get('/hotel-search-results', function (){ 
 	$pageData = crud_model::readOne('pages',array('page_id'=>'hotel-search-results'));
 	return view('hotel/hotel-search-results',array('pageData' => $pageData)); 
-});
+})->name('hotel.search.results');
 
 
 
 
 
+Route::get('/hotel-details/{id}/{hotel_name}', [Hotel::class, 'HotelDetails'])->name("hotel.details");
 
-
-Route::get('/hotel-details/{id}/{hotel_name}', function ($id,$hotel_name)  
+Route::get('/hotel-details-old/{id}/{hotel_name}', function ($id,$hotel_name)  
  {     $id=base64_decode($id);
 	 $hotelSearchData = crud_model::readOne('search_results_hotelbeds',array('id'=>$id));
 	 $pageData = crud_model::readOne('pages',array('page_id'=>'hotel-details'));
@@ -177,10 +177,18 @@ Route::get('/hotel-details/{id}/{hotel_name}', function ($id,$hotel_name)
 	 }
 		//$hotelObj = crud_model::readOne('hotelbeds_hotels',array('hotel_id'=>$hotelSearchData->EANHotelID));
 		
-		$apiUrl = "https://dev.plistbooking.travel/travel/hotel-update-rates.php?action=get_single_hotels&hotel_id=".$hotelSearchData->EANHotelID;
+		// $apiUrl = "https://dev.plistbooking.travel/travel/hotel-update-rates.php?action=get_single_hotels&hotel_id=".$hotelSearchData->EANHotelID;
+		// $curl = curl_init();
+		// curl_setopt($curl, CURLOPT_URL, $apiUrl);
+		// curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		// $response = curl_exec($curl);
+		// $hotelObj=json_decode($response);
+
+	  $apiUrl = "https://api.hotelbeds.com/hotel-content-api/1.0/hotels/".$hotelSearchData->EANHotelID."/details?language=ENG&useSecondaryLanguage=False";
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, $apiUrl);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headerData);
 		$response = curl_exec($curl);
 		$hotelObj=json_decode($response);
 
@@ -192,10 +200,14 @@ Route::get('/hotel-details/{id}/{hotel_name}', function ($id,$hotel_name)
 			$RoomType =$hotelData['rooms'];
 			$countRoom =count($RoomType);
 		
-			$contentArr =json_decode($hotelObj->content,true);
+			// $contentArr =json_decode($hotelObj->content,true);
+			$contentArr=$hotelObj->hotel;
 			// dd($contentArr['phones']);
 			
-			$feature_image ='http://photos.hotelbeds.com/giata/xxl/'.$hotelObj->img_path;
+			$feature_image ='http://photos.hotelbeds.com/giata/xxl/'.$contentArr->hotel->images[0]->path;
+			dd($contentArr,$feature_image);
+
+
 			if(isset($contentArr['images'])){
 				$images =$contentArr['images'];
 				$HotelImages[] =$feature_image;
@@ -310,7 +322,7 @@ Route::get('/hotel-details/{id}/{hotel_name}', function ($id,$hotel_name)
 		 //echo "<pre>amenetyData=="; print_r($amenetyData);
 	   return view('hotel/hotel-details', array('hotelSearchData' => $hotelSearchData,'pageData' => $pageData,'hotelData' => $data,'phones'=>$contentArr['phones']));	 	 
 	
-})->name("hotel.details");
+})->name("hotel.details.old");
 
 
 
@@ -364,6 +376,7 @@ Route::get('/hotel-confirmation/{order_id}', function ($order_id)
 });
 
 Route::get('/hotel-cancellation', [Hotel::class, 'BookingCancellation']);
+Route::get('/hotel-cancellation-from-userpanel/{id}', [Hotel::class, 'BookingCancellationFD'])->name('hc');
 
 //Hotel End
 
@@ -503,7 +516,7 @@ Route::post('/change-currency', [Site::class, 'ChangeCurrency']);
 Route::get('/about', function ()  
  {  
 	$reviewData = crud_model::readByCondition('customer_review',array('published'=>'Yes'));  
-	$memberData=DB::select("SELECT * FROM user WHERE status='active' and is_member='Yes' order by id desc ");
+	$memberData=DB::select("SELECT * FROM users WHERE status='active' and is_member='Yes' order by id desc ");
 	$pageData = crud_model::readOne('pages',array('page_id'=>'about'));
 	return view('site/about', array('reviewData' => $reviewData,'pageData' => $pageData,'memberData' => $memberData));
 });
@@ -544,21 +557,21 @@ Route::get('/help-desk', function ()
 
 Route::get('/blogs', function ()  
  {  
-	$blogData =  DB::select("SELECT blogs.id as blog_id,blogs.*, user.* FROM blogs INNER JOIN user ON blogs.user_id=user.id order by blogs.id desc");
+	$blogData =  DB::select("SELECT blogs.id as blog_id,blogs.*, users.* FROM blogs INNER JOIN users ON blogs.user_id=users.user_id order by blogs.id desc");
 	$pageData = crud_model::readOne('pages',array('page_id'=>'blogs'));
 	return view('site/blogs', array('blogData' => $blogData,'pageData' => $pageData));
 });
 
 Route::get('/blogs/{id}', function ($id)  
  {   
-	$blogData=DB::select("SELECT blogs.id as blog_id,blogs.*, user.* FROM blogs INNER JOIN user ON blogs.user_id=user.id where user_id=".$id."  order by blogs.id desc");
+	$blogData=DB::select("SELECT blogs.id as blog_id,blogs.*, users.* FROM blogs INNER JOIN users ON blogs.user_id=users.user_id where user_id=".$id."  order by blogs.id desc");
 	$pageData = crud_model::readOne('pages',array('page_id'=>'blogs'));
 	return view('site/blogs', array('blogData' => $blogData,'pageData' => $pageData));
 });
 
 Route::get('/blog-details/{id}', function ($id)  
  {     
-	$blogSingel = DB::table('blogs')->join('user', 'blogs.user_id', '=', 'user.id')->select('blogs.id as blog_id','blogs.date_time as blog_date','blogs.*', 'user.*')->where(array('blogs.id'=>$id))->first();	
+	$blogSingel = DB::table('blogs')->join('users', 'blogs.user_id', '=', 'users.user_id')->select('blogs.id as blog_id','blogs.date_time as blog_date','blogs.*', 'users.*')->where(array('blogs.id'=>$id))->first();	
 	$pageData = crud_model::readOne('pages',array('page_id'=>'blog-details'));
 	return view('site/blog-details', array('blogSingel' => $blogSingel,'pageData' => $pageData));
 });
@@ -629,7 +642,11 @@ Route::get('/agent-dashboard', function ()
 	return view('admin/index', array('flightCount' => $flightCount,'hotelCount' => $hotelCount,'activityCount' => $activityCount,'transferCount' => $transferCount,'device' => $device,'os' => $os,'browser' => $browser,'country' => $country,'ip' => $ip));  
 }); 
 
-Route::get('/customer-dashboard', function ()  
+
+
+
+
+Route::get('/customer-dashboard-old', function ()  
  {     
  	// dd(Auth::check(),Session::get('user_id'), Auth::user()->id );
 	$flightCount = crud_model::readByCondition('bookings',array('user_id'=>session()->get('user_id')))->count();  
@@ -644,13 +661,19 @@ Route::get('/customer-dashboard', function ()
 	$ip = DB::select("select ip,COUNT(ip) as total from visitor group by ip order by total DESC ");
 		
 	return view('admin/index', array('flightCount' => $flightCount,'hotelCount' => $hotelCount,'activityCount' => $activityCount,'transferCount' => $transferCount,'device' => $device,'os' => $os,'browser' => $browser,'country' => $country,'ip' => $ip));  
-})->name('customer.dashboard');  
+})->name('customer.dashboard.old');  
+
+
+
+
+
+
 //site end
 
 //Email Verify
 Route::get('/email_verify', function ()  
 {   $email=$_REQUEST['email']; $user_type=$_REQUEST['user_type'];
-	$userData = crud_model::readByCondition('user',array('email'=>$email,'website'=>str_replace('www.','',$_SERVER['SERVER_NAME'])));
+	$userData = crud_model::readByCondition('users',array('email'=>$email,'website'=>str_replace('www.','',$_SERVER['SERVER_NAME'])));
 	
 	if(count($userData)>0){ echo json_encode(array('exist'=>'Yes')); }else { echo json_encode(array('exist'=>'No')); }
 	//return view('flight/flight-confirmation', array('flightData' => $flightData,'pageData' => $pageData));
@@ -716,8 +739,8 @@ Route::get('/reset_password', [Site::class, 'reset_password']);
 Route::get('/activate-account/{id}', function ($id)  
  {     
  	$id=base64_decode($id);
-	$userData = crud_model::readOne('user',array('id'=>$id));
-	$value = Crud_Model::updateData('user',array('status'=>'active'),array('id'=>$id));
+	$userData = crud_model::readOne('users',array('user_id'=>$id));
+	$value = Crud_Model::updateData('users',array('status'=>'active'),array('user_id'=>$id));
 	$obj = new EmailController(); $obj->AccountActivatedMail($id);
 	return redirect('login');
 });
@@ -727,7 +750,7 @@ Route::get('/activate-account/{id}', function ($id)
 
 //admin start
 // Flight Work Start
-Route::get('/flight-list', function ()  
+Route::get('/flight-list-old', function ()  
  {     
  	$user_type = session()->get('user_type');
 	if($user_type=='admin'){
@@ -750,9 +773,9 @@ Route::get('/flight-details/{id}', function ($id)
 	    $bookingsData = crud_model::readOne('bookings',array('id'=>$id));
 		$pageData = crud_model::readOne('pages',array('page_id'=>'flight-ticket'));
 		if(session()->get('user_type')=='agent' ){
-	   		$siteData = crud_model::readOne('user',array('id'=>$bookingsData->user_id));
+	   		$siteData = crud_model::readOne('users',array('user_id'=>$bookingsData->user_id));
 		}else{
-			$siteData = crud_model::readOne('user',array('website'=> str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
+			$siteData = crud_model::readOne('users',array('website'=> str_replace('www.','',$_SERVER['SERVER_NAME']),'user_type'=>'admin'));
 		}
     	$data = [
 			'bookingsData' => $bookingsData,
@@ -770,7 +793,7 @@ Route::post('/update-flight-data', [Admin::class, 'UpdateFlightData']);
 // Flight Work End
 
 // Hotel Tour and Transfer Booking Work Start
-Route::get('/booking-list/{product}', function ($product)  
+Route::get('/booking-list-old/{product}', function ($product)  
  {   
    	$user_type = session()->get('user_type');
 	if($user_type=='admin'){
@@ -782,7 +805,7 @@ Route::get('/booking-list/{product}', function ($product)
 	return view('admin/booking-list', ['BookingData' => $BookingData,'product' => $product]); 
 });
 
-Route::get('/booking-details/{product}/{id}', function ($product,$id)  
+Route::get('/booking-details-old/{product}/{id}', function ($product,$id)  
  {     
 	 $bookingData = crud_model::readOne('twc_booking',array('order_id'=>$id));
 	return view('admin/booking-details', ['bookingData' => $bookingData,'product' => $product]);
@@ -852,7 +875,7 @@ Route::get('/add-landing-page/{product}/{id}', function ($product,$id)
 
 Route::post('/landing-page-post', [Admin::class, 'LandingPagePost']);
 
-Route::get('/booking-details/{product}/{id}', function ($product,$id)  
+Route::get('/booking-details-old/{product}/{id}', function ($product,$id)  
  {     
 	 $bookingData = crud_model::readOne('twc_booking',array('order_id'=>$id));
 	return view('admin/booking-details', ['bookingData' => $bookingData,'product' => $product]);
@@ -884,31 +907,40 @@ Route::get('/my-profile', function ()
 
 Route::get('/agents', function ()  
  {     
- 	$userData= crud_model::readByCondition('user',array('user_type'=>'agent')); 
+ 	$userData= crud_model::readByCondition('users',array('user_type'=>'agent')); 
 	return view('admin/users', ['user_type' => 'agent','userData' => $userData]); 
 });
 
 Route::get('/customers', function ()  
  {    
-	$userData= crud_model::readByCondition('user',array('user_type'=>'customer')); 
+	$userData= crud_model::readByCondition('users',array('user_type'=>'customer')); 
+	return view('admin/users', ['user_type' => 'customer','userData' => $userData]); 
+});
+
+Route::get('/users/from/travel', function ()  
+ {    
+	$userData= \DB::table('users')
+            ->whereNotNull('website')
+            ->where('user_type','customer')
+            ->get();
 	return view('admin/users', ['user_type' => 'customer','userData' => $userData]); 
 });
 
 Route::get('/members', function ()  
  {    
-	$userData['data']= crud_model::readByCondition('user',array('user_type'=>'member')); 
+	$userData['data']= crud_model::readByCondition('users',array('user_type'=>'member')); 
 	return view('admin/users', ['user_type' => 'customer','userData' => $userData]); 
 });
 
-Route::get('/user-details', function ()  
+Route::get('/user-details-old', function ()  
  {     
-	 $userData = crud_model::readOne('user',array('id'=>session()->get('user_id')));
+	 $userData = crud_model::readOne('users',array('user_id'=>session()->get('user_id')));
 	 $currency = crud_model::readByCondition('currency_rates',array('published'=>'Yes'));
 	return view('admin/user-details', ['userData' => $userData,'currency' => $currency]);
 });
 Route::get('/user-details/{id}', function ($id)  
  {     
-	 $userData = crud_model::readOne('user',array('id'=>$id));
+	 $userData = crud_model::readOne('users',array('user_id'=>$id));
 	$currency = crud_model::readByCondition('currency_rates',array('published'=>'Yes'));
 	return view('admin/user-details', ['userData' => $userData,'currency' => $currency]);
 });
@@ -1105,7 +1137,7 @@ Route::post('/manual-wallet-fund-deduct-post', [Admin::class, 'ManualWalletFundD
 // -------- Wallet start --------------
 Route::get('/wallet-fund-by-pg', function ()  
  {     
-	$userData = crud_model::readOne('user',array('id'=>session()->get('user_id')));
+	$userData = crud_model::readOne('users',array('user_id'=>session()->get('user_id')));
 	$bankData = DB::select("select * from bank_details WHERE status= 'active' and ac_type = 'PG' ");
 	return view('admin/wallet-fund-by-pg', ['userData' => $userData,'bankData' => $bankData]);
 });
@@ -1154,7 +1186,7 @@ Route::get('/bank-details-list', function ()
 // -------- Wallet Work start --------------
 Route::get('/wallet-fund-request', function ()  
  {     
-	 $userData = crud_model::readOne('user',array('id'=>session()->get('user_id')));
+	 $userData = crud_model::readOne('users',array('user_id'=>session()->get('user_id')));
 	 //$bankData = crud_model::readByCondition('bank_details',array('status'=>'active'));
 	 $bankData = DB::select("select * from bank_details WHERE status= 'active' and ac_type!= 'PG' ");
 	return view('admin/wallet-fund-request', ['userData' => $userData,'bankData' => $bankData]);
@@ -1172,7 +1204,7 @@ Route::get('/wallet-fund-request-list/', function ()
 		$user_id=session()->get('user_id');
 		$where=" where wallet_fund_request.agent_id='".$user_id."' and  wallet_fund_request.type='Request'  ";
 	}
-	$walletData=DB::select("SELECT wallet_fund_request.id as w_id,wallet_fund_request.status as w_status,wallet_fund_request.*, user.*,bank_details.* FROM wallet_fund_request INNER JOIN user ON wallet_fund_request.agent_id=user.id INNER JOIN bank_details ON wallet_fund_request.bank_name=bank_details.id $where order by wallet_fund_request.id desc");
+	$walletData=DB::select("SELECT wallet_fund_request.id as w_id,wallet_fund_request.status as w_status,wallet_fund_request.*, users.*,bank_details.* FROM wallet_fund_request INNER JOIN users ON wallet_fund_request.agent_id=users.user_id INNER JOIN bank_details ON wallet_fund_request.bank_name=bank_details.id $where order by wallet_fund_request.id desc");
 	return view('admin/wallet-fund-request-list', array('walletData' => $walletData));
 });
 
@@ -1232,3 +1264,113 @@ Route::any('/stripeorderstatus/flight/{order_id}/{customer_id}',[Flight::class, 
 //flight cancel
 Route::post('/flight-cancel-request',[Flight::class, 'flight_cancel_req'])->name('flight.cancel.req');
 Route::get('/cancel/flight-booking/{order_id}',[Flight::class, 'FlightCancellationFromAdmin'])->name('admin.flight.cancel');
+
+
+
+Route::get('/test/', function ()  
+ { 
+ 	$apiUrl = "https://dev.plistbooking.travel/travel/hotel-update-rates.php?action=get_single_hotels&hotel_id=105709";
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, $apiUrl);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$response = curl_exec($curl);
+		$hotelObj=json_decode($response);
+		dd($response,$hotelObj);
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/customer-dashboard', function ()  
+ {     
+ 	// dd(Auth::check(),Session::get('user_id'), Auth::user()->id );
+	$flightCount = crud_model::readByCondition('bookings',array('user_id'=>session()->get('user_id')))->count();  
+	$hotelCount = crud_model::readByCondition('twc_booking',array('product'=>'hotel','user_id'=>session()->get('user_id')))->count(); 
+	$transferCount = crud_model::readByCondition('twc_booking',array('product'=>'transfer','user_id'=>session()->get('user_id')))->count(); 
+	$activityCount = crud_model::readByCondition('twc_booking',array('product'=>'activity','user_id'=>session()->get('user_id')))->count(); 
+	
+	$device = DB::select("select device,COUNT(device) as total from visitor group by device order by total DESC ");
+	$os = DB::select("select os,COUNT(os) as total from visitor group by os order by total DESC ");
+	$browser = DB::select("select browser,COUNT(browser) as total from visitor group by browser order by total DESC ");
+	$country = DB::select("select country,COUNT(country) as total from visitor group by country order by total DESC ");
+	$ip = DB::select("select ip,COUNT(ip) as total from visitor group by ip order by total DESC ");
+		
+	return view('admin/customer_dashboard', array('flightCount' => $flightCount,'hotelCount' => $hotelCount,'activityCount' => $activityCount,'transferCount' => $transferCount,'device' => $device,'os' => $os,'browser' => $browser,'country' => $country,'ip' => $ip));  
+})->name('customer.dashboard');  
+
+
+
+Route::get('/user-details', function ()  
+ {     
+	 $userData = crud_model::readOne('users',array('user_id'=>session()->get('user_id')));
+	 $currency = crud_model::readByCondition('currency_rates',array('published'=>'Yes'));
+	return view('admin/customer_user_details', ['userData' => $userData,'currency' => $currency]);
+})->name('customer.details'); 
+
+
+
+Route::get('/flight-list', function ()  
+ {     
+ 	$user_type = session()->get('user_type');
+	if($user_type=='admin'){
+ 	 $flightData['data'] = crud_model::read('bookings');
+ 	 	return view('admin/flight-list', ['flightData' => $flightData]); 
+	}
+	else{
+	$flightData['data'] = crud_model::readByCondition('bookings',array('user_id'=>session()->get('user_id')));
+	return view('admin/customer_flight_list', ['flightData' => $flightData]); 
+	}	
+})->name('customer.flight.list');
+
+
+// Hotel Tour and Transfer Booking Work Start
+Route::get('/booking-list/{product}', function ($product)  
+ {   
+   	$user_type = session()->get('user_type');
+	if($user_type=='admin'){
+ 	 	$BookingData['data'] = crud_model::readByCondition('twc_booking',array('product'=>$product));
+ 	 		return view('admin/booking-list', ['BookingData' => $BookingData,'product' => $product]); 
+	}
+	else{
+		$BookingData['data'] = crud_model::readByCondition('twc_booking',array('user_id'=>session()->get('user_id'),'product'=>$product));
+			return view('admin/customer_hotel_list', ['BookingData' => $BookingData,'product' => $product]); 
+	}
+})->name('customer.hotel.list');
+
+
+Route::get('/booking-details/{product}/{id}', function ($product,$id)  
+ {     
+ 	$user_type = session()->get('user_type');
+ 	if($user_type=='admin'){
+	 $bookingData = crud_model::readOne('twc_booking',array('order_id'=>$id));
+	return view('admin/booking-details', ['bookingData' => $bookingData,'product' => $product]);
+  }else{
+  	$bookingData = crud_model::readOne('twc_booking',array('order_id'=>$id));
+	return view('admin/customer_hotelDetails', ['bookingData' => $bookingData,'product' => $product]);
+  }
+})->name('customer.hotel.details');
+
+
+
+
+
+
+
+
+
+Route::any('/phpe-call', function (Request $request)  
+ {     
+ 	$storedData = session()->get('search_results_hotelbeds');
+
+ 	dd($storedData);
+});
+
+

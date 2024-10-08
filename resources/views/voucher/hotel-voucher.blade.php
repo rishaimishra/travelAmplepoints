@@ -205,20 +205,20 @@ if(isset($book_response["booking"])){
 						<td>
 							<table width="100%" cellpadding="8" cellspacing="0" border="0">
 								<tr>
-									<th height="34" colspan="6" align="left" bgcolor="#f6f5f5" style="font-size: 14px; border: 1px solid #e4e4e4; color:#5e993d"><strong>GUEST DETAILS PER ROOM</strong></th>
+									<th height="34" colspan="6" align="left" bgcolor="#f6f5f5" style="font-size: 14px; border: 1px solid #e4e4e4; color:#5e993d"><strong>1 ADULT DETAILS PER ROOM</strong></th>
 								</tr>
 								<tr align="left">
 									<th width="10%" style="border: 1px solid #e4e4e4;"><strong>Room No</strong></th>
 									<th width="30%" style="border: 1px solid #e4e4e4;"><strong>Room Type</strong></th>
 									<th width="40%" style="border: 1px solid #e4e4e4;"><strong>Adult Names</strong></th>
-									<th width="20%" style="border: 1px solid #e4e4e4;"><strong>Gender</strong></th>
+									{{-- <th width="20%" style="border: 1px solid #e4e4e4;"><strong>Gender</strong></th> --}}
 								</tr>
 								@foreach($adultData as $key=> $data)
 								<tr align="left">
 									<td style="border: 1px solid #e4e4e4;">{{$data->room_no}}</td>
 									<td style="border: 1px solid #e4e4e4;">{{$data->room_name}}</td>
-									<td style="border: 1px solid #e4e4e4;">{{$data->title}}. {{$data->fname}} {{$data->lname}}</td>
-									<td style="border: 1px solid #e4e4e4;">@if($data->gender=="m") Male @else Female @endif</td>
+									<td style="border: 1px solid #e4e4e4;">{{$data->fname}} {{$data->lname}}</td>
+									{{-- <td style="border: 1px solid #e4e4e4;">@if($data->gender=="m") Male @else Female @endif</td> --}}
 								</tr>
 								@endforeach
 							</table>

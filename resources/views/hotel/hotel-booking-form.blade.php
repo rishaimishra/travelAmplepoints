@@ -32,10 +32,452 @@
           margin: 0 !important;
         }
       }
+
+
+
+      .hotel-info-main {
+}
+.hotel-tab-group {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.hotel-tab-item {
+  height: 50px;
+  float: left;
+  text-transform: uppercase;
+  margin-right: 0px;
+  background: #f75d00;
+  color: #fff;
+  padding: 12px 33.7px;
+  font-size: 14px;
+  margin: 0 1px 0 0;
+}
+.o-box-room {
+  padding: 20px;
+  border: 1px solid #e2e2e2;
+  margin-top: -1px;
+  z-index: 1;
+  position: relative;
+}
+.hotel-info-title {
+  margin-top: 0;
+  position: relative;
+  font-weight: 600;
+  font-size: 19px;
+  padding-bottom: 8px;
+  margin: 0 0 20px;
+}
+.hotel-info-title:after {
+  content: "";
+  width: 25px;
+  height: 4px;
+  background: #ff7200;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}
+.o-b-group {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.o-b-item {
+  cursor: default;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+  background: #f75d00;
+  color: #fff;
+  padding: 12px 33.7px;
+}
+.h-i-tab {
+  padding: 20px;
+  border: 1px solid #e2e2e2;
+  margin-top: -1px;
+  z-index: 1;
+  position: relative;
+}
+.h-i-ul {
+}
+.h-i-ul li {
+  color: #111;
+}
+
+.hotel-info-title-sm {
+  margin: 20px 0 10px;
+  font-weight: 700;
+}
+.h-i-table {
+  width: 100%;
+  border: 1px solid #e2e2e2;
+}
+.h-i-table tr,
+.h-i-table th,
+.h-i-table td {
+  border: 1px solid #e2e2e2;
+
+  padding: 8px;
+}
+.h-i-table .text-left {
+}
+.h-i-table .text-right {
+}
+
+.hi-booking-box {
+}
+.hi-bb-title {
+  text-align: center;
+  background: #ff4500;
+  color: #fff;
+  /* padding: 10px 39px 22px; */
+  padding: 10px 39px 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  position: relative;
+  margin: 0;
+  font-size: 14px;
+  line-height: 18px;
+}
+/* .hi-bb-title::after {
+  background: #ff4500;
+  border-radius: 50%;
+  color: #fff;
+  content: "🏆";
+  left: 41%;
+  padding: 10px 17px;
+  position: absolute;
+  top: 63%;
+  font-size: 18px;
+  filter: unset;
+} */
+
+.hi-main-box {
+}
+.hi-bb-row {
+  background: #e6e6e6;
+  box-shadow: 0 0 5px #e6e6e6;
+  /* padding: 25px 5px 0; */
+  padding: 15px 5px 0;
+  margin: 0;
+}
+.hi-bb-row > div {
+  margin: 0 0 10px;
+}
+.hi-bb-label {
+}
+.hi-bb-form-control {
+  border-radius: 0;
+}
+.btn-hi-bb-apply {
+  color: #ffffff;
+  background-color: #07253f;
+  border: none;
+  padding: 10px 15px;
+  font-weight: bold;
+  margin: 0 0 0 0%;
+  font-size: 13px;
+  border-radius: 0px;
+}
+.hi-bb-footer {
+  background: #07253f;
+  padding: 15px 0;
+  text-align: center;
+}
+.btn-hi-bb-book-now {
+  width: auto;
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  clear: both;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 14px;
+  color: #fff;
+  background: #ff4500;
+  border: none;
+  border-radius: 0;
+}
+
+.hi-bb-form-control[readonly] {
+  background-color: #eee;
+}
+
     </style>
+
+
 
 <section class="booking-area padding-top-100px padding-bottom-70px">
   <div class="container">
+    <div class="row">
+      <div class="hotel-info-main">
+
+  <div class="o-box-room" style="width:172%">
+
+    <div class="row">
+      <div class="col-md-8 col-12">
+        <div class="hotel-info-title">Rate Breakup</div>
+       
+
+       {{--  <div class="o-b-group">
+          <div class="o-b-item">Room name</div>
+        </div>
+        <div class="hotel-info-title-sm">Rate Breakup:</div>
+        <table class="h-i-table">
+          <thead>
+            <tr>
+              <th class="text-left">Date</th>
+              <th class="text-right">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left">10/02/2024</td>
+              <td class="text-right">$ 22.20</td>
+            </tr>
+          </tbody>
+        </table> --}}
+
+          
+
+         @foreach($rooms as $date => $roomData)
+        <div class="o-b-group">
+          <div class="o-b-item">Date: {{ \Carbon\Carbon::parse($date)->format('d/m/Y') }}</div>
+        </div>
+        <div class="hotel-info-title-sm">Rate Breakup:</div>
+          @foreach($roomData as $key=> $data)
+        <table class="h-i-table">
+          <thead>
+            <tr>
+              <th class="text-left">Room {{$key+1}}</th>
+              <th class="text-right">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left">{{ $data['room'] }}</td>
+              <td class="text-right">$ {{ number_format($data['price'], 2) }}</td>
+            </tr>
+          </tbody>
+        </table>
+        @endforeach
+        @endforeach
+
+
+
+
+
+
+        <div class="hotel-info-title-sm">Rate Summary:</div>
+        <table class="h-i-table">
+          <tbody>
+            {{-- <tr>
+              <td class="text-left">Room Price</td>
+              <td class="text-right">$ 22.20</td>
+            </tr>
+            <tr>
+              <td class="text-left">Tax</td>
+              <td class="text-right">$ 22.20</td>
+            </tr>
+            <tr> --}}
+              <td class="text-left">Total Price</td>
+              <td class="text-right">$ {{$totalPrice*2}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+
+<div class="col-md-4 col-12">
+ 
+  @php
+  $admin_model_obj = new \App\Models\CommonFunctionModel;
+  $toCurrencyRate = $admin_model_obj->getFromToCurrencyRate(1.00,'USD', 'USD');
+  $original_single_price = $totalPrice;
+  $OfferedPriceRoundedOff = $admin_model_obj->displayFinalRates($totalPrice, $toCurrencyRate);
+  //dd($original_single_price,$OfferedPriceRoundedOff);
+  $single_price = (($OfferedPriceRoundedOff) * 2);
+  $wholesale_price = ($single_price / 2);
+  $free_with_amples = 0.00;
+  $no_of_amples = 0.00;
+  $discount_price = 0.00;
+  $discount = 0.00;
+  $FinalTextAmount = 0.00;
+  $calculateDiscount = ((($single_price - $wholesale_price) * 100) / $single_price);
+  $discount = round($calculateDiscount, 2);
+  $discount_price = (($single_price * $discount) / 100);
+  $discount_margin = $discount_price;
+  $buyandearnamples = ($discount_margin / .12);
+  $no_of_amples = $buyandearnamples;
+  $free_with_amples = ($single_price / .12);
+  $incrementIndex=0;
+  
+  @endphp
+  
+  <!-- end card-item -->
+
+ <br>
+  <p>Book and earn amplepoints : {{round($no_of_amples)}}</p>
+  <div class='sidebar-booking-box'>
+    <h3 class='text-center' style="font-size: 15px !important;">USE AMPLE POINTS TO GET THIS
+    ROOM</h3>
+    <div class='booking-box-body'>
+      <form>
+        <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+          <div class="row">
+            <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+              <label>Price</label>
+            </div>
+            <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+              <input type='text'
+              id='itemprice_<?php echo $totalPrice ?>'
+              name='itemprice'
+              class='form-control'
+              value='$<?php echo $single_price; ?>'
+              disabled>
+              <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
+            </div>
+          </div>
+        </div>
+        <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+          <div class="row">
+            <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+              <label>Buy & Earn</label>
+            </div>
+            <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+              <input type='text'
+              id='buyearnamples_<?php echo $totalPrice ?>'
+              name='buyearnamples'
+              class='form-control'
+              placeholder='D'
+              value='<?php echo $admin_model_obj->DisplayAmplePoints($no_of_amples); ?>'
+              disabled>
+              <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
+            </div>
+          </div>
+        </div>
+        <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+          <div class="row">
+            <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+              <label>Amples Needed to Redeem</label>
+            </div>
+            <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+              <input type='text'
+              id='useamplestoshop_<?php echo $totalPrice ?>'
+              name='useamplestoshop'
+              class='form-control'
+              value='<?php echo $admin_model_obj->DisplayAmplePoints($free_with_amples); ?> Amples'
+              disabled>
+              <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
+            </div>
+          </div>
+        </div>
+        <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+          <div class="row">
+            <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+              <label>Apply Amples</label>
+            </div>
+            <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+              <input type='text' onchange="ampleEnterFun(this.value,'<?php echo $totalPrice ?>')"
+              id='inputamples_<?php echo $totalPrice ?>'
+              name='inputamples'
+              class='form-control'>
+              <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
+            </div>
+          </div>
+        </div>
+        <div class='col-md-4 col-sm-4 col-xs-4 no-space add-cart-submit btn-b-apply' style="margin-left: 210px;">
+          <button class="btn btn-dark" style="width:100%" id='applyamples_<?php echo $totalPrice ?>'
+          type='button'
+          onclick="applyAmplePoints('<?php echo $totalPrice ?>','<?php echo $single_price; ?>','<?php echo $discount_price; ?>','<?php echo $discount; ?>')">
+          APPLY
+          </button>
+        </div>
+        
+        <div class='clearfix'></div>
+        <div class='grand-total1 text-center'>
+          <div class="row">
+            <div class='col-md-8 col-sm-8 col-xs-8 no-space'
+              id='newpricesection_<?php echo $totalPrice ?>'
+              style='display:none;'><span
+              style="width: 42%;">New Price : </span>
+              <h4 id='newitemprice_<?php echo $totalPrice ?>'
+              style="margin: 15px 10px;">&nbsp;
+              $<?php echo $single_price; ?></h4>
+              <span class='res-collection-sub'
+                style='display:none;margin: 12px 0 0 -10px;'
+              id="res_collection_sub_<?php echo $totalPrice ?>">FREE</span>
+              <input type="hidden"
+              id="usernewitemprice_<?php echo $totalPrice ?>"
+              value="<?php echo $single_price; ?>"/>
+            </div>
+            
+          </div>
+        </div>
+        <div class='res-collection-sub1'
+          id="res_collection_sub_1_<?php echo $totalPrice ?>">
+          <div class='col-md-12 col-sm-12 col-xs-12 no-space'
+            id='earnrewardsection_<?php echo $totalPrice ?>'
+            style='display:none;'>
+            <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+              <label>Earn Reward</label>
+            </div>
+            <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+              <input type='text'
+              id='earnrewardamples_<?php echo $totalPrice ?>'
+              name='earnrewardamples'
+              class='form-control'
+              disabled>
+              <!--<span class='input-group-addon'><i class='fa fa-calendar fa-fw'></i></span>-->
+            </div>
+          </div>
+          <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+            <div class="row">
+              <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+                <label>Reward Value</label>
+              </div>
+              <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+                <input type='text'
+                id='earnrewardonitem_<?php echo $totalPrice ?>'
+                name='earnrewardonitem'
+                value='<?php echo $discount_price; ?>'
+                class='form-control'
+                disabled>
+              </div>
+            </div>
+          </div>
+          <div class='col-md-12 col-sm-12 col-xs-12 no-space'>
+            <div class="row">
+              <div class='col-md-5 col-sm-5 col-xs-5 no-space'>
+                <label>You Earn</label>
+              </div>
+              <div class='input-group margin-bottom-sm col-md-7 col-sm-7 col-xs-7'>
+                <input type='text'
+                id='youearndiscount_<?php echo $totalPrice ?>'
+                name='youearndiscount'
+                value='<?php echo (int)$discount; ?>%'
+                class='form-control'
+                disabled>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='clearfix'></div>
+                </form>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+<br>
+<br>
     <div class="row">
       <div class="col-lg-8">
         <div class="form-box">
@@ -73,12 +515,12 @@
                    <div class="form-title-wrap col-lg-12">
                     <h3 class="title">Room <?php echo $r+1; ?></h3>
                   </div>
-                  <?php for($a=0;$a<$AdultArr[$r];$a++){ ?>
+                  <?php for($a=0;$a<1;$a++){   //for($a=0;$a<$AdultArr[$r];$a++){ ?>
                   <div class="form-title-wrap col-lg-12">
                     <h3 class="title">Adult <?php echo $a+1; ?></h3>
                   </div>
                   <!-- form-title-wrap -->
-                  <div class="col-lg-2 responsive-column">
+                 {{--  <div class="col-lg-2 responsive-column">
                     <div class="input-box">
                       <label class="label-text">Title <span style="color:#FF0000">*</span></label>
                       <div class="form-group"> 
@@ -86,12 +528,12 @@
                           <select class="select-contain-select" name="passenger[adult][title][<?php echo $r; ?>][]" required>
                             <option value="mr">Mr</option>
                             <option value="mrs">Mrs</option>
-                            <option value="Mrs">Mrs</option>
+                            <option value="miss">Miss</option>
                           </select>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> --}}
                   <div class="col-lg-5 responsive-column">
                     <div class="input-box">
                       <label class="label-text">First Name <span style="color:#FF0000">*</span></label>
@@ -103,14 +545,14 @@
                   <!-- end col-lg-6 -->
                   <div class="col-lg-5 responsive-column">
                     <div class="input-box">
-                      <label class="label-text">Last Name</label>
+                      <label class="label-text">Last Name <span style="color:#FF0000">*</span></label>
                       <div class="form-group"> <span class="la la-user form-icon"></span>
-                        <input class="form-control" type="text" name="passenger[adult][last_name][<?php echo $r; ?>][]" placeholder="Last name">
+                        <input class="form-control" type="text" name="passenger[adult][last_name][<?php echo $r; ?>][]" placeholder="Last name" required> 
                       </div>
                     </div>
                   </div>
                   <!-- end col-lg-6 -->
-                  <div class="col-lg-4 responsive-column">
+               {{--    <div class="col-lg-4 responsive-column">
                     <div class="input-box">
                       <label class="label-text">DOB <span style="color:#FF0000">*</span></label>
                       <div class="form-group"> <span class="la la-calendar form-icon"></span>
@@ -133,7 +575,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> --}}
                   {{-- <div class="col-lg-4 responsive-column">
                     <div class="input-box">
                       <label class="label-text">ID</label>
@@ -145,7 +587,12 @@
                     </div>
                   </div> --}}
                   <?php } ?>
-                  <?php for($a=0;$a<$ChildArr[$r];$a++){ ?>
+
+
+
+
+
+                 {{--  <?php for($a=0;$a<$ChildArr[$r];$a++){ ?>
                   <div class="form-title-wrap col-lg-12">
                     <h3 class="title">Children <?php echo $a+1; ?></h3>
                   </div>
@@ -158,7 +605,7 @@
                           <select class="select-contain-select" name="passenger[child][title][<?php echo $r; ?>][]" required>
                             <option value="mr">Mr</option>
                             <option value="mrs">Mrs</option>
-                            <option value="Mrs">Mrs</option>
+                            <option value="miss">Miss</option>
                           </select>
                         </div>
                       </div>
@@ -204,18 +651,9 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                  {{-- <div class="col-lg-4 responsive-column">
-                    <div class="input-box">
-                      <label class="label-text">ID</label>
-                      <div class="form-group"> 
-                        <div class="select-contain w-auto">
-                          <input class="form-control" type="text" name="passenger[child][id][<?php echo $r; ?>][]" placeholder="Enter ID" >
-                        </div>
-                      </div>
-                    </div>
                   </div> --}}
-                  <?php }
+                 
+                  <?php   //}
           echo "<hr>";
            }?>
                   <div class="col-lg-6 responsive-column">
@@ -253,7 +691,7 @@
                         <div class=" w-auto">
                           <select class="select-contain-select" name="passenger[country]" required>
                             <option value="select-country">Select country</option>
-                            <option value="Afghanistan">Afghanistan</option>
+                            {{-- <option value="Afghanistan">Afghanistan</option> --}}
                              @foreach($countryData as $key => $data)
                                       <option value="{{$data->name}}">{{$data->name}}</option>
                                       @endforeach
@@ -322,8 +760,8 @@
                
                 <div class="section-block"></div>
                 <ul class="list-items list-items-2 list-items-flush py-2">
-                  <li class="font-size-15"><span class="w-auto d-block mb-n1"><i class="la la-plane mr-1 font-size-17"></i>Check In</span><?php echo date('d M  Y  ',strtotime($hotelSearchData->checkin)); ?></li>
-                  <li class="font-size-15"><span class="w-auto d-block mb-n1"><i class="la la-plane mr-1 font-size-17"></i>Check Out</span><?php echo date('d M  Y  ',strtotime($hotelSearchData->checkout)); ?></li>
+                  <li class="font-size-15"><span class="w-auto d-block mb-n1"><i class="la la-plane mr-1 font-size-17"></i>Check In</span>{{-- <?php echo date('d M  Y  ',strtotime($hotelSearchData->checkin)); ?> --}} {{ \Carbon\Carbon::parse($hotelSearchData->checkin)->format('m-d-Y') }}</li>
+                  <li class="font-size-15"><span class="w-auto d-block mb-n1"><i class="la la-plane mr-1 font-size-17"></i>Check Out</span>{{-- <?php echo date('d M  Y  ',strtotime($hotelSearchData->checkout)); ?> --}} {{ \Carbon\Carbon::parse($hotelSearchData->checkout)->format('m-d-Y') }}</li>
                 </ul>
                 <h3 class="card-title pb-3">Order Details</h3>
                 <div class="section-block"></div>
@@ -371,7 +809,7 @@
                 </ul>
               </div>
 
-               @php
+            {{--    @php
                $admin_model_obj = new \App\Models\CommonFunctionModel;
                $toCurrencyRate = $admin_model_obj->getFromToCurrencyRate(1.00,'USD', 'USD');
                 $original_single_price = $totalPrice;
@@ -407,9 +845,9 @@
                 // $CancellationPolicies = $hotelDetailsData->CancellationPolicies; /*Array*/
                 // $CancellationPolicy = $hotelDetailsData->CancellationPolicy; /*String*/
                 // $Inclusion = $hotelDetailsData->Inclusion; /*String*/
-               @endphp
-               <br>
-              <p>Book and earn amplepoints : {{round($no_of_amples)}}</p>
+               @endphp --}}
+              {{--  <br>
+              <p>Book and earn amplepoints : {{round($no_of_amples)}}</p> --}}
             </div>
             <!-- end card-item -->
 
@@ -424,7 +862,7 @@
 
 
 
-
+{{-- 
 <div>
   <div class='sidebar-booking-box'>
     <h3 class='text-center' style="font-size: 15px !important;">USE AMPLE POINTS TO GET THIS
@@ -571,29 +1009,11 @@
           </div>
         </div>
         <div class='clearfix'></div>
-        {{-- <div class='grand-total text-center'>
-          <div class='col-md-12 col-sm-12 col-xs-12'>
-            <div class='button-group'
-              id='atax_<?php echo $totalPrice ?>'
-              style="display:none"><a
-                class='btn-add-cart'
-                id="cartwithample_<?php echo $totalPrice ?>"
-                href='javascript:void(0);'
-                onclick="bookRoomWithAmple('<?php echo $totalPrice ?>','<?php echo $single_price; ?>','<?php echo $original_single_price; ?>','<?php echo $incrementIndex; ?>')">BOOK
-              NOW ample</a></div>
-              <div class='button-group'
-                id='btax_<?php echo $totalPrice ?>'>
-                <a class='btn-add-cart'
-                  id="cartwithoutample_<?php echo $totalPrice ?>"
-                  href="javascript:void(0);"
-                  onclick="bookRoomWithoutAmple('<?php echo $totalPrice ?>','<?php echo $single_price; ?>','<?php echo $original_single_price; ?>','<?php echo $incrementIndex; ?>','<?php echo $admin_model_obj->DisplayAmplePoints($no_of_amples); ?>')">BOOK
-                NOW</a></div>
-              </div>
-            </div> --}}
+       
           </form>
         </div>
       </div>
-    </div>
+    </div> --}}
     
   </div>
 

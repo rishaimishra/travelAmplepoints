@@ -1,6 +1,9 @@
 @include('site.header')
 
+
+
 <?php // $contentArr=json_decode($hotelData->content,true);
+//die;
 $images=array(); 
 if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelImages']['HotelImage']; }
 ?>
@@ -19,6 +22,33 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
 <!-- ================================
     START BREADCRUMB AREA
 ================================= -->
+
+<style>
+  .my-row {
+    display: flex;
+    flex-wrap: wrap;
+    /* margin: 0 -10px; */
+  }
+
+  .my-col {
+    width: 33.33%;
+    padding: 10px 10px;
+    margin: 0 0 20px 0px;
+  }
+  @media only screen and (max-width: 800px) {
+    .my-col {
+      width: 50%;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .my-col {
+      width: 100%;
+    }
+  }
+</style>
+
+
+
 <style>
     .bread-bg-7 {
     height: 681px !important;
@@ -56,6 +86,35 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
         .bread-bg-7 {
              background-image: inherit !important; 
         }
+
+
+        .custom-container-ld {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white; /* Solid white background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensures it appears above all other content */
+}
+
+.custom-loader-ld {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
     </style>
 @php
  // dd(explode(",",$hotelSearchData->Cri_Adults));
@@ -78,7 +137,14 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
     } elseif (ImageHelper::isValidImageUrl($fallbackImageUrl)) {
         $backgroundImageUrl = $fallbackImageUrl;
     }
+
+
 @endphp
+
+
+ <div class="custom-container-ld" id="cc">
+    <div class="custom-loader-ld"></div>
+  </div>
 
 <div class="video-bg" id="htl-img" style="background:url('{{ $backgroundImageUrl }}'); background-size: cover; display: none;">
 </div>
@@ -92,7 +158,7 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                                data-speed="700">
                                 <i class="la la-video-camera mr-2"></i>Video
                             </a>-->
-                            <a class="theme-btn" data-src="<?php if(isset($images[0])){ echo $images[0]; } ?>"
+                            <a class="theme-btn" data-src="<?php if(isset($images[0])){ echo  $backgroundImageUrl; }//$images[0]; } ?>"
                                data-fancybox="hotel-single-main-gallery"
                                data-caption="Showing image - 01"
                                data-speed="700">
@@ -100,9 +166,10 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                             </a>
                         </div>
                         <?php for($i=1;$i<count($images);$i++){ ?>
+
                         <a class="d-none"
                              data-fancybox="hotel-single-main-gallery"
-                             data-src="<?php echo $images[$i];  ?>"
+                             data-src="<?php echo $images[$i]  ?>"
                              data-caption="Showing image - <?php if($i<9){ echo "0"; } echo $i+1; ?>"
                              data-speed="700"></a>
                         <?php } ?>
@@ -154,12 +221,14 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                                     </p>
                                    
                                 </div>
+                                @if(count($phones)>0)
                                  <p class="mr-2 hotel_full_address">Mobile Numbers
 
                                         @foreach($phones as $ph)
-                                        <span>{{$ph['phoneNumber']}}</span>
+                                        <span>{{$ph->phoneNumber}}</span>
                                         @endforeach
                                     </p> 
+                                    @endif
                             </div><!-- end single-content-item -->
                             <div class="section-block"></div>
                             <p class="py-3 roomDetailDescription">{{$hotelData['HotelDetails']['roomDetailDescription']; }}</p>
@@ -257,7 +326,7 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                        
                     </div><!-- end single-content-wrap -->
                 </div><!-- end col-lg-8 -->
-                <div class="col-lg-4">
+                <div class="col-lg-4" id="sidepanel" style="display:none">
                     <div class="sidebar single-content-sidebar mb-0">
                         <div class="sidebar-widget single-content-widget">
                             <div class="sidebar-widget-item">
@@ -299,14 +368,15 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                                             <label class="label-text">Check in </label>
                                             <div class="form-group">
                                                 <span class="la la-calendar form-icon"></span>
-                                                <input class=" form-control" type="text" name="checkin" value="<?php echo $hotelSearchData->checkin; ?>" readonly>
+                                                <input class=" form-control" type="text" name="checkin" value="{{ \Carbon\Carbon::parse($hotelSearchData->checkin)->format('m-d-Y') }}" readonly>
                                             </div>
                                         </div>
+                                        {{-- <?php echo $hotelSearchData->checkout; ?> --}}
                                         <div class="input-box">
                                             <label class="label-text"> Check out</label>
                                             <div class="form-group">
                                                 <span class="la la-calendar form-icon"></span>
-                                                <input class=" form-control" type="text" name="checkout"  value="<?php echo $hotelSearchData->checkout; ?>" readonly>
+                                                <input class=" form-control" type="text" name="checkout"  value="{{ \Carbon\Carbon::parse($hotelSearchData->checkout)->format('m-d-Y') }}" readonly>
                                             </div>
                                         </div>
                                        <!-- <div class="input-box">
@@ -434,7 +504,7 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
 
 
 
-<form id="arrayForm" method="get" action="{{route('hotel.booking.new')}}">
+<form id="arrayForm" method="get" action="{{route('hotel.booking.new')}}" style="display: none;">
     @csrf
         <div class="form-group">
             <label for="arrayInput">Enter array values (comma-separated):</label>
@@ -566,7 +636,7 @@ var innerHtml=''; var page=0; var search_session='';
 									/*=== RoomList ====*/
 									var htmlRoomlist=''; 
 									if(countRoomCombination<1){  htmlRoomlist +='No Room Available';  }
-									htmlRoomlist+='<div class="cabin-type padding-top-30px"><div class="cabin-type-item seat-selection-item d-flex"><div class="" style="border: 1px solid rgba(128, 137, 150, 0.2);">';
+									htmlRoomlist+='<div class="cabin-type padding-top-30px"><div class="cabin-type-item seat-selection-item d-flex"><div class="my-row" style="border: 1px solid rgba(128, 137, 150, 0.2);">';
 
                                     // console.log("p1"+countRoomCombination)
 
@@ -631,7 +701,7 @@ var innerHtml=''; var page=0; var search_session='';
 										var ratesA =ratesArr[key];
 										if(j==0){
 										 var roomCombineName =	CountRoomName(nameA);
-									htmlRoomlist+='<h3 class="title" style="background-color:rgba(128, 137, 150, 0.2); padding:5px 15px;">'+roomCombineName+'</h3>';
+									htmlRoomlist+=' <div class="my-col"><h3 class="title" style="background-color:rgba(128, 137, 150, 0.2); padding:5px 15px;">'+roomCombineName+'</h3>';
                                     // console.log(nameA,roomCombineName)	
 										}
 										
@@ -704,7 +774,7 @@ var innerHtml=''; var page=0; var search_session='';
 					 var boardName = BoardNameArr[board];
                      // console.log(board)
 					 var hid={{$hotelSearchData->id}};
-					htmlRoomlist+='<div class="row" style="margin:0; border-top: 1px solid rgba(128, 137, 150, 0.2); margin-bottom: 5px;"><div class="col-lg-3 responsive-column">'+boardName+'('+board+')</div><div class="col-lg-3 responsive-column">'+cancellationLebel+'<br> Exclude tax:'+tax+'<br>'+offerString+'</div><div class="col-lg-2 responsive-column"style="color:RED"> '+leastAllotment+' Room(s) Left</div><div class="col-lg-2 responsive-column"><p class="text-uppercase font-size-14">Per/night<strong class="mt-n1 text-black font-size-18 font-weight-black d-block"><?php echo $currency_symbol; ?> '+parseInt(roomPrice)*2+'</strong> <span style="text-decoration: line-through; display:none"><?php echo $currency_symbol; ?>  '+2*roomPrice+'</span></p></div><div class="col-lg-2 responsive-column cabin-price"><div class="custom-checkbox mb-0"><input style="display:none" type="radio" name="akm" id="selectChb'+i+''+j+'"><!--<label for="selectChb'+i+''+j+'" class="theme-btn theme-btn-small">Select</label>-->@if(@Auth::user()->id && @Auth::user()->user_type!="admin")<button onclick="arrayInsetFun(\'' + board + '\',\'' + rateClass + '\', \'' + roomCodeIds + '\',\'' + rateKeyIds + '\',\'' + hid + '\',\'' + roomCombineName + '\',\'' + boardName + '\',\'' + roomPrice + '\',event)" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Add</button>@elseif(@Auth::user()->id && @Auth::user()->user_type=="admin") @else <a href="{{ asset("login") }}" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Login To Book</a> @endif</div></div></div>';
+					htmlRoomlist+='<div class="row" style="margin:0; border-top: 1px solid rgba(128, 137, 150, 0.2); margin-bottom: 5px;"><div class="col-12 responsive-column">'+boardName+'('+board+')</div><div class="col-12 responsive-column">'+cancellationLebel+'<br> Exclude tax:'+tax+'<br>'+offerString+'</div><div class="col-12 responsive-column"style="color:RED"> '+leastAllotment+' Room(s) Left</div><div class="col-12 responsive-column"><p class="text-uppercase font-size-14">Per/night<strong class="mt-n1 text-black font-size-18 font-weight-black d-block"><?php echo $currency_symbol; ?> '+parseInt(roomPrice)*2+'</strong> <span style="text-decoration: line-through; display:none"><?php echo $currency_symbol; ?>  '+2*roomPrice+'</span></p></div><div class="col-12 responsive-column cabin-price"><div class="custom-checkbox mb-0"><input style="display:none" type="radio" name="akm" id="selectChb'+i+''+j+'"><!--<label for="selectChb'+i+''+j+'" class="theme-btn theme-btn-small">Select</label>-->@if(@Auth::user()->id && @Auth::user()->user_type!="admin")<button onclick="arrayInsetFun(\'' + board + '\',\'' + rateClass + '\', \'' + roomCodeIds + '\',\'' + rateKeyIds + '\',\'' + hid + '\',\'' + roomCombineName + '\',\'' + boardName + '\',\'' + roomPrice + '\',event)" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Add</button>@elseif(@Auth::user()->id && @Auth::user()->user_type=="admin") @else <a href="{{ asset("login") }}" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Login To Book</a> @endif</div></div></div></div>';
 											} // Inner for End
 									}// outer for End	
 									htmlRoomlist+='</div></div></div>';
@@ -873,6 +943,15 @@ function roomBook(){
 }
 
 
+
+// Function to hide the loader after 6 seconds
+setTimeout(function() {
+    document.getElementById('cc').style.display = 'none';
+    $("#sidepanel").show();
+}, 4000); // 6000 milliseconds = 6 seconds
+
+
+
       </script>
 
 
@@ -881,3 +960,6 @@ function roomBook(){
 @endphp
 
 @include('site.footer')
+@php    
+//dd($images);
+@endphp

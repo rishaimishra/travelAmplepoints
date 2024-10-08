@@ -1,0 +1,7 @@
+===========Credentials(Book_624488027)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(Book_624488027)=========
+{"data":{"selected_offers":["off_0000Am3ozuNmoTR4FO85rv"],"payments":[{"type":"balance","currency":"USD","amount":"73.02"}],"passengers":[{"phone_number":"+911111222212","email":"test@m.com","born_on":"09-16-2005","title":"mr","gender":"m","family_name":"test test","given_name":"test test","id":"pas_0000Am3ozu2A6s8dAK0pAB"}]}}
+===========Response(Book_624488027)=========
+{"errors":[{"documentation_url":"https://duffel.com/docs/api/overview/response-handling","source":{"field":"born_on","pointer":"/passengers/0/born_on"},"title":"Invalid type","type":"validation_error","message":"Field 'born_on' is invalid. Expected a date in ISO 8601 format (YYYY-MM-DD)","code":"validation_type"}],"meta":{"request_id":"F_W45y64nqhXbCAABTPF","status":422}}
+

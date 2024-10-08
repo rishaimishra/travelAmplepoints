@@ -9,9 +9,10 @@
                 $sessionval=session()->all();
                 $currency=$data['siteData']['currency'];  
                 $currency_symbol=$data['siteData']['currency_symbol'];                
-				$DOB=date('Y/m/d ', strtotime(date('m/d/Y').' -19 year')); 
-                $DOB2=date('Y/m/d ', strtotime(date('m/d/Y').' -11 year')); 
-                $DOB3=date('Y/m/d ', strtotime(date('m/d/Y').' -2 year')); 
+		
+                $DOB=date('m/d/Y ', strtotime(date('m/d/Y').' -19 year')); 
+                $DOB2=date('m/d/Y ', strtotime(date('m/d/Y').' -11 year')); 
+                $DOB3=date('m/d/Y ', strtotime(date('m/d/Y').' -2 year')); 
          @endphp
          
 
@@ -36,6 +37,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <!-- Flatpickr JS -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <style>
+        .bootstrap-select>.dropdown-toggle{
+        width: 100%;
+    height: 44px !important;
+    border: 1px #e6e7ea solid;
+}
+    </style>
 
 
 
@@ -72,7 +80,7 @@
                                                 <select class="select-contain-select" name="passenger[adult][title][]" requited>
                                                         <option value="mr">Mr</option>
                                                         <option value="mrs">Mrs</option>
-                                                        <option value="Mrs">Mrs</option>
+                                                        <option value="miss">Miss</option>
                                                  </select>
                                                  </div>
                                             </div>
@@ -119,7 +127,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 responsive-column">
+                                   {{--  <div class="col-lg-4 responsive-column">
                                         <div class="input-box">
                                             <label class="label-text">ID </label>
                                             <div class="form-group">
@@ -128,7 +136,7 @@
                                                  </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                  <?php } ?>
             						<hr /><hr />
 
@@ -147,7 +155,7 @@
                                                 <select class="select-contain-select" name="passenger[child][title][]" requited>
                                                         <option value="mr">Mr</option>
                                                         <option value="mrs">Mrs</option>
-                                                        <option value="Mrs">Mrs</option>
+                                                        <option value="miss">Miss</option>
                                                  </select>
                                                  </div>
                                             </div>
@@ -195,7 +203,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 responsive-column">
+                                   {{--  <div class="col-lg-4 responsive-column">
                                         <div class="input-box">
                                             <label class="label-text">ID</label>
                                             <div class="form-group">
@@ -204,7 +212,7 @@
                                                  </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                  
                                  <?php } ?>
                                  <hr /><hr />
@@ -226,7 +234,7 @@
                                                 <select class="select-contain-select" name="passenger[infant][title][]" requited>
                                                         <option value="mr">Mr</option>
                                                         <option value="mrs">Mrs</option>
-                                                        <option value="Mrs">Mrs</option>
+                                                       <option value="miss">Miss</option>
                                                  </select>
                                                  </div>
                                             </div>
@@ -273,7 +281,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 responsive-column">
+                                   {{--  <div class="col-lg-4 responsive-column">
                                         <div class="input-box">
                                             <label class="label-text">ID </label>
                                             <div class="form-group">
@@ -283,7 +291,7 @@
                                                  </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                                                   
                                  <?php } ?>
 
@@ -1379,7 +1387,8 @@ function ampleEnterFun(val,room_index){
 
         datePickers.forEach(function(datePicker) {
             flatpickr(datePicker, {
-                dateFormat: 'Y-m-d',
+                // dateFormat: 'Y-m-d',
+                  dateFormat: 'm-d-Y',
                 minDate: minChildDate,
                 maxDate: maxChildDate
             });
@@ -1397,7 +1406,8 @@ function ampleEnterFun(val,room_index){
 
         adultDatePickers.forEach(function(datePicker) {
             flatpickr(datePicker, {
-                dateFormat: 'Y-m-d',
+                // dateFormat: 'Y-m-d',
+                 dateFormat: 'm-d-Y',
                 maxDate: maxAdultDate
             });
         });
@@ -1416,7 +1426,8 @@ function ampleEnterFun(val,room_index){
 
         infantDatePickers.forEach(function(datePicker) {
             flatpickr(datePicker, {
-                dateFormat: 'Y-m-d',
+                // dateFormat: 'Y-m-d',
+                dateFormat: 'm-d-Y',
                 minDate: minInfantDate,
                 maxDate: maxInfantDate
             });

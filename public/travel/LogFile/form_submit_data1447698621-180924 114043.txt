@@ -1,0 +1,7 @@
+===========Credentials(form_submit_data1447698621)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(form_submit_data1447698621)=========
+{"_token":"HvY9rvB5PM7hsKZViDBrszxbOpRsPHn4im8WOIjx","OfferId":"off_0000Am7uVZsT2bfyxCh9Hs","id":"20130","chargeableRate":"84","booked_ample":"0","discount_by_ample":"0","passenger":{"adult":{"title":["mr"],"first_name":["test"],"last_name":["test"],"dob":["09-18-2005"],"gender":["m"]},"email":"test@m.com","phone":"7766554321","address":"test add","city":"kkll","country":"INDIA"},"payment_type":"flutterwave"}
+===========Response(form_submit_data1447698621)=========
+
+

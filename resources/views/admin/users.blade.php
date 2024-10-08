@@ -55,7 +55,7 @@
                   @php $com=json_decode($data->common_data,true); @endphp
                   <tr class="odd">
                     <td class="dtr-control sorting_1" tabindex="0"> {{$i}}  </td>
-                    <td> {{$data->id}}  </td>
+                    <td> {{$data->user_id}}  </td>
                     <td>{{$data->first_name}} {{$data->last_name}}</td>
                     <td>{{$data->phone}}</td>
                     <td>{{$data->email}}</td>
@@ -66,10 +66,10 @@
                     <td>@if($data->status=='inactive')<span class="badge bg-danger">{{strtoupper($data->status)}}@endif</span>
                     @if($data->status=='active')<span class="badge bg-success">{{strtoupper($data->status)}}@endif</span></td>
                      <td><div class="btn-group btn-group-sm">
-                        <a href="user-details/{{$data->id}}" class="btn btn-info"><i class="fas fa-edit"></i></a>&nbsp;
+                        <a href="user-details/{{$data->user_id}}" class="btn btn-info"><i class="fas fa-edit"></i></a>&nbsp;
                         @if($user_type!='customer')
-                        <a href="manual-wallet-fund-deduct/{{$data->id}}" class="btn btn-success"><i class="fas fa-wallet"></i> CR/DR</a>&nbsp;  
-                        <a href="wallet-transation-history/{{$data->id}}" class="btn btn-info"><i class="fas fa-wallet"></i> History </a>&nbsp; 
+                        <a href="manual-wallet-fund-deduct/{{$data->user_id}}" class="btn btn-success"><i class="fas fa-wallet"></i> CR/DR</a>&nbsp;  
+                        <a href="wallet-transation-history/{{$data->user_id}}" class="btn btn-info"><i class="fas fa-wallet"></i> History </a>&nbsp; 
                         @endif
                       </div></td>
                   </tr>

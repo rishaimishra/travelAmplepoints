@@ -1,0 +1,7 @@
+===========Credentials(search_2079759880)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(search_2079759880)=========
+{"data":{"slices":[{"origin":"DEL","destination":"BOM","departure_date":"2025-02-06"},{"origin":"BOM","destination":"DEL","departure_date":"2025-02-07"}],"passengers":[{"type":"adult"}],"cabin_class":"economy"}}
+===========Response(search_2079759880)=========
+
+

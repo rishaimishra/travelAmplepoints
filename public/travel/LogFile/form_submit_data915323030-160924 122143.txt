@@ -1,0 +1,7 @@
+===========Credentials(form_submit_data915323030)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(form_submit_data915323030)=========
+{"_token":"25P9gR7Kx5w8dUlkOVbmQwjm9kR6vlkXrnjZhlUK","OfferId":"off_0000Am3ozuNmoTR4FO85rv","id":"19927","chargeableRate":"82","booked_ample":"0","discount_by_ample":"0","passenger":{"adult":{"title":["mr"],"first_name":["test"],"last_name":["test"],"dob":["09-16-2005"],"gender":["m"]},"email":"test@m.com","phone":"1111222212","address":"test","city":"kolkata","country":"ARGENTINA"},"payment_type":"flutterwave"}
+===========Response(form_submit_data915323030)=========
+
+

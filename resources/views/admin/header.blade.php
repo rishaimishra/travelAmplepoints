@@ -55,7 +55,8 @@
   <link rel="stylesheet" href="{{ asset('admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('admin/plugins/summernote/summernote-bs4.min.css') }}">
-  <link rel="icon" href="{{$icon}}">
+  {{-- <link rel="icon" href="{{$icon}}"> --}}
+    <link rel="icon" href="https://amplepoints.com/images/favicon.ico">
   <style>
   	.top-menu{
 		background: #00CCFF;

@@ -1,0 +1,7 @@
+===========Credentials(search_615251441)=========
+duffel_test_hgvXrx16wmjjcuQaj6aLf3UZPGvsg58ph6lAvT2BCAl
+===========Request(search_615251441)=========
+{"data":{"slices":[{"origin":"DEL","destination":"BOM","departure_date":"2025-01-09"},{"origin":"BOM","destination":"DEL","departure_date":"2025-01-10"}],"passengers":[{"type":"adult"}],"cabin_class":"economy"}}
+===========Response(search_615251441)=========
+
+

@@ -11,13 +11,26 @@ class Crud_Model extends Model
     use HasFactory;
 			
 	 public static function read($table,$id=0){
-		if($id==0){
-		  $value=DB::table($table)->orderBy('id', 'desc')->get(); 
-		}else{
-		  $value=DB::table($table)->where('id', $id)->orderBy('id', 'desc')->first();
-		}
+	 	if($table=="users"){
+	 		if($id==0){
+			  $value=DB::table($table)->orderBy('user_id', 'desc')->get(); 
+			}else{
+			  $value=DB::table($table)->where('user_id', $id)->orderBy('id', 'desc')->first();
+			}
+
+	 	}else{
+	 		if($id==0){
+			  $value=DB::table($table)->orderBy('id', 'desc')->get(); 
+			}else{
+			  $value=DB::table($table)->where('id', $id)->orderBy('id', 'desc')->first();
+			}
+
+	 	}
+		
 		return $value;
  	}
+
+
 	
 	public static function readOne($table,$where){
 		  $value=DB::table($table)->where($where)->first();
@@ -25,7 +38,11 @@ class Crud_Model extends Model
  	}
 	
 	public static function readByCondition($table,$where){
-		  $value=DB::table($table)->where($where)->orderBy('id', 'desc')->get();
+		if($table=="users"){
+			 $value=DB::table($table)->where($where)->orderBy('user_id', 'desc')->get();
+		}else{
+            $value=DB::table($table)->where($where)->orderBy('id', 'desc')->get();
+		}
 		return $value;
  	}
 	

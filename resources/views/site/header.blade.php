@@ -1,6 +1,6 @@
 @inject('siteData1', 'App\Http\Controllers\Site')
          @php   $data=json_decode($siteData1::Index(),true);
-				$common_data= $data['siteData']['common_data'];
+                $common_data= $data['siteData']['common_data'];
                 $common=json_decode($common_data,true);
                 $images=  $data['siteData']['images'];
                 $images=json_decode($images,true);
@@ -25,7 +25,8 @@
       <meta name="author" content="Akin">
     <title>@if(isset($pageData->title)) {{$pageData->title}} @endif</title>
     <!-- Favicon -->
-    <link rel="icon" href="{{asset($images['icon'])}}">
+    {{-- <link rel="icon" href="{{asset($images['icon'])}}"> --}}
+    <link rel="icon" href="https://amplepoints.com/images/favicon.ico">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <!-- Template CSS Files -->
@@ -39,60 +40,61 @@
     <link rel="stylesheet" href="{{ asset('site/css/animate.min.css')}}">
     <link rel="stylesheet" href="{{ asset('site/css/animated-headline.css')}}">
     <link rel="stylesheet" href="{{ asset('site/css/jquery-ui.css')}}">
-    <link rel="stylesheet" href="{{ asset('site/css/flag-icon.min.css')}}">
+    <link rel="stylesheet" href="https://amplepoints.com/images/favicon.ico">
+        {{-- <link rel="stylesheet" href="{{ asset('site/css/flag-icon.min.css')}}"> --}}
     <link rel="stylesheet" href="{{ asset('site/css/style.css')}}">
     <style>
-	
-		.theme-btn-transparent {
-			background-color: #fff!important;
-			color: #f75b10;
-		}
-		.bgc{
-			background-color: #f75b10!important;
-			border: 1px solid #f75b10;
-		}
-		.section-tab .nav-tabs
-		.nav-link.active {
-		 color: #f75b10;
-		}
-		.theme-btn{
-			background-color: #f75b10;
-			border: 1px solid #f75b10;
-		}
-		
-		.price-slider-amount .amounts{
-			color: #f75b10!important;
-		}
-		.theme-btn:hover{
-			color: #f75b10;
-		}
-		
-		.loader .spinner .path{
-			stroke: #f75b10;
-		}
-		
-		.stroke-shape::before, .stroke-shape::after{
-			background-color: #f75b10!important;
-		}
-		
-		.ui-widget.ui-widget-content .ui-slider-handle{
-			background-color: #f75b10!important;
-		}
-		.ui-widget.ui-widget-content .ui-slider-range{
-			background-color: #f75b10!important;
-		}
-		
-		.custom-checkbox input[type=checkbox]:checked + label:before {
-			background-color: #f75b10!important;
-			border-color: #f75b10!important;
-		}
-		
-		.custom-checkbox label a {
-			color: #f75b10!important;
-		}
-	
-	
-	
+    
+        .theme-btn-transparent {
+            background-color: #fff!important;
+            color: #f75b10;
+        }
+        .bgc{
+            background-color: #f75b10!important;
+            border: 1px solid #f75b10;
+        }
+        .section-tab .nav-tabs
+        .nav-link.active {
+         color: #f75b10;
+        }
+        .theme-btn{
+            background-color: #f75b10;
+            border: 1px solid #f75b10;
+        }
+        
+        .price-slider-amount .amounts{
+            color: #f75b10!important;
+        }
+        .theme-btn:hover{
+            color: #f75b10;
+        }
+        
+        .loader .spinner .path{
+            stroke: #f75b10;
+        }
+        
+        .stroke-shape::before, .stroke-shape::after{
+            background-color: #f75b10!important;
+        }
+        
+        .ui-widget.ui-widget-content .ui-slider-handle{
+            background-color: #f75b10!important;
+        }
+        .ui-widget.ui-widget-content .ui-slider-range{
+            background-color: #f75b10!important;
+        }
+        
+        .custom-checkbox input[type=checkbox]:checked + label:before {
+            background-color: #f75b10!important;
+            border-color: #f75b10!important;
+        }
+        
+        .custom-checkbox label a {
+            color: #f75b10!important;
+        }
+    
+    
+    
         .an-from, .an-to{
             position: relative;
         }
@@ -155,32 +157,44 @@
   }
 }
 .hidefun{
-	float:right;
-	width: 28px;
-	background-color: rgba(128, 137, 150, 0.08);
-	text-align: center;
+    float:right;
+    width: 28px;
+    background-color: rgba(128, 137, 150, 0.08);
+    text-align: center;
     border-radius: 100%;
     cursor: pointer;
 }
+.header-menu-wrapper{
+    z-index:99999 !important;
+    position:fixed !important;
+    width: 100% !important;
+}
 </style>
+
+
+ <style> .header-d-none-imp{display:none!important;height:0!important;opacity:0;position:fixed;top:-9999999999999999999999999999px;left:-9999999999999999999999999999px}.top-user-btn{position:relative;padding:5px 12px}.op-0-tr-btn{position:absolute;border:1px solid #9b9b9b;transition:all .3s;z-index:9999999999;top:0;left:0;margin:50px 0 0 0;width:180px;background:#fff;border-radius:4px}.op-0-tr-btn ul{}.op-0-tr-btn li{padding:8px 15px;border-bottom:1px solid #888888;cursor:pointer}.op-0-tr-btn li a{color:#111!important}.op-0-tr-btn li:hover a{color:#f75b10!important}.op-0-tr-btn li:last-child{border-bottom-width:0}.top-user-btn:hover .op-0-tr-btn{opacity:1!important;transform:translateY(0)!important}.top-user-btn:before{content:"";position:absolute;display:block;top:0;left:0;width:100%;height:120%;z-index:-1}</style>
 
 </head>
 <body>
 <!-- start cssload-loader -->
-<div class="preloader" id="preloader">
+@if (Route::currentRouteName() != 'hotel.search.results' || Route::currentRouteName() !="hotel.details")
+{{-- <div class="preloader" id="preloader">
     <div class="loader">
         <svg class="spinner" viewBox="0 0 50 50">
             <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
         </svg>
     </div>
-</div>
+</div> --}}
+@endif
+
+
 <!-- end cssload-loader -->
 <!--<a href="http://techydevs.com/demos/themes/html/trizen/rtl/index.html" class="rtl-btn">RTL Version</a>-->
 <!-- ================================
             START HEADER AREA
 ================================= -->
 <header class="header-area">
-    <div class="header-top-bar padding-right-100px padding-left-100px">
+    <div class="header-top-bar padding-right-100px padding-left-100px header-d-none-imp" style="display: none;"> 
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-lg-4">
@@ -189,7 +203,7 @@
                             <ul class="list-items">
                             {{-- <li><a href="{{ asset('help-desk')}}" style="font-size: 1.5rem!important;" ><i class="la la-question-circle"></i>Support</a></li> --}}
                             @if(@Auth::user()->id && @Auth::user()->user_type!="admin")
-                             <a href="#" class="theme-btn theme-btn-small">Your Amplepoints: {{@Auth::user()->ample}}</a>
+                             <a href="#" class="theme-btn theme-btn-small">Hi {{$sessionval['first_name']}}</a>
                              @endif
                             </ul>
                         </div>
@@ -206,7 +220,7 @@
                             <div class="header-right-action an-div-sep" style="display:none">
                                 <div class="select-contain select--contain w-auto">
                                 <form method="post" action="{{ asset('change-currency') }}">
-          					    @csrf 
+                                @csrf 
                                 <input type="hidden" name="redirectUrl" value="{{url()->full()}}" />
                                     <select style="width:100%" name="currency" id='currency'  onChange="changeCurrency()"class="form-control">
                                       @foreach($currency_list as $key => $data)
@@ -219,7 +233,17 @@
                             </div>
                             <div class="header-right-action" an-div-sep>
                                  <?php if(isset($sessionval['first_name'])){ ?>
-                            	 <a href="#" class="theme-btn theme-btn-small">Hi {{$sessionval['first_name']}}</a>
+
+
+                                 <a href="#" class="theme-btn theme-btn-small" style=" margin: 0 0 0 4px;    background-color: #ffffff; border:1px solid #b39797 !important">
+
+                                    <img @if(@Auth::user()->user_image) src="https://amplepoints.com/user_images/32/profile_image/{{@Auth::user()->user_image}}" @else src=" {{ asset('admin/dist/img/user2-160x160.jpg') }}" @endif class="img-fluid" style=" width: 32px; height: auto; margin: 0 10px 0 0;"><span style="color:black;">{{@Auth::user()->ample}}  amples </span></a>
+
+              
+
+
+
+                                 {{-- <a href="#" class="theme-btn theme-btn-small">Hi {{$sessionval['first_name']}}</a> --}}
                                  <a href="{{ asset('logout')}}" class="theme-btn theme-btn-small" >
                                  <i class="la la-power-off mr-2 text-color-11"></i>Logout</a>
                                 <?php } else{ ?>
@@ -252,17 +276,71 @@
                                     <li><a href="{{ asset('')}}"><i class="la la-home mr-1"></i>Home</a></li>
                                     <li><a href="{{ asset('hotel-search')}}"><i class="la la-bed mr-1"></i>Hotel/Stays</a></li>
                                     <li><a href="{{ asset('flight-search')}}"><i class="la la-plane mr-1"></i>Flight</a></li>
-                                    <li><a href="{{ asset('tours-search')}}"><i class="la la-camera mr-1"></i>Tours</a></li>
-                                    <li><a href="{{ asset('transfers-search')}}"><i class="la la-car mr-1"></i>Transfers</a></li>
-									<li style="display:none"><a style="display:flex;" href="{{ asset('tours-search')}}"><span class="form-icon an-custom-img-icon" style="margin: 0 5px 0 0;"><img src="<?php echo url('');?>/icon/globe-black.png" alt=""></span>Tours</a></li>
+                                   {{--  <li><a href="{{ asset('tours-search')}}"><i class="la la-camera mr-1"></i>Tours</a></li>
+                                    <li><a href="{{ asset('transfers-search')}}"><i class="la la-car mr-1"></i>Transfers</a></li> --}}
+                                  {{--   <li style="display:none"><a style="display:flex;" href="{{ asset('tours-search')}}"><span class="form-icon an-custom-img-icon" style="margin: 0 5px 0 0;"><img src="<?php echo url('');?>/icon/globe-black.png" alt=""></span>Tours</a></li> --}}
                                      
                                    <!-- <li><a style="display:flex;" href="#"><span class="form-icon an-custom-img-icon" style="margin: 0 5px 0 0;"><img src="<?php echo url('');?>/icon/cruise-black.png" alt=""></span>Cruise</a></li>-->
                                    
-                                    <li style="display:none"><a style="display:flex;" href="{{ asset('transfers-search')}}"><span class="form-icon an-custom-img-icon" style="margin: 0 5px 0 0;"><img src="<?php echo url('');?>/icon/car-black.png" alt=""></span>Transfers</a></li>
+                                   {{--  <li style="display:none"><a style="display:flex;" href="{{ asset('transfers-search')}}"><span class="form-icon an-custom-img-icon" style="margin: 0 5px 0 0;"><img src="<?php echo url('');?>/icon/car-black.png" alt=""></span>Transfers</a></li> --}}
                                     
-                                    <div style="display:none" class="mobile" >
+                                    <div class="mobile" >
                                  {{--    <li><a href="{{ asset('help-desk')}}"><i class="la la-question-circle"></i>Support</a></li> --}}
-                                   	   <div class="col-lg-6">
+                                       
+                                       
+                                       
+                                    <style>
+                                        #accMobHead .collapse li {
+                                          
+                                        }
+                                        #accMobHead .colp-div li {
+                                          display: block;
+                                          padding: 0 10px 0 12px; 
+                                        }
+                                      </style>
+                                      @if(isset($sessionval['first_name']))
+                                      <div class="accordion" id="accMobHead">
+                                        <div class="card">
+                                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="text-align: left;text-decoration: none;color: #111;">
+                                            <img src="./index_files/Screen Shot 2016-08-30 at 1.36.54 AM_80x80.png" class="img-fluid" style="width: 32px; height: auto; margin: 0 10px 0 0">
+                                            <span style="color: black">{{@Auth::user()->ample}} amples </span>
+                                          </button>
+                                          <div id="collapseThree" class="collapse colp-div" aria-labelledby="headingThree" data-parent="#accMobHead">
+                                            <ul>
+                                              <li>
+                                                <a @if(@Auth::user()->user_type=="admin") href="{{ asset('admin-dashboard')}}" @else href="{{ route('customer.dashboard')}}" @endif>Dashboard</a>
+                                                <a href="{{ asset('logout')}}">Logout</a>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      @else
+
+                                       <div class="accordion" id="accMobHead">
+                                        <div class="card">
+                                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThreebfrlgin" aria-expanded="false" aria-controls="collapseThreebfrlgin" style="text-align: left;text-decoration: none;color: #111;">
+                                           
+                                            <span style="color: black">{{@Auth::user()->ample}} Login/Register </span>
+                                          </button>
+                                          <div id="collapseThreebfrlgin" class="collapse colp-div" aria-labelledby="headingThree" data-parent="#accMobHead">
+                                            <ul>
+                                              <li>
+                                                <a href="{{ asset('login')}}">Login</a>
+                                                <a href="{{ asset('customer-signup')}}">Sign up</a>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      @endif
+                                       
+                                       
+                                       
+                                       
+                                       
+                                       <div class="col-lg-6" style="display: none !important;">
                                             <div class="header-top-content">
                                                 <div class="header-right align-items-center justify-content-end an-remove-flex">
                                                    
@@ -286,7 +364,11 @@
                                                     <div class="header-right-action" an-div-sep>
                                                     <a href="https://dev.plistbooking.com/add-new-listing-list-your-event/" target="_blank" class="theme-btn theme-btn-small theme-btn-transparent mr-1">List Your Property</a>
                                                          <?php if(isset($sessionval['first_name'])){ ?>
-                                                         <a href="#" class="theme-btn theme-btn-small">Hi {{$sessionval['first_name']}}</a>
+                                                        
+                                                         <a href="#" class="theme-btn theme-btn-small" style=" margin: 0 0 0 4px;"><img src="https://amplepoints.com/user_images/32/profile_image/{{@Auth::user()->user_image}}" class="img-fluid" style=" width: 32px; height: auto; margin: 0 10px 0 0;">User</a>
+
+
+                                                 {{--         <a href="#" class="theme-btn theme-btn-small">Hi {{$sessionval['first_name']}}</a> --}}
                                                          <a href="{{ asset('logout')}}" class="theme-btn theme-btn-small" >
                                                          <i class="la la-power-off mr-2 text-color-11"></i>Logout</a>
                                                         <?php } else{ ?>
@@ -306,11 +388,38 @@
                             </nav>
                         </div><!-- end main-menu-content -->
                         <div class="nav-btn">
-                        <?php if(isset($sessionval['first_name'])){ ?>
-                                <a @if(@Auth::user()->user_type=="admin") href="{{ asset('admin-dashboard')}}" @else href="{{ route('customer.dashboard')}}" @endif class="theme-btn">Dashboard</a>
-                         <?php }else{ ?>
-                            	{{-- <a href="{{ asset('agent-signup')}}" class="theme-btn">Become an Agent</a>      --}}
-                         <?php } ?>                       
+                       
+                         
+                         
+                         @if(!isset($sessionval['first_name']))
+                          <a href="{{asset('customer-signup')}}" class="theme-btn">Sign Up</a>
+                          <a href="{{asset('login')}}" class="theme-btn">Login</a>
+                          @else
+                        {{--   <a @if(@Auth::user()->user_type=="admin") href="{{ asset('admin-dashboard')}}" @else href="{{ route('customer.dashboard')}}" @endif class="theme-btn">Dashboard</a> --}}
+                          
+                         
+                
+                         
+                          <div href="javascript:void(0);" class="theme-btn theme-btn-small top-user-btn" style="margin: 0 0 0 4px; background-color: #ffffff; border: 1px solid #b39797 !important">
+                            <img @if(@Auth::user()->user_image) src="https://amplepoints.com/user_images/32/profile_image/{{@Auth::user()->user_image}}" @else src=" {{ asset('admin/dist/img/user2-160x160.jpg') }}" @endif  class="img-fluid" style="width: 32px; height: auto; margin: 0 10px 0 0" />
+                            <span style="color: black">{{@Auth::user()->ample}}   amples </span>
+                            <div style="opacity: 0; transform: translateY(-200px);" class="op-0-tr-btn">
+                              <ul>
+                                <li>
+                                  <a @if(@Auth::user()->user_type=="admin") href="{{ asset('admin-dashboard')}}" @else href="{{ route('customer.dashboard')}}" @endif>Dashboard</a>
+                                </li>
+                               {{--  <li>
+                                  <a href="#">Item 2</a>
+                                </li> --}}
+                                <li>
+                                  <a href="{{ asset('logout')}}">Logout</a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+
+                          @endif
+                         
                         </div><!-- end nav-btn -->
                     </div><!-- end menu-wrapper -->
                 </div><!-- end col-lg-12 -->
@@ -335,12 +444,12 @@
     <div>
         <a style="display:flex;" href="{{ asset('flight-search')}}"><span class="form-icon an-custom-img-icon" style="margin: 0 10px 0 0;"><img src="<?php echo url('');?>/icon/flight-white.png" alt="" style="width: 20px;"></span>    Flight</a>
     </div>
-    <div>
+   {{--  <div>
         <a style="display:flex;" href="{{ asset('tours-search')}}"><span class="form-icon an-custom-img-icon" style="margin: 0 10px 0 0;"><img src="<?php echo url('');?>/icon/globe-black.png" alt="" style="width: 20px;"></span>Tours</a>
-    </div>
-        <div>
+    </div> --}}
+      {{--   <div>
         <a style="display:flex;" href="{{ asset('transfers-search')}}"><span class="form-icon an-custom-img-icon" style="margin: 0 10px 0 0;"><img src="<?php echo url('');?>/icon/car-white.png" alt="" style="width: 20px;"></span>Trannsfers</a>
-    </div>
+    </div> --}}
     <!--<div>
         <a style="display:flex;" href="#"><span class="form-icon an-custom-img-icon" style="margin: 0 10px 0 0;"><img src="<?php echo url('');?>/icon/cruise-white.png" alt="" style="width: 20px;"></span>Cruise</a>
     </div>-->
@@ -351,7 +460,7 @@
 ================================= -->
 @if(isset($pageData->name))
 @if($pageData->id!='home')
-<section class="breadcrumb-area bread-bg-6 common_beard_comb notMobile"> 
+<section class="breadcrumb-area bread-bg-6 common_beard_comb notMobile" id="header-part" style="display:none"> 
 <div class="video-bg" style="background:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),url({{$pageData->image}});background-size: cover;">
     </div>
     <div class="breadcrumb-wrap">
@@ -399,9 +508,9 @@
         color: #fff;
         border-radius: 30px;
     }
-	.form-control{
-		font-size: 1rem!important;
-	}
+    .form-control{
+        font-size: 1rem!important;
+    }
 </style>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
@@ -410,17 +519,17 @@ checkPosition();
 function checkPosition() {
     if (window.matchMedia('(max-width: 700px)').matches) {
         console.log('resize...');
-		googleTranslateElementInit2();
+        googleTranslateElementInit2();
         $('.an-container-responsive').css({"display":"flex"});
         $('.an-shadow').css({"box-shadow":"0px 1px 10px -2px"});
         $('.an-remove-flex').removeClass('d-flex align-items-center justify-content-end');
-		$('.VIpgJd-ZVi9od-l4eHX-hSRGPd').hide(); 
+        $('.VIpgJd-ZVi9od-l4eHX-hSRGPd').hide(); 
     } else {
-		 googleTranslateElementInit();
+         googleTranslateElementInit();
         $('.an-container-responsive').css({"display":"none"});
         $('.an-shadow').css({"box-shadow":""});
         $('.an-remove-flex').addClass('d-flex align-items-center justify-content-end');
-		$('.VIpgJd-ZVi9od-l4eHX-hSRGPd').hide();
+        $('.VIpgJd-ZVi9od-l4eHX-hSRGPd').hide();
     }
 }
 $(document).load($(window).bind("resize", checkPosition));
@@ -433,17 +542,17 @@ function googleTranslateElementInit2() {
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
-      <script type="text/javascript">	  
-	  function changeCurrency(){ jQuery(".currency_submit").trigger("click"); }
-	  function changeCurrency2(){ jQuery(".currency_submit2").trigger("click"); }
-		function pollDOM () {
-		  if(jQuery(".goog-te-combo")[0]){
-			jQuery(".goog-te-combo").addClass('form-control');
-			jQuery(".goog-logo-link").empty();
-			jQuery('.goog-te-gadget').html($('.goog-te-gadget').children());
-		  } else {
-			setTimeout(pollDOM, 1000); // try again in 300 milliseconds
-		  }
-		}
-		pollDOM();						
+      <script type="text/javascript">     
+      function changeCurrency(){ jQuery(".currency_submit").trigger("click"); }
+      function changeCurrency2(){ jQuery(".currency_submit2").trigger("click"); }
+        function pollDOM () {
+          if(jQuery(".goog-te-combo")[0]){
+            jQuery(".goog-te-combo").addClass('form-control');
+            jQuery(".goog-logo-link").empty();
+            jQuery('.goog-te-gadget').html($('.goog-te-gadget').children());
+          } else {
+            setTimeout(pollDOM, 1000); // try again in 300 milliseconds
+          }
+        }
+        pollDOM();                      
 </script>

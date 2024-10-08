@@ -71,8 +71,8 @@ class Admin extends Controller
 			'email' => $request->input('email'),
 			'password' => $request->input('password'),
 			'address' => $request->input('address'),
-			'city' => $request->input('city'),
-			'country' => $request->input('country'),
+			// 'city' => @$request->input('city'),
+			// 'country' => @$request->input('country'),
 			'user_type' => $request->input('user_type'),
 			'status' => $request->input('status'),
 			'user_type' => $request->input('user_type'),
@@ -88,7 +88,7 @@ class Admin extends Controller
 			'common_data' => $common_data_json,
 		);
 		
-		$status = Crud_Model::updateData('user',$data,array('user_id'=>$id));
+		$status = Crud_Model::updateData('users',$data,array('user_id'=>$id));
 		if($id==1){
 			if($status==1){
 			    return redirect('/user-details?msg='.$this->success_message); die; 
