@@ -212,81 +212,79 @@
     <div class="row">
       <div class="hotel-info-main">
 
-  <div class="o-box-room" style="width:172%">
-
-    <div class="row">
-      <div class="col-md-8 col-12">
-        <div class="hotel-info-title">Rate Breakup</div>
-       
-
-       {{--  <div class="o-b-group">
-          <div class="o-b-item">Room name</div>
-        </div>
-        <div class="hotel-info-title-sm">Rate Breakup:</div>
-        <table class="h-i-table">
-          <thead>
-            <tr>
-              <th class="text-left">Date</th>
-              <th class="text-right">Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="text-left">10/02/2024</td>
-              <td class="text-right">$ 22.20</td>
-            </tr>
-          </tbody>
-        </table> --}}
-
-          
-
-         @foreach($rooms as $date => $roomData)
-        <div class="o-b-group">
-          <div class="o-b-item">Date: {{ \Carbon\Carbon::parse($date)->format('d/m/Y') }}</div>
-        </div>
-        <div class="hotel-info-title-sm">Rate Breakup:</div>
-          @foreach($roomData as $key=> $data)
-        <table class="h-i-table">
-          <thead>
-            <tr>
-              <th class="text-left">Room {{$key+1}}</th>
-              <th class="text-right">Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="text-left">{{ $data['room'] }}</td>
-              <td class="text-right">$ {{ number_format($data['price'], 2) }}</td>
-            </tr>
-          </tbody>
-        </table>
-        @endforeach
-        @endforeach
-
-
-
-
-
-
-        <div class="hotel-info-title-sm">Rate Summary:</div>
-        <table class="h-i-table">
-          <tbody>
-            {{-- <tr>
-              <td class="text-left">Room Price</td>
-              <td class="text-right">$ 22.20</td>
-            </tr>
-            <tr>
-              <td class="text-left">Tax</td>
-              <td class="text-right">$ 22.20</td>
-            </tr>
-            <tr> --}}
-              <td class="text-left">Total Price</td>
-              <td class="text-right">$ {{$totalPrice*2}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+<div class="o-box-room" style="width:172%">
+  <div class="row">
+    <div class="col-md-8 col-12">
+      <div class="hotel-info-title">Rate Breakup</div>
       
+      {{--  <div class="o-b-group">
+        <div class="o-b-item">Room name</div>
+      </div>
+      <div class="hotel-info-title-sm">Rate Breakup:</div>
+      <table class="h-i-table">
+        <thead>
+          <tr>
+            <th class="text-left">Date</th>
+            <th class="text-right">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-left">10/02/2024</td>
+            <td class="text-right">$ 22.20</td>
+          </tr>
+        </tbody>
+      </table> --}}
+      
+      @php
+      $d=1;
+      @endphp
+      @foreach($rooms as $date => $roomData)
+      <div class="o-b-group">
+        <div class="o-b-item">Date: {{ \Carbon\Carbon::parse($date)->format('d/m/Y') }}</div>
+      </div>
+      <div class="hotel-info-title-sm">Rate Breakup for day {{$d}} :</div>
+      @foreach($roomData as $key=> $data)
+      <table class="h-i-table">
+        <thead>
+          <tr>
+            <th class="text-left">Room {{$key+1}}</th>
+            <th class="text-right">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-left">{{ $data['room'] }}</td>
+            <td class="text-right">{{$currency_symbol}} {{ number_format($data['price']*2, 2) }}</td>
+          </tr>
+        </tbody>
+      </table>
+      @endforeach
+      @php
+      $d++;
+      @endphp
+      @endforeach
+      <div class="hotel-info-title-sm">Rate Summary:</div>
+      <table class="h-i-table">
+        <tbody>
+          <tr id="dp2tr" style="display:none">
+            <td class="text-left" >Discount</td>
+            <td class="text-right">{{$currency_symbol}} <span id="dp2"></span></td>
+          </tr>
+          <tr>
+            <td class="text-left">Total Price</td>
+            <td class="text-right">{{$currency_symbol}} <span id="rate-break-total-price">{{$totalPrice*2}}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
+
+
+
+
 
 <div class="col-md-4 col-12">
  
@@ -1284,8 +1282,13 @@ var innerHtml=''; var page=0; var search_session='';
         $("#dpli").show();
         $("#tali2").show();
         $("#tali1").hide();
+
         $("#dp").html(' ' + '$' + discount_price);
         $("#ta2").html(' ' + '$' + newFinal_Price);
+
+        $("#dp2tr").show();
+        $("#dp2").html(' '+ discount_price);
+        $("#rate-break-total-price").html(' '+ newFinal_Price);
 
         $("#chargeableRate").val(newFinal_Price/2)
         $("#booked_ample").val(amplesbyuser)
@@ -1307,6 +1310,9 @@ function ampleEnterFun(val,room_index){
     $('#newitemprice_' + room_index).text(' ' + '$' + room_index*2);
     $("#chargeableRate").val(room_index)
     $("#booked_ample").val(0)
+
+     $("#dp2").html(' '+ 0);
+      $("#rate-break-total-price").html(' '+ room_index*2);
   }
 }
 

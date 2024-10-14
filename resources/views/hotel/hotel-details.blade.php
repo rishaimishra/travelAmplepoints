@@ -10,7 +10,7 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
 @inject('provider', 'App\Http\Controllers\Site')
 @inject('siteData1', 'App\Http\Controllers\Site')
          @php   $data=json_decode($siteData1::Index(),true);
-				$common_data= $data['siteData']['common_data'];
+                $common_data= $data['siteData']['common_data'];
                 $common=json_decode($common_data,true);
                 $images_main=  $data['siteData']['images'];
                 $images_main=json_decode($images_main,true);
@@ -214,7 +214,7 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                                 <h3 class="title font-size-26 hotel_Name">{{ $hotelSearchData->Name }}</h3>
                                 <div class="d-flex align-items-center pt-2">
                                     <p class="mr-2 hotel_full_address">{{$hotelSearchData->address1}}, {{$hotelSearchData->city}}, {{$hotelSearchData->postalCode}}
-									</p> 
+                                    </p> 
                                     <p>
                                         <span class="badge badge-warning text-white font-size-16">{{ $hotelSearchData->hotelRating; }}/5</span>
                                         <!--<span>(4,209 Reviews)</span>-->
@@ -274,10 +274,10 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                                     <div class="row Amenities">
                                     
                                     
-									@for($i=0;$i<count($BusinessAmenity);$i++)
-										 <div class="col-lg-4 responsive-column">
-                                         	<div class="single-tour-feature d-flex align-items-center mb-3">
-                                            	<div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+                                    @for($i=0;$i<count($BusinessAmenity);$i++)
+                                         <div class="col-lg-4 responsive-column">
+                                            <div class="single-tour-feature d-flex align-items-center mb-3">
+                                                <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
                                                     <i class="la la-check"></i>
                                                  </div>
                                                  <div class="single-feature-titles">
@@ -285,7 +285,7 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                                                 </div>
                                             </div>
                                          </div>
-									@endfor
+                                    @endfor
                                     </div><!-- end row -->
                                 </div>
                             </div><!-- end single-content-item -->
@@ -304,10 +304,10 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                                     <div class="row Amenities">
                                     
                                     
-									@for($i=0;$i<count($PropertyAmenity);$i++)
-										 <div class="col-lg-4 responsive-column">
-                                         	<div class="single-tour-feature d-flex align-items-center mb-3">
-                                            	<div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
+                                    @for($i=0;$i<count($PropertyAmenity);$i++)
+                                         <div class="col-lg-4 responsive-column">
+                                            <div class="single-tour-feature d-flex align-items-center mb-3">
+                                                <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
                                                     <i class="la la-check"></i>
                                                  </div>
                                                  <div class="single-feature-titles">
@@ -315,7 +315,7 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                                                 </div>
                                             </div>
                                          </div>
-									@endfor
+                                    @endfor
                                     </div><!-- end row -->
                                 </div>
                             </div><!-- end single-content-item -->
@@ -391,16 +391,16 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                                 </div>
                             </div><!-- end sidebar-widget-item -->
                             <?php 
-							$AdultsArr=json_decode($hotelSearchData->Cri_Adults,true);
+                            $AdultsArr=json_decode($hotelSearchData->Cri_Adults,true);
                             $AdultsArr = explode(',', $AdultsArr);
                             //echo $AdultsArr[1];
 
-							$ChildsArr=json_decode($hotelSearchData->Cri_Childs,true);
+                            $ChildsArr=json_decode($hotelSearchData->Cri_Childs,true);
                             $ChildsArr=explode(',', $ChildsArr);
                             //echo $ChildsArr;
-							$ChildAgeArr=json_decode($hotelSearchData->child_age,true);
+                            $ChildAgeArr=json_decode($hotelSearchData->child_age,true);
 
-							for($i=0;$i<$hotelSearchData->rooms;$i++){ ?>
+                            for($i=0;$i<$hotelSearchData->rooms;$i++){ ?>
                             <br />
                             <div class="sidebar-widget-item">
                                 <div class="qty-box mb-2 d-flex align-items-center justify-content-between">
@@ -421,8 +421,8 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
                                  <?php for($c=0;$c<$ChildsArr[$i];$c++){ ?>
                                  <div class="qty-box mb-2 d-flex align-items-center justify-content-between">
                                     <div class=" d-flex align-items-center">
-                                        <input class=" form-control" type="text" name="Cri_Adults"  value="Child {{$c+1}} Age : <?php echo $ChildAgeArr[$i][$c]; ?>" readonly>	</div></div>
-										<?php } ?>
+                                        <input class=" form-control" type="text" name="Cri_Adults"  value="Child {{$c+1}} Age : <?php echo $ChildAgeArr[$i][$c]; ?>" readonly>  </div></div>
+                                        <?php } ?>
                             </div><!-- end sidebar-widget-item -->
                             <?php } ?>
                         </div><!-- end sidebar-widget -->
@@ -557,97 +557,97 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
 jQuery(".common_beard_comb").hide(); jQuery(".preloader").hide();
 var innerHtml=''; var page=0; var search_session='';
       jQuery(document).ready(function(){   
-	  var innerHtml='<div class="loader"><svg class="spinner" viewBox="0 0 50 50"><circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle></svg></div>';   jQuery('.flight_ist').html(innerHtml);	
-	  				Hotel_Description();
-					RoomAvailability();
-						function Hotel_Description(){
-			   			 $.ajax({
-								url:<?php url(''); ?>'/travel/hotel-update-rates.php',
-								type: "GET",
-								data: {
-									action: "Hotel_Description",  
-									hotelId: "<?php echo $hotelSearchData->EANHotelID; ?>",
-									tid: "<?php echo $hotelSearchData->id; ?>",
-									search_session: "<?php echo $hotelSearchData->search_session; ?>",
-									regionid: "<?php echo $hotelSearchData->desti_lat_lon; ?>",
-									destination: "<?php echo $hotelSearchData->city; ?>",
-									checkIn: "<?php echo $hotelSearchData->checkin; ?>",  
-									checkOut: "<?php echo $hotelSearchData->checkout; ?>",
-									rooms: "<?php echo $hotelSearchData->rooms; ?>",
-									adults: '<?php echo $hotelSearchData->Cri_Adults; ?>',
-									childs: '<?php echo $hotelSearchData->Cri_Childs; ?>',
-								},
-								dataType: "json",
-								success: function (data) {
-									var HotelSummary=data.responseData.HotelSummary;
-									var BusinessAmenity=data.responseData.BusinessAmenities.BusinessAmenity;
-									var HotelDetails=data.responseData.HotelDetails;
-									
-									jQuery('.hotel_Name').html(HotelSummary.Name);
-									jQuery('.hotel_full_address').html(HotelSummary.Address1+', '+HotelSummary.City+', '+HotelSummary.postalCode);
-									jQuery('.hotel_rating').html(HotelSummary.hotelRating);
-									jQuery('.roomDetailDescription').html(HotelDetails.roomDetailDescription);						
-									jQuery('.Hotel_description').html(HotelDetails.propertyDescription);
-									/*var AmenitiesHtml='';
-									var PropertyAmenity=data.responseData.PropertyAmenities.PropertyAmenity;
-									for(var i=0;i<PropertyAmenity.length;i++){
-										 AmenitiesHtml +='<div class="col-lg-4 responsive-column"><div class="single-tour-feature d-flex align-items-center mb-3"><div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3"><i class="la la-check"></i></div><div class="single-feature-titles"><h3 class="title font-size-15 font-weight-medium">'+PropertyAmenity[i].amenity+'</h3></div></div></div>';
-									}
-									jQuery('.Amenities').html(AmenitiesHtml);
-									var businessamenityHtml='';
-									for(var i=0;i<BusinessAmenity.length;i++){
-										 businessamenityHtml +='<div class="col-lg-4 responsive-column"><div class="single-tour-feature d-flex align-items-center mb-3"><div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3"><i class="la la-check"></i></div><div class="single-feature-titles"><h3 class="title font-size-15 font-weight-medium">'+BusinessAmenity[i].businessamenity+'</h3></div></div></div>';
-									}
-									jQuery('.businessamenity').html(businessamenityHtml);*/									
-								},
-								error: function (error) {
-									console.log(`Error ${error}`);
-								}
-							});
-							}
-							
+      var innerHtml='<div class="loader"><svg class="spinner" viewBox="0 0 50 50"><circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle></svg></div>';   jQuery('.flight_ist').html(innerHtml); 
+                    Hotel_Description();
+                    RoomAvailability();
+                        function Hotel_Description(){
+                         $.ajax({
+                                url:<?php url(''); ?>'/travel/hotel-update-rates.php',
+                                type: "GET",
+                                data: {
+                                    action: "Hotel_Description",  
+                                    hotelId: "<?php echo $hotelSearchData->EANHotelID; ?>",
+                                    tid: "<?php echo $hotelSearchData->id; ?>",
+                                    search_session: "<?php echo $hotelSearchData->search_session; ?>",
+                                    regionid: "<?php echo $hotelSearchData->desti_lat_lon; ?>",
+                                    destination: "<?php echo $hotelSearchData->city; ?>",
+                                    checkIn: "<?php echo $hotelSearchData->checkin; ?>",  
+                                    checkOut: "<?php echo $hotelSearchData->checkout; ?>",
+                                    rooms: "<?php echo $hotelSearchData->rooms; ?>",
+                                    adults: '<?php echo $hotelSearchData->Cri_Adults; ?>',
+                                    childs: '<?php echo $hotelSearchData->Cri_Childs; ?>',
+                                },
+                                dataType: "json",
+                                success: function (data) {
+                                    var HotelSummary=data.responseData.HotelSummary;
+                                    var BusinessAmenity=data.responseData.BusinessAmenities.BusinessAmenity;
+                                    var HotelDetails=data.responseData.HotelDetails;
+                                    
+                                    jQuery('.hotel_Name').html(HotelSummary.Name);
+                                    jQuery('.hotel_full_address').html(HotelSummary.Address1+', '+HotelSummary.City+', '+HotelSummary.postalCode);
+                                    jQuery('.hotel_rating').html(HotelSummary.hotelRating);
+                                    jQuery('.roomDetailDescription').html(HotelDetails.roomDetailDescription);                      
+                                    jQuery('.Hotel_description').html(HotelDetails.propertyDescription);
+                                    /*var AmenitiesHtml='';
+                                    var PropertyAmenity=data.responseData.PropertyAmenities.PropertyAmenity;
+                                    for(var i=0;i<PropertyAmenity.length;i++){
+                                         AmenitiesHtml +='<div class="col-lg-4 responsive-column"><div class="single-tour-feature d-flex align-items-center mb-3"><div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3"><i class="la la-check"></i></div><div class="single-feature-titles"><h3 class="title font-size-15 font-weight-medium">'+PropertyAmenity[i].amenity+'</h3></div></div></div>';
+                                    }
+                                    jQuery('.Amenities').html(AmenitiesHtml);
+                                    var businessamenityHtml='';
+                                    for(var i=0;i<BusinessAmenity.length;i++){
+                                         businessamenityHtml +='<div class="col-lg-4 responsive-column"><div class="single-tour-feature d-flex align-items-center mb-3"><div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3"><i class="la la-check"></i></div><div class="single-feature-titles"><h3 class="title font-size-15 font-weight-medium">'+BusinessAmenity[i].businessamenity+'</h3></div></div></div>';
+                                    }
+                                    jQuery('.businessamenity').html(businessamenityHtml);*/                                 
+                                },
+                                error: function (error) {
+                                    console.log(`Error ${error}`);
+                                }
+                            });
+                            }
+                            
 
-						function RoomAvailability(){
-			   			 $.ajax({
-								url:'/RoomAvailability',
-								type: "GET",
-								data: {
-									action: "RoomAvailability",  
-									hotelId: "<?php echo $hotelSearchData->EANHotelID; ?>",
-									regionid: "<?php echo $hotelSearchData->desti_lat_lon; ?>",
-									destination: "<?php echo $hotelSearchData->city; ?>",
-									checkIn: "<?php echo $hotelSearchData->checkin; ?>",  
-									checkOut: "<?php echo $hotelSearchData->checkout; ?>",
-									rooms: "<?php echo 1; ?>",
-									adults: '<?php echo $hotelSearchData->Cri_Adults; ?>',
-									childs: '<?php echo $hotelSearchData->Cri_Childs; ?>',
-									tid: "<?php echo $hotelSearchData->id; ?>",
-								},
-								dataType: "json",
-								success: function (response) {								
-									
-									var countRoomCombination =response.responseData.RoomTypes.size;
-									var RoomGroup =response.responseData.RoomTypes.RoomGroup;
-									var policy_data =response.responseData.RoomTypes.policy_data;
-									var currency_symbol=response.currency_symbol;
+                        function RoomAvailability(){
+                         $.ajax({
+                                url:'/RoomAvailability',
+                                type: "GET",
+                                data: {
+                                    action: "RoomAvailability",  
+                                    hotelId: "<?php echo $hotelSearchData->EANHotelID; ?>",
+                                    regionid: "<?php echo $hotelSearchData->desti_lat_lon; ?>",
+                                    destination: "<?php echo $hotelSearchData->city; ?>",
+                                    checkIn: "<?php echo $hotelSearchData->checkin; ?>",  
+                                    checkOut: "<?php echo $hotelSearchData->checkout; ?>",
+                                    rooms: "<?php echo 1; ?>",
+                                    adults: '<?php echo $hotelSearchData->Cri_Adults; ?>',
+                                    childs: '<?php echo $hotelSearchData->Cri_Childs; ?>',
+                                    tid: "<?php echo $hotelSearchData->id; ?>",
+                                },
+                                dataType: "json",
+                                success: function (response) {                              
+                                    
+                                    var countRoomCombination =response.responseData.RoomTypes.size;
+                                    var RoomGroup =response.responseData.RoomTypes.RoomGroup;
+                                    var policy_data =response.responseData.RoomTypes.policy_data;
+                                    var currency_symbol=response.currency_symbol;
 
                                     // console.log(response.responseData.RoomTypes.RoomGroup)
-									
-									/*=== RoomList ====*/
-									var htmlRoomlist=''; 
-									if(countRoomCombination<1){  htmlRoomlist +='No Room Available';  }
-									htmlRoomlist+='<div class="cabin-type padding-top-30px"><div class="cabin-type-item seat-selection-item d-flex"><div class="my-row" style="border: 1px solid rgba(128, 137, 150, 0.2);">';
+                                    
+                                    /*=== RoomList ====*/
+                                    var htmlRoomlist=''; 
+                                    if(countRoomCombination<1){  htmlRoomlist +='No Room Available';  }
+                                    htmlRoomlist+='<div class="cabin-type padding-top-30px"><div class="cabin-type-item seat-selection-item d-flex"><div class="my-row" style="border: 1px solid rgba(128, 137, 150, 0.2);">';
 
                                     // console.log("p1"+countRoomCombination)
 
-									for(var i=0;i<countRoomCombination;i++){
-									  var boardArr = Object.keys(RoomGroup[i].name);
+                                    for(var i=0;i<countRoomCombination;i++){
+                                      var boardArr = Object.keys(RoomGroup[i].name);
                                       // console.log(boardArr)
-									  for(var j=0;j<boardArr.length;j++){
-									  
-									  //cabin-type-detail
+                                      for(var j=0;j<boardArr.length;j++){
+                                      
+                                      //cabin-type-detail
                                       var tax="0";
-										var board =boardArr[j];
+                                        var board =boardArr[j];
                                         if(board=="BB"){
                                             tax=RoomGroup[i]?.rates?.BB.NOR[0]?.rates?.taxes?.taxes[0]?.amount;
 
@@ -682,145 +682,150 @@ var innerHtml=''; var page=0; var search_session='';
                                         // console.log(offerName,offerRate,offerString);
 
                                         // console.log(tax)
-										var nameArr =RoomGroup[i].name[board];
-										var ratesArr =RoomGroup[i].rates[board];
-										var keys = Object.keys(nameArr);
-										
-										var keyInd =keys.indexOf("NOR");
-										
-										if (keyInd>-1){
-										 var key =keys[keyInd];
-										}
-										else{
-										 var key =keys[0];	
-										}
-										
-										var rateClass=key;
-										
-										var nameA =nameArr[key];
-										var ratesA =ratesArr[key];
-										if(j==0){
-										 var roomCombineName =	CountRoomName(nameA);
-									htmlRoomlist+=' <div class="my-col"><h3 class="title" style="background-color:rgba(128, 137, 150, 0.2); padding:5px 15px;">'+roomCombineName+'</h3>';
-                                    // console.log(nameA,roomCombineName)	
-										}
-										
-										var roomPrice =0;
-										var cancellationPolicies ='';
-										var roomPriceTool='<div class="roompricetool"><h3>Room Prices</h3>';
-										var cancellationPoliciesTool='<div class="cancellationtool" ><h3> cancellation policies</h3>';
-										var rateKeyIds ='';
-										var roomCodeIds ='';
-										var allotmentArr =[];
-										for(var l=0;l<ratesA.length;l++){
-										 roomCodeIds+=ratesA[l].code+'~~~~';
-										 rateKeyIds+=ratesA[l].rates.rateKey+'~~~~';
-										 var allotment =ratesA[l].rates.allotment;
-										 allotmentArr.push(allotment);
-										 var CPArr =ratesA[l].rates?.cancellationPolicies;
+                                        var nameArr =RoomGroup[i].name[board];
+                                        var ratesArr =RoomGroup[i].rates[board];
+                                        var keys = Object.keys(nameArr);
+                                        
+                                        var keyInd =keys.indexOf("NOR");
+                                        
+                                        if (keyInd>-1){
+                                         var key =keys[keyInd];
+                                        }
+                                        else{
+                                         var key =keys[0];  
+                                        }
+                                        
+                                        var rateClass=key;
+                                        
+                                        var nameA =nameArr[key];
+                                        var ratesA =ratesArr[key];
+                                        if(j==0){
+                                         var roomCombineName =  CountRoomName(nameA);
+                                    htmlRoomlist+=' <div class="my-col"><h3 class="title" style="background-color:rgba(128, 137, 150, 0.2); padding:5px 15px;height: 52px;">'+roomCombineName+'</h3>';
+                                    // console.log(nameA,roomCombineName)   
+                                        }
+                                        
+                                        var roomPrice =0;
+                                        var cancellationPolicies ='';
+                                        var roomPriceTool='<div class="roompricetool"><h3>Room Prices</h3>';
+                                        var cancellationPoliciesTool='<div class="cancellationtool" ><h3> cancellation policies</h3>';
+                                        var rateKeyIds ='';
+                                        var roomCodeIds ='';
+                                        var allotmentArr =[];
+                                        for(var l=0;l<ratesA.length;l++){
+                                         roomCodeIds+=ratesA[l].code+'~~~~';
+                                         rateKeyIds+=ratesA[l].rates.rateKey+'~~~~';
+                                         var allotment =ratesA[l].rates.allotment;
+                                         allotmentArr.push(allotment);
+                                         var CPArr =ratesA[l].rates?.cancellationPolicies;
                                          // console.log(ratesA[l].rates)
-										 var net =ratesA[l].rates.net;	
-										 roomPrice =(parseFloat(roomPrice)+parseFloat(net)).toFixed(2);
-										 var pax =ratesA[l].rates.adults;
-										 if(ratesA[l].rates.children>0){
-										   pax+=','+ratesA[l].rates.children;	 
-										 }   
-										 roomPriceTool+='<p><span style="display:inline-block;    letter-spacing: 0px;color: #607D8B">'+ratesA[l].name+'('+pax+'):</span><span style="    text-align: right;float: right;letter-spacing: 0px;color: #607D8B">'+currency_symbol+' '+ratesA[l].rates.net+'</span></p>';
-										var cptool ='';
-										var cancellationFee =0;
-										var cancellationLebel='';
-										if(rateClass=='NRF'){
-												cancellationLebel='<i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Non Refundable';  
-												cptool+='<p>Non Refundable</p>';
-										}
-										else if(CPArr?.length>0){
-											for(var c=0; c<CPArr.length;c++){
-													var fdate = CPArr[c].from.split('T');
-													var fdateArr =fdate[0].split('-');
-													var fromdate = fdateArr[2]+'/'+fdateArr[1]+'/'+fdateArr[0];   
-													cptool+='<p>'+CPArr[c].amount+'&nbsp; txt_will_be_charged_after &nbsp;'+fromdate+'</p>';
-											}
-										   var fdate = CPArr[0].from.split('T');
-										   var fdateArr =fdate[0].split('-');
-										   var fromdate = fdateArr[2]+'/'+fdateArr[1]+'/'+fdateArr[0];
-										   cancellationLebel='<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Free cancellation until '+fromdate;
-										}
-										else{
-										   //cptool+='<p>Cancellation fees not available</p>';
-										   cancellationLebel='';
-										}
-																
-										cancellationPoliciesTool+='<p><span style="display:inline-block; letter-spacing: 0px;color: #607D8B">'+ratesA[l].name+'('+pax+'):</span><span style="text-align: right;float: right;letter-spacing: 0px;color: #607D8B">'+cptool+'</span></p>';					 
-								     } // End ratesA for 
-									
-									var leastAllotment =Math.min.apply(Math,allotmentArr);
-									cancellationPoliciesTool+='</div>';
-									roomPriceTool+='</div>';
-									var roomInpolicy = '';// checkInPolicy(key,roomPrice,roomCombineName,HotelSummary.hotelRating);
-																
-									var fa_thumbs ='fa-thumbs-down';
-									if(roomInpolicy=='Yes'){
-										fa_thumbs ='fa-thumbs-up';
-									}
-									roomPriceTool+='</div>';
-									var roomCodeIds =roomCodeIds.slice(0,-4);
-									var rateKeyIds =rateKeyIds.slice(0,-4);
-									var roomIndex =i+''+j;
-									var nextPageUrl='';
-									var BookLink ='';
-									var BoardNameArr =[];
+                                         var net =ratesA[l].rates.net;  
+                                         roomPrice =(parseFloat(roomPrice)+parseFloat(net)).toFixed(2);
+                                         var pax =ratesA[l].rates.adults;
+                                         if(ratesA[l].rates.children>0){
+                                           pax+=','+ratesA[l].rates.children;    
+                                         }   
+                                         roomPriceTool+='<p><span style="display:inline-block;    letter-spacing: 0px;color: #607D8B">'+ratesA[l].name+'('+pax+'):</span><span style="    text-align: right;float: right;letter-spacing: 0px;color: #607D8B">'+currency_symbol+' '+ratesA[l].rates.net+'</span></p>';
+                                        var cptool ='';
+                                        var cancellationFee =0;
+                                        var cancellationLebel='';
+                                        if(rateClass=='NRF'){
+                                                cancellationLebel='<i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Non Refundable';  
+                                                cptool+='<p>Non Refundable</p>';
+                                        }
+                                        else if(CPArr?.length>0){
+                                            for(var c=0; c<CPArr.length;c++){
+                                                    var fdate = CPArr[c].from.split('T');
+                                                    var fdateArr =fdate[0].split('-');
+                                                    var fromdate = fdateArr[2]+'/'+fdateArr[1]+'/'+fdateArr[0];   
+                                                    cptool+='<p>'+CPArr[c].amount+'&nbsp; txt_will_be_charged_after &nbsp;'+fromdate+'</p>';
+                                            }
+                                           var fdate = CPArr[0].from.split('T');
+                                           var fdateArr =fdate[0].split('-');
+                                           var fromdate = fdateArr[2]+'/'+fdateArr[1]+'/'+fdateArr[0];
+                                           cancellationLebel='<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Free cancellation until '+fromdate;
+                                        }
+                                        else{
+                                           //cptool+='<p>Cancellation fees not available</p>';
+                                           cancellationLebel='';
+                                        }
+                                                                
+                                        cancellationPoliciesTool+='<p><span style="display:inline-block; letter-spacing: 0px;color: #607D8B">'+ratesA[l].name+'('+pax+'):</span><span style="text-align: right;float: right;letter-spacing: 0px;color: #607D8B">'+cptool+'</span></p>';                  
+                                     } // End ratesA for 
+                                    
+                                    var leastAllotment =Math.min.apply(Math,allotmentArr);
+                                    cancellationPoliciesTool+='</div>';
+                                    roomPriceTool+='</div>';
+                                    var roomInpolicy = '';// checkInPolicy(key,roomPrice,roomCombineName,HotelSummary.hotelRating);
+                                                                
+                                    var fa_thumbs ='fa-thumbs-down';
+                                    if(roomInpolicy=='Yes'){
+                                        fa_thumbs ='fa-thumbs-up';
+                                    }
+                                    roomPriceTool+='</div>';
+                                    var roomCodeIds =roomCodeIds.slice(0,-4);
+                                    var rateKeyIds =rateKeyIds.slice(0,-4);
+                                    var roomIndex =i+''+j;
+                                    var nextPageUrl='';
+                                    var BookLink ='';
+                                    var BoardNameArr =[];
 
-					 BoardNameArr ={'RO':'Room only','BB':'Bed and breakfast','AI':'All inclusive','LB':'Lunch and breakfast','HB':'Half Board','FB':'Full Board'};
-					 var boardName = BoardNameArr[board];
+                     BoardNameArr ={'RO':'Room only','BB':'Bed and breakfast','AI':'All inclusive','LB':'Lunch and breakfast','HB':'Half Board','FB':'Full Board'};
+                     var boardName = BoardNameArr[board];
                      // console.log(board)
-					 var hid={{$hotelSearchData->id}};
-					htmlRoomlist+='<div class="row" style="margin:0; border-top: 1px solid rgba(128, 137, 150, 0.2); margin-bottom: 5px;"><div class="col-12 responsive-column">'+boardName+'('+board+')</div><div class="col-12 responsive-column">'+cancellationLebel+'<br> Exclude tax:'+tax+'<br>'+offerString+'</div><div class="col-12 responsive-column"style="color:RED"> '+leastAllotment+' Room(s) Left</div><div class="col-12 responsive-column"><p class="text-uppercase font-size-14">Per/night<strong class="mt-n1 text-black font-size-18 font-weight-black d-block"><?php echo $currency_symbol; ?> '+parseInt(roomPrice)*2+'</strong> <span style="text-decoration: line-through; display:none"><?php echo $currency_symbol; ?>  '+2*roomPrice+'</span></p></div><div class="col-12 responsive-column cabin-price"><div class="custom-checkbox mb-0"><input style="display:none" type="radio" name="akm" id="selectChb'+i+''+j+'"><!--<label for="selectChb'+i+''+j+'" class="theme-btn theme-btn-small">Select</label>-->@if(@Auth::user()->id && @Auth::user()->user_type!="admin")<button onclick="arrayInsetFun(\'' + board + '\',\'' + rateClass + '\', \'' + roomCodeIds + '\',\'' + rateKeyIds + '\',\'' + hid + '\',\'' + roomCombineName + '\',\'' + boardName + '\',\'' + roomPrice + '\',event)" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Add</button>@elseif(@Auth::user()->id && @Auth::user()->user_type=="admin") @else <a href="{{ asset("login") }}" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Login To Book</a> @endif</div></div></div></div>';
-											} // Inner for End
-									}// outer for End	
-									htmlRoomlist+='</div></div></div>';
-									jQuery('.AvailableRooms').html(htmlRoomlist);
-							},
-							error: function (error) {
-							console.log(`Error ${error}`);
-							}
-						}); // ajax End
-					} // Room Avabalitu fun End
-});	   
+                     var hid={{$hotelSearchData->id}};
+                    htmlRoomlist+='<div class="row" style="margin:0; border-top: 1px solid rgba(128, 137, 150, 0.2); margin-bottom: 5px;"><div class="col-12 responsive-column">'+boardName+'('+board+')</div><div class="col-12 responsive-column">'+cancellationLebel+'<br> Exclude tax:'+tax+'</div><div class="col-12 responsive-column"style="color:RED"> '+leastAllotment+' Room(s) Left</div><div class="col-12 responsive-column"><p class="text-uppercase font-size-14">Per/night<strong class="mt-n1 text-black font-size-18 font-weight-black d-block"><?php echo $currency_symbol; ?> '+parseInt(roomPrice)*2+'</strong> <span style="text-decoration: line-through; display:none"><?php echo $currency_symbol; ?>  '+2*roomPrice+'</span></p></div><div class="col-12 responsive-column cabin-price"><div class="custom-checkbox mb-0"><input style="display:none" type="radio" name="akm" id="selectChb'+i+''+j+'"><!--<label for="selectChb'+i+''+j+'" class="theme-btn theme-btn-small">Select</label>-->@if(@Auth::user()->id && @Auth::user()->user_type!="admin")<button onclick="arrayInsetFun(\'' + board + '\',\'' + rateClass + '\', \'' + roomCodeIds + '\',\'' + rateKeyIds + '\',\'' + hid + '\',\'' + roomCombineName + '\',\'' + boardName + '\',\'' + roomPrice + '\',event)" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Add</button>@elseif(@Auth::user()->id && @Auth::user()->user_type=="admin") @else <a href="{{ asset("login") }}" class="theme-btn theme-btn-small" style="width:100px; text-align:center; padding:0;">Login To Book</a> @endif</div></div></div>';
+                                        if (j == boardArr.length - 1) {
+            htmlRoomlist += `</div>`
+        }
+                                            } // Inner for End
+                                    }// outer for End   
+                                    
+                        
+                                    htmlRoomlist+='</div></div></div>';
+                                    jQuery('.AvailableRooms').html(htmlRoomlist);
+                            },
+                            error: function (error) {
+                            console.log(`Error ${error}`);
+                            }
+                        }); // ajax End
+                    } // Room Avabalitu fun End
+});    
 
-			function CountRoomName(array_elements) {
-					// array_elements = ["a", "b", "c", "d", "e", "a", "b", "c", "f", "g", "h", "h", "h", "e", "a"];
-					array_elements.sort();
-					var current = null;
-					var cnt = 0;
-					var result='';
-					for (var i = 0; i < array_elements.length; i++) {
-						if (array_elements[i]['name'] != current) {
-							if (cnt > 0) {
-								//document.write(current + ' comes --> ' + cnt + ' times<br>');
-							  if(cnt<2){
-								result+=current+' + ';  
-							  }
-							  else{									  
-							  result+= current+'+ ';	
-							  }
-							}
-							current = array_elements[i]['name'];
-							cnt = 1;
-						} else {
-							cnt++;
-						}
-					}
-					if (cnt > 0) {
-						//document.write(current + ' comes --> ' + cnt + ' times');
-						if(cnt<2){
-								result+=current+' + ';  
-							  }
-							  else{									  
-							  result+= current+'+ ';	
-							  }
-					}  
-					return result.slice(0,-2);
-			}
+            function CountRoomName(array_elements) {
+                    // array_elements = ["a", "b", "c", "d", "e", "a", "b", "c", "f", "g", "h", "h", "h", "e", "a"];
+                    array_elements.sort();
+                    var current = null;
+                    var cnt = 0;
+                    var result='';
+                    for (var i = 0; i < array_elements.length; i++) {
+                        if (array_elements[i]['name'] != current) {
+                            if (cnt > 0) {
+                                //document.write(current + ' comes --> ' + cnt + ' times<br>');
+                              if(cnt<2){
+                                result+=current+' + ';  
+                              }
+                              else{                                   
+                              result+= current+'+ ';    
+                              }
+                            }
+                            current = array_elements[i]['name'];
+                            cnt = 1;
+                        } else {
+                            cnt++;
+                        }
+                    }
+                    if (cnt > 0) {
+                        //document.write(current + ' comes --> ' + cnt + ' times');
+                        if(cnt<2){
+                                result+=current+' + ';  
+                              }
+                              else{                                   
+                              result+= current+'+ ';    
+                              }
+                    }  
+                    return result.slice(0,-2);
+            }
 
 
 
