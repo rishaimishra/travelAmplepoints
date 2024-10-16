@@ -27,194 +27,25 @@
     <link rel="stylesheet" type="text/css" href="https://amplepoints.com/newcss/css/style-check.css" >
   
     <style>
-      @media only screen and (max-width: 600px) {
-        .btn-b-apply {
-          margin: 0 !important;
-        }
-      }
-
-
-
-      .hotel-info-main {
-}
-.hotel-tab-group {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-}
-.hotel-tab-item {
-  height: 50px;
-  float: left;
-  text-transform: uppercase;
-  margin-right: 0px;
-  background: #f75d00;
-  color: #fff;
-  padding: 12px 33.7px;
-  font-size: 14px;
-  margin: 0 1px 0 0;
-}
-.o-box-room {
-  padding: 20px;
-  border: 1px solid #e2e2e2;
-  margin-top: -1px;
-  z-index: 1;
-  position: relative;
-}
-.hotel-info-title {
-  margin-top: 0;
-  position: relative;
-  font-weight: 600;
-  font-size: 19px;
-  padding-bottom: 8px;
-  margin: 0 0 20px;
-}
-.hotel-info-title:after {
-  content: "";
-  width: 25px;
-  height: 4px;
-  background: #ff7200;
-  bottom: 0;
-  left: 0;
-  position: absolute;
-}
-.o-b-group {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-}
-.o-b-item {
-  cursor: default;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-bottom-color: transparent;
-  background: #f75d00;
-  color: #fff;
-  padding: 12px 33.7px;
-}
-.h-i-tab {
-  padding: 20px;
-  border: 1px solid #e2e2e2;
-  margin-top: -1px;
-  z-index: 1;
-  position: relative;
-}
-.h-i-ul {
-}
-.h-i-ul li {
-  color: #111;
-}
-
-.hotel-info-title-sm {
-  margin: 20px 0 10px;
-  font-weight: 700;
-}
-.h-i-table {
-  width: 100%;
-  border: 1px solid #e2e2e2;
-}
-.h-i-table tr,
-.h-i-table th,
-.h-i-table td {
-  border: 1px solid #e2e2e2;
-
-  padding: 8px;
-}
-.h-i-table .text-left {
-}
-.h-i-table .text-right {
-}
-
-.hi-booking-box {
-}
-.hi-bb-title {
-  text-align: center;
-  background: #ff4500;
-  color: #fff;
-  /* padding: 10px 39px 22px; */
-  padding: 10px 39px 10px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  position: relative;
-  margin: 0;
-  font-size: 14px;
-  line-height: 18px;
-}
-/* .hi-bb-title::after {
-  background: #ff4500;
-  border-radius: 50%;
-  color: #fff;
-  content: "🏆";
-  left: 41%;
-  padding: 10px 17px;
-  position: absolute;
-  top: 63%;
-  font-size: 18px;
-  filter: unset;
-} */
-
-.hi-main-box {
-}
-.hi-bb-row {
-  background: #e6e6e6;
-  box-shadow: 0 0 5px #e6e6e6;
-  /* padding: 25px 5px 0; */
-  padding: 15px 5px 0;
-  margin: 0;
-}
-.hi-bb-row > div {
-  margin: 0 0 10px;
-}
-.hi-bb-label {
-}
-.hi-bb-form-control {
-  border-radius: 0;
-}
-.btn-hi-bb-apply {
-  color: #ffffff;
-  background-color: #07253f;
-  border: none;
-  padding: 10px 15px;
-  font-weight: bold;
-  margin: 0 0 0 0%;
-  font-size: 13px;
-  border-radius: 0px;
-}
-.hi-bb-footer {
-  background: #07253f;
-  padding: 15px 0;
-  text-align: center;
-}
-.btn-hi-bb-book-now {
-  width: auto;
-  display: inline-block;
-  margin: 0 auto;
-  text-align: center;
-  clear: both;
-  padding-left: 15px;
-  padding-right: 15px;
-  font-size: 14px;
-  color: #fff;
-  background: #ff4500;
-  border: none;
-  border-radius: 0;
-}
-
-.hi-bb-form-control[readonly] {
-  background-color: #eee;
-}
-
+@media only screen and (max-width:600px){.btn-b-apply{margin:0!important}}.hotel-info-main{}.hotel-tab-group{display:flex;align-items:center;justify-content:start}.hotel-tab-item{height:50px;float:left;text-transform:uppercase;margin-right:0;background:#f75d00;color:#fff;padding:12px 33.7px;font-size:14px;margin:0 1px 0 0}.o-box-room{}.hotel-info-title{margin-top:0;position:relative;font-weight:600;font-size:19px;padding-bottom:8px;margin:0 0 20px;border-bottom:1px solid rgba(128,137,150,.1);}.hotel-info-title:after{content:"";width:25px;height:4px;background:#ff7200;bottom:0;left:0;position:absolute;position:fixed;top:-99999999999999px;left:-999999999999999999px;opacity:0;}.o-b-group{display:flex;align-items:center;justify-content:start}.o-b-item{cursor:default;background-color:#fff;border:1px solid #ddd;border-bottom-color:transparent;background:#f75d00;color:#fff;padding:12px 33.7px}.h-i-tab{padding:20px;border:1px solid #e2e2e2;margin-top:-1px;z-index:1;position:relative}.h-i-ul{}.h-i-ul li{color:#111}.hotel-info-title-sm{margin:20px 0 10px;font-weight:700}.h-i-table{width:100%;border:1px solid #e2e2e2;margin:0 0 20px}.h-i-table tr,.h-i-table th,.h-i-table td{border:1px solid #e2e2e2;padding:8px;border-color:rgba(128,137,150,.2)}.h-i-table .text-left{}.h-i-table .text-right{}.hi-booking-box{}.hi-bb-title{text-align:center;background:#ff4500;color:#fff;padding:10px 39px 10px;font-weight:700;letter-spacing:1px;position:relative;margin:0;font-size:14px;line-height:18px}.hi-main-box{}.hi-bb-row{background:#e6e6e6;box-shadow:0 0 5px #e6e6e6;padding:15px 5px 0;margin:0}.hi-bb-row>div{margin:0 0 10px}.hi-bb-label{}.hi-bb-form-control{border-radius:0}.btn-hi-bb-apply{color:#ffffff;background-color:#07253f;border:none;padding:10px 15px;font-weight:bold;margin:0 0 0 0%;font-size:13px;border-radius:0}.hi-bb-footer{background:#07253f;padding:15px 0;text-align:center}.btn-hi-bb-book-now{width:auto;display:inline-block;margin:0 auto;text-align:center;clear:both;padding-left:15px;padding-right:15px;font-size:14px;color:#fff;background:#ff4500;border:none;border-radius:0}.hi-bb-form-control[readonly]{background-color:#eee}.c-form-box{border:1px solid rgba(128,137,150,.1);-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;background-color:#fff;-webkit-box-shadow:0 0 40px rgba(82,85,90,.1);-moz-box-shadow:0 0 40px rgba(82,85,90,.1);box-shadow:0 0 40px rgba(82,85,90,.1);padding:20px}
     </style>
 
 
 
 <section class="booking-area padding-top-100px padding-bottom-70px">
   <div class="container">
-    <div class="row">
+    <div class="row" style="
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    display: block;
+    margin: 0;
+">
       <div class="hotel-info-main">
 
-<div class="o-box-room" style="width:172%">
+<div class="o-box-room">
   <div class="row">
-    <div class="col-md-8 col-12">
+    <div class="col-md-8 col-12 c-form-box-main"> <div class="c-form-box">
       <div class="hotel-info-title">Rate Breakup</div>
       
       {{--  <div class="o-b-group">
@@ -278,6 +109,7 @@
         </tbody>
       </table>
     </div>
+    </div>
 
 
 
@@ -286,7 +118,7 @@
 
 
 
-<div class="col-md-4 col-12">
+<div class="col-md-4 col-12 c-form-box-main"> <div class="c-form-box">
  
   @php
   $admin_model_obj = new \App\Models\CommonFunctionModel;
@@ -314,8 +146,9 @@
   
   <!-- end card-item -->
 
- <br>
+ 
   <p>Book and earn amplepoints : {{round($no_of_amples)}}</p>
+  <br>
   <div class='sidebar-booking-box'>
     <h3 class='text-center' style="font-size: 15px !important;">USE AMPLE POINTS TO GET THIS
     ROOM</h3>
@@ -467,6 +300,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 </div>
 

@@ -116,15 +116,110 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
 }
 
     </style>
+
+
+
+    <!-- new banner CSS -->
+<style>
+  .banner-new-c {
+    height: auto !important;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .banner-new-c div {
+    padding: 0;
+    margin: 0;
+  }
+  .banner-new-c .c-688 {
+  }
+  .banner-new-c img {
+    width: 100%;
+    transform: scale(1);
+    transition: all 0.3s;
+  }
+  .banner-new-c img:hover {
+    transform: scale(1.05);
+  }
+  .banner-new-c .col-b-1,
+  .banner-new-c .col-b-2,
+  .banner-new-c .col-b-3,
+  .banner-new-c .col-b-4 {
+    border: 2px solid #fff;
+    overflow: hidden;
+  }
+  .banner-new-c .col-b-1 {
+    border-width: 0 2px 2px 2px;
+  }
+  .banner-new-c .col-b-2 {
+    border-width: 0 0 2px 0px;
+  }
+  .banner-new-c .col-b-3 {
+    border-width: 0 2px 2px 2px;
+  }
+  .banner-new-c .col-b-4 {
+    border-width: 0 0 0 0;
+  }
+
+  .badge-img-info {
+    position: absolute;
+    top: auto;
+    left: 20px;
+    bottom: 20px;
+    z-index: 9;
+    background: #00000096;
+    color: #dedede;
+    border-radius: 40px;
+    padding: 5px 15px !important;
+    display: block;
+  }
+  .badge-img-info svg {
+    margin: 0 5px 0 0;
+  }
+  .badge-img-info span {
+  }
+  .modal-backdrop.fade.show {
+    z-index: 99999;
+  }
+  #imgGroupModal {
+    z-index: 9999999999999999999;
+  }
+  #imgGroupModal .modal-body {
+    max-height: 80vh;
+    overflow: auto;
+  }
+  #imgGroupModal .modal-body img {
+    width: 100%;
+  }
+  #imgGroupModal .modal-body .col-6 {
+    margin: 0;
+    padding: 5px;
+  }
+  #imgGroupModal .modal-body span {
+    font-size: 14px;
+    color: #222;
+  }
+  
+  .row.c-688 .img-fluid,#imgGroupModal .img-fluid{height:100%;object-fit:cover;}
+  @media screen and (max-width: 600px) {
+    .c-d-sm-none {
+      display: none !important;
+    }
+  }
+  
+  
+:root{--banner-h-card:250px}@media only screen and (max-width:1100px){:root{--banner-h-card:200px}}@media only screen and (max-width:1000px){:root{--banner-h-card:190px}}@media only screen and (max-width:900px){:root{--banner-h-card:180px}}@media only screen and (max-width:800px){:root{--banner-h-card:170px}}@media only screen and (max-width:700px){:root{--banner-h-card:160px}}@media only screen and (max-width:600px){:root{--banner-h-card:150px}}@media only screen and (max-width:500px){:root{--banner-h-card:200px}}.col-6.c-d-sm-none img{height:var(--banner-h-card)!important;;}.row.c-688>div:not(.c-d-sm-none) img{height:calc(var(--banner-h-card) * 2);}.breadcrumb-area::before{background:#fff;background:transparent;}
+
+</style>
+
+
+
+
 @php
  // dd(explode(",",$hotelSearchData->Cri_Adults));
 @endphp
-<section class="breadcrumb-area bread-bg-7 py-0">
-    <div id="loader-container-htl">
-        <div class="loader-htl"></div>
-    </div>
-    
-    @php
+
+  @php
     use App\Helpers\ImageHelper;
 
     $originalImageUrl = isset($images[0]) ? $images[0] : '';
@@ -138,16 +233,23 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
         $backgroundImageUrl = $fallbackImageUrl;
     }
 
-
 @endphp
 
+ <div id="loader-container-htl">
+        <div class="loader-htl"></div>
+    </div>
 
  <div class="custom-container-ld" id="cc">
     <div class="custom-loader-ld"></div>
   </div>
 
-<div class="video-bg" id="htl-img" style="background:url('{{ $backgroundImageUrl }}'); background-size: cover; display: none;">
-</div>
+
+
+
+{{-- old banner start --}}
+<section class="breadcrumb-area bread-bg-7 py-0" style="display:none">
+    <div class="video-bg" id="htl-img" style="background:url('{{ $backgroundImageUrl }}'); background-size: cover; display: none;">
+    </div>
     <div class="breadcrumb-wrap">
         <div class="container">
             <div class="row">
@@ -179,6 +281,77 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
         </div><!-- end container -->
     </div><!-- end breadcrumb-wrap -->
 </section><!-- end breadcrumb-area -->
+{{-- old banner end --}}
+
+
+
+
+
+
+
+
+{{-- new banner start --}}
+<!-- new banner HTML -->
+<section class="breadcrumb-area bread-bg-7 py-0 banner-new-c" data-toggle="modal" data-target="#imgGroupModal">
+  <div class="row c-688">
+    <div class="col-md-6 col-12"><img class="img-fluid" @if(isset($images[0])) src="{{$backgroundImageUrl}}" @else src="http://photos.hotelbeds.com/giata/48/489320/489320a_hb_a_050.jpg" @endif alt="" /></div>
+    <div class="col-6 c-d-sm-none">
+      <div class="row">
+        {{-- <div class="col-md-6 col-b-1"><img class="img-fluid" @if(isset($images[1])) src="{{$images[1]}}" @else src="http://photos.hotelbeds.com/giata/48/489320/489320a_hb_w_009.jpg" @endif alt="" /></div> --}}
+        <div class="col-md-6 col-b-2"><img class="img-fluid" @if(isset($images[2])) src="{{$images[2]}}" @else src="http://photos.hotelbeds.com/giata/48/489320/489320a_hb_a_051.jpg" @endif alt="" /></div>
+        <div class="col-md-6 col-b-3"><img class="img-fluid" @if(isset($images[3])) src="{{$images[3]}}" @else src="http://photos.hotelbeds.com/giata/48/489320/489320a_hb_w_008.jpg" @endif alt="" /></div>
+        <div class="col-md-6 col-b-4"><img class="img-fluid" @if(isset($images[4])) src="{{$images[4]}}" @else src="http://photos.hotelbeds.com/giata/48/489320/489320a_hb_a_052.jpg" @endif alt="" /></div>
+        <div class="col-md-6 col-b-1"><img class="img-fluid" @if(isset($images[5])) src="{{$images[5]}}" @else src="http://photos.hotelbeds.com/giata/48/489320/489320a_hb_w_009.jpg" @endif alt="" /></div>
+      </div>
+    </div>
+  </div>
+  <div class="badge-img-info">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-images" viewBox="0 0 16 16">
+      <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
+      <path
+        d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2M14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1M2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1z"
+      />
+    </svg>
+    <span>{{count($images)}}+</span>
+  </div>
+</section>
+
+
+
+
+<!-- new banner HTML MODAL-->
+<div class="modal fade" id="imgGroupModal" tabindex="-1" role="dialog" aria-labelledby="imgGroupModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="imgGroupModalTitle">The Star Hotel, LA</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+         @for($i=1;$i<count($images);$i++)
+          <div class="col-6">
+            <img src="{{$images[$i]}}" class="img-fluid" />
+          </div>
+          @endfor         
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{{-- end of banner img --}}
+
+
+
+
+
+
+
 <!-- ================================
     END BREADCRUMB AREA
 ================================= -->
@@ -961,7 +1134,7 @@ setTimeout(function() {
 
 
 @php
-//dd($images[0]);
+// dd($images);
 @endphp
 
 @include('site.footer')
