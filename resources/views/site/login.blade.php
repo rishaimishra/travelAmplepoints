@@ -18,6 +18,8 @@
         width: 95%;
       }
     }
+    .header-menu-wrapper{top:0;left:0;}body{padding-top:40px!important;}@media only screen and (max-width:600px){.login-content{width:90%!important}}
+
 </style>
 
 

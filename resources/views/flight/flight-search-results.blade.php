@@ -303,7 +303,7 @@ body, html{
 </section>
 
 
-<img src=" {{ asset('admin/dist/img/bookFlight.png') }}" {{-- class="img-circle elevation-2" --}} alt="banner image" style="width: 100%; margin-bottom: 20px;">
+<img src=" {{ asset('admin/dist/img/banner/flight.jpg') }}" {{-- class="img-circle elevation-2" --}} alt="banner image" style="width: 100%; margin-bottom: 20px;">
 
 <section class="card-area not_found" style="display:none">
     <div class="container">

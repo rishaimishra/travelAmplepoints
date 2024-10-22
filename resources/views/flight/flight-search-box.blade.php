@@ -273,7 +273,7 @@
 
 
         <!-- HTML for the loading modal -->
-                <div id="loadingModal2" class="modal2">
+             {{--    <div id="loadingModal2" class="modal2">
                     <div class="modal2-content3">
                         <div class="loader2"></div>
                         Searching Flights in..
@@ -292,7 +292,107 @@
                         Members: <p id="members"></p>
                     </div>
                 </div>
+ --}}
 
+
+    <div id="loadingModal2" class="modal" aria-modal="true" style="display: none">
+  <div class="modal-content2">
+    <div class="div-title">Travel AmplePoints</div>
+
+    <div class="modal-c-body">
+      <p>Searching Flights in..</p>
+      <!-- new loader start -->
+      <style>
+          div#loadingModal2 {
+                background: transparent;
+                height: 643px;
+            }
+        .c-l-middle {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          position: absolute;
+        }
+        .c-l-bar {
+          width: 10px;
+          height: 70px;
+          background: #fff;
+          display: inline-block;
+          transform-origin: bottom center;
+          border-top-right-radius: 20px;
+          border-top-left-radius: 20px;
+          animation: c_l_loader 1.2s linear infinite;
+        }
+        .c-l-bar1 {
+          animation-delay: 0.1s;
+        }
+        .c-l-bar2 {
+          animation-delay: 0.2s;
+        }
+        .c-l-bar3 {
+          animation-delay: 0.3s;
+        }
+        .c-l-bar4 {
+          animation-delay: 0.4s;
+        }
+        .c-l-bar5 {
+          animation-delay: 0.5s;
+        }
+        .c-l-bar6 {
+          animation-delay: 0.6s;
+        }
+        .c-l-bar7 {
+          animation-delay: 0.7s;
+        }
+        .c-l-bar8 {
+          animation-delay: 0.8s;
+        }
+        @keyframes c_l_loader {
+          0% {
+            transform: scaleY(0.1);
+            background: transparent;
+          }
+          50% {
+            transform: scaleY(1);
+            background: #f75b10;
+            /*background: #ffffff;*/
+          }
+          100% {
+            transform: scaleY(0.1);
+            background: transparent;
+          }
+        }
+      </style>
+      <div class="c-l-middle-main">
+        <div class="c-l-middle">
+          <div class="c-l-bar c-l-bar1"></div>
+          <div class="c-l-bar c-l-bar2"></div>
+          <div class="c-l-bar c-l-bar3"></div>
+          <div class="c-l-bar c-l-bar4"></div>
+          <div class="c-l-bar c-l-bar5"></div>
+          <div class="c-l-bar c-l-bar6"></div>
+          <div class="c-l-bar c-l-bar7"></div>
+          <div class="c-l-bar c-l-bar8"></div>
+        </div>
+      </div>
+      <!-- new loader end -->
+      <p style="padding: 10px 0 0">Please Wait...</p>
+      <br />
+      From: <h4 id="autosuggestion_from_html"></h4> 
+                        
+                        To: <h4 id="autosuggestion_to_html"></h4> 
+                        {{-- <p id="timeline2"></p> --}}
+                        
+                        <p id="cabin_class"></p>
+                        
+                        <p id="flighttype"></p>
+                        
+                        Members: <p id="members"></p>
+    </div>
+    <div class="modal-c-footer" style="color:white;">
+     <b>    <p id="timeline2"></p>  </b>
+    </div></div>
+</div>
 
 
                         

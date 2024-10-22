@@ -34,6 +34,9 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
     width: 33.33%;
     padding: 10px 10px;
     margin: 0 0 20px 0px;
+        border: 1px solid #f75b10;
+    border-radius: 12px;
+    box-shadow: -4px 5px 6px #ed9b73;
   }
   @media only screen and (max-width: 800px) {
     .my-col {
@@ -324,7 +327,7 @@ if(isset($hotelData['HotelImages']['HotelImage'])){ $images=$hotelData['HotelIma
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="imgGroupModalTitle">The Star Hotel, LA</h5>
+        <h5 class="modal-title" id="imgGroupModalTitle">{{ $hotelSearchData->Name }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

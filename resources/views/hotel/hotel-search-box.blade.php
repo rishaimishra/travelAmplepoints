@@ -121,7 +121,7 @@ color:#fff;
 
 .modal-c-footer {
     background: rgb(247 91 16);
-    color: #fff;
+  color:#fff;
 }
 </style>
 
@@ -312,8 +312,8 @@ if(isset($_REQUEST['child'])) { $child=$_REQUEST['child']; }else{ $child=0; }
       <p id="rm"></p>
       <p id="gst"></p>
     </div>
-    <div class="modal-c-footer">
-     	<p id="timeline"></p>
+    <div class="modal-c-footer" style="color:white">
+     <b>	<p id="timeline"></p>  </b>
     </div></div>
 </div>
 				<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>

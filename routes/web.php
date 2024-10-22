@@ -162,6 +162,11 @@ Route::get('/hotel-search-results', function (){
 	return view('hotel/hotel-search-results',array('pageData' => $pageData)); 
 })->name('hotel.search.results');
 
+Route::get('/hotel-search-results-new', function (){ 
+	$pageData = crud_model::readOne('pages',array('page_id'=>'hotel-search-results'));
+	return view('hotel/hotel-search-results-new',array('pageData' => $pageData)); 
+})->name('hotel.search.results');
+
 
 
 

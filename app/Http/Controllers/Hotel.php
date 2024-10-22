@@ -531,7 +531,7 @@ if (isset($data['hotels']) && is_array($data['hotels'])) {
 		 // $imgage_path=$this->checkThumbNail('http://photos.hotelbeds.com/giata/'.$obj->hotel->images[0]->path);
 		 // dd(12);
 		   if (isset($obj->hotel->images) && is_array($obj->hotel->images) && count($obj->hotel->images) > 0) {
-			    $imgage_path = $this->checkThumbNail('http://photos.hotelbeds.com/giata/' . $obj->hotel->images[0]->path);
+			    $imgage_path = $this->checkThumbNail('http://photos.hotelbeds.com/giata/' . $obj->hotel->images[4]->path);
 			    $imgAllow=true;
 			} 
 			else {

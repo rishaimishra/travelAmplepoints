@@ -320,7 +320,7 @@ $childs =substr($childsStr,0,-1);
 </section>
 
 
-<img src=" {{ asset('admin/dist/img/Book-Hotels.png') }}" {{-- class="img-circle elevation-2" --}} alt="banner image" style="width: 100%; margin-bottom: 20px; display: ;" id="banner-img">
+<img src=" {{ asset('admin/dist/img/banner/hotel.jpg') }}" {{-- class="img-circle elevation-2" --}} alt="banner image" style="width: 100%; margin-bottom: 20px; display: ;" id="banner-img">
 
 <h1 id="no-data" style="text-align:center;margin-top: 60px;margin-bottom: 60px; display:none;">No Data Found</h1>
 
@@ -1284,9 +1284,9 @@ var uniqueHotels = [];
                                                               <b>${data.result[i].currency_symbol}${data.result[i].LowRate*2}</b>
                                                             </span>
                                                             
-                                                            <span style="color: #f75b10;font-size: 14px;">FREE</span> <span style="font-size: 14px;"> WITH </span>
-                                                            <span class="price__num" style="color: #f75b10;font-size: 14px;"><b>${parseInt(data.result[i].free)}</b></span>
-                                                            <span class="span-1476" style="font-size: 14px;">AMPLEPOINTS </span>
+                                                            <span style="color: #f75b10;font-size: 24px;">FREE</span> <span style="font-size: 24px;"> WITH </span>
+                                                            <span class="price__num" style="color: #f75b10;font-size: 24px;"><b>${parseInt(data.result[i].free)}</b></span>
+                                                            <span class="span-1476" style="font-size: 24px;">AMPLEPOINTS </span>
                                                           </div>
                                                         </div>
                                                       </div>
@@ -1344,7 +1344,7 @@ var uniqueHotels = [];
                                                           </div>
                                                           <div>
                                                             <div class="hl-h3">REWARD VALUE</div>
-                                                            <div class="hl-be-price">${data.result[i].reward}</div>
+                                                            <div class="hl-be-price">${data.result[i].currency_symbol}${data.result[i].reward}</div>
                                                           </div>
                                                           <div>
                                                             <div class="hl-h3">YOU EARN</div>
