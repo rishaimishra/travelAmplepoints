@@ -5,6 +5,7 @@ use App\Http\Controllers\Site;
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\Flight;
 use App\Http\Controllers\Hotel;
+use App\Http\Controllers\Hotel_New;
 use App\Http\Controllers\CustomHotel;
 use App\Http\Controllers\Tours;
 use App\Http\Controllers\Transfers; 
@@ -88,7 +89,7 @@ Route::get('/flight-search-results', function (){
 })->name('flight.search.results');
 
 Route::get('/flightsearchresults', [Flight::class, 'SearchRequestFirst']);
-Route::get('/get_flight_search_id', [Flight::class, 'SearchRequest']);
+Route::get('/get_flight_search_id', [Flight::class, 'SearchRequest']); // step 1 insert flights
 Route::get('/get_flight_list', [Flight::class, 'Show_Flights']);
 Route::get('/get_flight_filter_data', [Flight::class, 'FlightController']);
 Route::get('/recheck_flight', [Flight::class, 'SelectFlight']);
@@ -162,11 +163,24 @@ Route::get('/hotel-search-results', function (){
 	return view('hotel/hotel-search-results',array('pageData' => $pageData)); 
 })->name('hotel.search.results');
 
+
+//=========== new start==============//
 Route::get('/hotel-search-results-new', function (){ 
 	$pageData = crud_model::readOne('pages',array('page_id'=>'hotel-search-results'));
 	return view('hotel/hotel-search-results-new',array('pageData' => $pageData)); 
 })->name('hotel.search.results');
+Route::get('/GetHotelListNew', [Hotel_New::class, 'GetHotelListNew']); 
+Route::get('/Show_Hotels_New', [Hotel_New::class, 'Show_Hotels_New']);
+Route::get('/hotel-details-new/{id}/{hotel_name}', [Hotel_New::class, 'HotelDetails'])->name("hotel.details.new");
 
+Route::get('/check-hotel-session', function (){ 
+	dd(session('hotel_data'));
+})->name('hotel.search.results');
+
+Route::get('/clear-hotel-session', function (){ 
+	Session::forget('hotel_data');
+})->name('hotel.search.results');
+//========= new end ============//
 
 
 

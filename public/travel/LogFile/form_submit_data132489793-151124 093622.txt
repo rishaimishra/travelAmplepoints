@@ -1,0 +1,7 @@
+===========Credentials(form_submit_data132489793)=========
+duffel_live_6YGY02b60GEIImviWyIMEghuXpW1rachnhB6f1bfaBD
+===========Request(form_submit_data132489793)=========
+{"_token":"sLZqH8GlUcOUyJHEWlgixm5KvaMsjoIfIQMSRi7W","OfferId":"off_0000Ao3ucZyOlJZzzRKIuU","id":"20984","chargeableRate":"38","booked_ample":"1000","discount_by_ample":"0","passenger":{"adult":{"title":["mr"],"first_name":["test"],"last_name":["y"],"dob":["11-15-2005"],"gender":["m"]},"email":"y@m.com","phone":"5544667788","address":"test address","city":"kk","country":"Afghanistan"},"payment_type":"flutterwave"}
+===========Response(form_submit_data132489793)=========
+
+

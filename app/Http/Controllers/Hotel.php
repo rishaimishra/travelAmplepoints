@@ -810,9 +810,19 @@ public function getdetails($id){
 		}
 
 		// dd($page,$limit);
-		$sortValArr=explode('_',$request["sortVal"]);
+
+		
 		$search_session=$request['search_id'];
+		
+		if($request["sortVal"]!=""){
+		$sortValArr=explode('_',$request["sortVal"]);
 		$orderBy=' order by '.$sortValArr[0].' '.$sortValArr[1];
+	    }else{
+	    	$orderBy='';
+	    }
+		// dd($sortValArr,$orderBy);
+		
+
 		$moreQuery=" where search_session='".$search_session."' ";
 		$data = array();
 		if($request['price']!=''){

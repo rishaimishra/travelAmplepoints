@@ -1,0 +1,9 @@
+===========Credentials(GetHotelList)=========
+hotelbeds_key=216ed78bd01d216eb6d4261178bc2eb8
+ hotelbeds_secret=b14ebd32e7
+ endpoint=https://api.hotelbeds.com/hotel-api/1.0
+===========Request(GetHotelList)=========
+{"language":"ENG","currency":"USD","stay":{"checkIn":"2024-11-20","checkOut":"2024-11-22"},"occupancies":[{"rooms":1,"adults":1,"children":0,"paxes":[{"roomId":1,"type":"AD","name":"","surname":"Surname1"}]}],"hotels":{"hotel":[59410,59412,61280,61281,82378]},"filter":{"packaging":true,"deal":true},"boards":{"included":true,"board":["RO","BB","AI","HB","FB","RR","AB","DB","GB","IB","LB"]},"sourceMarket":"US","remark":"Require non-smoking room"}
+===========Response(GetHotelList)=========
+{"auditData":{"processTime":"230","timestamp":"2024-11-18 05:41:37.702","requestHost":"103.158.15.69, 3.172.18.137, 10.193.52.126, 10.193.47.200","serverId":"ip-10-193-44-113.ap-southeast-1.compute.internal","environment":"[awsapsoutheast1, awsapsoutheast1c, ip_10_193_44_113, apsoutheast1, secret]","release":"","token":"5ED670AD2D494C2EA229586454D59B51","internal":"0||US|06|0|0|||Y-RO,BB,AI,HB,FB,RR,AB,DB,GB,IB,LB|||Y||||||0||1~1~1~0|0|0||0|216ed78bd01d216eb6d4261178bc2eb8||||"},"hotels":{"total":0}}
+

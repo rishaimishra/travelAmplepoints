@@ -81,7 +81,7 @@ margin-left:0px !important;
 	<div class="profile-card text-center">
     <div class="profile-image">
         @if(@Auth::user()->user_image)
-            <img src="https://amplepoints.com/user_images/32/profile_image/{{@Auth::user()->user_image}}" class="img-circle elevation-2" alt="User Image">
+            <img src="https://amplepoints.com/user_images/{{@Auth::user()->user_id}}/profile_image/{{@Auth::user()->user_image}}" class="img-circle elevation-2" alt="User Image">
         @else
             <img src=" {{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         @endif
@@ -167,6 +167,20 @@ margin-left:0px !important;
 														<div class="inner">
 															<h3>{{@Auth::user()->ample}}</h3>
 															<p>Your AmplePoints</p>
+														</div>
+														<div class="icon">
+															<i class="nav-icon fas fa-car"></i>
+														</div>
+														
+													</div>
+												</div>
+
+												<div class="col-lg-3 col-6" style="height: 142px;">
+													<!-- small box -->
+													<div class="small-box bg-secondary"style="height: 142px;">
+														<div class="inner">
+															<h3>{{@Auth::user()->reward_time}}</h3>
+															<p>Your Reward value</p>
 														</div>
 														<div class="icon">
 															<i class="nav-icon fas fa-car"></i>

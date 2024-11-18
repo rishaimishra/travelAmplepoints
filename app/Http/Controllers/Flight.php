@@ -27,7 +27,7 @@ class Flight extends Controller
 		   	$common_data= $data->common_data;
 			$common_dataArr= json_decode($common_data,true);
 			
-			$this->ACCESS_TOKEN=$common_dataArr['flight_duffel_token'];
+			$this->ACCESS_TOKEN='duffel_live_6YGY02b60GEIImviWyIMEghuXpW1rachnhB6f1bfaBD'; //$common_dataArr['flight_duffel_token'];
 			$this->flight_markup=$common_dataArr['flight_markup'];
 			$this->flight_markup_type=$common_dataArr['flight_markup_type'];
 			$this->flight_markup_agent=$common_dataArr['flight_markup_agent'];
@@ -35,6 +35,7 @@ class Flight extends Controller
 			
 			$this->currency=$data->currency;
 			$this->currency_symbol=$data->currency_symbol;
+
 		}
 	
 	public function GetLocations(Request $request) 
@@ -44,8 +45,11 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 	    echo json_encode($res);
 	}
 	
+
+	//for now no use
 	public function SearchRequestFirst(Request $request) 
     {
+
 		$request= $request->input();
 		$search_session=uniqid();
 		$TokenId=uniqid();
@@ -85,7 +89,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($getFlightRequest));
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Accept: application/json','Duffel-Version: v1','Authorization: Bearer '.$this->ACCESS_TOKEN));
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Accept: application/json','Duffel-Version: v2','Authorization: Bearer '.$this->ACCESS_TOKEN));
       $contents = curl_exec($ch);
 	
 			$res=json_decode($contents,true);
@@ -110,7 +114,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 
 
 
-//1
+//1  insert flights
 	public function SearchRequest(Request $request) 
     {
 		$request= $request->input();
@@ -152,7 +156,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($getFlightRequest));
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Accept: application/json','Duffel-Version: v1','Authorization: Bearer '."$this->ACCESS_TOKEN"));
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Accept: application/json','Duffel-Version: v2','Authorization: Bearer '."$this->ACCESS_TOKEN"));
      $contents = curl_exec($ch);
 	curl_close($ch);
 			$res=json_decode($contents,true);
@@ -160,6 +164,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 	//echo "res========<pre>";   print_r($res); 
 
 	// dd($res,$this->ACCESS_TOKEN);
+	// dd($getFlightRequest)
 
 
 
@@ -251,7 +256,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 //     'Accept-Encoding: gzip',
 //     'Accept: application/json',
 //     'Content-Type: application/json',
-//     'Duffel-Version: v1',
+//     'Duffel-Version: v2',
 //     'Authorization: Bearer duffel_test_L4NMBFzdfUufvYjoUZR4igCa5h78GyQVk6KnOD_Cz7p'
 // ));
 
@@ -313,6 +318,8 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 			$base_price_in_live_currency =  $this->markupObj->convertCurrencyRate($api_currency,$offers[$i]['total_amount']);
 			$adminPrice=$this->markupObj->calAdminPrice($base_price_in_live_currency,'flight');
 			$TotalFare=$adminPrice;
+
+			// dd($api_price,$base_price_in_live_currency,$adminPrice,$TotalFare);
 			
 			$agentPrice=0;
 			if(session()->get('user_type')=='agent'){
@@ -436,7 +443,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 					'api_currency'=>$api_currency,
 					'api_price'=>$api_price,
 					'currency'=>$this->currency,
-					'price'=>$TotalFare,
+					'price'=>$TotalFare,  // main price showing
 					'base_fare'=>$base_price_in_live_currency,
 					'tax'=>$tax_amount,
 					'adminPrice'=>$adminPrice,
@@ -525,7 +532,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 
 
 
-
+// step-2
 // show flights
 
 	public function Show_Flights(Request $request) 
@@ -627,13 +634,19 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
                 $discount_margin = $discount_price;
                 $buyandearnamples = ($discount_margin / .12);
                 $no_of_amples = $buyandearnamples;
+                $buyandearn=$admin_model_obj->DisplayAmplePoints($no_of_amples);
+                 $reward=$discount_price;
+                 $youearn=$discount."%";
+
+                 $free_with_amples = ($single_price / .12);
+                 $free=$admin_model_obj->DisplayAmplePoints($free_with_amples);
 
 
 
 
 
         
-		$flightData['result'][] =array('no_of_amples'=>$no_of_amples,'totalcountfilter'=>$totalcount,'onewayFlights'=>$onewayFlights,'returnFlights'=>$returnFlights,'actual_price'=>$Objs->api_price,'price'=>$Objs->price,'Tax'=>$Objs->tax,'currency'=>$Objs->currency,'IsLCC'=>$Objs->IsLCC,'is_direct'=>$Objs->is_direct,'IsRefundable'=>$Objs->IsRefundable,'validating_carrier'=>$Objs->validating_carrier,
+		$flightData['result'][] =array('free'=>$free,'buyandearn'=>$buyandearn,'reward'=>$reward,'youearn'=>$youearn,'no_of_amples'=>$no_of_amples,'totalcountfilter'=>$totalcount,'onewayFlights'=>$onewayFlights,'returnFlights'=>$returnFlights,'actual_price'=>$Objs->api_price,'price'=>$Objs->price,'Tax'=>$Objs->tax,'currency'=>$Objs->currency,'IsLCC'=>$Objs->IsLCC,'is_direct'=>$Objs->is_direct,'IsRefundable'=>$Objs->IsRefundable,'validating_carrier'=>$Objs->validating_carrier,
 		'return_validating_carrier'=>$Objs->return_validating_carrier,
 		'departure_date'=>date('d M Y',$Objs->departure_datetime),
 		'departure_time'=>date('H:i',$Objs->departure_datetime),
@@ -670,6 +683,28 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 	}// Show_flight end
 	
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public function FlightController(Request $request) 
     {
 	$search_id =trim($request['search_id']); 
@@ -735,13 +770,14 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 	public function SelectFlight(Request $request) {
 		$flightData= crud_model::readOne('flight_results',array('id'=>$request->input('id'))); 
 		$OfferId=$flightData->OfferId;
+		// dd($OfferId);
 		$actionUrl='https://api.duffel.com/air/offers/'.$OfferId;
 			
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $actionUrl);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Accept: application/json','Duffel-Version: v1','Authorization: Bearer '.$this->ACCESS_TOKEN));
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Accept: application/json','Duffel-Version: v2','Authorization: Bearer '.$this->ACCESS_TOKEN));
 		$contents = curl_exec($ch);
 		if (curl_errno($ch)) {
 			echo 'Error:' . curl_error($ch);
@@ -1151,13 +1187,13 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $book_request);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Accept: application/json','Duffel-Version: v1','Authorization: Bearer '.$this->ACCESS_TOKEN));
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Accept: application/json','Duffel-Version: v2','Authorization: Bearer '.$this->ACCESS_TOKEN));
 		   $contents = curl_exec($ch);
 			curl_close($ch);
 			
 			$this->createLogFile('Book_'.rand(),$book_request,$contents);
 			$book_response_Arr=json_decode($contents,true);
-			// dd($book_response_Arr);
+			// dd($book_response_Arr,$book_request);
 			
 			if(isset($book_response_Arr['errors'])){ 
 				$PNR=''; 
@@ -1444,7 +1480,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 		    CURLOPT_TIMEOUT => 30,
 		    CURLOPT_HTTPHEADER => [
 		        "Accept: application/json",
-		        "Duffel-Version: v1",
+		        "Duffel-Version: v2",
 		        "Content-Type: application/json",
 		        "Authorization: Bearer $apiToken"
 		    ],
@@ -1523,7 +1559,7 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 		curl_setopt($ch, CURLOPT_POST, true); // POST request
 
 		// Set headers
-		curl_setopt($ch, CURLOPT_HTTPHEADER,  array('Content-Type: application/json','Accept: application/json','Duffel-Version: v1','Authorization: Bearer '.$this->ACCESS_TOKEN));
+		curl_setopt($ch, CURLOPT_HTTPHEADER,  array('Content-Type: application/json','Accept: application/json','Duffel-Version: v2','Authorization: Bearer '.$this->ACCESS_TOKEN));
 
 		// Execute the request
 		$response = curl_exec($ch);

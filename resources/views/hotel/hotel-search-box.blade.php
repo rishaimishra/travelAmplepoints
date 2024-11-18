@@ -32,99 +32,86 @@ padding: 2px 40px;
 background: #287dfa;
 color:#fff;
 }
-
-
 /* CSS for the loading modal */
 #loadingModal {
-  display: none; 
-  position: fixed; 
-  top: 50%; 
-  left: 50%; 
-  transform: translate(-50%, -50%); 
-  width: 347px;
-  height: 378px;
-  background-color: rgb(247 91 16);
-  z-index: 9999; 
-  color: white; 
-  text-align: center; /* Center-align the content */
-  border-radius: 10px; /* Add some border radius for rounded corners */
-  padding-top: 20px; /* Adjust vertical spacing as needed */
+display: none;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 347px;
+height: 378px;
+background-color: rgb(247 91 16);
+z-index: 9999;
+color: white;
+text-align: center; /* Center-align the content */
+border-radius: 10px; /* Add some border radius for rounded corners */
+padding-top: 20px; /* Adjust vertical spacing as needed */
 }
-
 .modal-content2 {
-  background-color: #f75b10;
-  padding: 20px;
-  border-radius: 10px; /* Add some border radius for rounded corners */
-  /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a subtle shadow effect */*/
+background-color: #f75b10;
+padding: 20px;
+border-radius: 10px; /* Add some border radius for rounded corners */
+/*box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a subtle shadow effect */*/
 }
-
 .loader {
-  border: 1px solid green; /* Light grey */
-  border-top: 1px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 2s linear infinite;
-  margin:-25px -28px;
+border: 1px solid green; /* Light grey */
+border-top: 1px solid #3498db; /* Blue */
+border-radius: 50%;
+width: 50px;
+height: 50px;
+animation: spin 2s linear infinite;
+margin:-25px -28px;
 }
-
 /* Loader animation */
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
 }
-
 </style>
-
-
 <style>
-  #loadingModal {
-    padding: 0 !important;
-    height: auto;
-    min-width: 500px;
-    overflow: hidden;
-  }
-  .modal-content2 {
-    padding: 0 !important;
-    border: 1px solid #00000033;
-    box-shadow: 0 0 10px -5px #000;
-  }
-  .div-title {
-    font-size: 28px;
-    padding: 9px 0 9px;
-    border-bottom: 1px solid #00000030;
-    line-height: 40px;
-    font-weight: 500;
-  }
-  .modal-c-body {
-    padding: 10px 10px 10px;
-  }
-  .c-l-middle-main {
-    position: relative;
-    height: 100px;
-  }
-  .modal-c-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    color: #000000c2;
-    padding: 8px 10px 8px;
-  }
-
-
-  div#loadingModal {
-    background: #fff;
+#loadingModal {
+padding: 0 !important;
+height: auto;
+min-width: 500px;
+overflow: hidden;
 }
-
-.modal-content2 {background: #fff;color: #111;}
-
+.modal-content2 {
+padding: 0 !important;
+border: 1px solid #00000033;
+box-shadow: 0 0 10px -5px #000;
+}
+.div-title {
+font-size: 28px;
+padding: 9px 0 9px;
+border-bottom: 1px solid #00000030;
+line-height: 40px;
+font-weight: 500;
+}
+.modal-c-body {
+padding: 10px 10px 10px;
+}
+.c-l-middle-main {
+position: relative;
+height: 100px;
+}
 .modal-c-footer {
-    background: rgb(247 91 16);
-  color:#fff;
+display: flex;
+align-items: center;
+justify-content: center;
+background: #fff;
+color: #000000c2;
+padding: 8px 10px 8px;
+}
+div#loadingModal {
+background: #fff;
+}
+.modal-content2 {background: #fff;color: #111;}
+.modal-c-footer {
+background: rgb(247 91 16);
+color: #fff;
 }
 </style>
-
 <?php
 if(isset($_REQUEST['city_code'])) { $city_code=$_REQUEST['city_code']; }else{ $city_code='LVS'; }
 	if(isset($_REQUEST['city_name'])) { $city_name=$_REQUEST['city_name']; }else{ $city_name='Las Vegas - NV'; }
@@ -164,10 +151,10 @@ if(isset($_REQUEST['child'])) { $child=$_REQUEST['child']; }else{ $child=0; }
 					</div>
 					</div><!-- end col-lg-3 -->
 					<!--<div class="col-lg-3 pr-0">
-						<div class="input-box">
-							<label class="label-text">Check out</label>
-							<div class="form-group">
-								<span class="form-icon an-custom-img-icon">
+							<div class="input-box">
+									<label class="label-text">Check out</label>
+									<div class="form-group">
+											<span class="form-icon an-custom-img-icon">
 									<img src="<?php url('') ?>icon/calender-black.png" alt="">
 								</span>
 								<input class="date-picker-single form-control" id="check_out" name="check_out" value="" type="text"  readonly>
@@ -213,7 +200,7 @@ if(isset($_REQUEST['child'])) { $child=$_REQUEST['child']; }else{ $child=0; }
 					</div>
 				</div>
 				<!-- HTML for the loading modal -->
-			{{-- 	<div id="loadingModal" class="modal">
+				{{-- 	<div id="loadingModal" class="modal">
 					<div class="modal-content2">
 						<div class="loader"></div>
 						Searching Hotel in..
@@ -228,238 +215,232 @@ if(isset($_REQUEST['child'])) { $child=$_REQUEST['child']; }else{ $child=0; }
 						<p id="gst"></p>
 					</div>
 				</div> --}}
-
 				<div id="loadingModal" class="modal" aria-modal="true" style="display: none">
-  <div class="modal-content2">
-    <div class="div-title">Travel AmplePoints</div>
-
-    <div class="modal-c-body">
-      <p>Searching Hotel in..</p>
-      <!-- new loader start -->
-      <style>
-        .c-l-middle {
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          position: absolute;
-        }
-        .c-l-bar {
-          width: 10px;
-          height: 70px;
-          background: #fff;
-          display: inline-block;
-          transform-origin: bottom center;
-          border-top-right-radius: 20px;
-          border-top-left-radius: 20px;
-          animation: c_l_loader 1.2s linear infinite;
-        }
-        .c-l-bar1 {
-          animation-delay: 0.1s;
-        }
-        .c-l-bar2 {
-          animation-delay: 0.2s;
-        }
-        .c-l-bar3 {
-          animation-delay: 0.3s;
-        }
-        .c-l-bar4 {
-          animation-delay: 0.4s;
-        }
-        .c-l-bar5 {
-          animation-delay: 0.5s;
-        }
-        .c-l-bar6 {
-          animation-delay: 0.6s;
-        }
-        .c-l-bar7 {
-          animation-delay: 0.7s;
-        }
-        .c-l-bar8 {
-          animation-delay: 0.8s;
-        }
-        @keyframes c_l_loader {
-          0% {
-            transform: scaleY(0.1);
-            background: transparent;
-          }
-          50% {
-            transform: scaleY(1);
-            background: #f75b10;
-            /*background: #ffffff;*/
-          }
-          100% {
-            transform: scaleY(0.1);
-            background: transparent;
-          }
-        }
-      </style>
-      <div class="c-l-middle-main">
-        <div class="c-l-middle">
-          <div class="c-l-bar c-l-bar1"></div>
-          <div class="c-l-bar c-l-bar2"></div>
-          <div class="c-l-bar c-l-bar3"></div>
-          <div class="c-l-bar c-l-bar4"></div>
-          <div class="c-l-bar c-l-bar5"></div>
-          <div class="c-l-bar c-l-bar6"></div>
-          <div class="c-l-bar c-l-bar7"></div>
-          <div class="c-l-bar c-l-bar8"></div>
-        </div>
-      </div>
-      <!-- new loader end -->
-      <p style="padding: 10px 0 0">Please Wait...</p>
-      <br />
-      <h2 id="place"></h2>
-      <p id="rm"></p>
-      <p id="gst"></p>
-    </div>
-    <div class="modal-c-footer" style="color:white">
-     <b>	<p id="timeline"></p>  </b>
-    </div></div>
-</div>
-				<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-				<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-				<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-				<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-				<script type="text/javascript">
-				jQuery(".common_beard_comb").hide();
-				jQuery(document).ready(function(){
-						
-						var start = moment().add(2, 'days');
-						var end = moment().add(4, 'days');
-						$("#date_range").daterangepicker({
-				singleDatePicker: false,
-									autoUpdateInput: true,
-				opens: 'right',
-									autoApply: true,
-									minDate:new Date(),
-									startDate: start,
-							endDate: end,
-				locale: {
-				// format: 'YYYY/MM/DD',
-			format: 'MM/DD/YYYY',
-								}
-				});
-						
-						
-								addPax('rooms');
-					jQuery('.autosuggestion_hotel').keyup(function (e) {
-									term=jQuery(this).val();
-									$.ajax({
-				url: '<?php url('');?>/getLocations',
-				type: "GET",
-				data: {
-				action:"getLocations",
-				lang: 'en',
-				limit: "5",
-				term: term
-				},
-				dataType: "json",
-				success: function (data) {
-			var innerHtml='</ul>';
-			for(var i=0;i<data.length;i++){
-			destinationName=data[i].city_name+", "+data[i].countryName;
-			innerHtml +='<li  class="iataAKM" city_name="'+data[i].city_name+'" destinationCode="'+data[i].city_code+'" destinationName="'+destinationName+'" style="cursor: pointer;">'+destinationName+'</li>';
+					<div class="modal-content2">
+						<div class="div-title">Travel AmplePoints</div>
+						<div class="modal-c-body">
+							<p>Searching Hotel in..</p>
+							<!-- new loader start -->
+							<style>
+							.c-l-middle {
+							top: 50%;
+							left: 50%;
+							transform: translate(-50%, -50%);
+							position: absolute;
+							}
+							.c-l-bar {
+							width: 10px;
+							height: 70px;
+							background: #fff;
+							display: inline-block;
+							transform-origin: bottom center;
+							border-top-right-radius: 20px;
+							border-top-left-radius: 20px;
+							animation: c_l_loader 1.2s linear infinite;
+							}
+							.c-l-bar1 {
+							animation-delay: 0.1s;
+							}
+							.c-l-bar2 {
+							animation-delay: 0.2s;
+							}
+							.c-l-bar3 {
+							animation-delay: 0.3s;
+							}
+							.c-l-bar4 {
+							animation-delay: 0.4s;
+							}
+							.c-l-bar5 {
+							animation-delay: 0.5s;
+							}
+							.c-l-bar6 {
+							animation-delay: 0.6s;
+							}
+							.c-l-bar7 {
+							animation-delay: 0.7s;
+							}
+							.c-l-bar8 {
+							animation-delay: 0.8s;
+							}
+							@keyframes c_l_loader {
+							0% {
+							transform: scaleY(0.1);
+							background: transparent;
+							}
+							50% {
+							transform: scaleY(1);
+							background: #f75b10;
+							/*background: #ffffff;*/
+							}
+							100% {
+							transform: scaleY(0.1);
+							background: transparent;
+							}
+							}
+							</style>
+							<div class="c-l-middle-main">
+								<div class="c-l-middle">
+									<div class="c-l-bar c-l-bar1"></div>
+									<div class="c-l-bar c-l-bar2"></div>
+									<div class="c-l-bar c-l-bar3"></div>
+									<div class="c-l-bar c-l-bar4"></div>
+									<div class="c-l-bar c-l-bar5"></div>
+									<div class="c-l-bar c-l-bar6"></div>
+									<div class="c-l-bar c-l-bar7"></div>
+									<div class="c-l-bar c-l-bar8"></div>
+								</div>
+							</div>
+							<!-- new loader end -->
+							<p style="padding: 10px 0 0">Please Wait...</p>
+							<br />
+							<h2 id="place"></h2>
+							<p id="rm"></p>
+							<p id="gst"></p>
+						</div>
+						<div class="modal-c-footer" style="color:white">
+							<b>	<p id="timeline"></p>  </b>
+						</div></div>
+					</div>
+					<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+					<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+					<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+					<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+					<script type="text/javascript">
+					jQuery(".common_beard_comb").hide();
+					jQuery(document).ready(function(){
+							
+							var start = moment().add(2, 'days');
+							var end = moment().add(4, 'days');
+							$("#date_range").daterangepicker({
+					singleDatePicker: false,
+										autoUpdateInput: true,
+					opens: 'right',
+										autoApply: true,
+										minDate:new Date(),
+										startDate: start,
+								endDate: end,
+					locale: {
+					// format: 'YYYY/MM/DD',
+					format: 'MM/DD/YYYY',
+									}
+					});
+							
+							
+									addPax('rooms');
+						jQuery('.autosuggestion_hotel').keyup(function (e) {
+										term=jQuery(this).val();
+										$.ajax({
+					url: '<?php url('');?>/getLocations',
+					type: "GET",
+					data: {
+					action:"getLocations",
+					lang: 'en',
+					limit: "5",
+					term: term
+					},
+					dataType: "json",
+					success: function (data) {
+				var innerHtml='</ul>';
+				for(var i=0;i<data.length;i++){
+				destinationName=data[i].city_name+", "+data[i].countryName;
+				innerHtml +='<li  class="iataAKM" city_name="'+data[i].city_name+'" destinationCode="'+data[i].city_code+'" destinationName="'+destinationName+'" style="cursor: pointer;">'+destinationName+'</li>';
+				}
+			innerHtml +='</ul>';
+			jQuery('.hotel_list').html(innerHtml);
+			iata();
+			jQuery('.hotel_list').show();
+			},
+			error: function (error) {
+			console.log(`Error ${error}`);
 			}
-		innerHtml +='</ul>';
-		jQuery('.hotel_list').html(innerHtml);
-		iata();
-		jQuery('.hotel_list').show();
-		},
-		error: function (error) {
-		console.log(`Error ${error}`);
-		}
-		});
-		});
-		
-		function iata() {
-		jQuery(".iataAKM").click(function(){
-		var destinationCode= jQuery(this).attr('destinationCode');
-		var destinationName= jQuery(this).attr('destinationName');
-		var city_name= jQuery(this).attr('city_name');
-		document.getElementById("city_code").value = destinationCode;
-		document.getElementById("city_name").value = city_name;
-		document.getElementById("dest_name").value = destinationName;
-		jQuery('.hotel_list').hide();
-		});
-		}
-		});
-		function addPax(type)
-		{
-		managePax(type);
-		var rooms=document.getElementById("rooms").value;
-var innerHtml = '';
-for (var i = 0; i < rooms; i++) {
-    var rn = i + 1;
-    var adultId = 'adult_' + i;
-    var adultNameId = 'adult_name_' + i; // New ID for adult name input
-    var childId = 'child_' + i;
-
-    innerHtml += '<div class="dropdown-item"><b>Room ' + (i + 1) + '</b></div>';
-    innerHtml += '<div class="dropdown-item">';
-    innerHtml += '<div class="qty-box d-flex align-items-center justify-content-between">';
-    innerHtml += '<label>Adults</label>';
-    innerHtml += '<div class="qtyBtn d-flex align-items-center">';
-    innerHtml += '<div class="qtyDec"><i class="la la-minus"></i></div>';
-    innerHtml += '<input type="text" name="adults[]" value="<?php echo $adult; ?>" onchange="managePax(\'' + adultId + '\')" id="' + adultId + '" min="1" max="4" >';
-    innerHtml += '<div class="qtyInc"><i class="la la-plus"></i></div>';
-    innerHtml += '</div>';
-    innerHtml += '</div>';
-    innerHtml += '<input type="text" style="width: 100%;" placeholder="Adult Name" require name="adult_names[]" id="' + adultNameId + '">'; // New input for adult name
-    innerHtml += '</div>';
-
-
-    innerHtml += '<div class="dropdown-item">';
-    innerHtml += '<div class="qty-box d-flex align-items-center justify-content-between">';
-    innerHtml += '<label>Children</label>';
-    innerHtml += '<div class="qtyBtn d-flex align-items-center">';
-    innerHtml += '<div class="qtyDec" ><i class="la la-minus"></i></div>';
-    innerHtml += '<input type="text" onchange="addChildAge(\'' + childId + '\',\'' + i + '\')" name="childs[]" value="<?php echo $child; ?>" id="' + childId + '" min="0" max="4">';
-    innerHtml += '<div class="qtyInc" ><i  class="la la-plus"></i></div>';
-    innerHtml += '</div>';
-    innerHtml += '</div>';
-    innerHtml += '<div id="age_' + childId + '"></div>';
-    innerHtml += '</div>';
-
-		
-		if(i<(rooms-1)){ innerHtml+='<hr>' };
-		}
-		
-		jQuery('.addPax').html(innerHtml);
-		managePax(type);
-		}
-		function addChildAge(id,room){
-		managePax(id);
-		var ch=parseInt(document.getElementById(id).value);
-		var innerHtml='<br>';
-		for(var i=0;i<ch;i++){ innerHtml+='<p>Child '+(parseInt(i)+1)+' Age - <select name="child_age['+room+'][]"><option value="0">0</option><option selected="selected" value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select></p>' }
-		jQuery('#age_'+id).html(innerHtml);
-		}
-		
-		function formSubmit() {
-		// Prevent the default form submission behavior
-		event.preventDefault();
-		// Show the loading modal
-		document.getElementById("loadingModal").style.display = "block";
-		var city_name=$("#city_name").val();
-		var date_range=$("#date_range").val();
-		var rm=$("#rooms").val();
-		var gst=$(".guests").html()
-		$("#place").html(city_name);
-		$("#timeline").html("time span: "+ date_range);
-		$("#rm").html("rooms: "+ rm);
-		$("#gst").html("guest: "+ gst)
-		console.log(city_name,date_range,rm,gst);
-		// return false;
-		// Set a timeout to submit the form after 5 seconds
-		setTimeout(function() {
-		document.getElementById("loadingModal").style.display = "none"; // Hide the loading modal
-		document.getElementById("frm").submit(); // Submit the form with ID "frm"
-		}, 5000);
-		// // Display alert after 1 second (optional)
-		// setTimeout(function() {
-		//     alert('Form will be submitted in 5 seconds');
-		// }, 1000);
-		}
-		
-		
-		</script>
+			});
+			});
+			
+			function iata() {
+			jQuery(".iataAKM").click(function(){
+			var destinationCode= jQuery(this).attr('destinationCode');
+			var destinationName= jQuery(this).attr('destinationName');
+			var city_name= jQuery(this).attr('city_name');
+			document.getElementById("city_code").value = destinationCode;
+			document.getElementById("city_name").value = city_name;
+			document.getElementById("dest_name").value = destinationName;
+			jQuery('.hotel_list').hide();
+			});
+			}
+			});
+			function addPax(type)
+			{
+			managePax(type);
+			var rooms=document.getElementById("rooms").value;
+			var innerHtml = '';
+			for (var i = 0; i < rooms; i++) {
+			var rn = i + 1;
+			var adultId = 'adult_' + i;
+			var adultNameId = 'adult_name_' + i; // New ID for adult name input
+			var childId = 'child_' + i;
+			innerHtml += '<div class="dropdown-item"><b>Room ' + (i + 1) + '</b></div>';
+			innerHtml += '<div class="dropdown-item">';
+				innerHtml += '<div class="qty-box d-flex align-items-center justify-content-between">';
+					innerHtml += '<label>Adults</label>';
+					innerHtml += '<div class="qtyBtn d-flex align-items-center">';
+						innerHtml += '<div class="qtyDec"><i class="la la-minus"></i></div>';
+						innerHtml += '<input type="text" name="adults[]" value="<?php echo $adult; ?>" onchange="managePax(\'' + adultId + '\')" id="' + adultId + '" min="1" max="4" >';
+						innerHtml += '<div class="qtyInc"><i class="la la-plus"></i></div>';
+					innerHtml += '</div>';
+				innerHtml += '</div>';
+				innerHtml += '<input type="text" style="width: 100%;" placeholder="Adult Name" require name="adult_names[]" id="' + adultNameId + '">'; // New input for adult name
+			innerHtml += '</div>';
+			innerHtml += '<div class="dropdown-item">';
+				innerHtml += '<div class="qty-box d-flex align-items-center justify-content-between">';
+					innerHtml += '<label>Children</label>';
+					innerHtml += '<div class="qtyBtn d-flex align-items-center">';
+						innerHtml += '<div class="qtyDec" ><i class="la la-minus"></i></div>';
+						innerHtml += '<input type="text" onchange="addChildAge(\'' + childId + '\',\'' + i + '\')" name="childs[]" value="<?php echo $child; ?>" id="' + childId + '" min="0" max="4">';
+						innerHtml += '<div class="qtyInc" ><i  class="la la-plus"></i></div>';
+					innerHtml += '</div>';
+				innerHtml += '</div>';
+				innerHtml += '<div id="age_' + childId + '"></div>';
+			innerHtml += '</div>';
+			
+			if(i<(rooms-1)){ innerHtml+='<hr>' };
+			}
+			
+			jQuery('.addPax').html(innerHtml);
+			managePax(type);
+			}
+			function addChildAge(id,room){
+			managePax(id);
+			var ch=parseInt(document.getElementById(id).value);
+			var innerHtml='<br>';
+			for(var i=0;i<ch;i++){ innerHtml+='<p>Child '+(parseInt(i)+1)+' Age - <select name="child_age['+room+'][]"><option value="0">0</option><option selected="selected" value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select></p>' }
+			jQuery('#age_'+id).html(innerHtml);
+			}
+			
+			function formSubmit() {
+			// Prevent the default form submission behavior
+			event.preventDefault();
+			// Show the loading modal
+			document.getElementById("loadingModal").style.display = "block";
+			var city_name=$("#city_name").val();
+			var date_range=$("#date_range").val();
+			var rm=$("#rooms").val();
+			var gst=$(".guests").html()
+			$("#place").html(city_name);
+			$("#timeline").html("time span: "+ date_range);
+			$("#rm").html("rooms: "+ rm);
+			$("#gst").html("guest: "+ gst)
+			console.log(city_name,date_range,rm,gst);
+			// return false;
+			// Set a timeout to submit the form after 5 seconds
+			setTimeout(function() {
+			document.getElementById("loadingModal").style.display = "none"; // Hide the loading modal
+			document.getElementById("frm").submit(); // Submit the form with ID "frm"
+			}, 5000);
+			// // Display alert after 1 second (optional)
+			// setTimeout(function() {
+			//     alert('Form will be submitted in 5 seconds');
+			// }, 1000);
+			}
+			
+			
+			</script>

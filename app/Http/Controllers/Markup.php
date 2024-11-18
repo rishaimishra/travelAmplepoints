@@ -65,9 +65,12 @@ class Markup extends Controller
 				if($user_type=='agent'){ $markp= $this->hotel_markup_agent; $type=$this->hotel_markup_agent_type; }
 				else{ $markp= $this->hotel_markup; $type=$this->hotel_markup_type;  }
 			}
+
+
 			
 			if($type=='flat'){ $price=floatval($price)+floatval($markp); }
 			else{ $price=floatval($price)+(floatval($price)/100)*floatval($markp); }
+			// dd($markp,$type,$price);
 			return ceil($price);
 	}
 	

@@ -381,8 +381,8 @@ $childs =substr($childsStr,0,-1);
                         <button style="border: 1px solid white" data-toggle="modal" data-target="#myModal"><img src="{{url('/')}}/travel/filter.png" style="width: 20px; background: #ffffff; border-radius: 1px solid #ffffff; margin-right: 20px;"></button>
                         
                          <div class="select-contain" >
-                            <select class="select-contain-select" name="sort" id="sort" onchange="Show_Hotels('filter')">
-                                <option value="lowRate_ASC" selected="selected">Sort Your Hotel</option>
+                            <select class="select-contain-select" name="sort" id="sort" onchange="Show_Hotels_New('filter')">
+                                <option value="" selected="selected">Sort Your Hotel</option>
                                 <option value="lowRate_ASC">Price: low to high</option>
                                 <option value="lowRate_DESC">Price: high to low</option>
                                 <option value="hotelRating_ASC">Star Rating: low to high</option>
@@ -474,7 +474,7 @@ $childs =substr($childsStr,0,-1);
         <h3 class="title stroke-shape">Filter by Rating</h3>
         <div class="sidebar-review">
             <div class="custom-checkbox">
-                <input type="checkbox" name="starrating" value="5" onclick="Show_Hotels('filter')" id="s5">
+                <input type="checkbox" name="starrating" value="5" onclick="Show_Hotels_New('filter')" id="s5">
                 <label for="s5">
                     <span class="ratings d-flex align-items-center">
                         <i class="la la-star"></i>
@@ -487,7 +487,7 @@ $childs =substr($childsStr,0,-1);
                 </label>
             </div>
             <div class="custom-checkbox">
-                <input type="checkbox" name="starrating" value="4" onclick="Show_Hotels('filter')" id="s4">
+                <input type="checkbox" name="starrating" value="4" onclick="Show_Hotels_New('filter')" id="s4">
                 <label for="s4">
                     <span class="ratings d-flex align-items-center">
                         <i class="la la-star"></i>
@@ -500,7 +500,7 @@ $childs =substr($childsStr,0,-1);
                 </label>
             </div>
             <div class="custom-checkbox">
-                <input type="checkbox" name="starrating" value="3" onclick="Show_Hotels('filter')" id="s3">
+                <input type="checkbox" name="starrating" value="3" onclick="Show_Hotels_New('filter')" id="s3">
                 <label for="s3">
                     <span class="ratings d-flex align-items-center">
                         <i class="la la-star"></i>
@@ -513,7 +513,7 @@ $childs =substr($childsStr,0,-1);
                 </label>
             </div>
             <div class="custom-checkbox">
-                <input type="checkbox" name="starrating" value="2"  onclick="Show_Hotels('filter')" id="s2">
+                <input type="checkbox" name="starrating" value="2"  onclick="Show_Hotels_New('filter')" id="s2">
                 <label for="s2">
                     <span class="ratings d-flex align-items-center">
                         <i class="la la-star"></i>
@@ -526,7 +526,7 @@ $childs =substr($childsStr,0,-1);
                 </label>
             </div>
             <div class="custom-checkbox mb-0">
-                <input type="checkbox" name="starrating" value="1" onclick="Show_Hotels('filter')" id="s1">
+                <input type="checkbox" name="starrating" value="1" onclick="Show_Hotels_New('filter')" id="s1">
                 <label for="s1">
                     <span class="ratings d-flex align-items-center">
                         <i class="la la-star"></i>
@@ -548,10 +548,10 @@ $childs =substr($childsStr,0,-1);
                         <label for="amount2" class="filter__label">Price:</label>
                         <input type="text" id="amount2_1" class="amounts amount2_1">
                         </div><!-- end price-slider-amount -->
-                        <div id="slider-range2" class="slider-range2" onclick="Show_Hotels('filter')"></div><!-- end slider-range -->
+                        <div id="slider-range2" class="slider-range2" onclick="Show_Hotels_New('filter')"></div><!-- end slider-range -->
                         </div><!-- end main-search-input-item -->
                         <div class="btn-box pt-4">
-                            <button class="theme-btn theme-btn-small theme-btn-transparent" onclick="Show_Hotels('filter','mdl')" type="button">Apply</button>
+                            <button class="theme-btn theme-btn-small theme-btn-transparent" onclick="Show_Hotels_New('filter','mdl')" type="button">Apply</button>
                         </div>
                     </div>
                     </div><!-- end filter by price -->
@@ -559,13 +559,13 @@ $childs =substr($childsStr,0,-1);
                         <h3 class="title stroke-shape">Search By Hotel Name </h3>
                         <div class="sidebar-category">
                            {{--  <div class="custom-checkbox">
-                                <input name="findbynamefilter" id="findbynamefilter" placeholder="Search By Hotel Name" type="text" id="ht1"><input id="findbynamebtn" onclick="Show_Hotels('filter')" type="button" value="search" id="ht1">
+                                <input name="findbynamefilter" id="findbynamefilter" placeholder="Search By Hotel Name" type="text" id="ht1"><input id="findbynamebtn" onclick="Show_Hotels_New('filter')" type="button" value="search" id="ht1">
                             </div> --}}
                             <div class="custom-checkbox">
                                 <input name="findbynamefilter" id="findbynamefilter" class="htl-srch" placeholder="Search By Hotel Name" type="text" id="ht1" onkeyup="checkAndSearch()">
                                 <br>
                                 <br>
-                                <input id="findbynamebtn" class="theme-btn theme-btn-small theme-btn-transparent" onclick="Show_Hotels('filter')" type="button" value="Search">
+                                <input id="findbynamebtn" class="theme-btn theme-btn-small theme-btn-transparent" onclick="Show_Hotels_New('filter')" type="button" value="Search">
                             </div>
 
 
@@ -675,7 +675,7 @@ $childs =substr($childsStr,0,-1);
                          <div class="custom-container" id="cc3" style="display:none">
                             <div class="custom-loader"></div>
                           </div>
-                     {{--    <button type="button" class="theme-btn" onclick="Show_Hotels('load')" id="ld-mr"><i class="la la-refresh mr-1"></i>Load More</button> --}}
+                     {{--    <button type="button" class="theme-btn" onclick="Show_Hotels_New('load')" id="ld-mr"><i class="la la-refresh mr-1"></i>Load More</button> --}}
                          <button type="button" class="theme-btn" onclick="loadMore('load')" style="display" id="ld-mr"><i class="la la-refresh mr-1"></i>Load More</button>
                         <p class="font-size-13 pt-2">Showing {{-- <span class="totalhotel_to"></span> --}}  <span class="totalhotel"></span> Hotels</p>
                         </div><!-- end btn-box -->
@@ -714,7 +714,7 @@ $childs =substr($childsStr,0,-1);
                         <h3 class="title stroke-shape">Filter by Rating</h3>
                         <div class="sidebar-review">
                             <div class="custom-checkbox">
-                                <input type="checkbox" name="starrating" value="5" onclick="Show_Hotels('filter')" id="s5">
+                                <input type="checkbox" name="starrating" value="5" onclick="Show_Hotels_New('filter')" id="s5">
                                 <label for="s5">
                                     <span class="ratings d-flex align-items-center">
                                         <i class="la la-star"></i>
@@ -727,7 +727,7 @@ $childs =substr($childsStr,0,-1);
                                 </label>
                             </div>
                             <div class="custom-checkbox">
-                                <input type="checkbox" name="starrating" value="4" onclick="Show_Hotels('filter')" id="s4">
+                                <input type="checkbox" name="starrating" value="4" onclick="Show_Hotels_New('filter')" id="s4">
                                 <label for="s4">
                                     <span class="ratings d-flex align-items-center">
                                         <i class="la la-star"></i>
@@ -740,7 +740,7 @@ $childs =substr($childsStr,0,-1);
                                 </label>
                             </div>
                             <div class="custom-checkbox">
-                                <input type="checkbox" name="starrating" value="3" onclick="Show_Hotels('filter')" id="s3">
+                                <input type="checkbox" name="starrating" value="3" onclick="Show_Hotels_New('filter')" id="s3">
                                 <label for="s3">
                                     <span class="ratings d-flex align-items-center">
                                         <i class="la la-star"></i>
@@ -753,7 +753,7 @@ $childs =substr($childsStr,0,-1);
                                 </label>
                             </div>
                             <div class="custom-checkbox">
-                                <input type="checkbox" name="starrating" value="2"  onclick="Show_Hotels('filter')" id="s2">
+                                <input type="checkbox" name="starrating" value="2"  onclick="Show_Hotels_New('filter')" id="s2">
                                 <label for="s2">
                                     <span class="ratings d-flex align-items-center">
                                         <i class="la la-star"></i>
@@ -766,7 +766,7 @@ $childs =substr($childsStr,0,-1);
                                 </label>
                             </div>
                             <div class="custom-checkbox mb-0">
-                                <input type="checkbox" name="starrating" value="1" onclick="Show_Hotels('filter')" id="s1">
+                                <input type="checkbox" name="starrating" value="1" onclick="Show_Hotels_New('filter')" id="s1">
                                 <label for="s1">
                                     <span class="ratings d-flex align-items-center">
                                         <i class="la la-star"></i>
@@ -789,10 +789,10 @@ $childs =substr($childsStr,0,-1);
                                     <label for="amount2" class="filter__label">Price:</label>
                                     <input type="text" id="amount2_1" class="amounts amount2_1">
                                 </div><!-- end price-slider-amount -->
-                                <div id="slider-range2" class="slider-range2" onclick="Show_Hotels('filter')"></div><!-- end slider-range -->
+                                <div id="slider-range2" class="slider-range2" onclick="Show_Hotels_New('filter')"></div><!-- end slider-range -->
                             </div><!-- end main-search-input-item -->
                             <div class="btn-box pt-4">
-                                <button class="theme-btn theme-btn-small theme-btn-transparent" onclick="Show_Hotels('filter','mdl')" type="button">Apply</button>
+                                <button class="theme-btn theme-btn-small theme-btn-transparent" onclick="Show_Hotels_New('filter','mdl')" type="button">Apply</button>
                             </div>
                         </div>
                     </div><!-- end filter by price -->
@@ -803,7 +803,7 @@ $childs =substr($childsStr,0,-1);
                   <input name="findbynamefilter" id="findbynamefilter" class="htl-srch" placeholder="Search By Hotel Name" type="text" id="ht1" onkeyup="checkAndSearch()">
                   <br>
                   <br>
-                  <input id="findbynamebtn" class="theme-btn theme-btn-small theme-btn-transparent" onclick="Show_Hotels('filter')" type="button" value="Search" id="ht1">
+                  <input id="findbynamebtn" class="theme-btn theme-btn-small theme-btn-transparent" onclick="Show_Hotels_New('filter')" type="button" value="Search" id="ht1">
                             </div>
                         </div>
                     </div><!-- end filter by name -->
@@ -901,72 +901,24 @@ jQuery("#hotel").show();
                         var page_number=1;
                         var loop =0;
                         
-                        function Upldate_Rates_All_custom(){
+                
+
+
+
+
+
+
+
+
+                    function Upldate_Rates_All(startno){
                         if(opcty==0){
                                 jQuery('.hotellist').addClass('opacity_5');
                                 }
                          $.ajax({
-                                url:<?php url('');?>'/GetHotelListCustom',
+                                url:<?php url('');?>'/GetHotelListNew',
                                 type: "GET",
                                 data: {
-                                    action: "GetHotelListCustom",  
-                                    regionid: "<?php echo $_REQUEST['city_code']; ?>",
-                                    destination: "<?php echo $_REQUEST['city_name']; ?>",
-                                    checkIn: "<?php echo $check_in; ?>",  
-                                    checkOut: "<?php echo $check_out; ?>",
-                                    rooms: "<?php echo $_REQUEST['rooms']; ?>",
-                                    adults: '<?php echo json_encode($adults);  ?>',
-                                    adultNames: '<?php echo json_encode($adult_names);  ?>',
-                                    childs: '<?php echo json_encode($childs); ?>',
-                                    childAge: '<?php echo json_encode($_REQUEST['child_age']); ?>',
-                                    page_number: page_number,
-                                    search_session: search_session, 
-                                    rand: Math.random()
-                                },
-                                dataType: "json",
-                                success: function (data) {
-                                console.log(1111,data);
-                                loop++;
-                                    var pageCount=data.pageCount;
-                                    var total_records = data.total_records; 
-                                    if(data.total_records>0){ 
-                                            if( (pageCount>0) && (loop<200) ){ 
-                                             page_number++;
-                                             setTimeout(function(){Upldate_Rates_All();},100);
-                                            }
-                                        Show_Hotels('search');
-                                         getControls();
-                                        //Show_OutBoundFlights(data.search_session);
-                                        //Show_InBoundFlights(data.search_session);
-                                    }else{
-                                        if( (pageCount>0) && (loop<200) ){ 
-                                             page_number++;
-                                             setTimeout(function(){Upldate_Rates_All();},100);
-                                             jQuery('.hotellist').removeClass('opacity_5');
-                                        }else{
-                                            jQuery('.hotellist').removeClass('opacity_5');
-                                        }
-                                    }
-                                },
-                                error: function (error) {
-                                    console.log(`Error ${error}`);
-                                }
-                            });
-                            }
-                        
-
-
-
-
-                        function Upldate_Rates_All(startno){
-                        if(opcty==0){
-                                jQuery('.hotellist').addClass('opacity_5');
-                                }
-                         $.ajax({
-                                url:<?php url('');?>'/GetHotelList',
-                                type: "GET",
-                                data: {
-                                    action: "GetHotelList",  
+                                    action: "GetHotelListNew",  
                                     regionid: "<?php echo $_REQUEST['city_code']; ?>",
                                     destination: "<?php echo $_REQUEST['city_name']; ?>",
                                     checkIn: "<?php echo $check_in; ?>",  
@@ -992,7 +944,7 @@ jQuery("#hotel").show();
                                              page_number++;
                                              setTimeout(function(){Upldate_Rates_All();},100);
                                             }
-                                        Show_Hotels('search');
+                                        Show_Hotels_New('search');
                                          getControls();
                                         //Show_OutBoundFlights(data.search_session);
                                         //Show_InBoundFlights(data.search_session);
@@ -1055,10 +1007,10 @@ var uniqueHotels = [];
                                 jQuery('.hotellist').addClass('opacity_5');
                                 }
                          $.ajax({
-                                url:<?php url('');?>'/GetHotelList',
+                                url:<?php url('');?>'/GetHotelListNew',
                                 type: "GET",
                                 data: {
-                                    action: "GetHotelList",  
+                                    action: "GetHotelListNew",  
                                     regionid: "<?php echo $_REQUEST['city_code']; ?>",
                                     destination: "<?php echo $_REQUEST['city_name']; ?>",
                                     checkIn: "<?php echo $check_in; ?>",  
@@ -1084,7 +1036,7 @@ var uniqueHotels = [];
                                              page_number++;
                                              setTimeout(function(){Upldate_Rates_All();},100);
                                             }
-                                        Show_Hotels('search');
+                                        Show_Hotels_New('search');
                                          getControls();
                                         //Show_OutBoundFlights(data.search_session);
                                         //Show_InBoundFlights(data.search_session);
@@ -1117,7 +1069,7 @@ var uniqueHotels = [];
     }
 
                                 
-                        function Show_Hotels(type,mdl=null)
+                        function Show_Hotels_New(type,mdl=null)
                             {   //var search_session='62f0011bf1e94';
                             // if(apiCallsCompleted <=5){
                                  // innerHtml=''; 
@@ -1203,10 +1155,10 @@ var uniqueHotels = [];
                                 
                                 jQuery('.totalhotel_to').html(page*10); 
                                  $.ajax({
-                                url:<?php url('');?>'/Show_Hotels',
+                                url:<?php url('');?>'/Show_Hotels_New',
                                 type: "GET",
                                 data: {
-                                    action: "Show_Hotels",
+                                    action: "Show_Hotels_New",
                                     search_id: search_session,
                                     page: page,  
                                     sortVal: sortVal,
@@ -1265,7 +1217,8 @@ var uniqueHotels = [];
                                                  console.log(66);
                                                 uniqueHotels.push(data.result[i].Name);
                                         
-                                               var book_link='hotel-details/'+btoa(data.result[i].tid)+'/'+data.result[i].Name; 
+                                               var book_link='hotel-details-new/'+data.result[i].tid+'/'+data.result[i].Name; 
+                                               //var book_link='hotel-details-new/'+btoa(data.result[i].tid)+'/'+data.result[i].Name;
                                     
                                                innerHtml +=`<div class="card-item card-item-list mb-4" style="border-radius: 10px">
                                               <div class="row my-card-row" style="margin: 0">
@@ -1455,7 +1408,7 @@ var uniqueHotels = [];
                                     var product=data.product;
                                     var productHtml='';  
                                     for(var i=0;i<product.length;i++){  
-                                        productHtml+='<div class="custom-checkbox"><input onclick="Show_Hotels(\'filter\')" name="product" value="'+product[i].name+'" type="checkbox" id="p'+i+'"><label for="p'+i+'">'+product[i].name+'</label></div>';
+                                        productHtml+='<div class="custom-checkbox"><input onclick="Show_Hotels_New(\'filter\')" name="product" value="'+product[i].name+'" type="checkbox" id="p'+i+'"><label for="p'+i+'">'+product[i].name+'</label></div>';
                                     }
                                 jQuery('.product').html(productHtml);
                                 // console.log(data,1111111111);
@@ -1463,7 +1416,7 @@ var uniqueHotels = [];
                                 var accommodationType=data.accommodationType;
                                     var accommodationTypeHtml='';  
                                     for(var i=0;i<accommodationType.length;i++){  
-                                        accommodationTypeHtml+='<div class="custom-checkbox"><input onclick="Show_Hotels(\'filter\')" name="accommodationType" value="'+accommodationType[i].name+'" type="checkbox" id="ac'+i+'"><label for="ac'+i+'">'+accommodationType[i].name+'</label></div>';
+                                        accommodationTypeHtml+='<div class="custom-checkbox"><input onclick="Show_Hotels_New(\'filter\')" name="accommodationType" value="'+accommodationType[i].name+'" type="checkbox" id="ac'+i+'"><label for="ac'+i+'">'+accommodationType[i].name+'</label></div>';
                                     }
                                 jQuery('.accommodationType').html(accommodationTypeHtml);
                                 
@@ -1472,14 +1425,14 @@ var uniqueHotels = [];
                                     var boardName=data.boardName; 
                                     var boardNameHtml='';   
                                     for(var i=0;i<boardName.length;i++){  
-                                        boardNameHtml+='<div class="custom-checkbox"><input onclick="Show_Hotels(\'filter\')" name="board" value="'+boardName[i].name+'" type="checkbox" id="b'+i+'"><label for="b'+i+'">'+boardName[i].name+'</label></div>';
+                                        boardNameHtml+='<div class="custom-checkbox"><input onclick="Show_Hotels_New(\'filter\')" name="board" value="'+boardName[i].name+'" type="checkbox" id="b'+i+'"><label for="b'+i+'">'+boardName[i].name+'</label></div>';
                                     }
                                 jQuery('.board').html(boardNameHtml);
                                     var amenityArr=data.amenityArr;   
                                     var amenityArrHtml='';   var amenityArrHtml_f='';  
                                     for(var i=0;i<amenityArr.length;i++){  
-                                        amenityArrHtml+='<div class="custom-checkbox"><input onclick="Show_Hotels(\'filter\')" name="Cri_amenity" value="'+amenityArr[i].val+'" type="checkbox" id="a'+i+'"><label for="a'+i+'">'+amenityArr[i].val+'</label></div>';
-                                        amenityArrHtml_f+='<div class="custom-checkbox"><input onclick="Show_Hotels(\'filter\')" name="Cri_amenity" value="'+amenityArr[i].val+'" type="checkbox" id="a'+i+'_f"><label for="a'+i+'_f">'+amenityArr[i].val+'</label></div>';
+                                        amenityArrHtml+='<div class="custom-checkbox"><input onclick="Show_Hotels_New(\'filter\')" name="Cri_amenity" value="'+amenityArr[i].val+'" type="checkbox" id="a'+i+'"><label for="a'+i+'">'+amenityArr[i].val+'</label></div>';
+                                        amenityArrHtml_f+='<div class="custom-checkbox"><input onclick="Show_Hotels_New(\'filter\')" name="Cri_amenity" value="'+amenityArr[i].val+'" type="checkbox" id="a'+i+'_f"><label for="a'+i+'_f">'+amenityArr[i].val+'</label></div>';
                                     }
                                 jQuery('.amenity').html(amenityArrHtml);
                                 jQuery('.amenity_f').html(amenityArrHtml_f);
@@ -1517,7 +1470,7 @@ var uniqueHotels = [];
         console.log(searchInput)
         if (!searchInput) {
             console.log("empty name search")
-            Show_Hotels('filter');
+            Show_Hotels_New('filter');
         }
     }
 
@@ -1538,10 +1491,10 @@ var uniqueHotels = [];
                                 jQuery('.hotellist').addClass('opacity_5');
                                 }
                          $.ajax({
-                                url:<?php url('');?>'/GetHotelList',
+                                url:<?php url('');?>'/GetHotelListNew',
                                 type: "GET",
                                 data: {
-                                    action: "GetHotelList",  
+                                    action: "GetHotelListNew",  
                                     regionid: "<?php echo $_REQUEST['city_code']; ?>",
                                     destination: "<?php echo $_REQUEST['city_name']; ?>",
                                     checkIn: "<?php echo $check_in; ?>",  
@@ -1567,7 +1520,7 @@ var uniqueHotels = [];
                                              page_number++;
                                              setTimeout(function(){Upldate_Rates_All();},100);
                                             }
-                                        Show_Hotels('search');
+                                        Show_Hotels_New('search');
                                          getControls();
                                         //Show_OutBoundFlights(data.search_session);
                                         //Show_InBoundFlights(data.search_session);
@@ -1588,5 +1541,30 @@ var uniqueHotels = [];
                             });
                             }
     }
+
+
+    //filter
+// function Show_Hotels_New_Filter(type){
+//         // alert(type)
+//         // Collect ratings
+// let Cri_Rating = [];
+// jQuery('input[name=starrating]:checked').each(function(i) {
+//     let ratingValue = jQuery(this).val();
+//     Cri_Rating[i] = ratingValue;
+// });
+
+// // Collect hotel name and price
+// let hotel_name = document.getElementById('findbynamefilter').value;
+// let price = document.getElementById("amount2_1").value;
+
+// // Check if any values are present
+// if (Cri_Rating.length > 0 || hotel_name.trim() !== "" || price.trim() !== "") {
+//     console.log("filter",Cri_Rating,hotel_name,price,hotel_name.trim(),price.trim());
+//     Upldate_Rates_All()
+// } else {
+//     console.log("show all");
+// }
+
+//     }
 </script>
 @include('site.footer')

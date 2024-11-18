@@ -237,7 +237,7 @@
 
                                  <a href="#" class="theme-btn theme-btn-small" style=" margin: 0 0 0 4px;    background-color: #ffffff; border:1px solid #b39797 !important">
 
-                                    <img @if(@Auth::user()->user_image) src="https://amplepoints.com/user_images/32/profile_image/{{@Auth::user()->user_image}}" @else src=" {{ asset('admin/dist/img/user2-160x160.jpg') }}" @endif class="img-fluid" style=" width: 32px; height: auto; margin: 0 10px 0 0;"><span style="color:black;">{{@Auth::user()->ample}}  amples </span></a>
+                                    <img @if(@Auth::user()->user_image) src="https://amplepoints.com/user_images/{{@Auth::user()->user_id}}/profile_image/{{@Auth::user()->user_image}}" @else src=" {{ asset('admin/dist/img/user2-160x160.jpg') }}" @endif class="img-fluid" style=" width: 32px; height: auto; margin: 0 10px 0 0;"><span style="color:black;">{{@Auth::user()->ample}}  amples </span></a>
 
               
 
@@ -304,6 +304,8 @@
                                           <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="text-align: left;text-decoration: none;color: #111;">
                                             <img src="./index_files/Screen Shot 2016-08-30 at 1.36.54 AM_80x80.png" class="img-fluid" style="width: 32px; height: auto; margin: 0 10px 0 0">
                                             <span style="color: black">{{@Auth::user()->ample}} amples </span>
+                                            <br>
+                                            <span style="color: black">{{@Auth::user()->reward_time}} Reward </span>
                                           </button>
                                           <div id="collapseThree" class="collapse colp-div" aria-labelledby="headingThree" data-parent="#accMobHead">
                                             <ul>
@@ -322,6 +324,8 @@
                                           <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThreebfrlgin" aria-expanded="false" aria-controls="collapseThreebfrlgin" style="text-align: left;text-decoration: none;color: #111;">
                                            
                                             <span style="color: black">{{@Auth::user()->ample}} Login/Register </span>
+                                            <br>
+                                             <span style="color: black">{{@Auth::user()->reward_time}} Reward </span>
                                           </button>
                                           <div id="collapseThreebfrlgin" class="collapse colp-div" aria-labelledby="headingThree" data-parent="#accMobHead">
                                             <ul>
@@ -365,7 +369,7 @@
                                                     <a href="https://dev.plistbooking.com/add-new-listing-list-your-event/" target="_blank" class="theme-btn theme-btn-small theme-btn-transparent mr-1">List Your Property</a>
                                                          <?php if(isset($sessionval['first_name'])){ ?>
                                                         
-                                                         <a href="#" class="theme-btn theme-btn-small" style=" margin: 0 0 0 4px;"><img src="https://amplepoints.com/user_images/32/profile_image/{{@Auth::user()->user_image}}" class="img-fluid" style=" width: 32px; height: auto; margin: 0 10px 0 0;">User</a>
+                                                         <a href="#" class="theme-btn theme-btn-small" style=" margin: 0 0 0 4px;"><img src="https://amplepoints.com/user_images/{{@Auth::user()->user_id}}/profile_image/{{@Auth::user()->user_image}}" class="img-fluid" style=" width: 32px; height: auto; margin: 0 10px 0 0;">User</a>
 
 
                                                  {{--         <a href="#" class="theme-btn theme-btn-small">Hi {{$sessionval['first_name']}}</a> --}}
@@ -401,20 +405,73 @@
                 
                          
                           <div href="javascript:void(0);" class="theme-btn theme-btn-small top-user-btn" style="margin: 0 0 0 4px; background-color: #ffffff; border: 1px solid #b39797 !important">
-                            <img @if(@Auth::user()->user_image) src="https://amplepoints.com/user_images/32/profile_image/{{@Auth::user()->user_image}}" @else src=" {{ asset('admin/dist/img/user2-160x160.jpg') }}" @endif  class="img-fluid" style="width: 32px; height: auto; margin: 0 10px 0 0" />
+                            <img @if(@Auth::user()->user_image) src="https://amplepoints.com/user_images/{{@Auth::user()->user_id}}/profile_image/{{@Auth::user()->user_image}}" @else src=" {{ asset('admin/dist/img/user2-160x160.jpg') }}" @endif  class="img-fluid" style="width: 32px; height: auto; margin: 0 10px 0 0" />
                             <span style="color: black">{{@Auth::user()->ample}}   amples </span>
+                            {{-- <br>
+                             <span style="color: black;margin-left: 45px;">{{@Auth::user()->reward_time}} Reward </span> --}}
                             <div style="opacity: 0; transform: translateY(-200px);" class="op-0-tr-btn">
-                              <ul>
+                              <!-- <ul>
                                 <li>
                                   <a @if(@Auth::user()->user_type=="admin") href="{{ asset('admin-dashboard')}}" @else href="{{ route('customer.dashboard')}}" @endif>Dashboard</a>
                                 </li>
-                               {{--  <li>
-                                  <a href="#">Item 2</a>
-                                </li> --}}
+                            
                                 <li>
                                   <a href="{{ asset('logout')}}">Logout</a>
                                 </li>
-                              </ul>
+                              </ul> -->
+
+                              <style>li.itme-top-dec{ padding: 5px 8px !important;} .no-itme-n{ color: #111; line-height: 29px;} .text-itme-n{ background: #f75b10; color: #fff; line-height: 30px; padding: 0 10px;} .op-0-tr-btn li{ padding: 2px 13px;} .op-0-tr-btn ul{ margin: 0;}
+                                            </style>
+
+@php
+    $totalDoller = 0.00;
+
+    if (Auth::check()) {
+        $dollerAmple = Auth::user()->ample ?? 0;
+        $countryCode = Auth::user()->user_countrykey ?? '';
+
+        if (!empty($dollerAmple)) {
+            $CurrentAmpleRatesVal = DB::table('tbl_country_master')
+                ->where('code', $countryCode)
+                ->first();
+                //dd($CurrentAmpleRatesVal);
+
+            if (!empty($CurrentAmpleRatesVal)) {
+                $current_ample_rate = $CurrentAmpleRatesVal->current_ample_rate;
+            } else {
+                $current_ample_rate = 0.12; // Default rate
+            }
+
+            // Correct calculation of total dollars
+            $totalDoller = $dollerAmple * $current_ample_rate;
+            $totalDoller = round($totalDoller, 2);
+            $totalDoller = number_format($totalDoller, 2, '.', ',');
+        }
+    }
+@endphp
+
+
+                                            <ul>
+                                                <li>
+                                                <a @if(@Auth::user()->user_type=="admin") href="{{ asset('admin-dashboard')}}" @else href="{{ route('customer.dashboard')}}" @endif>Dashboard</a>
+                                                </li>
+                                                <li class="itme-top-dec">
+                                                    <a href="#"
+                                                    ><div class="no-itme-n">${{$totalDoller}}</div>
+                                                    <div class="text-itme-n">amples values</div></a
+                                                    >
+                                                </li>
+                                                <li class="itme-top-dec">
+                                                    <a href="#"
+                                                    ><div class="no-itme-n">{{@Auth::user()->reward_time}}</div>
+                                                    <div class="text-itme-n">Reward Time</div></a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    {{-- <a @if(@Auth::user()->user_type=="admin") href="{{ asset('admin-dashboard')}}" @else href="{{ route('customer.dashboard')}}" @endif>Dashboard</a> --}}
+                                                    <a href="{{ asset('logout')}}">Logout</a>
+                                                </li>
+                                            </ul>
                             </div>
                           </div>
 

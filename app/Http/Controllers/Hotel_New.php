@@ -101,8 +101,8 @@ class Hotel_New extends Controller
 
 
 
-// GetHotelList Start
-	public function GetHotelList(Request $request){	
+// GetHotelListNew Start
+	public function GetHotelListNew(Request $request){	
 
 	// dd($this->signature,$this->headerData);	
 		$search_Session_Id=$request["search_session"];
@@ -130,15 +130,6 @@ class Hotel_New extends Controller
 		$checkIn=date('Y-m-d',strtotime($checkIn));
 		$checkOut = str_replace('/', '-', 	$formattedCheckOut);
 		$checkOut=date('Y-m-d',strtotime($checkOut));
-
-
-//     	$checkIn = str_replace('/', '-', $_REQUEST['checkIn']);
-// 		$checkIn=date('Y-m-d',strtotime($checkIn));
-// 		$checkOut = str_replace('/', '-', $_REQUEST['checkOut']);
-// 		$checkOut=date('Y-m-d',strtotime($checkOut));
-		
-// 		dd($checkIn,$checkOut);
-
 		
    		$actionUrl=$this->endpoint.'/hotels';
 		$adultArr =json_decode($adults,true);  
@@ -150,106 +141,75 @@ class Hotel_New extends Controller
 
 
 
-
-		//===================================================
-		// dd($request->all(),$adultArr,$childArr,$childAgeArr);
-		
-		// for($i=0;$i<$rooms;$i++){
-		// 	 $total_adults=0;
-		// 	 $total_childs=0;
-		// 	 $packs =array();	
-
-		// 	 $adt =$adultArr[$i];
-		// 	 $chd =$childArr[$i];
-		
-		// 	 for($b=0;$b<$adt;$b++){
-		// 	 $packs[] =array('type'=>'AD','age'=>(40+$b));
-		// 	 }
-			 
-		// 	 if($chd>0){	
-		// 	  for($d=0;$d<$chd;$d++){	 
-		// 		 $packs[] =array('type'=>'CH','age'=> $childAgeArr[$i][$d]);
-		// 		}
-		// 	 }
-		// 	 $occupancies[] =array('rooms'=>1,'adults'=>$adt,'children'=>$chd,'paxes'=>$packs);	
-		// }
-
-		// dd($occupancies);
-
-
-
-
-
-
          // ================== new code for occupanc start =====================//
 
 	// Convert JSON string to array, or set to empty array if not convertible
-$decodedChildAge = json_decode($childAge, true) ?: [];
+			$decodedChildAge = json_decode($childAge, true) ?: [];
 
-// Ensure each room has its own array of child ages
-$childAges = [];
-for ($i = 0; $i < $rooms; $i++) {
-    // Extract inner array if present, or use an empty array
-    $innerArray = isset($decodedChildAge[$i]) ? $decodedChildAge[$i] : [];
-    $childAges[] = $innerArray;
-}
+			// Ensure each room has its own array of child ages
+			$childAges = [];
+			for ($i = 0; $i < $rooms; $i++) {
+			    // Extract inner array if present, or use an empty array
+			    $innerArray = isset($decodedChildAge[$i]) ? $decodedChildAge[$i] : [];
+			    $childAges[] = $innerArray;
+			}
 
-// Convert child ages array to JSON
-$desiredChildAge = json_encode($childAges);
+			// Convert child ages array to JSON
+			$desiredChildAge = json_encode($childAges);
 
-// Construct the form request array
-$formRequest = [
-    "rooms" => $rooms,
-    "adults" => $adultArr,
-    "childs" => $childArr,
-    "childAge" => $desiredChildAge,
-];
+			// Construct the form request array
+			$formRequest = [
+			    "rooms" => $rooms,
+			    "adults" => $adultArr,
+			    "childs" => $childArr,
+			    "childAge" => $desiredChildAge,
+			];
 
-// Convert string data to arrays
-$rooms = (int) $formRequest['rooms'];
-$adults = array_map('intval', explode(',', $formRequest["adults"]));
-$children = array_map('intval', explode(',', $formRequest["childs"]));
-$childAges = json_decode($formRequest["childAge"], true);
-$adultNames = json_decode($request['adultNames'], true);
+			// Convert string data to arrays
+			$rooms = (int) $formRequest['rooms'];
+			$adults = array_map('intval', explode(',', $formRequest["adults"]));
+			$children = array_map('intval', explode(',', $formRequest["childs"]));
+			$childAges = json_decode($formRequest["childAge"], true);
+			$adultNames = json_decode($request['adultNames'], true);
 
-// Initialize the occupancies array
-$occupancies = [];
+			// Initialize the occupancies array
+			$occupancies = [];
 
-// Loop through the data to build the occupancies array
-for ($i = 0; $i < $rooms; $i++) {
-    $occupancy = [
-        'rooms' => 1,
-        'adults' => $adults[$i],
-        'children' => $children[$i],
-        'paxes' => []
-    ];
+			// Loop through the data to build the occupancies array
+			for ($i = 0; $i < $rooms; $i++) {
+			    $occupancy = [
+			        'rooms' => 1,
+			        'adults' => $adults[$i],
+			        'children' => $children[$i],
+			        'paxes' => []
+			    ];
 
-    // Add adults to the paxes array
-    for ($j = 0; $j < $adults[$i]; $j++) {
-        $name = isset($adultNames[$i]) ? $adultNames[$i] : 'AdultName' . ($j + 1);
-        $occupancy['paxes'][] = [
-            'roomId' => $i + 1,
-            'type' => 'AD', // AD = Adult
-            'name' => $name,// Placeholder name, replace with actual name if available
-            'surname' => 'Surname' . ($j + 1) // Placeholder surname, replace with actual surname if available
-        ];
-    }
+			    // Add adults to the paxes array
+			    for ($j = 0; $j < $adults[$i]; $j++) {
+			        $name = isset($adultNames[$i]) ? $adultNames[$i] : 'AdultName' . ($j + 1);
+			        $occupancy['paxes'][] = [
+			            'roomId' => $i + 1,
+			            'type' => 'AD', // AD = Adult
+			            'name' => $name,// Placeholder name, replace with actual name if available
+			            'surname' => 'Surname' . ($j + 1) // Placeholder surname, replace with actual surname if available
+			        ];
+			    }
 
-    // Add children to the paxes array
-    for ($j = 0; $j < $children[$i]; $j++) {
-        $age = isset($childAges[$i][$j]) ? $childAges[$i][$j] : ''; // Get child's age
-        $occupancy['paxes'][] = [
-            'roomId' => $i + 1,
-            'type' => 'CH', // CH = Child
-            'age' => $age,
-            'name' => 'ChildName' . ($j + 1), // Placeholder name, replace with actual name if available
-            'surname' => 'Surname' . ($j + 1) // Placeholder surname, replace with actual surname if available
-        ];
-    }
+			    // Add children to the paxes array
+			    for ($j = 0; $j < $children[$i]; $j++) {
+			        $age = isset($childAges[$i][$j]) ? $childAges[$i][$j] : ''; // Get child's age
+			        $occupancy['paxes'][] = [
+			            'roomId' => $i + 1,
+			            'type' => 'CH', // CH = Child
+			            'age' => $age,
+			            'name' => 'ChildName' . ($j + 1), // Placeholder name, replace with actual name if available
+			            'surname' => 'Surname' . ($j + 1) // Placeholder surname, replace with actual surname if available
+			        ];
+			    }
 
-    // Add the occupancy to the occupancies array
-    $occupancies[] = $occupancy;
-}
+			    // Add the occupancy to the occupancies array
+			    $occupancies[] = $occupancy;
+			}
 
 
 			// Print the occupancies array (or use it in your payload)
@@ -258,157 +218,118 @@ for ($i = 0; $i < $rooms; $i++) {
 	         // dd($request->all(),$adultArr,$childArr,$childAgeArr,$occupancies);
 	        // ================== new code for occupanc end =====================//
 
+			$start = ($request['startno'] - 1) * 5 + 1; // This will give you 1, 6, 11, etc.
+			$limit = ($request['startno'] - 1) * 5 + 5; // This will give you 5, 10, 15, etc.
+			$size=5;
+			// dd($start);
 
+			$page=$request['page_number'];
+			if($page>1){
+			 $size =($page*$limit);	
+			 $start =($page-1)*$limit;	
+			}
 
-
+			$LogStr ='';
+			$LogStr.=' Page:'.$page.'<br>';
 		
-		// $start =5 * ((int)$request['startno'] - 1) + 1;  //1;
-		// $limit =5;
-		$start = ($request['startno'] - 1) * 5 + 1; // This will give you 1, 6, 11, etc.
-		$limit = ($request['startno'] - 1) * 5 + 5; // This will give you 5, 10, 15, etc.
-		$size=5;
-		// dd($start);
+			$hotel =array();
+			$len = strlen($regionid);
+		
+			// cURL initialization
+			$apiUrl = "https://api.hotelbeds.com/hotel-content-api/1.0/hotels?fields=code&language=ENG&from=".$start."&to=".$limit."&useSecondaryLanguage=false&destinationCode=".$regionid."";
+			$curl = curl_init();
+			curl_setopt($curl, CURLOPT_URL, $apiUrl);
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headerData);
+			$response = curl_exec($curl);
+			$data=json_decode($response,true);
+			// dd($data);
 
-		$page=$request['page_number'];
-		if($page>1){
-		 $size =($page*$limit);	
-		 $start =($page-1)*$limit;	
+
+		// Check if the 'hotels' key exists and is an array
+		if (isset($data['hotels']) && is_array($data['hotels'])) {
+		    // Extract hotel codes
+		    $hotelCodes = array_map(function($hotel) {
+		        return $hotel['code'];
+		    }, $data['hotels']);
+
+		    // Prepare the transformed data
+		    $transformedData = [
+		       
+		            'hotel' => $hotelCodes
+		        
+		    ];
+
+		    // Print or use the transformed data
+		    // print_r($transformedData);
+		    $hotel=$transformedData;
+		    $PropertyCount=count($hotel);
+		    // dd($transformedData,$hotel['hotel']);
+
+		} else {
+		    echo 'Invalid response or no hotels found.';
 		}
 
-		$LogStr ='';
-		$LogStr.=' Page:'.$page.'<br>';
-	
-		$hotel =array();
-		$len = strlen($regionid);
-	
-		/*$query =DB::select("select count(hotel_id) as totalproduct from hotelbeds_hotels WHERE destinationCode='".$regionid."'  and status_deleted=0 " );
-		$obj= $query[0];
-		$PropertyCount =$obj->totalproduct;
-
-		$dquery =DB::select("select hotel_id from hotelbeds_hotels WHERE destinationCode='".$regionid."'  and status_deleted=0 ORDER BY id DESC limit $start,$limit");
-		foreach($dquery as $dobj){
-		 $hotel['hotel'][]=	trim($dobj->hotel_id);
-		}*/
-	
-
-
-
-		// ===============   changing that to below ===================//
-		// $apiUrl = "https://dev.plistbooking.travel/travel/hotel-update-rates.php?action=get_hotels&regionid=".$regionid."&start=".$start."&limit=".$limit."";
-		// $curl = curl_init();
-		// curl_setopt($curl, CURLOPT_URL, $apiUrl);
-		// curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		// $response = curl_exec($curl);
-		// $res=json_decode($response,true);
-		// //======================================= 2
-		//  if (isset($res['PropertyCount'])) {
-		//      	$PropertyCount=$res['PropertyCount'];
-		//  }else{
-		//   // dd($res);
-		//   die;
-		//  }
-		//  // ==================================== 2
-		// $hotel=$res['hotel'];
-		// // dd($res,$hotel);
-
-
-
-		// cURL initialization
-		$apiUrl = "https://api.hotelbeds.com/hotel-content-api/1.0/hotels?fields=code&language=ENG&from=".$start."&to=".$limit."&useSecondaryLanguage=false&destinationCode=".$regionid."";
-		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, $apiUrl);
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headerData);
-		$response = curl_exec($curl);
-		$data=json_decode($response,true);
-		// dd($data);
-
-
-// Check if the 'hotels' key exists and is an array
-if (isset($data['hotels']) && is_array($data['hotels'])) {
-    // Extract hotel codes
-    $hotelCodes = array_map(function($hotel) {
-        return $hotel['code'];
-    }, $data['hotels']);
-
-    // Prepare the transformed data
-    $transformedData = [
-       
-            'hotel' => $hotelCodes
-        
-    ];
-
-    // Print or use the transformed data
-    // print_r($transformedData);
-    $hotel=$transformedData;
-    $PropertyCount=count($hotel);
-    // dd($transformedData,$hotel['hotel']);
-
-} else {
-    echo 'Invalid response or no hotels found.';
-}
-
 
 
 		
 		
 		
 	
-	if(isset($hotel['hotel'])){ $totalsendhotel = count($hotel['hotel']); } 
-	else{  $data =array('isFind'=>'No','pageCount'=>0,'total_records'=>0,'search_Session_Id'=>''); echo json_encode($data); die; }
-	/* -------- */
+		if(isset($hotel['hotel'])){ $totalsendhotel = count($hotel['hotel']); } 
+		else{  $data =array('isFind'=>'No','pageCount'=>0,'total_records'=>0,'search_Session_Id'=>''); echo json_encode($data); die; }
+		/* -------- */
 
-	$brdlist=array('RO','BB','AI','HB','FB','RR','AB','DB','GB','IB','LB');
-	$boardarr =array('included'=>true,'board'=>$brdlist);
-	
-	
-	$reviewsArr[] =array('type'=>'TRIPADVISOR','maxRate'=>5,'minReviewCount'=>1);
-	$accommodationsArr=array('HOTEL','RESORT','HOSTEL','HOMES','APTHOTEL','APARTMENT');
-	$postdata =array('language'=>'ENG',
-                     'currency'=>'USD', 
-	                 'stay'=>array('checkIn'=>$checkIn,'checkOut'=>$checkOut),  //,'shiftDays'=>0
-	                 'occupancies'=>$occupancies,
-                     'hotels'=>$hotel,//['893849','893839']
-					 'filter'=>array('packaging'=>true,"deal"=> true),
-					 'boards'=>$boardarr,
-					 'sourceMarket'=> "US",
-					 'remark' => 'Require non-smoking room',
-				
-
+		$brdlist=array('RO','BB','AI','HB','FB','RR','AB','DB','GB','IB','LB');
+		$boardarr =array('included'=>true,'board'=>$brdlist);
+		
+		
+		$reviewsArr[] =array('type'=>'TRIPADVISOR','maxRate'=>5,'minReviewCount'=>1);
+		$accommodationsArr=array('HOTEL','RESORT','HOSTEL','HOMES','APTHOTEL','APARTMENT');
+		$postdata =array('language'=>'ENG',
+	                     'currency'=>'USD', 
+		                 'stay'=>array('checkIn'=>$checkIn,'checkOut'=>$checkOut),  //,'shiftDays'=>0
+		                 'occupancies'=>$occupancies,
+	                     'hotels'=>$hotel,//['893849','893839']
+						 'filter'=>array('packaging'=>true,"deal"=> true),
+						 'boards'=>$boardarr,
+						 'sourceMarket'=> "US",
+						 'remark' => 'Require non-smoking room',
+					
 					 //'filter'=>array('accommodations'=>$accommodationsArr)
 					 //'accommodations'=>$accommodationsArr
 	                );
-// dd($postdata);
+                   // dd($postdata);
 
-//echo "<pre>postdata=="; print_r($postdata);
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, $actionUrl);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-	curl_setopt($ch, CURLOPT_POST, 1);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postdata));
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headerData);
-     $response = curl_exec($ch);
-	curl_close($ch);	
-		$this->createLogFile('GetHotelList',json_encode($postdata),$response);		
-    $results =json_decode($response,true);	
-   // dd($results,$actionUrl,$postdata,$this->headerData);
-    // dd($results);
-	
-	// $this->createLogFile('Search',json_encode($postdata).$endpoint.'('.$size.'--sendHotels-'.$totalsendhotel.')'.'---'.'(getHotels-'.count($hotelData).')',$response);
+			     
 
-	$data=array();
-	if(isset($results['hotels']['hotels'])){
+			     //echo "<pre>postdata=="; print_r($postdata);
+				$ch = curl_init();
+				curl_setopt($ch, CURLOPT_URL, $actionUrl);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+				curl_setopt($ch, CURLOPT_POST, 1);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postdata));
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+				curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headerData);
+			     $response = curl_exec($ch);
+				curl_close($ch);	
+					$this->createLogFile('GetHotelListNew',json_encode($postdata),$response);		
+			    $results =json_decode($response,true);	
+			   // dd($results,$actionUrl,$postdata,$this->headerData);
+			    // dd($results);
+				
+				// $this->createLogFile('Search',json_encode($postdata).$endpoint.'('.$size.'--sendHotels-'.$totalsendhotel.')'.'---'.'(getHotels-'.count($hotelData).')',$response);
+
+	        $data=array();
+	   if(isset($results['hotels']['hotels'])){
 		// dd(1270);
 		// dd($postdata,$results);
 		$hotelData =$results['hotels']['hotels']; 
 		$dd=count($hotelData);
 		// dd($dd);
 		$status =200; 
-		//$data=array('regionid'=>$regionid,'destination'=>$destination,'rooms'=>$rooms,'adults'=>$adults,'childs'=>$childs,'checkIn'=>$checkIn,'checkOut'=>$checkOut);
-		//$data['HotelLists'] =array('size'=>$size,'PropertyCount'=>$PropertyCount);
 		
 		for($i=0;$i<count($hotelData);$i++){	
 		// for($i=0;$i<10;$i++){	
@@ -453,8 +374,7 @@ if (isset($data['hotels']) && is_array($data['hotels'])) {
 				
 		 
 		 if(isset($hotelData[$i]['reviews'])){ $tripAdvisorArr =$hotelData[$i]['reviews'][0]; } else { $tripAdvisorArr=array('rate'=>0.0,'reviewCount'=>0); }
-		// $query =DB::select("select rating,address,city,country,img_path,content,recommended,selling_points from hotelbeds_hotels WHERE hotel_id='".$hotel_id."'");
-		//$obj =$query[0];
+		
 		 
 		 // hotel details
 		$apiUrl = "https://api.hotelbeds.com/hotel-content-api/1.0/hotels/".$hotel_id."/details?language=ENG&useSecondaryLanguage=False";
@@ -477,29 +397,7 @@ if (isset($data['hotels']) && is_array($data['hotels'])) {
 		 $longitude =$hotelData[$i]['longitude'];
 		 $distance =''; //$this->distance($latitude, $longitude, $lat, $lng, '');
 
-		 // dd($apiUrl,$StarRating1,$StarRating,$rates,$latitude,$longitude,$hotelData[$i]['categoryName'],$obj);
-		 // dd($obj->hotel->accommodationType->typeMultiDescription->content);
-		 // dd($obj->hotel->facilities);
-		 // dd($obj->hotel->images[0]->path);
-
-
-		 // ======================================== 1
-		// if (isset($obj->content)) {
-		//     // Decode 'content' property
-		//    $content =json_decode($obj->content,true);
-				 
-
-
-		// } else {
-		//     // Skip to the next iteration if 'content' property is missing
-		//     // dd($obj);
-		//     continue;
-		// }
-		// ====================================== 1
-		 
-		 // $content =json_decode($obj->content,true);
-		 
-		 // $accommodationTypeCode =$content['accommodationTypeCode'];
+		
 		 $accommodationTypeCode=$obj->hotel->accommodationType->typeMultiDescription->content;
 		
 		 $facilities =$obj->hotel->facilities;
@@ -528,8 +426,7 @@ if (isset($data['hotels']) && is_array($data['hotels'])) {
 
 		  $api_currency=$hotelData[$i]['currency'];
 
-		 // $imgage_path=$this->checkThumbNail('http://photos.hotelbeds.com/giata/'.$obj->hotel->images[0]->path);
-		 // dd(12);
+		
 		   if (isset($obj->hotel->images) && is_array($obj->hotel->images) && count($obj->hotel->images) > 0) {
 			    $imgage_path = $this->checkThumbNail('http://photos.hotelbeds.com/giata/' . $obj->hotel->images[0]->path);
 			    $imgAllow=true;
@@ -538,10 +435,13 @@ if (isset($data['hotels']) && is_array($data['hotels'])) {
 			    $imgAllow=false;
 			}
 		 if($lowRate<100000 && $imgAllow==true){
-		 	// dd(1,$obj);
-		 	// dd($api_price);
-		 	// dd($obj->hotel->address->content);
-			 $data=array(
+		 
+		 	  // Initialize session key if it doesn't exist
+			    if (!session()->has('hotel_data')) {
+			        session(['hotel_data' => []]);
+			    }
+
+			   $data=array(
 					'EANHotelID'=>$hotel_id,
 					'Name'=>$this->clean($hotelData[$i]['name']),//
 					'address1'=>$this->clean($obj->hotel->address->content),//
@@ -604,14 +504,22 @@ if (isset($data['hotels']) && is_array($data['hotels'])) {
 					'child_age'=>$childAge,
 					'product'=>'Hotelbeds',
 				);
+
+			    // Append directly to session without manually fetching and reassigning
+                session()->push('hotel_data', $data);
+
+
+			    
 			     // dd($adults);
 				// echo "<pre>"; print_r($i); 
 				//chk if name exisit or not
-				$chk=DB::table('search_results_hotelbeds')->where('search_session',$search_Session_Id)->where('name',$this->clean($hotelData[$i]['name']))->first();
-				if(!$chk){
-					//db insert code
-				    $status = Crud_Model::insertData('search_results_hotelbeds',$data);
-			    }
+
+				// $chk=DB::table('search_results_hotelbeds')->where('search_session',$search_Session_Id)->where('name',$this->clean($hotelData[$i]['name']))->first();
+				// if(!$chk){
+				// 	//db insert code
+				//     $status = Crud_Model::insertData('search_results_hotelbeds',$data);
+			    // }
+
 				
 			}// avoid unwanted hotel
 		 
@@ -644,7 +552,7 @@ if (isset($data['hotels']) && is_array($data['hotels'])) {
 	  $data =array('isFind'=>$isFind,'pageCount'=>$pageCount,'total_records'=>$PropertyCount,'search_Session_Id'=>$search_Session_Id,'teststatus'=>$status);
 	  echo json_encode($data);	 
 	} 
-// GetHotelList List End
+// GetHotelListNew List End
 	
 
 
@@ -800,142 +708,297 @@ public function getdetails($id){
 
 
 
-// Show_Hotels Start
-	public function Show_Hotels(Request $request){
-		$limit =30;
-		if(($request["page"]<1) || ($request["page"]=='')){
-			$page = 0;
-		}else{
-			$page = ( ($request["page"]) * $limit);
-		}
+// Show_Hotels_New Start
+	// public function Show_Hotels_New(Request $request){
+	// 	$limit =30;
+	// 	if(($request["page"]<1) || ($request["page"]=='')){
+	// 		$page = 0;
+	// 	}else{
+	// 		$page = ( ($request["page"]) * $limit);
+	// 	}
 
-		// dd($page,$limit);
-		$sortValArr=explode('_',$request["sortVal"]);
-		$search_session=$request['search_id'];
-		$orderBy=' order by '.$sortValArr[0].' '.$sortValArr[1];
-		$moreQuery=" where search_session='".$search_session."' ";
-		$data = array();
-		if($request['price']!=''){
-			$price =str_replace(' ','',$request['price']);
-			$priceArr =explode('-',$price);
-			$minPrice =$priceArr[0];
-			$maxPrice =$priceArr[1];
-			$moreQuery.= " AND (lowRate >= ".$minPrice." AND lowRate<=".$maxPrice.")";
-			 $page=0;
-		     $limit =70;
-		} 
+	// 	// dd($page,$limit);
+	// 	$sortValArr=explode('_',$request["sortVal"]);
+	// 	$search_session=$request['search_id'];
+	// 	$orderBy=' order by '.$sortValArr[0].' '.$sortValArr[1];
+	// 	$moreQuery=" where search_session='".$search_session."' ";
+	// 	$data = array();
+	// 	if($request['price']!=''){
+	// 		$price =str_replace(' ','',$request['price']);
+	// 		$priceArr =explode('-',$price);
+	// 		$minPrice =$priceArr[0];
+	// 		$maxPrice =$priceArr[1];
+	// 		$moreQuery.= " AND (lowRate >= ".$minPrice." AND lowRate<=".$maxPrice.")";
+	// 		 $page=0;
+	// 	     $limit =70;
+	// 	} 
 		
-		$Cri_Rating=substr($request['Cri_Rating'],0,-1);
-		$Cri_Rating =explode(",",$request['Cri_Rating']); 
-		$Cri_Rating =array_filter($Cri_Rating);
-		if(count($Cri_Rating)>0) {
-		 $moreQuery.= " AND hotelRating IN (";	
-		 $RatingStr ='';
-		 foreach($Cri_Rating as $v){   
-		  $RatingStr.= " '".$v."',"; 	 
-		 }
-		 $rating =substr($RatingStr,0,-1);
-		 $moreQuery.=$rating;
-		 $moreQuery.= " )";   
-		 $page=0;
-		 $limit =70;
-		}
+	// 	$Cri_Rating=substr($request['Cri_Rating'],0,-1);
+	// 	$Cri_Rating =explode(",",$request['Cri_Rating']); 
+	// 	$Cri_Rating =array_filter($Cri_Rating);
+	// 	if(count($Cri_Rating)>0) {
+	// 	 $moreQuery.= " AND hotelRating IN (";	
+	// 	 $RatingStr ='';
+	// 	 foreach($Cri_Rating as $v){   
+	// 	  $RatingStr.= " '".$v."',"; 	 
+	// 	 }
+	// 	 $rating =substr($RatingStr,0,-1);
+	// 	 $moreQuery.=$rating;
+	// 	 $moreQuery.= " )";   
+	// 	 $page=0;
+	// 	 $limit =70;
+	// 	}
 		
 		
-		$Cri_board=substr($request['Cri_board'],0,-1);
-		$Cri_board =explode(",",$request['Cri_board']); 
-		$Cri_board =array_filter($Cri_board);
-		if(count($Cri_board)>0) {
-		 $moreQuery.= " AND boardName IN (";	
-		 $boardStr ='';
-		 foreach($Cri_board as $v){   
-		  $boardStr.= " '".$v."',"; 	 
-		 }
-		 $board =substr($boardStr,0,-1);
-		 $moreQuery.=$board;
-		 $moreQuery.= " )";   
-		}
+	// 	$Cri_board=substr($request['Cri_board'],0,-1);
+	// 	$Cri_board =explode(",",$request['Cri_board']); 
+	// 	$Cri_board =array_filter($Cri_board);
+	// 	if(count($Cri_board)>0) {
+	// 	 $moreQuery.= " AND boardName IN (";	
+	// 	 $boardStr ='';
+	// 	 foreach($Cri_board as $v){   
+	// 	  $boardStr.= " '".$v."',"; 	 
+	// 	 }
+	// 	 $board =substr($boardStr,0,-1);
+	// 	 $moreQuery.=$board;
+	// 	 $moreQuery.= " )";   
+	// 	}
 		
-		$Cri_product=substr($request['Cri_product'],0,-1);
-		$Cri_product =explode(",",$request['Cri_product']); 
-		$Cri_product =array_filter($Cri_product);
-		if(count($Cri_product)>0) {
-		 $moreQuery.= " AND product IN (";	
-		 $productStr ='';
-		 foreach($Cri_product as $v){   
-		  $productStr.= " '".$v."',"; 	 
-		 }
-		 $product =substr($productStr,0,-1);
-		 $moreQuery.=$product;
-		 $moreQuery.= " )";   
-		}
+	// 	$Cri_product=substr($request['Cri_product'],0,-1);
+	// 	$Cri_product =explode(",",$request['Cri_product']); 
+	// 	$Cri_product =array_filter($Cri_product);
+	// 	if(count($Cri_product)>0) {
+	// 	 $moreQuery.= " AND product IN (";	
+	// 	 $productStr ='';
+	// 	 foreach($Cri_product as $v){   
+	// 	  $productStr.= " '".$v."',"; 	 
+	// 	 }
+	// 	 $product =substr($productStr,0,-1);
+	// 	 $moreQuery.=$product;
+	// 	 $moreQuery.= " )";   
+	// 	}
 		
-		$accommodationType=substr($request['accommodationType'],0,-1);
-		$accommodationType =explode(",",$request['accommodationType']); 
-		$accommodationType =array_filter($accommodationType);
-		if(count($accommodationType)>0) {
-		 $moreQuery.= " AND accommodationTypeCode IN (";	
-		 $accommodationTypeStr ='';
-		 foreach($accommodationType as $v){   
-		  $accommodationTypeStr.= " '".$v."',"; 	 
-		 }
-		 $accommodation =substr($accommodationTypeStr,0,-1);
-		 $moreQuery.=$accommodation;
-		 $moreQuery.= " )";   
-		}
+	// 	$accommodationType=substr($request['accommodationType'],0,-1);
+	// 	$accommodationType =explode(",",$request['accommodationType']); 
+	// 	$accommodationType =array_filter($accommodationType);
+	// 	if(count($accommodationType)>0) {
+	// 	 $moreQuery.= " AND accommodationTypeCode IN (";	
+	// 	 $accommodationTypeStr ='';
+	// 	 foreach($accommodationType as $v){   
+	// 	  $accommodationTypeStr.= " '".$v."',"; 	 
+	// 	 }
+	// 	 $accommodation =substr($accommodationTypeStr,0,-1);
+	// 	 $moreQuery.=$accommodation;
+	// 	 $moreQuery.= " )";   
+	// 	}
 				
-		$Cri_amenity=substr($request['Cri_amenity'],0,-1);
-		$Cri_amenity =explode(",",$request['Cri_amenity']); 
-		$Cri_amenity =array_filter($Cri_amenity);
-		if(count($Cri_amenity)>0) {
-		 foreach($Cri_amenity as $v){  $moreQuery.= " AND valueAdds like '%".$v."%' ";	 }
-		}
+	// 	$Cri_amenity=substr($request['Cri_amenity'],0,-1);
+	// 	$Cri_amenity =explode(",",$request['Cri_amenity']); 
+	// 	$Cri_amenity =array_filter($Cri_amenity);
+	// 	if(count($Cri_amenity)>0) {
+	// 	 foreach($Cri_amenity as $v){  $moreQuery.= " AND valueAdds like '%".$v."%' ";	 }
+	// 	}
 		
-		// if($request['hotel_name']!='') {
-		// $hotel_name=trim($request['hotel_name']);
-		//  $moreQuery.= " AND Name like '%".$hotel_name."%' ";
-		//  $page=1;	 
-		// }
+	// 	// if($request['hotel_name']!='') {
+	// 	// $hotel_name=trim($request['hotel_name']);
+	// 	//  $moreQuery.= " AND Name like '%".$hotel_name."%' ";
+	// 	//  $page=1;	 
+	// 	// }
 
-		if (!empty($request['hotel_name'])) {
-		    $hotel_name = trim($request['hotel_name']);
+	// 	if (!empty($request['hotel_name'])) {
+	// 	    $hotel_name = trim($request['hotel_name']);
 
-		    // Create the three variations: lowercase, capitalize first letter, uppercase
-		    $lower_name = strtolower($hotel_name);
-		    $capital_name = ucfirst(strtolower($hotel_name));
-		    $upper_name = strtoupper($hotel_name);
-		     $title_case_name = ucwords(strtolower($hotel_name)); 
+	// 	    // Create the three variations: lowercase, capitalize first letter, uppercase
+	// 	    $lower_name = strtolower($hotel_name);
+	// 	    $capital_name = ucfirst(strtolower($hotel_name));
+	// 	    $upper_name = strtoupper($hotel_name);
+	// 	     $title_case_name = ucwords(strtolower($hotel_name)); 
 
-		    // Add conditions to check for all three variations
-		    $moreQuery .= " AND (Name LIKE '%" . $lower_name . "%' 
-		                    OR Name LIKE '%" . $capital_name . "%' 
-		                    OR Name LIKE '%" . $upper_name . "%'
-		                      OR Name LIKE '%" . $title_case_name . "%'
-		                    OR Name like '%".$hotel_name."%' )";
-		    $page = 0;
-		    $limit =70;
-		}
+	// 	    // Add conditions to check for all three variations
+	// 	    $moreQuery .= " AND (Name LIKE '%" . $lower_name . "%' 
+	// 	                    OR Name LIKE '%" . $capital_name . "%' 
+	// 	                    OR Name LIKE '%" . $upper_name . "%'
+	// 	                      OR Name LIKE '%" . $title_case_name . "%'
+	// 	                    OR Name like '%".$hotel_name."%' )";
+	// 	    $page = 0;
+	// 	    $limit =70;
+	// 	}
 
 		
-		$totalresults = DB::select("select count(*) as totalcount from search_results_hotelbeds ".$moreQuery." ");
-		$totalObjs =$totalresults[0]; $totalcount=$totalObjs->totalcount;	
+	// 	$totalresults = DB::select("select count(*) as totalcount from search_results_hotelbeds ".$moreQuery." ");
+	// 	$totalObjs =$totalresults[0]; $totalcount=$totalObjs->totalcount;	
 		
-		$results = DB::select("select * from search_results_hotelbeds ".$moreQuery." ".$orderBy." LIMIT ".$page.", $limit");  
-		// dd($results,"select * from search_results_hotelbeds ".$moreQuery." ".$orderBy." LIMIT ".$page.", $limit");
-		$datatype=''; $promoDescription=''; $isFavourate=''; $hotelFlight=''; $policyMatch=''; $inpolicy=''; $apply_rule_on=''; $currentAllotment='';
+	// 	$results = DB::select("select * from search_results_hotelbeds ".$moreQuery." ".$orderBy." LIMIT ".$page.", $limit");  
+	// 	// dd($results,"select * from search_results_hotelbeds ".$moreQuery." ".$orderBy." LIMIT ".$page.", $limit");
+	// 	$datatype=''; $promoDescription=''; $isFavourate=''; $hotelFlight=''; $policyMatch=''; $inpolicy=''; $apply_rule_on=''; $currentAllotment='';
 
 
 
-		        $admin_model_obj = new \App\Models\CommonFunctionModel;
-                $toCurrencyRate = $admin_model_obj->getFromToCurrencyRate(1.00,'USD', 'USD');
+	// 	        $admin_model_obj = new \App\Models\CommonFunctionModel;
+ //                $toCurrencyRate = $admin_model_obj->getFromToCurrencyRate(1.00,'USD', 'USD');
                
 
 
-		foreach($results as $Objs ){ 
-			$amenetyData= ""; //$this->getdetails($Objs->id);
+	// 	foreach($results as $Objs ){ 
+	// 		$amenetyData= ""; //$this->getdetails($Objs->id);
 
-			 $OfferedPriceRoundedOff = $admin_model_obj->displayFinalRates($Objs->lowRate, $toCurrencyRate);
+	// 		 $OfferedPriceRoundedOff = $admin_model_obj->displayFinalRates($Objs->lowRate, $toCurrencyRate);
 
+ //                //dd($original_single_price,$OfferedPriceRoundedOff);
+ //                $single_price = (($OfferedPriceRoundedOff) * 2);
+ //                $wholesale_price = ($single_price / 2);
+ //                $free_with_amples = 0.00;
+ //                $no_of_amples = 0.00;
+ //                $discount_price = 0.00;
+ //                $discount = 0.00;
+ //                $FinalTextAmount = 0.00;
+ //                $calculateDiscount = ((($single_price - $wholesale_price) * 100) / $single_price);
+ //                $discount = round($calculateDiscount, 2);
+ //                $discount_price = (($single_price * $discount) / 100);
+ //                $discount_margin = $discount_price;
+ //                $buyandearnamples = ($discount_margin / .12);
+ //                $no_of_amples = $buyandearnamples;
+ //                $buyandearn=$admin_model_obj->DisplayAmplePoints($no_of_amples);
+ //                 $reward=$discount_price;
+ //                 $youearn=$discount."%";
+
+ //                 $free_with_amples = ($single_price / .12);
+ //                 $free=$admin_model_obj->DisplayAmplePoints($free_with_amples);
+
+
+	// 		// dd($amenetyData);
+	// 			$data['result'][] =array('free'=>$free,'buyandearn'=>$buyandearn,'reward'=>$reward,'youearn'=>$youearn,'no_of_amples'=>$no_of_amples,'amenetyData'=>$amenetyData,'tid'=>$Objs->id,'total'=>$totalcount,'datatype'=>$datatype,'EANHotelID'=>$Objs->EANHotelID,'Name'=>$Objs->Name,'thumbnail'=>$Objs->thumbNailUrl,'StarRating'=>round((int)$Objs->hotelRating),'popularity'=>$Objs->confidenceRating,'tripAdvisorRating'=>$Objs->tripAdvisorRating,'tripAdvisorReviewCount'=>$Objs->tripAdvisorReviewCount,'tripAdvisorRatingUrl'=>'','Address1'=>$Objs->address1,'Address2'=>$Objs->address2,'City'=>$Objs->city,'locationDescription'=>$Objs->locationDescription, 'LowRate'=>$Objs->lowRate,'currency_symbol'=>$this->currency_symbol,'HighRate'=>round((int)$Objs->highRate,0),'discount_price'=>$Objs->discount_price,'nonRefundable'=>$Objs->nonRefundable,'Latitude'=>$Objs->latitude,'Longitude'=>$Objs->longitude,'rateClass_Name'=>$Objs->rateClass,'rateClass'=>$Objs->rateClass,'rateType'=>$Objs->rateType,'paymentType'=>$Objs->paymentType,'promoDescription'=>$promoDescription,'currentAllotment'=>$currentAllotment,'is_custom'=>$Objs->is_custom,'isActive'=>$Objs->isActive,'isFavourate'=>$isFavourate,'hotelFlight'=>$hotelFlight,'policyMatch'=>$policyMatch,'inpolicy'=>$inpolicy,'apply_rule_on'=>$apply_rule_on,'boardName'=>$Objs->boardName,'recommended'=>$Objs->recommended,'selling_points'=>$Objs->selling_points,'valueAdds'=>explode(',',$Objs->valueAdds),'product'=>$Objs->product,'accommodationType'=>$Objs->accommodationTypeCode); 	 
+	// 	}
+	// $datastr = json_encode($data);    
+	// echo $datastr;
+	// die;
+	// }  
+// Show_hotel() End
+	
+
+
+
+
+
+
+
+
+public function Show_Hotels_New(Request $request) {
+    $limit = 30;
+    $page = ($request->input('page', 1) < 1) ? 0 : ($request->input('page') - 1) * $limit;
+
+    // $sortValArr = explode('_', $request->input("sortVal", "Name_asc"));
+    $search_session = $request->input('search_id');
+    $data = [];
+
+    // Retrieve the hotel data from the session
+    $hotels = collect(session()->get('hotel_data', []))->filter(function ($hotel) use ($search_session) {
+        return $hotel['search_session'] == $search_session;
+    });
+
+    // dd(count($hotels),$hotels);
+
+    // Filter by price range if provided
+    if ($request->filled('price')) {
+        [$minPrice, $maxPrice] = explode('-', str_replace(' ', '', $request->input('price')));
+        $minPrice=1;
+        $maxPrice=500;
+        $hotels = $hotels->filter(function ($hotel) use ($minPrice, $maxPrice) {
+            return $hotel['lowRate'] >= $minPrice && $hotel['lowRate'] <= $maxPrice;
+        });
+        $page = 0;
+        $limit = 70;
+    }
+
+    // Filter by rating
+    if ($request->filled('Cri_Rating')) {
+    	// dd(1);
+        $Cri_Rating = array_filter(explode(",", $request->input('Cri_Rating')));
+        $hotels = $hotels->filter(function ($hotel) use ($Cri_Rating) {
+            return in_array($hotel['hotelRating'], $Cri_Rating);
+        });
+        $page = 0;
+        $limit = 70;
+        // dd(count($hotels));
+    }
+    // dd(count($hotels));
+
+    // Filter by board type
+    if ($request->filled('Cri_board')) {
+        $Cri_board = array_filter(explode(",", $request->input('Cri_board')));
+        $hotels = $hotels->filter(function ($hotel) use ($Cri_board) {
+            return in_array($hotel['boardName'], $Cri_board);
+        });
+    }
+
+    // Filter by product type
+    if ($request->filled('Cri_product')) {
+        $Cri_product = array_filter(explode(",", $request->input('Cri_product')));
+        $hotels = $hotels->filter(function ($hotel) use ($Cri_product) {
+            return in_array($hotel['product'], $Cri_product);
+        });
+    }
+
+    // Filter by accommodation type
+    if ($request->filled('accommodationType')) {
+        $accommodationTypes = array_filter(explode(",", $request->input('accommodationType')));
+        $hotels = $hotels->filter(function ($hotel) use ($accommodationTypes) {
+            return in_array($hotel['accommodationTypeCode'], $accommodationTypes);
+        });
+    }
+
+    // Filter by amenities
+    if ($request->filled('Cri_amenity')) {
+        $Cri_amenity = array_filter(explode(",", $request->input('Cri_amenity')));
+        foreach ($Cri_amenity as $amenity) {
+            $hotels = $hotels->filter(function ($hotel) use ($amenity) {
+                return str_contains($hotel['valueAdds'], $amenity);
+            });
+        }
+    }
+
+    // Filter by hotel name with case variations
+    if ($request->filled('hotel_name')) {
+        $hotel_name = trim($request->input('hotel_name'));
+        $nameVariants = [
+            strtolower($hotel_name),
+            ucfirst(strtolower($hotel_name)),
+            strtoupper($hotel_name),
+            ucwords(strtolower($hotel_name)),
+            $hotel_name
+        ];
+        $hotels = $hotels->filter(function ($hotel) use ($nameVariants) {
+            return collect($nameVariants)->contains(function ($variant) use ($hotel) {
+                return stripos($hotel['Name'], $variant) !== false;
+            });
+        });
+        $page = 0;
+        $limit = 70;
+    }
+
+    // Apply sorting
+ if($request["sortVal"]!=""){
+    $sortValArr = explode('_', $request->input("sortVal"));
+    $sortField = $sortValArr[0];
+    $sortDirection = strtolower($sortValArr[1]) === 'desc' ? 'desc' : 'asc';
+    $hotels = $hotels->sortBy($sortField, SORT_REGULAR, $sortDirection === 'desc');
+}
+
+    // Paginate results
+    $totalcount = $hotels->count();
+    $hotels = $hotels->slice($page, $limit);
+
+    // Initialize the admin model
+    $admin_model_obj = new \App\Models\CommonFunctionModel;
+    $toCurrencyRate = $admin_model_obj->getFromToCurrencyRate(1.00, 'USD', 'USD');
+   	$datatype=''; $promoDescription=''; $isFavourate=''; $hotelFlight=''; $policyMatch=''; $inpolicy=''; $apply_rule_on=''; $currentAllotment='';
+
+
+  // dd(count($hotels),$hotels);
+    // Build response data
+    foreach ($hotels as $hotel) {
+    	// dd($hotel['lowRate'],$hotel['thumbNailUrl']);
+              $OfferedPriceRoundedOff = $admin_model_obj->displayFinalRates(@$hotel['lowRate'], $toCurrencyRate);
                 //dd($original_single_price,$OfferedPriceRoundedOff);
                 $single_price = (($OfferedPriceRoundedOff) * 2);
                 $wholesale_price = ($single_price / 2);
@@ -957,16 +1020,55 @@ public function getdetails($id){
                  $free_with_amples = ($single_price / .12);
                  $free=$admin_model_obj->DisplayAmplePoints($free_with_amples);
 
+      $data['result'][] = [
+		    'free' => $admin_model_obj->DisplayAmplePoints($free_with_amples),
+            'buyandearn' => $admin_model_obj->DisplayAmplePoints($buyandearnamples),
+            'reward' => $discount_price,
+            'youearn' => $discount . "%",
+            'no_of_amples' => $buyandearnamples,
+            'tid' => @$hotel['EANHotelID'],
+            'total' => $totalcount,
+            'Name' => @$hotel['Name'],
+            'thumbnail'=>@$hotel['thumbNailUrl'],
+            'StarRating' => round((int)@$hotel['hotelRating']),
+            'LowRate' => @$hotel['lowRate'],
+            'HighRate' => round((int)@$hotel['highRate'], 0),
+            'Latitude' => @$hotel['latitude'],
+            'Longitude' => @$hotel['longitude'],
+            'Address1' => @$hotel['address1'],
+		    'Address2' => @$hotel['address2'], // If you have this field
 
-			// dd($amenetyData);
-				$data['result'][] =array('free'=>$free,'buyandearn'=>$buyandearn,'reward'=>$reward,'youearn'=>$youearn,'no_of_amples'=>$no_of_amples,'amenetyData'=>$amenetyData,'tid'=>$Objs->id,'total'=>$totalcount,'datatype'=>$datatype,'EANHotelID'=>$Objs->EANHotelID,'Name'=>$Objs->Name,'thumbnail'=>$Objs->thumbNailUrl,'StarRating'=>round((int)$Objs->hotelRating),'popularity'=>$Objs->confidenceRating,'tripAdvisorRating'=>$Objs->tripAdvisorRating,'tripAdvisorReviewCount'=>$Objs->tripAdvisorReviewCount,'tripAdvisorRatingUrl'=>'','Address1'=>$Objs->address1,'Address2'=>$Objs->address2,'City'=>$Objs->city,'locationDescription'=>$Objs->locationDescription, 'LowRate'=>$Objs->lowRate,'currency_symbol'=>$this->currency_symbol,'HighRate'=>round((int)$Objs->highRate,0),'discount_price'=>$Objs->discount_price,'nonRefundable'=>$Objs->nonRefundable,'Latitude'=>$Objs->latitude,'Longitude'=>$Objs->longitude,'rateClass_Name'=>$Objs->rateClass,'rateClass'=>$Objs->rateClass,'rateType'=>$Objs->rateType,'paymentType'=>$Objs->paymentType,'promoDescription'=>$promoDescription,'currentAllotment'=>$currentAllotment,'is_custom'=>$Objs->is_custom,'isActive'=>$Objs->isActive,'isFavourate'=>$isFavourate,'hotelFlight'=>$hotelFlight,'policyMatch'=>$policyMatch,'inpolicy'=>$inpolicy,'apply_rule_on'=>$apply_rule_on,'boardName'=>$Objs->boardName,'recommended'=>$Objs->recommended,'selling_points'=>$Objs->selling_points,'valueAdds'=>explode(',',$Objs->valueAdds),'product'=>$Objs->product,'accommodationType'=>$Objs->accommodationTypeCode); 	 
-		}
-	$datastr = json_encode($data);    
-	echo $datastr;
-	die;
-	}  
-// Show_hotel() End
-	
+
+		    'City' => @$hotel['city'],
+		    'locationDescription' => @$hotel['locationDescription'], // Add if exists
+		    'LowRate' => @$hotel['lowRate'],
+		    'currency_symbol' => $this->currency_symbol, // Assuming you have this method
+		    'HighRate' => round((int)@$hotel['highRate'], 0),
+		    'discount_price' => @$hotel['discount_price'], // Assuming this exists
+		    'nonRefundable' => @$hotel['nonRefundable'], // If applicable
+		    'currentAllotment' => $currentAllotment, // Assuming you have this value
+		    'is_custom' => @$hotel['is_custom'],
+		    'isActive' => @$hotel['isActive'],
+		    'isFavourate' => $isFavourate, // Add logic to set this as needed
+		    'hotelFlight' => $hotelFlight, // If you have this logic
+		    'policyMatch' => $policyMatch, // Assuming you have this variable set
+		    'inpolicy' => $inpolicy, // Assuming you have this variable set
+		    'apply_rule_on' => $apply_rule_on, // Assuming you have this variable set
+		    'boardName' => @$hotel['boardName'],
+		    'recommended' => @$hotel['recommended'], // If applicable
+		    'selling_points' => @$hotel['selling_points'], // If applicable
+		    'valueAdds' => explode(',', @$hotel['valueAdds']), // Assuming this is a comma-separated list
+		    'product' => @$hotel['product'],
+		    'accommodationType' => @$hotel['accommodationTypeCode'],
+		    // Add other fields as needed based on your database structure
+        ];
+
+    }
+    // dd($data);
+
+
+    return response()->json($data);
+}
 
 
 
@@ -2233,6 +2335,285 @@ public function createLanding($toIATA,$api_currency,$total_amount,$search_id,$im
 				$status = Crud_Model::updateData('pages',$data,array('city_to_code'=>$citySingelTO->code,'type'=>'landing','type_name'=>'hotels'));
 			}
 			}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public function HotelDetails($id,$hotel_name){
+
+	 // $id=base64_decode($id);
+
+	 $searchId = $id;
+     $hotelData = Session::get('hotel_data', []);
+     $matchedHotel = collect($hotelData)->firstWhere('EANHotelID', $searchId);
+
+     // dd($hotelData,$matchedHotel,$searchId);
+     
+     if ($matchedHotel) {
+    $data = array(
+        'EANHotelID' => $matchedHotel['EANHotelID'],
+        'Name' => $matchedHotel['Name'],
+        'address1' => $matchedHotel['address1'],
+        'address2' => $matchedHotel['address2'],
+        'city' => $matchedHotel['city'],
+        'postalCode' => '',
+        'countryCode' => $matchedHotel['countryCode'],
+        'propertyCategory' => '',
+        'hotelRating' => $matchedHotel['hotelRating'] ?? null,
+        'hotelRatingDisplay' => 'Star',
+        'confidenceRating' => '',
+        'amenityMask' => '',
+        'tripAdvisorRating' => $matchedHotel['tripAdvisorRating'] ?? null,
+        'tripAdvisorReviewCount' => $matchedHotel['tripAdvisorReviewCount'] ?? null,
+        'tripAdvisorRatingUrl' => '',
+        'promoDescription' => '',
+        'currentAllotment' => $matchedHotel['currentAllotment'] ?? null,
+        'shortDescription' => '',
+        'api_currency' => $matchedHotel['api_currency'] ?? null,
+        'api_price' => $matchedHotel['api_price'] ?? null,
+        'currency' => $this->currency,
+        'base_price' => $matchedHotel['base_price'] ?? null,
+        'admin_price' => $matchedHotel['admin_price'] ?? null,
+        'lowRate' => $matchedHotel['lowRate'] ?? null,
+        'highRate' => $matchedHotel['lowRate'] ?? null,
+        'discount_price' => $matchedHotel['lowRate'] ?? null,
+        'nonRefundable' => $matchedHotel['nonRefundable'] ?? null,
+        'latitude' => $matchedHotel['latitude'] ?? null,
+        'longitude' => $matchedHotel['longitude'] ?? null,
+        'proximityDistance' => $matchedHotel['proximityDistance'] ?? null,
+        'proximityUnit' => 'MI',
+        'hotelInDestination' => $matchedHotel['hotelInDestination'] ?? null,
+        'thumbNailUrl' => $matchedHotel['thumbNailUrl'] ?? null,
+        'desti_lat_lon' => $matchedHotel['desti_lat_lon'] ?? null,
+        'boardName' => $matchedHotel['boardName'] ?? null,
+        'valueAdds' => $matchedHotel['valueAdds'] ?? null,
+        'rateClass' => $matchedHotel['rateClass'] ?? null,
+        'rateType' => $matchedHotel['rateType'] ?? null,
+        'paymentType' => $matchedHotel['paymentType'] ?? null,
+        'accommodationTypeCode' => $matchedHotel['accommodationTypeCode'] ?? null,
+        'date_time' => date("Y-m-d h:i:s"),
+        'checkin' => $matchedHotel['checkin'] ?? null,
+        'checkout' => $matchedHotel['checkout'] ?? null,
+        'language' => 'en',
+        'search_session' => $matchedHotel['search_session'] ?? null,
+        'recommended' => 0,
+        'selling_points' => '',
+        'room_details' => $matchedHotel['room_details'] ?? [],
+        'hotelDetails' => $matchedHotel['hotelDetails'],
+        'sort_order' => 0,
+        'rooms' => $matchedHotel['rooms'] ?? null,
+        'Cri_Adults' =>$matchedHotel['Cri_Adults'] ?? [],
+        'Cri_Childs' => $matchedHotel['Cri_Childs'] ?? null,
+        'child_age' => $matchedHotel['child_age'] ?? null,
+        'product' => 'Hotelbeds',
+    );
+    // dd($data);
+
+    // Insert data
+    // DB::table('search_results_hotelbeds')->insert($data);
+    $status = Crud_Model::insertData('search_results_hotelbeds', $data);
+}
+
+
+// dd($hotelData,$matchedHotel,$searchId,$status);
+$id=$status;
+
+
+
+
+	 $hotelSearchData = crud_model::readOne('search_results_hotelbeds',array('id'=>$id));
+	 // dd($hotelSearchData);
+	 $pageData = crud_model::readOne('pages',array('page_id'=>'hotel-details'));
+	 if($hotelSearchData->product=='Plistbooking'){ 
+	 	return view('hotel/hotel-details-plistbooking', array('hotelSearchData' => $hotelSearchData,'pageData' => $pageData,'hotelData' => '')); 
+	 }
+		//$hotelObj = crud_model::readOne('hotelbeds_hotels',array('hotel_id'=>$hotelSearchData->EANHotelID));
+		
+		// $apiUrl = "https://dev.plistbooking.travel/travel/hotel-update-rates.php?action=get_single_hotels&hotel_id=".$hotelSearchData->EANHotelID;
+		// $curl = curl_init();
+		// curl_setopt($curl, CURLOPT_URL, $apiUrl);
+		// curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		// $response = curl_exec($curl);
+		// $hotelObj=json_decode($response);
+
+	  $apiUrl = "https://api.hotelbeds.com/hotel-content-api/1.0/hotels/".$hotelSearchData->EANHotelID."/details?language=ENG&useSecondaryLanguage=False";
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, $apiUrl);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headerData);
+		$response = curl_exec($curl);
+		$hotelObj=json_decode($response);
+
+		
+		$hotelData = json_decode($hotelSearchData->hotelDetails, true);
+        // dd($hotelData);
+
+		if(count($hotelData)>0){
+			$currency =$hotelData['currency'];
+			$hotel_id =$hotelData['code'];
+			$RoomType =$hotelData['rooms'];
+			$countRoom =count($RoomType);
+		
+			// $contentArr =json_decode($hotelObj->content,true);
+			$contentArr=$hotelObj;
+			// dd($contentArr);
+			// return $hotelObj;
+			
+			$feature_image ='http://photos.hotelbeds.com/giata/xxl/'.$contentArr->hotel->images[0]->path;
+			// dd($contentArr,$feature_image);
+
+
+			if(isset($contentArr->hotel->images)){
+				$images =$contentArr->hotel->images;
+				$HotelImages[] =$feature_image;
+				foreach($images as $g){
+				 if($g->order!='1'){  
+				 $HotelImages[] ='http://photos.hotelbeds.com/giata/'.$g->path;  
+				 }	
+				}
+			}else{ 
+				$HotelImages[] =array('hotelImageId'=> '','name'=>'','url' =>''); 
+			}
+
+			$Pointsofinterest='';
+			if(isset($contentArr->hotel->interestPoints)){
+				$interestPoints=$contentArr->hotel->interestPoints; 
+				foreach($interestPoints as $v){
+				 $dis_km =($v->distance/1000);
+				 $dis_mile =($dis_km*0.62);	 
+				 $Pointsofinterest.=$v->poiName.' - '.$dis_km.' km / '.($dis_mile).' mi'.'<br />';
+				}
+			} else { 
+				$interestPoints=array(); 
+			}
+
+			// dd($HotelImages,$interestPoints);
+
+			$facilities=array(); 
+			$roomDetailDescription=array(); 
+			$amenetyData=array();
+			$paymentMethods=array();
+			$roomFacilities=array(); 
+			$businessAmenety=array(); 
+			$PointsofinterestArr=array();
+			
+			if(isset($contentArr->hotel->facilities)){ 
+				$facilities =$contentArr->hotel->facilities;
+				// dd($facilities);
+				foreach($facilities as $f){
+				 $groupCode =$f->facilityGroupCode;
+				 $facilityCode =$f->facilityCode;
+				 $facilityAmont =@$f->amount;
+				 // dd($facilityAmont);
+				 
+				 if(isset($f->number)){ $pre_content =$f->number;}
+				 else if(isset($f->indLogic) && $f->indLogic==true){ $pre_content ='Yes';}
+				 else if(isset($f->indLogic) && $f->indLogic==false){ $pre_content ='No';}
+				 else if(isset($f->indYesOrNo) && $f->indYesOrNo=true){ $pre_content ='Yes';}
+				 else if(isset($f->indYesOrNo) && $f->indYesOrNo=false){ $pre_content ='No';}
+				 else{ $pre_content ='';}
+				 
+				/* $fSql =mysqli_query($con,"select content from  hotelbeds_facilities WHERE facilityGroupCode='".$groupCode."' and code='".$facilityCode."'");
+				 $fobj =mysqli_fetch_object($fSql);*/	
+				 
+				 $fobj = crud_model::readOne('hotelbeds_facilities',array('facilityGroupCode'=>$groupCode,'code'=>$facilityCode)); 
+				 if(is_object($fobj)){
+				 	 $content=$fobj->content;
+					  if($groupCode==10){
+						$roomDetailDescription[]= trim($content.': '.$pre_content); 
+					  }	
+					  if($groupCode==70){
+						$amenetyData[]= array('id'=>$facilityCode,'amenity'=>$content,'amount'=>$facilityAmont); 
+
+					  }
+					  if($groupCode==30){
+						$paymentMethods[]= array('id'=>$facilityCode,'title'=>$content); 
+					  }else{ $paymentMethods=array(); }
+					 
+					  if($groupCode==60){
+						$roomFacilities[]=array('id'=>$facilityCode,'title'=>trim($content.': '.$pre_content));
+					  }
+					  if($groupCode==72){
+						$businessAmenety[]= array('id'=>$facilityCode,'businessamenity'=>$content); 
+					  }
+					  
+					  if($groupCode==40){
+						$PointsofinterestArr[]= $content; 
+					  }
+					}
+				  
+				}
+			}
+			// dd($amenetyData,$facilities);
+			
+			if($Pointsofinterest==''){
+			 $Pointsofinterest =@implode("<br />",$PointsofinterestArr);	
+			}
+		   	
+
+
+		   	if(isset($contentArr->hotel->postalCode)){ $postalCode=$contentArr->hotel->postalCode; }else{ $postalCode='';}
+
+
+			 $HotelSummary =array('hotelId'=>$hotelData['code'],'Name'=>$hotelData['name'],'Address1'=>$hotelObj->hotel->address->content,'postalCode'=>$postalCode,'City'=>$hotelObj->hotel->city->content,'Country'=>$hotelObj->hotel->country->code,'hotelRating'=>trim(str_replace("STARS","",$hotelData['categoryName'])),'tripAdvisorRating'=>'','tripAdvisorReviewCount'=>$hotelObj->hotel->ranking,'latitude'=>$hotelObj->hotel->coordinates->latitude,'longitude'=>$hotelObj->hotel->coordinates->longitude,'recommended'=>0/*$hotelObj->recommended*/,'selling_points'=>""/*$hotelObj->selling_points*/);
+
+			 // dd($postalCode,$HotelSummary );
+			 
+			 
+			 $HotelDetails =array('numberOfRooms'=>0,'numberOfFloors'=>1,'checkInTime'=>'','checkOutTime'=>'','propertyInformation'=>'','areaInformation'=>$Pointsofinterest,'propertyDescription'=>$contentArr->hotel->description->content,'hotelPolicy'=>'','roomInformation'=>'','checkInInstructions'=>'','specialCheckInInstructions'=>'','Pointsofinterest'=>$Pointsofinterest,'knowBeforeYouGoDescription'=>'','roomFeesDescription'=>'','locationDescription'=>'','diningDescription'=>'','roomDetailDescription'=>@implode(", ",$roomDetailDescription),'roomFacilities'=>$roomFacilities,'paymentMethods'=>$paymentMethods);
+
+			 // dd($HotelDetails);
+			  
+			 $data=array('hotelId'=>$hotelData['code'],
+						'customerSessionId'=>'',
+						'HotelSummary'=>$HotelSummary,
+						'HotelDetails'=>$HotelDetails,
+						'Suppliers'=>array(),
+						'RoomTypes'=>array('size'=>$countRoom,
+										   'RoomGroup'=>$RoomType,
+										   'currency'=>$currency
+										  ),
+						'PropertyAmenities'=>array('size'=>count($amenetyData),
+												   'PropertyAmenity'=>$amenetyData 
+												   ),
+						'BusinessAmenities'=>array('size'=>count($businessAmenety),
+												   'BusinessAmenity'=>$businessAmenety 
+												   ),						   
+						'HotelImages'=>array('size'=>count($HotelImages),
+											 'HotelImage'=>$HotelImages,
+											 )
+						);
+			 // dd($data);
+		}
+		else{
+			$status =400;     
+		  }
+		  // dd($data);
+		  // dd($contentArr['phones']);
+		 //echo "<pre>amenetyData=="; print_r($amenetyData);
+		 
+
+		  if(isset($contentArr->hotel->phones)){
+		  	$ph=$contentArr->hotel->phones;
+		  }else{
+		  	$ph=[];
+		  }
+
+		  // dd($data);
+	   return view('hotel/hotel-details', array('hotelSearchData' => $hotelSearchData,'pageData' => $pageData,'hotelData' => $data,'phones'=>[]));	 	 
 	}
 	
 	
