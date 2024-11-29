@@ -297,12 +297,12 @@ $res =DB::select("select * from airports WHERE LCASE(city_name) LIKE '".strtolow
 		
 		// if(count($offers)>0){ $count=30; }else { $count =0; }  $count=count($offers);
 		if(count($offers)>0){
-		 $count=30; 
+		 $count=600; 
 		 }else { 
 		 $count =0; 
 		 }  
 
-		 if(count($offers)<30){
+		 if(count($offers)<600){
 		 $count=count($offers);
 		  }
 

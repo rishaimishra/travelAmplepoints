@@ -1420,6 +1420,8 @@ var uniqueHotels = [];
 
                                     });
 
+                                    console.log("Cri_Rating",Cri_Rating)
+
                                     
 
                                     jQuery('input[name=board]:checked').each(function(i) { 
@@ -1499,7 +1501,7 @@ var uniqueHotels = [];
                                     }
 
                                 }else{
-
+                                    
                                    if (apiCallsCompleted >= 1) { 
 
                                               // $("#cc2").show();
@@ -1633,7 +1635,7 @@ var uniqueHotels = [];
 
                                                  // if (1 === 1) {
 
-                                                 console.log(66);
+                                                 console.log(66,data.result[i].Name);
 
                                                 uniqueHotels.push(data.result[i].Name);
 
@@ -2163,6 +2165,7 @@ var uniqueHotels = [];
             $("#cc3").show();
 
             $("#ld-mr").hide();
+             uniqueHotels = [];
 
                innerHtml=''; 
 
@@ -2244,7 +2247,7 @@ var uniqueHotels = [];
 
                                             }
 
-                                        Show_Hotels('search');
+                                        Show_Hotels('filter_loadmore');
 
                                          getControls();
 

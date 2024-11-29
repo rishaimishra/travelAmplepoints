@@ -1481,6 +1481,7 @@ var uniqueHotels = [];
             $("#cc3").show();
             $("#ld-mr").hide();
                innerHtml=''; 
+                uniqueHotels = [];
         // alert(apiCallsCompleted)
          var page_number=1;
           var loop =0;
@@ -1520,7 +1521,7 @@ var uniqueHotels = [];
                                              page_number++;
                                              setTimeout(function(){Upldate_Rates_All();},100);
                                             }
-                                        Show_Hotels_New('search');
+                                        Show_Hotels_New('filter_loadmore');
                                          getControls();
                                         //Show_OutBoundFlights(data.search_session);
                                         //Show_InBoundFlights(data.search_session);

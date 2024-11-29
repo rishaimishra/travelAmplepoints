@@ -1,0 +1,7 @@
+===========Credentials(search_782837340)=========
+duffel_live_6YGY02b60GEIImviWyIMEghuXpW1rachnhB6f1bfaBD
+===========Request(search_782837340)=========
+{"data":{"slices":[{"origin":"LAS","destination":"LAX","departure_date":"2024-12-19"},{"origin":"LAX","destination":"LAS","departure_date":"2024-12-20"}],"passengers":[{"type":"adult"}],"cabin_class":"economy"}}
+===========Response(search_782837340)=========
+
+

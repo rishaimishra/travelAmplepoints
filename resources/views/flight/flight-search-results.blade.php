@@ -1,1162 +1,524 @@
 @include('site.header')
-
 @inject('siteData1', 'App\Http\Controllers\Site')
-
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-         @php   $data=json_decode($siteData1::Index(),true);
-
-				$common_data= $data['siteData']['common_data'];
-
-                $device=$data['device'];
-
-                $common=json_decode($common_data,true);
-
-                $images=  $data['siteData']['images'];
-
-                $images=json_decode($images,true);
-
-                $sessionval=session()->all();
-
-                $currency=$data['siteData']['currency'];  
-
-                $currency_symbol=$data['siteData']['currency_symbol'];               
-
-         @endphp
-
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+@php   $data=json_decode($siteData1::Index(),true);
+$common_data= $data['siteData']['common_data'];
+$device=$data['device'];
+$common=json_decode($common_data,true);
+$images=  $data['siteData']['images'];
+$images=json_decode($images,true);
+$sessionval=session()->all();
+$currency=$data['siteData']['currency'];
+$currency_symbol=$data['siteData']['currency_symbol'];
+@endphp
 <!--<div class="loader"><svg class="spinner" viewBox="0 0 50 50"><circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle></svg><br />Loading...</div>-->
-
-
-
 <style>
-
 @-webkit-keyframes flash {
-
-  0% {
-
-    background-position: -468px 0
-
-  }
-
-  100% {
-
-    background-position: 468px 0
-
-  }
-
+0% {
+background-position: -468px 0
 }
-
-
-
+100% {
+background-position: 468px 0
+}
+}
 @keyframes flash {
-
-  0% {
-
-    background-position: -468px 0
-
-  }
-
-  100% {
-
-    background-position: 468px 0
-
-  }
-
+0% {
+background-position: -468px 0
 }
-
-
-
+100% {
+background-position: 468px 0
+}
+}
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-    
-
-
-
 h2{
-
-  text-align: center;
-
-  color: white;
-
-  font-weight: normal;
-
-  font-family: 'Open Sans', sans-serif;
-
+text-align: center;
+color: white;
+font-weight: normal;
+font-family: 'Open Sans', sans-serif;
 }
-
-
-
 body, html{
-
-  margin: 0;
-
-  padding: 0;
-
- 
+margin: 0;
+padding: 0;
 
 }
-
 .wrapper {
-
-  color: #141823;
-
-  padding: 20px;
-
-  padding-bottom: 60px;
-
-  
+color: #141823;
+padding: 20px;
+padding-bottom: 60px;
 
 }
-
-
-
 .item {
+background: #fff;
+border: 1px solid rgba(0,0,0,0.2);
+border-radius: 3px;
+padding: 12px;
+margin-top:10px;
 
-  background: #fff;
-
-  border: 1px solid rgba(0,0,0,0.2);
-
-  border-radius: 3px;
-
-  padding: 12px;
-
-  margin-top:10px;
-
- 
-
-  position: relative;
-
- 	
-
-  height: 150px;
-
+position: relative;
+    
+height: 150px;
 }
-
-
-
-
-
 .round-box{
-
-  width: 50px;
-
-  margin: 10px;
-
-  height: 50px;
-
-  border-radius: 100%;
-
+width: 50px;
+margin: 10px;
+height: 50px;
+border-radius: 100%;
 }
-
-
-
 .animated-background {
-
-  -webkit-animation-duration: 1s;
-
-  animation-duration: 1s;
-
-  -webkit-animation-fill-mode: forwards;
-
-  animation-fill-mode: forwards;
-
-  -webkit-animation-iteration-count: infinite;
-
-  animation-iteration-count: infinite;
-
-  -webkit-animation-name: flash;
-
-  animation-name: flash;
-
-  -webkit-animation-timing-function: linear;
-
-  animation-timing-function: linear;
-
-  background: -webkit-linear-gradient(left, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
-
-  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
-
-  -webkit-background-size: 800px 104px;
-
-  position: relative;      
-
+-webkit-animation-duration: 1s;
+animation-duration: 1s;
+-webkit-animation-fill-mode: forwards;
+animation-fill-mode: forwards;
+-webkit-animation-iteration-count: infinite;
+animation-iteration-count: infinite;
+-webkit-animation-name: flash;
+animation-name: flash;
+-webkit-animation-timing-function: linear;
+animation-timing-function: linear;
+background: -webkit-linear-gradient(left, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+-webkit-background-size: 800px 104px;
+position: relative;
 }
-
-
-
 .rect1{
-
-  width: 50%;
-
-  float: left;
-
-  top: 25px;
-
-  left: 80px;
-
-  margin-top: 10px;
-
-  height: 12px;
-
-  position: absolute;
-
+width: 50%;
+float: left;
+top: 25px;
+left: 80px;
+margin-top: 10px;
+height: 12px;
+position: absolute;
 }
-
-
-
 .rect2{
-
-  width: 55%;
-
-  float: left;
-
-  top: 45px;
-
-  left: 80px;
-
-  margin-top: 10px;
-
-  height: 12px;
-
-  position: absolute;
-
+width: 55%;
+float: left;
+top: 45px;
+left: 80px;
+margin-top: 10px;
+height: 12px;
+position: absolute;
 }
-
-
-
 .rect3{
-
-  width: 70%;
-
-  float: left;
-
-  top: 80px;
-
-  left: 25px;
-
-  margin-top: 10px;
-
-  height: 10px;
-
-  position: absolute;
-
+width: 70%;
+float: left;
+top: 80px;
+left: 25px;
+margin-top: 10px;
+height: 10px;
+position: absolute;
 }
-
-
-
 .rect4{
-
-  width: 75%;
-
-  float: left;
-
-  top: 95px;
-
-  left: 25px;
-
-  margin-top: 10px;
-
-  height: 10px;
-
-  position: absolute;
-
+width: 75%;
+float: left;
+top: 95px;
+left: 25px;
+margin-top: 10px;
+height: 10px;
+position: absolute;
 }
-
-
-
 .rect5{
-
-  width: 75%;
-
-  float: left;
-
-  top: 110px;
-
-  left: 25px;
-
-  margin-top: 10px;
-
-  height: 10px;
-
-  position: absolute;
-
+width: 75%;
+float: left;
+top: 110px;
+left: 25px;
+margin-top: 10px;
+height: 10px;
+position: absolute;
 }
-
 </style>
-
-
-
 {{-- neww css --}}
-
-
-
 <style>
-
-    .c-div-0 {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    padding: 0
-
+.c-div-0 {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0
 }
-
-
-
 .c-div-1 {
-
-    width: 10%;
-
-    margin: 0 !important
-
+width: 10%;
+margin: 0 !important
 }
-
-
-
 .c-div-1 img {
-
-    margin-bottom: 8px;
-
-    object-fit: cover;
-
-    width: 100%
-
+margin-bottom: 8px;
+object-fit: cover;
+width: 100%
 }
-
-
-
 .c-div-2 {
-
-    width: 50%;
-
-    display: flex;
-
-    justify-content: space-between
-
+width: 50%;
+display: flex;
+justify-content: space-between
 }
-
-
-
 .c-div-3 {}
-
-
-
 .c-div-3 hr {}
-
-
-
 .c-div-4 {
-
-    width: 60%
-
+width: 60%
 }
-
-
-
 .c-div-5 {}
-
-
-
 .c-div-6 {
-
-    width: 30%;
-
-    display: flex;
-
-    justify-content: end;
-
-    text-align: right
-
+width: 30%;
+display: flex;
+justify-content: end;
+text-align: right
 }
-
-
-
 @media only screen and (max-width:800px) {
-
-    .c-div-1 {
-
-        width: 10%;
-
-        font-size: 13px;
-
-        line-height: 20px
-
-    }
-
-
-
-    .c-div-2 {
-
-        width: 60%
-
-    }
-
-
-
-    .c-div-2 * {
-
-        font-size: 12px !important
-
-    }
-
-
-
-    .c-div-6 {
-
-        width: 25%
-
-    }
-
-
-
-    .c-div-6 h6 {
-
-        font-size: 13px !important
-
-    }
-
+.c-div-1 {
+width: 10%;
+font-size: 13px;
+line-height: 20px
 }
-
-
-
+.c-div-2 {
+width: 60%
+}
+.c-div-2 * {
+font-size: 12px !important
+}
+.c-div-6 {
+width: 25%
+}
+.c-div-6 h6 {
+font-size: 13px !important
+}
+}
 @media only screen and (max-width:600px) {
-
-    .c-div-1 {
-
-        width: 8%;
-
-        font-size: 12px;
-
-        line-height: 20px
-
-    }
-
-
-
-    .c-div-2 {
-
-        width: 60%
-
-    }
-
-
-
-    .c-div-2 * {
-
-        font-size: 10px !important;
-
-        line-height: 13px;
-
-        margin: 0 0;
-
-        display: flex;
-
-        flex-direction: column;
-
-        justify-content: space-around;
-
-        width: 60%
-
-    }
-
-
-
-    .c-div-6 {
-
-        width: 25%
-
-    }
-
-
-
-    .c-div-6 h6 {
-
-        font-size: 11px !important
-
-    }
-
-
-
-    .theme-btn {
-
-        font-size: 10px;
-
-        line-height: normal;
-
-        padding: 5px 6px !important
-
-    }
-
+.c-div-1 {
+width: 8%;
+font-size: 12px;
+line-height: 20px
 }
-
+.c-div-2 {
+width: 60%
+}
+.c-div-2 * {
+font-size: 10px !important;
+line-height: 13px;
+margin: 0 0;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+width: 60%
+}
+.c-div-6 {
+width: 25%
+}
+.c-div-6 h6 {
+font-size: 11px !important
+}
+.theme-btn {
+font-size: 10px;
+line-height: normal;
+padding: 5px 6px !important
+}
+}
 </style>
-
-
 
 @inject('siteData1', 'App\Http\Controllers\Site')
-
-         @php   $data=json_decode($siteData1::Index(),true);
-
-				$common_data= $data['siteData']['common_data'];
-
-                $common=json_decode($common_data,true);
-
-                $images=  $data['siteData']['images'];
-
-                $images=json_decode($images,true);
-
-                $sessionval=session()->all();
-
-                if(isset($sessionval['user_id'])){ $user_id=$sessionval['user_id']; } else { $user_id=''; }
-
-                $oc=json_decode($pageData->other_content,true);       
-
-         @endphp
-
-         <?php  
-
-		 		if(!isset($_REQUEST['IATA_from'])){ $_REQUEST['IATA_from']=$pageData->city_from_code; }
-
-				if(!isset($_REQUEST['IATA_to'])){ $_REQUEST['IATA_to']=$pageData->city_to_code; } 
-
-				if(!isset($_REQUEST['flighttype'])){ $_REQUEST['flighttype']=$oc['flight_type']; } 
-
-				if(!isset($_REQUEST['departure_date'])){ $_REQUEST['departure_date']=date('d/m/Y',strtotime(date('m/d/Y').' +'.$oc["outbound_days"].' day')); } 
-
-				if(!isset($_REQUEST['return_date'])){ $_REQUEST['return_date']=date('d/m/Y',strtotime(date('m/d/Y').' +'.$oc["inbound_days"].' day'));  } 
-
-				if(!isset($_REQUEST['adults'])){ $_REQUEST['adults']=$oc['adult']; } 
-
-				if(!isset($_REQUEST['childs'])){ $_REQUEST['childs']=$oc['child']; } 
-
-				if(!isset($_REQUEST['infants'])){ $_REQUEST['infants']=$oc['infant']; } 
-
-				if(!isset($_REQUEST['cabin_class'])){ $_REQUEST['cabin_class']='economy'; } 
-
-				if(!isset($_REQUEST['origin'])){ $_REQUEST['origin']=$pageData->city_from; }  
-
-				if(!isset($_REQUEST['destination'])){ $_REQUEST['destination']=$pageData->city_to; }
-
-		 ?>
-
+@php   $data=json_decode($siteData1::Index(),true);
+$common_data= $data['siteData']['common_data'];
+$common=json_decode($common_data,true);
+$images=  $data['siteData']['images'];
+$images=json_decode($images,true);
+$sessionval=session()->all();
+if(isset($sessionval['user_id'])){ $user_id=$sessionval['user_id']; } else { $user_id=''; }
+$oc=json_decode($pageData->other_content,true);
+@endphp
+<?php
+                if(!isset($_REQUEST['IATA_from'])){ $_REQUEST['IATA_from']=$pageData->city_from_code; }
+                if(!isset($_REQUEST['IATA_to'])){ $_REQUEST['IATA_to']=$pageData->city_to_code; }
+                if(!isset($_REQUEST['flighttype'])){ $_REQUEST['flighttype']=$oc['flight_type']; }
+                if(!isset($_REQUEST['departure_date'])){ $_REQUEST['departure_date']=date('d/m/Y',strtotime(date('m/d/Y').' +'.$oc["outbound_days"].' day')); }
+                if(!isset($_REQUEST['return_date'])){ $_REQUEST['return_date']=date('d/m/Y',strtotime(date('m/d/Y').' +'.$oc["inbound_days"].' day'));  }
+                if(!isset($_REQUEST['adults'])){ $_REQUEST['adults']=$oc['adult']; }
+                if(!isset($_REQUEST['childs'])){ $_REQUEST['childs']=$oc['child']; }
+                if(!isset($_REQUEST['infants'])){ $_REQUEST['infants']=$oc['infant']; }
+                if(!isset($_REQUEST['cabin_class'])){ $_REQUEST['cabin_class']='economy'; }
+                if(!isset($_REQUEST['origin'])){ $_REQUEST['origin']=$pageData->city_from; }
+                if(!isset($_REQUEST['destination'])){ $_REQUEST['destination']=$pageData->city_to; }
+?>
 <style>
-
-    .card-img{
-
-        display: flex;
-
-        flex-direction: column;
-
-        align-items: center;
-
-        justify-content: space-around;
-
-    }
-
-    .card-img img{
-
-        width:70%;
-
-    }
-
-.opacity_5 {
-
-  opacity: 0.3;
-
+.card-img{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-around;
 }
-
-
-
+.card-img img{
+width:70%;
+}
+.opacity_5 {
+opacity: 0.3;
+}
 </style>
-
-
-
 <style>
-
-    .hl-h3{ color: #111; font-weight: 600;} 
-
-    .hl-be-price{ font-weight: 600; color: #f75b10;}
-
+.hl-h3{ color: #111; font-weight: 600;}
+.hl-be-price{ font-weight: 600; color: #f75b10;}
 </style>
-
 <img src=" {{ asset('admin/dist/img/banner/flight.jpg') }}" {{-- class="img-circle elevation-2" --}} alt="banner image" style="width: 100%;">
-
 <section class="hero-wrapper hero-wrapper6 Edit_search_sec Edit_search" rel="0" style="display:none">
-
     <div @if($device=='Desktop') style="padding-top: 100px;padding-bottom: 100px;background:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),url({{$pageData->image}});background-size: cover;" @endif >
-
- 
-
+        
         <div  class="container">
-
             <div class="row">
-
                 <div class="col-lg-12">
-
                     <div class="search-fields-container mt-4" style="box-shadow: 2px 2px 20px #dfdfdf;">
-
                         <div class="tab-content" id="myTabContent3">
-
                             @include('flight.flight-search-box')<!-- end tab-pane -->
-
                         </div>
-
-                    </div><!-- end main-search-input -->
-
+                        </div><!-- end main-search-input -->
+                    </div>
+                    </div><!-- end row -->
+                    </div><!-- end container -->
                 </div>
-
-            </div><!-- end row -->
-
-        </div><!-- end container -->
-
-    </div>
-
-</section>
-
-
-
+            </section>
 
 
 
 
 
 <section class="card-area not_found" style="display:none">
-
     <div class="container">
-
         <div class="row">
-
             <div class="col-lg-12">
-
-					<div class="container" style=" text-align:center;color:#FF0000">Sorry, Flight Not Found.</div> 
-
+                <div class="container" style=" text-align:center;color:#FF0000">Sorry, Flight Not Found.</div>
             </div>
-
         </div>
-
     </div>
-
 </section>
-
-
-
-
-
 <section class="card-area ">
-
     <div class="container whole_content">
-
-
-
         <div class="row"  >
-
             <div class="col-lg-12">
-
                 <div class="filter-wrap margin-bottom-30px margin-top-30px">
-
                     <div class="filter-top d-flex align-items-center justify-content-between pb-4">
-
                         <div>
-
                             <h3 style="color:#287dfa" class="title font-size-24"><span class='totalflight'></span> Flights found ({{$_REQUEST['IATA_from']}} @if($_REQUEST['flighttype']=='oneway') &#8594 @else &#8596 @endif {{$_REQUEST['IATA_to']}})</h3>
-
-
-
                             <p class="font-size-14"><span class="mr-1 pt-1">Book with confidence:</span>No flight booking fees</p>
-
                         </div>
-
                     </div>
-
                     <div class="filter-bar d-flex align-items-center justify-content-between">
-
                         <div class="filter-bar-filter d-flex flex-wrap align-items-center">
-
                             <div class="filter-option">
-
                                 <h3 class="title font-size-16"> <a href="javascript:void(0)" rel="0" onclick="Edit_search()" class="Edit_search theme-btn theme-btn-small ">Edit</a> </h3>
-
-                            </div>                            
-
-                        </div><!-- end filter-bar-filter -->
-
-
-
-                    <div style="display: flex;align-items: center;justify-content: start;">
-
-                        <button style="border: 1px solid white" data-toggle="modal" data-target="#myModal2"><img src="{{url('/')}}/travel/filter.png" style="width: 20px; background: #ffffff; border-radius: 1px solid #ffffff; margin-right: 20px;"></button>
-
-                        <div class="select-contain">
-
-                            <select class="select-contain-select" name="sort" id="sort" onchange="Show_Flights('filter')">
-
-                                <option value="price_ASC" selected="selected">Sort Your Flight</option>
-
-                                <option value="price_ASC">Price: low to high</option>
-
-                                <option value="price_DESC">Price: high to low</option>
-
-                                <option value="airlines_ASC">Airline: A to Z</option>
-
-                                <option value="airlines_DESC">Airline: Z to A</option>
-
-                                <option value="duration_ASC">Duration: low to high</option>
-
-                                <option value="duration_DESC">Duration: high to low</option>
-
-                            </select>
-
-                        </div><!-- end select-contain -->
-
-                    </div>
-
-                    </div><!-- end filter-bar -->
-
-                </div><!-- end filter-wrap -->
-
-            </div><!-- end col-lg-12 -->
-
-        </div><!-- end row -->
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="row"  >
-
-
-
-
-
-
-
-
-
-                            <div class="col-lg-3"  @if($device!='Desktop') style="display:" @endif>
-
-                                <div class="wrapper filter_loader">
-
-                                        <div class="item">
-
-                                              <div class="animated-background round-box"></div>
-
-                                              <div class="animated-background rect1"></div>
-
-                                              <div class="animated-background rect2"></div>
-
-                                              <div class="animated-background rect3"></div>
-
-                                              <div class="animated-background rect4"></div>
-
-                                              <div class="animated-background rect5"></div>   
-
-                                        </div>
-
-                                        <div class="item">
-
-                                              <div class="animated-background round-box"></div>
-
-                                              <div class="animated-background rect1"></div>
-
-                                              <div class="animated-background rect2"></div>
-
-                                              <div class="animated-background rect3"></div>
-
-                                              <div class="animated-background rect4"></div>
-
-                                              <div class="animated-background rect5"></div>   
-
-                                        </div>
-
-                                        <div class="item">
-
-                                              <div class="animated-background round-box"></div>
-
-                                              <div class="animated-background rect1"></div>
-
-                                              <div class="animated-background rect2"></div>
-
-                                              <div class="animated-background rect3"></div>
-
-                                              <div class="animated-background rect4"></div>
-
-                                              <div class="animated-background rect5"></div>   
-
-                                        </div>
-
-                                        <div class="item">
-
-                                              <div class="animated-background round-box"></div>
-
-                                              <div class="animated-background rect1"></div>
-
-                                              <div class="animated-background rect2"></div>
-
-                                              <div class="animated-background rect3"></div>
-
-                                              <div class="animated-background rect4"></div>
-
-                                              <div class="animated-background rect5"></div>   
-
-                                        </div>
-
-                                        <div class="item">
-
-                                              <div class="animated-background round-box"></div>
-
-                                              <div class="animated-background rect1"></div>
-
-                                              <div class="animated-background rect2"></div>
-
-                                              <div class="animated-background rect3"></div>
-
-                                              <div class="animated-background rect4"></div>
-
-                                              <div class="animated-background rect5"></div>   
-
-                                        </div>
-
-                                        <div class="item">
-
-                                              <div class="animated-background round-box"></div>
-
-                                              <div class="animated-background rect1"></div>
-
-                                              <div class="animated-background rect2"></div>
-
-                                              <div class="animated-background rect3"></div>
-
-                                              <div class="animated-background rect4"></div>
-
-                                              <div class="animated-background rect5"></div>   
-
-                                        </div>
-
-                                        <div class="item">
-
-                                              <div class="animated-background round-box"></div>
-
-                                              <div class="animated-background rect1"></div>
-
-                                              <div class="animated-background rect2"></div>
-
-                                              <div class="animated-background rect3"></div>
-
-                                              <div class="animated-background rect4"></div>
-
-                                              <div class="animated-background rect5"></div>   
-
-                                        </div>
-
-                                        <div class="item">
-
-                                              <div class="animated-background round-box"></div>
-
-                                              <div class="animated-background rect1"></div>
-
-                                              <div class="animated-background rect2"></div>
-
-                                              <div class="animated-background rect3"></div>
-
-                                              <div class="animated-background rect4"></div>
-
-                                              <div class="animated-background rect5"></div>   
-
-                                        </div>
-
-                                    </div>
-
-                    {{--normal filter part start --}}
-
-
-
-
-
-                     <div class="sidebar mt-0" style="display:">
-
-                                    <div class="onewayfilter" >
-
-                                        <div class="sidebar-widget">
-
-                                            <h3 class="title stroke-shape">Filter by Price</h3>
-
-                                            <div class="sidebar-price-range">
-
-                                                <div class="slider-range-wrap">
-
-                                                    <div class="price-slider-amount padding-bottom-20px">
-
-                                                        <label for="amount2" class="filter__label">Price:</label>
-
-                                                        <span id="price_cs"></span><input type="text"   id="price" class="amounts">
-
-                                                    </div><!-- end price-slider-amount -->
-
-                                                    <div id="slider-range-price" onclick="Show_Flights('filter')" ></div><!-- end slider-range -->
-
-                                                </div><!-- end slider-range-wrap -->
-
-                                                <div class="btn-box pt-4">
-
-                                                    <button class="theme-btn theme-btn-small theme-btn-transparent" type="button" onclick="Show_Flights('filter_apply')" >Apply</button>
-
-                                                </div>
-
+                            </div>
+                            </div><!-- end filter-bar-filter -->
+                            <div style="display: flex;align-items: center;justify-content: start;">
+                                <button style="border: 1px solid white" data-toggle="modal" data-target="#myModal2"><img src="{{url('/')}}/travel/filter.png" style="width: 20px; background: #ffffff; border-radius: 1px solid #ffffff; margin-right: 20px;"></button>
+                                <div class="select-contain">
+                                    <select class="select-contain-select" name="sort" id="sort" onchange="Show_Flights('filter')">
+                                        <option value="price_ASC" selected="selected">Sort Your Flight</option>
+                                        <option value="price_ASC">Price: low to high</option>
+                                        <option value="price_DESC">Price: high to low</option>
+                                        <option value="airlines_ASC">Airline: A to Z</option>
+                                        <option value="airlines_DESC">Airline: Z to A</option>
+                                        <option value="duration_ASC">Duration: low to high</option>
+                                        <option value="duration_DESC">Duration: high to low</option>
+                                    </select>
+                                    </div><!-- end select-contain -->
+                                </div>
+                                </div><!-- end filter-bar -->
+                                </div><!-- end filter-wrap -->
+                                </div><!-- end col-lg-12 -->
+                                </div><!-- end row -->
+
+
+
+
+<div class="row"  >
+    <div class="col-lg-3"  @if($device!='Desktop') style="display:" @endif>
+        <div class="wrapper filter_loader">
+            <div class="item">
+                <div class="animated-background round-box"></div>
+                <div class="animated-background rect1"></div>
+                <div class="animated-background rect2"></div>
+                <div class="animated-background rect3"></div>
+                <div class="animated-background rect4"></div>
+                <div class="animated-background rect5"></div>
+            </div>
+            <div class="item">
+                <div class="animated-background round-box"></div>
+                <div class="animated-background rect1"></div>
+                <div class="animated-background rect2"></div>
+                <div class="animated-background rect3"></div>
+                <div class="animated-background rect4"></div>
+                <div class="animated-background rect5"></div>
+            </div>
+            <div class="item">
+                <div class="animated-background round-box"></div>
+                <div class="animated-background rect1"></div>
+                <div class="animated-background rect2"></div>
+                <div class="animated-background rect3"></div>
+                <div class="animated-background rect4"></div>
+                <div class="animated-background rect5"></div>
+            </div>
+            <div class="item">
+                <div class="animated-background round-box"></div>
+                <div class="animated-background rect1"></div>
+                <div class="animated-background rect2"></div>
+                <div class="animated-background rect3"></div>
+                <div class="animated-background rect4"></div>
+                <div class="animated-background rect5"></div>
+            </div>
+            <div class="item">
+                <div class="animated-background round-box"></div>
+                <div class="animated-background rect1"></div>
+                <div class="animated-background rect2"></div>
+                <div class="animated-background rect3"></div>
+                <div class="animated-background rect4"></div>
+                <div class="animated-background rect5"></div>
+            </div>
+            <div class="item">
+                <div class="animated-background round-box"></div>
+                <div class="animated-background rect1"></div>
+                <div class="animated-background rect2"></div>
+                <div class="animated-background rect3"></div>
+                <div class="animated-background rect4"></div>
+                <div class="animated-background rect5"></div>
+            </div>
+            <div class="item">
+                <div class="animated-background round-box"></div>
+                <div class="animated-background rect1"></div>
+                <div class="animated-background rect2"></div>
+                <div class="animated-background rect3"></div>
+                <div class="animated-background rect4"></div>
+                <div class="animated-background rect5"></div>
+            </div>
+            <div class="item">
+                <div class="animated-background round-box"></div>
+                <div class="animated-background rect1"></div>
+                <div class="animated-background rect2"></div>
+                <div class="animated-background rect3"></div>
+                <div class="animated-background rect4"></div>
+                <div class="animated-background rect5"></div>
+            </div>
+        </div>
+        {{--normal filter part start --}}
+        <div class="sidebar mt-0" style="display:">
+            <div class="onewayfilter" >
+                <div class="sidebar-widget">
+                    <h3 class="title stroke-shape">Filter by Price</h3>
+                    <div class="sidebar-price-range">
+                        <div class="slider-range-wrap">
+                            <div class="price-slider-amount padding-bottom-20px">
+                                <label for="amount2" class="filter__label">Price:</label>
+                                <span id="price_cs"></span><input type="text"   id="price" class="amounts">
+                                </div><!-- end price-slider-amount -->
+                                <div id="slider-range-price" onclick="Show_Flights('filter')" ></div><!-- end slider-range -->
+                                </div><!-- end slider-range-wrap -->
+                                <div class="btn-box pt-4">
+                                    <button class="theme-btn theme-btn-small theme-btn-transparent" type="button" onclick="Show_Flights('filter_apply')" >Apply</button>
+                                </div>
+                            </div>
+                            </div><!-- end sidebar-widget -->
+                            
+                            <div class="sidebar-widget">
+                                <h3 class="title stroke-shape">Filter by Duration</h3>
+                                <div class="sidebar-price-range">
+                                    <div class="slider-range-wrap">
+                                        <div class="price-slider-amount padding-bottom-20px">
+                                            <label for="amount2" class="filter__label">Duration:</label>
+                                            <input type="text" id="duration" class="amounts">
+                                            </div><!-- end price-slider-amount -->
+                                            <div id="slider-range-duration" onclick="Show_Flights('filter')"></div><!-- end slider-range -->
+                                            </div><!-- end slider-range-wrap -->
+                                            <div class="btn-box pt-4">
+                                                <button class="theme-btn theme-btn-small theme-btn-transparent" type="button" onclick="Show_Flights('filter_apply')">Apply</button>
                                             </div>
-
+                                        </div>
                                         </div><!-- end sidebar-widget -->
-
                                         
-
-                                        <div class="sidebar-widget">
-
-                                            <h3 class="title stroke-shape">Filter by Duration</h3>
-
-                                            <div class="sidebar-price-range">
-
-                                                <div class="slider-range-wrap">
-
-                                                    <div class="price-slider-amount padding-bottom-20px">
-
-                                                        <label for="amount2" class="filter__label">Duration:</label>
-
-                                                        <input type="text" id="duration" class="amounts">
-
-                                                    </div><!-- end price-slider-amount -->
-
-                                                    <div id="slider-range-duration" onclick="Show_Flights('filter')"></div><!-- end slider-range -->
-
-                                                </div><!-- end slider-range-wrap -->
-
-                                                <div class="btn-box pt-4">
-
-                                                    <button class="theme-btn theme-btn-small theme-btn-transparent" type="button" onclick="Show_Flights('filter_apply')">Apply</button>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div><!-- end sidebar-widget -->
-
-                                        
-
                                         <div class="sidebar-widget" style="display:none">
-
                                             <h3 class="title stroke-shape">Filter by  Departure Time</h3>
-
                                             <div class="sidebar-price-range">
-
                                                 <div class="slider-range-wrap">
-
                                                     <div class="price-slider-amount padding-bottom-20px">
-
                                                         <label for="amount2" class="filter__label">Departure Time:</label>
-
                                                         <input type="text" id="Departure" class="amounts">
-
                                                     </div>
-
                                                     <div id="slider-range-Departure" onclick="Show_Flights('filter')"></div>
-
                                                 </div>
-
                                             </div>
-
-                                       </div>  
-
-                                       
-
-                                       <div class="sidebar-widget" style="display:none">
-
-                                            <h3 class="title stroke-shape">Filter by Arrival Time</h3>  
-
-                                            <div class="sidebar-price-range">
-
-                                                <div class="slider-range-wrap">
-
-                                                    <div class="price-slider-amount padding-bottom-20px">
-
-                                                        <label for="amount2" class="filter__label">Arrival Time:</label>
-
-                                                        <input type="text" id="Arrival" class="amounts">
-
-                                                    </div>
-
-                                                    <div id="slider-range-Arrival" onclick="Show_Flights('filter')"></div>
-
-                                                </div>
-
-                                               
-
-                                            </div>
-
-                                        </div>                     
-
-                                        <div class="sidebar-widget">
-
-                                            <h3 class="title stroke-shape">Flight Stops</h3>
-
-                                            <div class="sidebar-widget-item Stops_Filter">                            
-
-                                            </div>
-
-                                        </div><!-- end sidebar-widget -->
-
-
-
-                                        <div class="sidebar-widget">
-
-                                            <h3 class="title stroke-shape ">Filter by Airline Name</h3>
-
-                                            <div class="sidebar-widget-item Airline_Name_Filter">
-
-                                            </div>
-
-                                        </div><!-- end sidebar-widget -->
-
-                                    </div><!-- end sidebar -->
-
-                                    
-
-                                    <div class="roundfilter" style="display:none" > 
-
-                                       
-
-                                        <div class="sidebar-widget">
-
-                                            <h3 class="title stroke-shape">Filter by Duration</h3>
-
-                                            <div class="sidebar-price-range">
-
-                                                <div class="slider-range-wrap">
-
-                                                    <div class="price-slider-amount padding-bottom-20px">
-
-                                                        <label for="amount2" class="filter__label">Duration:</label>
-
-                                                        <input type="text" id="return-duration" class="amounts">
-
-                                                    </div><!-- end price-slider-amount -->
-
-                                                    <div id="return-slider-range-duration" onclick="Show_Flights('filter')"></div><!-- end slider-range -->
-
-                                                </div><!-- end slider-range-wrap -->
-
-                                                <div class="btn-box pt-4">
-
-                                                    <button class="theme-btn theme-btn-small theme-btn-transparent" type="button" onclick="Show_Flights('filter_apply')">Apply</button>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div><!-- end sidebar-widget -->
-
-                                        
-
-                                        <div class="sidebar-widget" style="display:none">
-
-                                            <h3 class="title stroke-shape">Filter by  Departure Time</h3>
-
-                                            <div class="sidebar-price-range">
-
-                                                <div class="slider-range-wrap">
-
-                                                    <div class="price-slider-amount padding-bottom-20px">
-
-                                                        <label for="amount2" class="filter__label">Departure Time:</label>
-
-                                                        <input type="text" id="return_Departure" class="amounts">
-
-                                                    </div>
-
-                                                    <div id="return-slider-range-Departure" onclick="Show_Flights('filter')"></div>
-
-                                                </div>
-
-                                            </div>
-
-                                       </div>  
-
-                                       
-
-                                       <div class="sidebar-widget" style="display:none">
-
-                                            <h3 class="title stroke-shape">Filter by Arrival Time</h3>  
-
-                                            <div class="sidebar-price-range">
-
-                                                <div class="slider-range-wrap">
-
-                                                    <div class="price-slider-amount padding-bottom-20px">
-
-                                                        <label for="amount2" class="filter__label">Arrival Time:</label>
-
-                                                        <input type="text" id="return_Arrival" class="amounts">
-
-                                                    </div>
-
-                                                    <div id="return-slider-range-Arrival" onclick="Show_Flights('filter')"></div>
-
-                                                </div>
-
-                                            </div>
-
                                         </div>
-
-
-
+                                        
+                                        <div class="sidebar-widget" style="display:none">
+                                            <h3 class="title stroke-shape">Filter by Arrival Time</h3>
+                                            <div class="sidebar-price-range">
+                                                <div class="slider-range-wrap">
+                                                    <div class="price-slider-amount padding-bottom-20px">
+                                                        <label for="amount2" class="filter__label">Arrival Time:</label>
+                                                        <input type="text" id="Arrival" class="amounts">
+                                                    </div>
+                                                    <div id="slider-range-Arrival" onclick="Show_Flights('filter')"></div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
                                         <div class="sidebar-widget">
-
                                             <h3 class="title stroke-shape">Flight Stops</h3>
-
-                                            <div class="sidebar-widget-item return_Stops_Filter">                            
-
+                                            <div class="sidebar-widget-item Stops_Filter">
                                             </div>
-
-                                        </div><!-- end sidebar-widget -->
-
-                                        <div class="sidebar-widget">
-
-                                            <h3 class="title stroke-shape ">Filter by Airline Name</h3>
-
-                                            <div class="sidebar-widget-item return_Airline_Name_Filter">
-
-                                            </div>
-
-                                        </div><!-- end sidebar-widget -->
-
-                                    </div>
-
-                                   </div>
-
-
-
-
-
+                                            </div><!-- end sidebar-widget -->
+                                            <div class="sidebar-widget">
+                                                <h3 class="title stroke-shape ">Filter by Airline Name</h3>
+                                                <div class="sidebar-widget-item Airline_Name_Filter">
+                                                </div>
+                                                </div><!-- end sidebar-widget -->
+                                                </div><!-- end sidebar -->
+                                                
+                                                <div class="roundfilter" style="display:none" >
+                                                    
+                                                    <div class="sidebar-widget">
+                                                        <h3 class="title stroke-shape">Filter by Duration</h3>
+                                                        <div class="sidebar-price-range">
+                                                            <div class="slider-range-wrap">
+                                                                <div class="price-slider-amount padding-bottom-20px">
+                                                                    <label for="amount2" class="filter__label">Duration:</label>
+                                                                    <input type="text" id="return-duration" class="amounts">
+                                                                    </div><!-- end price-slider-amount -->
+                                                                    <div id="return-slider-range-duration" onclick="Show_Flights('filter')"></div><!-- end slider-range -->
+                                                                    </div><!-- end slider-range-wrap -->
+                                                                    <div class="btn-box pt-4">
+                                                                        <button class="theme-btn theme-btn-small theme-btn-transparent" type="button" onclick="Show_Flights('filter_apply')">Apply</button>
+                                                                    </div>
+                                                                </div>
+                                                                </div><!-- end sidebar-widget -->
+                                                                
+                                                                <div class="sidebar-widget" style="display:none">
+                                                                    <h3 class="title stroke-shape">Filter by  Departure Time</h3>
+                                                                    <div class="sidebar-price-range">
+                                                                        <div class="slider-range-wrap">
+                                                                            <div class="price-slider-amount padding-bottom-20px">
+                                                                                <label for="amount2" class="filter__label">Departure Time:</label>
+                                                                                <input type="text" id="return_Departure" class="amounts">
+                                                                            </div>
+                                                                            <div id="return-slider-range-Departure" onclick="Show_Flights('filter')"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="sidebar-widget" style="display:none">
+                                                                    <h3 class="title stroke-shape">Filter by Arrival Time</h3>
+                                                                    <div class="sidebar-price-range">
+                                                                        <div class="slider-range-wrap">
+                                                                            <div class="price-slider-amount padding-bottom-20px">
+                                                                                <label for="amount2" class="filter__label">Arrival Time:</label>
+                                                                                <input type="text" id="return_Arrival" class="amounts">
+                                                                            </div>
+                                                                            <div id="return-slider-range-Arrival" onclick="Show_Flights('filter')"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="sidebar-widget">
+                                                                    <h3 class="title stroke-shape">Flight Stops</h3>
+                                                                    <div class="sidebar-widget-item return_Stops_Filter">
+                                                                    </div>
+                                                                    </div><!-- end sidebar-widget -->
+                                                                    <div class="sidebar-widget">
+                                                                        <h3 class="title stroke-shape ">Filter by Airline Name</h3>
+                                                                        <div class="sidebar-widget-item return_Airline_Name_Filter">
+                                                                        </div>
+                                                                        </div><!-- end sidebar-widget -->
+                                                                    </div>
+                                                                </div>
                     {{--normal filter part end --}}
 
 
@@ -1185,312 +547,152 @@ body, html{
 
 
 
-
-
-                    {{-- filter model part start --}}
-
-
-
-                    <!-- Modal -->
-
-                    <div id="myModal2" class="modal fade" role="dialog">
-
-                      <div class="modal-dialog">
-
-
-
-                        <!-- Modal content-->
-
-                        <div class="modal-content">
-
-                          <div class="modal-header">
-
-                            <button type="button" class="close" id="mdlcls2" data-dismiss="modal">&times;</button>
-
-                            
-
-                          </div>
-
-                          <div class="modal-body">
-
-                            <div class="sidebar mt-0" style="display:none">
-
-                                    <div class="onewayfilter" >
-
-                                        <div class="sidebar-widget">
-
-                                            <h3 class="title stroke-shape">Filter by Price</h3>
-
-                                            <div class="sidebar-price-range">
-
-                                                <div class="slider-range-wrap">
-
-                                                    <div class="price-slider-amount padding-bottom-20px">
-
-                                                        <label for="amount2" class="filter__label">Price:</label>
-
-                                                        <span id="price_cs"></span><input type="text"   id="price" class="amounts">
-
-                                                    </div><!-- end price-slider-amount -->
-
-                                                    <div id="slider-range-price" onclick="Show_Flights('filter')" ></div><!-- end slider-range -->
-
-                                                </div><!-- end slider-range-wrap -->
-
-                                                <div class="btn-box pt-4">
-
-                                                    <button class="theme-btn theme-btn-small theme-btn-transparent" type="button" onclick="Show_Flights('filter_apply')" >Apply</button>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div><!-- end sidebar-widget -->
-
-                                        
-
-                                        <div class="sidebar-widget">
-
-                                            <h3 class="title stroke-shape">Filter by Duration</h3>
-
-                                            <div class="sidebar-price-range">
-
-                                                <div class="slider-range-wrap">
-
-                                                    <div class="price-slider-amount padding-bottom-20px">
-
-                                                        <label for="amount2" class="filter__label">Duration:</label>
-
-                                                        <input type="text" id="duration" class="amounts">
-
-                                                    </div><!-- end price-slider-amount -->
-
-                                                    <div id="slider-range-duration" onclick="Show_Flights('filter')"></div><!-- end slider-range -->
-
-                                                </div><!-- end slider-range-wrap -->
-
-                                                <div class="btn-box pt-4">
-
-                                                    <button class="theme-btn theme-btn-small theme-btn-transparent" type="button" onclick="Show_Flights('filter_apply')">Apply</button>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div><!-- end sidebar-widget -->
-
-                                        
-
-                                        <div class="sidebar-widget" style="display:none">
-
-                                            <h3 class="title stroke-shape">Filter by  Departure Time</h3>
-
-                                            <div class="sidebar-price-range">
-
-                                                <div class="slider-range-wrap">
-
-                                                    <div class="price-slider-amount padding-bottom-20px">
-
-                                                        <label for="amount2" class="filter__label">Departure Time:</label>
-
-                                                        <input type="text" id="Departure" class="amounts">
-
-                                                    </div>
-
-                                                    <div id="slider-range-Departure" onclick="Show_Flights('filter')"></div>
-
-                                                </div>
-
-                                            </div>
-
-                                       </div>  
-
-                                       
-
-                                       <div class="sidebar-widget" style="display:none">
-
-                                            <h3 class="title stroke-shape">Filter by Arrival Time</h3>  
-
-                                            <div class="sidebar-price-range">
-
-                                                <div class="slider-range-wrap">
-
-                                                    <div class="price-slider-amount padding-bottom-20px">
-
-                                                        <label for="amount2" class="filter__label">Arrival Time:</label>
-
-                                                        <input type="text" id="Arrival" class="amounts">
-
-                                                    </div>
-
-                                                    <div id="slider-range-Arrival" onclick="Show_Flights('filter')"></div>
-
-                                                </div>
-
-                                               
-
-                                            </div>
-
-                                        </div>                     
-
-                                        <div class="sidebar-widget">
-
-                                            <h3 class="title stroke-shape">Flight Stops</h3>
-
-                                            <div class="sidebar-widget-item Stops_Filter">                            
-
-                                            </div>
-
-                                        </div><!-- end sidebar-widget -->
-
-
-
-                                        <div class="sidebar-widget">
-
-                                            <h3 class="title stroke-shape ">Filter by Airline Name</h3>
-
-                                            <div class="sidebar-widget-item Airline_Name_Filter">
-
-                                            </div>
-
-                                        </div><!-- end sidebar-widget -->
-
-                                    </div><!-- end sidebar -->
-
-                                    
-
-                                    <div class="roundfilter" style="display:none" > 
-
-                                       
-
-                                        <div class="sidebar-widget">
-
-                                            <h3 class="title stroke-shape">Filter by Duration</h3>
-
-                                            <div class="sidebar-price-range">
-
-                                                <div class="slider-range-wrap">
-
-                                                    <div class="price-slider-amount padding-bottom-20px">
-
-                                                        <label for="amount2" class="filter__label">Duration:</label>
-
-                                                        <input type="text" id="return-duration" class="amounts">
-
-                                                    </div><!-- end price-slider-amount -->
-
-                                                    <div id="return-slider-range-duration" onclick="Show_Flights('filter')"></div><!-- end slider-range -->
-
-                                                </div><!-- end slider-range-wrap -->
-
-                                                <div class="btn-box pt-4">
-
-                                                    <button class="theme-btn theme-btn-small theme-btn-transparent" type="button" onclick="Show_Flights('filter_apply')">Apply</button>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div><!-- end sidebar-widget -->
-
-                                        
-
-                                        <div class="sidebar-widget" style="display:none">
-
-                                            <h3 class="title stroke-shape">Filter by  Departure Time</h3>
-
-                                            <div class="sidebar-price-range">
-
-                                                <div class="slider-range-wrap">
-
-                                                    <div class="price-slider-amount padding-bottom-20px">
-
-                                                        <label for="amount2" class="filter__label">Departure Time:</label>
-
-                                                        <input type="text" id="return_Departure" class="amounts">
-
-                                                    </div>
-
-                                                    <div id="return-slider-range-Departure" onclick="Show_Flights('filter')"></div>
-
-                                                </div>
-
-                                            </div>
-
-                                       </div>  
-
-                                       
-
-                                       <div class="sidebar-widget" style="display:none">
-
-                                            <h3 class="title stroke-shape">Filter by Arrival Time</h3>  
-
-                                            <div class="sidebar-price-range">
-
-                                                <div class="slider-range-wrap">
-
-                                                    <div class="price-slider-amount padding-bottom-20px">
-
-                                                        <label for="amount2" class="filter__label">Arrival Time:</label>
-
-                                                        <input type="text" id="return_Arrival" class="amounts">
-
-                                                    </div>
-
-                                                    <div id="return-slider-range-Arrival" onclick="Show_Flights('filter')"></div>
-
-                                                </div>
-
-                                            </div>
-
+{{-- filter model part start --}}
+<!-- Modal -->
+<div id="myModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" id="mdlcls2" data-dismiss="modal">&times;</button>
+                
+            </div>
+            <div class="modal-body">
+                <div class="sidebar mt-0" style="display:none">
+                    <div class="onewayfilter" >
+                        <div class="sidebar-widget">
+                            <h3 class="title stroke-shape">Filter by Price</h3>
+                            <div class="sidebar-price-range">
+                                <div class="slider-range-wrap">
+                                    <div class="price-slider-amount padding-bottom-20px">
+                                        <label for="amount2" class="filter__label">Price:</label>
+                                        <span id="price_cs"></span><input type="text"   id="price" class="amounts">
+                                        </div><!-- end price-slider-amount -->
+                                        <div id="slider-range-price" onclick="Show_Flights('filter')" ></div><!-- end slider-range -->
+                                        </div><!-- end slider-range-wrap -->
+                                        <div class="btn-box pt-4">
+                                            <button class="theme-btn theme-btn-small theme-btn-transparent" type="button" onclick="Show_Flights('filter_apply')" >Apply</button>
                                         </div>
-
-
-
-                                        <div class="sidebar-widget">
-
-                                            <h3 class="title stroke-shape">Flight Stops</h3>
-
-                                            <div class="sidebar-widget-item return_Stops_Filter">                            
-
-                                            </div>
-
-                                        </div><!-- end sidebar-widget -->
-
-                                        <div class="sidebar-widget">
-
-                                            <h3 class="title stroke-shape ">Filter by Airline Name</h3>
-
-                                            <div class="sidebar-widget-item return_Airline_Name_Filter">
-
-                                            </div>
-
-                                        </div><!-- end sidebar-widget -->
-
                                     </div>
-
-                                   </div>
-
-                                </div><!-- end col-lg-4 -->
-
-                          </div>
-
-                          <div class="modal-footer">
-
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-                          </div>
-
-                        </div>
-
-
-
-                      </div>
-
-                      {{-- model part end --}}
-
-
-
+                                    </div><!-- end sidebar-widget -->
+                                    
+                                    <div class="sidebar-widget">
+                                        <h3 class="title stroke-shape">Filter by Duration</h3>
+                                        <div class="sidebar-price-range">
+                                            <div class="slider-range-wrap">
+                                                <div class="price-slider-amount padding-bottom-20px">
+                                                    <label for="amount2" class="filter__label">Duration:</label>
+                                                    <input type="text" id="duration" class="amounts">
+                                                    </div><!-- end price-slider-amount -->
+                                                    <div id="slider-range-duration" onclick="Show_Flights('filter')"></div><!-- end slider-range -->
+                                                    </div><!-- end slider-range-wrap -->
+                                                    <div class="btn-box pt-4">
+                                                        <button class="theme-btn theme-btn-small theme-btn-transparent" type="button" onclick="Show_Flights('filter_apply')">Apply</button>
+                                                    </div>
+                                                </div>
+                                                </div><!-- end sidebar-widget -->
+                                                
+                                                <div class="sidebar-widget" style="display:none">
+                                                    <h3 class="title stroke-shape">Filter by  Departure Time</h3>
+                                                    <div class="sidebar-price-range">
+                                                        <div class="slider-range-wrap">
+                                                            <div class="price-slider-amount padding-bottom-20px">
+                                                                <label for="amount2" class="filter__label">Departure Time:</label>
+                                                                <input type="text" id="Departure" class="amounts">
+                                                            </div>
+                                                            <div id="slider-range-Departure" onclick="Show_Flights('filter')"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="sidebar-widget" style="display:none">
+                                                    <h3 class="title stroke-shape">Filter by Arrival Time</h3>
+                                                    <div class="sidebar-price-range">
+                                                        <div class="slider-range-wrap">
+                                                            <div class="price-slider-amount padding-bottom-20px">
+                                                                <label for="amount2" class="filter__label">Arrival Time:</label>
+                                                                <input type="text" id="Arrival" class="amounts">
+                                                            </div>
+                                                            <div id="slider-range-Arrival" onclick="Show_Flights('filter')"></div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="sidebar-widget">
+                                                    <h3 class="title stroke-shape">Flight Stops</h3>
+                                                    <div class="sidebar-widget-item Stops_Filter">
+                                                    </div>
+                                                    </div><!-- end sidebar-widget -->
+                                                    <div class="sidebar-widget">
+                                                        <h3 class="title stroke-shape ">Filter by Airline Name</h3>
+                                                        <div class="sidebar-widget-item Airline_Name_Filter">
+                                                        </div>
+                                                        </div><!-- end sidebar-widget -->
+                                                        </div><!-- end sidebar -->
+                                                        
+                                                        <div class="roundfilter" style="display:none" >
+                                                            
+                                                            <div class="sidebar-widget">
+                                                                <h3 class="title stroke-shape">Filter by Duration</h3>
+                                                                <div class="sidebar-price-range">
+                                                                    <div class="slider-range-wrap">
+                                                                        <div class="price-slider-amount padding-bottom-20px">
+                                                                            <label for="amount2" class="filter__label">Duration:</label>
+                                                                            <input type="text" id="return-duration" class="amounts">
+                                                                            </div><!-- end price-slider-amount -->
+                                                                            <div id="return-slider-range-duration" onclick="Show_Flights('filter')"></div><!-- end slider-range -->
+                                                                            </div><!-- end slider-range-wrap -->
+                                                                            <div class="btn-box pt-4">
+                                                                                <button class="theme-btn theme-btn-small theme-btn-transparent" type="button" onclick="Show_Flights('filter_apply')">Apply</button>
+                                                                            </div>
+                                                                        </div>
+                                                                        </div><!-- end sidebar-widget -->
+                                                                        
+                                                                        <div class="sidebar-widget" style="display:none">
+                                                                            <h3 class="title stroke-shape">Filter by  Departure Time</h3>
+                                                                            <div class="sidebar-price-range">
+                                                                                <div class="slider-range-wrap">
+                                                                                    <div class="price-slider-amount padding-bottom-20px">
+                                                                                        <label for="amount2" class="filter__label">Departure Time:</label>
+                                                                                        <input type="text" id="return_Departure" class="amounts">
+                                                                                    </div>
+                                                                                    <div id="return-slider-range-Departure" onclick="Show_Flights('filter')"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                        <div class="sidebar-widget" style="display:none">
+                                                                            <h3 class="title stroke-shape">Filter by Arrival Time</h3>
+                                                                            <div class="sidebar-price-range">
+                                                                                <div class="slider-range-wrap">
+                                                                                    <div class="price-slider-amount padding-bottom-20px">
+                                                                                        <label for="amount2" class="filter__label">Arrival Time:</label>
+                                                                                        <input type="text" id="return_Arrival" class="amounts">
+                                                                                    </div>
+                                                                                    <div id="return-slider-range-Arrival" onclick="Show_Flights('filter')"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="sidebar-widget">
+                                                                            <h3 class="title stroke-shape">Flight Stops</h3>
+                                                                            <div class="sidebar-widget-item return_Stops_Filter">
+                                                                            </div>
+                                                                            </div><!-- end sidebar-widget -->
+                                                                            <div class="sidebar-widget">
+                                                                                <h3 class="title stroke-shape ">Filter by Airline Name</h3>
+                                                                                <div class="sidebar-widget-item return_Airline_Name_Filter">
+                                                                                </div>
+                                                                                </div><!-- end sidebar-widget -->
+                                                                            </div>
+                                                                        </div>
+                                                                        </div><!-- end col-lg-4 -->
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            {{-- model part end --}}
 
 
 
@@ -1506,224 +708,93 @@ body, html{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-           
-
-            
-
-
-
-
-
-            <div class="col-lg-9 flight_list">
-
-            <div class="wrapper">
-
-                   <div class="item">
-
-                          <div class="animated-background round-box"></div>
-
-                          <div class="animated-background rect1"></div>
-
-                          <div class="animated-background rect2"></div>
-
-                          <div class="animated-background rect3"></div>
-
-                          <div class="animated-background rect4"></div>
-
-                          <div class="animated-background rect5"></div>   
-
-                    </div>
-
-                    <div class="item">
-
-                          <div class="animated-background round-box"></div>
-
-                          <div class="animated-background rect1"></div>
-
-                          <div class="animated-background rect2"></div>
-
-                          <div class="animated-background rect3"></div>
-
-                          <div class="animated-background rect4"></div>
-
-                          <div class="animated-background rect5"></div>   
-
-                    </div>
-
-                    <div class="item">
-
-                          <div class="animated-background round-box"></div>
-
-                          <div class="animated-background rect1"></div>
-
-                          <div class="animated-background rect2"></div>
-
-                          <div class="animated-background rect3"></div>
-
-                          <div class="animated-background rect4"></div>
-
-                          <div class="animated-background rect5"></div>   
-
-                    </div>
-
-                    <div class="item">
-
-                          <div class="animated-background round-box"></div>
-
-                          <div class="animated-background rect1"></div>
-
-                          <div class="animated-background rect2"></div>
-
-                          <div class="animated-background rect3"></div>
-
-                          <div class="animated-background rect4"></div>
-
-                          <div class="animated-background rect5"></div>   
-
-                    </div>
-
-                    <div class="item">
-
-                          <div class="animated-background round-box"></div>
-
-                          <div class="animated-background rect1"></div>
-
-                          <div class="animated-background rect2"></div>
-
-                          <div class="animated-background rect3"></div>
-
-                          <div class="animated-background rect4"></div>
-
-                          <div class="animated-background rect5"></div>   
-
-                    </div>
-
-                    <div class="item">
-
-                          <div class="animated-background round-box"></div>
-
-                          <div class="animated-background rect1"></div>
-
-                          <div class="animated-background rect2"></div>
-
-                          <div class="animated-background rect3"></div>
-
-                          <div class="animated-background rect4"></div>
-
-                          <div class="animated-background rect5"></div>   
-
-                    </div>
-
-                    <div class="item">
-
-                          <div class="animated-background round-box"></div>
-
-                          <div class="animated-background rect1"></div>
-
-                          <div class="animated-background rect2"></div>
-
-                          <div class="animated-background rect3"></div>
-
-                          <div class="animated-background rect4"></div>
-
-                          <div class="animated-background rect5"></div>   
-
-                    </div>
-
-                    <div class="item">
-
-                          <div class="animated-background round-box"></div>
-
-                          <div class="animated-background rect1"></div>
-
-                          <div class="animated-background rect2"></div>
-
-                          <div class="animated-background rect3"></div>
-
-                          <div class="animated-background rect4"></div>
-
-                          <div class="animated-background rect5"></div>   
-
-                    </div>
-
-                </div>
-
-            </div><!-- end col-lg-8 --> 
-
-
-
-      
-
-
-
-        </div><!-- end row -->
-
-
-
-        <div class="row load_more" style="display:none">
-
-            <div class="col-lg-12">
-
-                <div class="btn-box mt-3 text-center">
-
-                    <button type="button" class="theme-btn" onclick="Show_Flights('load')"><i class="la la-refresh mr-1"></i>Load More</button>
-
-                    <p class="font-size-13 pt-2">Showing 1 - <span class="showflight"></span> of <span class="totalflight"></span> Flights</p>
-
+<div class="col-lg-9 flight_list">
+    <div class="wrapper">
+        <div class="item">
+            <div class="animated-background round-box"></div>
+            <div class="animated-background rect1"></div>
+            <div class="animated-background rect2"></div>
+            <div class="animated-background rect3"></div>
+            <div class="animated-background rect4"></div>
+            <div class="animated-background rect5"></div>
+        </div>
+        <div class="item">
+            <div class="animated-background round-box"></div>
+            <div class="animated-background rect1"></div>
+            <div class="animated-background rect2"></div>
+            <div class="animated-background rect3"></div>
+            <div class="animated-background rect4"></div>
+            <div class="animated-background rect5"></div>
+        </div>
+        <div class="item">
+            <div class="animated-background round-box"></div>
+            <div class="animated-background rect1"></div>
+            <div class="animated-background rect2"></div>
+            <div class="animated-background rect3"></div>
+            <div class="animated-background rect4"></div>
+            <div class="animated-background rect5"></div>
+        </div>
+        <div class="item">
+            <div class="animated-background round-box"></div>
+            <div class="animated-background rect1"></div>
+            <div class="animated-background rect2"></div>
+            <div class="animated-background rect3"></div>
+            <div class="animated-background rect4"></div>
+            <div class="animated-background rect5"></div>
+        </div>
+        <div class="item">
+            <div class="animated-background round-box"></div>
+            <div class="animated-background rect1"></div>
+            <div class="animated-background rect2"></div>
+            <div class="animated-background rect3"></div>
+            <div class="animated-background rect4"></div>
+            <div class="animated-background rect5"></div>
+        </div>
+        <div class="item">
+            <div class="animated-background round-box"></div>
+            <div class="animated-background rect1"></div>
+            <div class="animated-background rect2"></div>
+            <div class="animated-background rect3"></div>
+            <div class="animated-background rect4"></div>
+            <div class="animated-background rect5"></div>
+        </div>
+        <div class="item">
+            <div class="animated-background round-box"></div>
+            <div class="animated-background rect1"></div>
+            <div class="animated-background rect2"></div>
+            <div class="animated-background rect3"></div>
+            <div class="animated-background rect4"></div>
+            <div class="animated-background rect5"></div>
+        </div>
+        <div class="item">
+            <div class="animated-background round-box"></div>
+            <div class="animated-background rect1"></div>
+            <div class="animated-background rect2"></div>
+            <div class="animated-background rect3"></div>
+            <div class="animated-background rect4"></div>
+            <div class="animated-background rect5"></div>
+        </div>
+    </div>
+    </div><!-- end col-lg-8 -->
+    
+    </div><!-- end row -->
+    <div class="row load_more" style="display:none">
+        <div class="col-lg-12">
+            <div class="btn-box mt-3 text-center">
+                <button type="button" class="theme-btn" onclick="Show_Flights('loadMore')"><i class="la la-refresh mr-1"></i>Load More</button>
+                <p class="font-size-13 pt-2">Showing 1 - <span class="showflight"></span> of <span class="totalflight"></span> Flights</p>
                 </div><!-- end btn-box -->
-
-            </div><!-- end col-lg-12 -->
-
-        </div><!-- end row -->
-
-    </div><!-- end container -->
-
-
-
-</section><!-- end card-area -->
-
-
-
-<!-- ================================
-
-
-
-    END CARD AREA
-
-
-
-================================= -->
-
-
-
-
-
-
-
-<script src = "//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"> </script> 
-
-<script src = "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"> </script>
-
-
-
-<script src = "https://code.jquery.com/jquery-3.4.1.min.js"> </script> 
-
-<script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"> </script> 
-
-
-
-
+                </div><!-- end col-lg-12 -->
+                </div><!-- end row -->
+                </div><!-- end container -->
+                </section><!-- end card-area -->
+                <!-- ================================
+                END CARD AREA
+                ================================= -->
+                <script src = "//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"> </script>
+                <script src = "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"> </script>
+                <script src = "https://code.jquery.com/jquery-3.4.1.min.js"> </script>
+                <script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"> </script>
 
 <script type = "text/javascript" >
 
@@ -1953,9 +1024,9 @@ function Get_FlightController() {
 
 
 
-            var maxprice = data.maxprice + 700;
+            var maxprice = (data.maxprice + 700)*2;
 
-            var minprice = data.minprice;
+            var minprice = (data.minprice)*2;
 
             var rangeSlider = $('#slider-range-price');
 
@@ -2145,7 +1216,7 @@ function Show_Flights(type) {
 
     // Construct the new price value
 
-    if (type == 'filter_apply' || type == "filter") {
+    if (type == 'filter_apply' || type == "filter" || type == "loadMore") {
 
         var newPrice = newMinPrice + ' - ' + newMaxPrice;
 
@@ -2181,7 +1252,8 @@ function Show_Flights(type) {
 
 
 
-    //alert("page=="+page+"\nsearch_session"+search_session)
+    // alert("page=="+page+"\nsearch_session"+search_session)
+    // console.log("page=="+page+"\nsearch_session"+search_session)
 
     $.ajax({
 
