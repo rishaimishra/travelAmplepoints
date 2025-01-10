@@ -1,0 +1,9 @@
+===========Credentials(GetHotelListNew)=========
+hotelbeds_key=273483fe031816b44f248428a028d28c
+ hotelbeds_secret=bee7c61cbf
+ endpoint=https://api.test.hotelbeds.com/hotel-api/1.0
+===========Request(GetHotelListNew)=========
+{"language":"ENG","currency":"USD","stay":{"checkIn":"2025-03-03","checkOut":"2025-03-04"},"occupancies":[{"rooms":1,"adults":1,"children":0,"paxes":[{"roomId":1,"type":"AD","name":"","surname":"Surname1"}]}],"hotels":{"hotel":[6478,6480,6483,6487,6488]},"filter":{"packaging":true,"deal":true},"boards":{"included":true,"board":["RO","BB","AI","HB","FB","RR","AB","DB","GB","IB","LB"]},"sourceMarket":"US","remark":"Require non-smoking room"}
+===========Response(GetHotelListNew)=========
+{"auditData":{"processTime":"89","timestamp":"2024-12-23 06:18:53.480","requestHost":"116.193.141.172, 15.158.39.6, 10.214.140.240, 10.214.137.182","serverId":"ip-10-214-139-238.eu-central-1.compute.internal","environment":"[awseucentral1, awseucentral1b, ip_10_214_139_238, eucentral1, secret]","release":"","token":"BD08E2F74C6E4519852C4D03ECEE35C0","internal":"0||US|06|0|0|||Y-RO,BB,AI,HB,FB,RR,AB,DB,GB,IB,LB|||Y||||||0||1~1~1~0|0|0||0|273483fe031816b44f248428a028d28c||||"},"hotels":{"total":0}}
+

@@ -125,7 +125,7 @@ if(isset($_REQUEST['child'])) { $child=$_REQUEST['child']; }else{ $child=0; }
 ?>
 <div class="tab-pane fade show active" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
 	<div class="contact-form-action">
-		<form method="get" action="{{ asset('hotel-search-results') }}" class="row align-items-center" onsubmit="formSubmit()" id="frm">
+		<form method="get" action="{{ asset('hotel-search-results-new') }}" class="row align-items-center" onsubmit="formSubmit()" id="frm">
 			@csrf
 			<div class="col-lg-3 pr-0">
 				<div class="input-box">

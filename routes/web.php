@@ -172,14 +172,16 @@ Route::get('/hotel-search-results-new', function (){
 Route::get('/GetHotelListNew', [Hotel_New::class, 'GetHotelListNew']); 
 Route::get('/Show_Hotels_New', [Hotel_New::class, 'Show_Hotels_New']);
 Route::get('/hotel-details-new/{id}/{hotel_name}', [Hotel_New::class, 'HotelDetails'])->name("hotel.details.new");
+Route::get('/getControls_New', [Hotel_New::class, 'getControls_New']); 
 
-Route::get('/check-hotel-session', function (){ 
+Route::get('/all-hotel-session', function (){ 
 	dd(session('hotel_data'));
 })->name('hotel.search.results');
 
 Route::get('/clear-hotel-session', function (){ 
 	Session::forget('hotel_data');
 })->name('hotel.search.results');
+Route::get('/insert-all-hotel', [Hotel_New::class, 'insert_all_hotel']); 
 //========= new end ============//
 
 

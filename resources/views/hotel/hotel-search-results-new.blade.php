@@ -1,5 +1,5 @@
 @include('site.header')
-<h1>NEW SEARCH PAGE</h1>
+{{-- <h1>NEW SEARCH PAGE</h1> --}}
            @inject('siteData1', 'App\Http\Controllers\Site')
          @php   $data=json_decode($siteData1::Index(),true);
                 $common_data= $data['siteData']['common_data'];
@@ -304,14 +304,18 @@ $childs =substr($childsStr,0,-1);
 <!-- ================================
     START BREADCRUMB AREA
 ================================= -->
+<!-- ================================
+START BREADCRUMB AREA
+================================= -->
+<img src=" {{ asset('admin/dist/img/banner/hotel.jpg') }}" {{-- class="img-circle elevation-2" --}} alt="banner image" style="width: 100%; display: ;" id="banner-img">
 <section class="hero-wrapper hero-wrapper6 Edit_search_sec Edit_search" rel="0" style="display:none">
-     <div  @if($device=='Desktop') style="padding-top: 100px;padding-bottom: 100px;background:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),url({{$pageData->image}});background-size: cover;" @endif>        
+    <div  @if($device=='Desktop') style="padding-top: 100px;padding-bottom: 100px;background:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),url({{$pageData->image}});background-size: cover;" @endif>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="search-fields-container mt-4" style="box-shadow: 2px 2px 20px #dfdfdf;">
                         <div class="tab-content" id="myTabContent3">
-                        @include('hotel.hotel-search-box')
+                            @include('hotel.hotel-search-box')
                         </div>
                     </div>
                 </div>
@@ -321,13 +325,19 @@ $childs =substr($childsStr,0,-1);
 </section>
 
 
-<img src=" {{ asset('admin/dist/img/Book-Hotels.png') }}" {{-- class="img-circle elevation-2" --}} alt="banner image" style="width: 100%; margin-bottom: 20px; display: ;" id="banner-img">
+
+ <div id="edit-no-data" style=" display:none;">
+                            <div class="filter-option">
+                                <h3 class="title font-size-16"> <a href="javascript:void(0)" rel="0" onclick="Edit_search()" class="Edit_search theme-btn theme-btn-small ">Edit</a> </h3>
+                            </div>
+</div><!-- end filter-bar-filter -->
 
 <h1 id="no-data" style="text-align:center;margin-top: 60px;margin-bottom: 60px; display:none;">No Data Found</h1>
 
-  <div class="custom-container-ld" id="cc">
+
+<div class="custom-container-ld" id="cc">
     <div class="custom-loader-ld"></div>
-  </div>
+</div>
 <!-- end breadcrumb-area -->
 
 <!-- ================================
@@ -571,7 +581,7 @@ $childs =substr($childsStr,0,-1);
 
                         </div>
                         </div><!-- end filter by name -->
-                        <div class="sidebar-widget">
+                      {{--   <div class="sidebar-widget">
                             <h3 class="title stroke-shape">Filter by Board</h3>
                             <div class="sidebar-category board">
                             </div>
@@ -585,7 +595,8 @@ $childs =substr($childsStr,0,-1);
                                     <h3 class="title stroke-shape">Filter by Accommodation Type</h3>
                                     <div class="sidebar-category accommodationType">
                                     </div>
-                                    </div><!-- end filter by board -->
+                                    </div> --}}
+                                    <!-- end filter by board -->
                                   {{--   <div class="sidebar-widget">
                                         <h3 class="title stroke-shape">Facilities</h3>
                                         <div class="sidebar-category amenity">
@@ -807,7 +818,7 @@ $childs =substr($childsStr,0,-1);
                             </div>
                         </div>
                     </div><!-- end filter by name -->
-                    <div class="sidebar-widget">
+                 {{--    <div class="sidebar-widget">
                         <h3 class="title stroke-shape">Filter by Board</h3>
                         <div class="sidebar-category board">                            
                         </div>
@@ -821,7 +832,8 @@ $childs =substr($childsStr,0,-1);
                         <h3 class="title stroke-shape">Filter by Accommodation Type</h3>
                         <div class="sidebar-category accommodationType">                            
                         </div>
-                    </div><!-- end filter by board -->
+                    </div> --}}
+                    <!-- end filter by board -->
                    {{--  <div class="sidebar-widget">
                         <h3 class="title stroke-shape">Facilities</h3>
                         <div class="sidebar-category amenity">
@@ -1182,6 +1194,8 @@ var uniqueHotels = [];
                                           $("#ld-mr").show();
                                           if (apiCallsCompleted <= 1) { 
                                              $("#no-data").show();
+                                             $("#edit-no-data").show();
+
                                             }
                                           console.log("no data")
                                                 return;
@@ -1190,7 +1204,7 @@ var uniqueHotels = [];
                                 if (data.hasOwnProperty('result')) {
                                         // console.log(12)
 
-                                    console.log(12,data)
+                                    console.log(12,data,data.length)
                                     jQuery('.sidebsr').show();
                                     jQuery('.searching').show(); 
                                      if (apiCallsCompleted >= 5) { 
@@ -1332,6 +1346,7 @@ var uniqueHotels = [];
                                     jQuery('.hotellist').html(innerHtml);
                                     $("#main-sec").show();
                                     $("#no-data").hide();
+                                     $("#edit-no-data").hide();
                                    
                                 }// data.hasOwnProperty('result')
                                 else{
@@ -1385,10 +1400,10 @@ var uniqueHotels = [];
 
                             function getControls() { // var search_session='62f0011bf1e94';
                                  $.ajax({
-                                url:<?php url('');?>'/getControls',
+                                url:<?php url('');?>'/getControls_New',
                                 type: "GET",
                                 data: {
-                                    action: "getControls",
+                                    action: "getControls_New",
                                     search_id: search_session,
                                     page: page,  
                                     rand: Math.random()
